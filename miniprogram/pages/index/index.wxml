@@ -1,0 +1,8 @@
+<scroll-view id="scroller" scroll-y>
+  <view class="ball ball1">ball1</view>
+  <view class="ball ball2">ball2</view>
+  <view class="line"></view>
+  <view class="text">文本内容</view>
+  <view class="bg"></view>
+  <view class="cheng"></view>
+</scroll-view>
