@@ -1,0 +1,19 @@
+<l-card class="question">
+  <view class="title">
+    {{title_temp}}
+  </view>
+  <view class="description">
+    {{description_temp}}
+  </view>
+</l-card>
+<l-card class="answer">
+  <view class="answer_temp">
+    {{answer_temp}}
+  </view>
+  <view class="like_num">
+    {{like_num}}
+  </view>
+  <view class="collect_num">
+    {{collect_num}}
+  </view>
+</l-card>

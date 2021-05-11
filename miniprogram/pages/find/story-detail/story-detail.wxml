@@ -1,0 +1,5 @@
+<l-card title="{{story_title}}">
+  <view class="content">
+    {{story_content}}
+  </view>
+</l-card>

@@ -1,0 +1,64 @@
+<view class="body">
+	<view class="header">
+		<!-- 官方自定义导航栏抽取出来的模块 -->
+		<view class="navigation">
+			<view class="weui-navigation-bar {{extClass}}">
+				<view class="weui-navigation-bar__placeholder {{ios ? 'ios' : 'android'}}" style="padding-top: {{statusBarHeight}}px;visibility: hidden;"></view>
+				<view class="weui-navigation-bar__inner {{ios ? 'ios' : 'android'}}" style="padding-top: {{statusBarHeight}}px; color: {{color}};background: {{background}};{{displayStyle}};{{innerPaddingRight}};{{innerWidth}};background-color: {{navigationBackgroundColor}}">
+					<view class='weui-navigation-bar__center' style="{{innerPaddingLeft}}">
+						<view class="navigation-title">
+							<text>每日哲学家</text>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="main">
+		<view class="slideshow">
+      <image mode="aspectFill" src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/IMG_0090(20210507-230157).JPG'>
+        <view class='user-info'>
+          <image class='user-image' src='{{userInfo.avatarUrl}}'></image>
+          <view class='user-name' wx:if="{{userInfo.nickName}}">{{userInfo.nickName}}</view>
+          <view class='user-name' wx:else>
+            <block wx:if="{{!hasUserInfo}}">
+              <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 登录 </button>
+              <button wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登录 </button>
+            </block>
+          </view>
+        </view>
+      </image>
+    </view>
+    <view class='content-container'>
+      <view class='content-item' bindtap='openHistory'>
+        <view>
+          <image src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/history.png' class='item-image'></image>
+        </view>
+        <view class='word'>历史记录</view>
+      </view>
+
+      <view class='content-item' bindtap="openPortfolio">
+        <view>
+          <image src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/star.png' class='item-image'></image>
+        </view>
+        <view class='word'>收藏夹</view>
+      </view>
+
+      <view class='content-item' bindtap="openAnalysis">
+        <view>
+          <image src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/analysis.png' class='item-image'></image>
+        </view>
+        <view class='word'>我的分析</view>
+      </view>
+
+      <view class='content-item' bindtap="openStatistics">
+        <view>
+          <image src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/statistics.png' class='item-image'></image>
+        </view>
+        <view class='word'>我的统计</view>
+      </view>
+    
+    </view>
+	</view>
+	<view class="footer"></view>
+</view>

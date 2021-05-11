@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/personal/index/index",
+    "pages/find/index/index",
+    "pages/recommend/recommend",
+    "pages/personal/history/history",
+    "pages/personal/star/star",
+    "pages/personal/analysis/analysis",
+    "pages/personal/statistics/statistics",
+    "pages/find/answer/answer",
+    "pages/find/story-detail/story-detail",
+    "pages/find/question-detail/question-detail"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#D0A669",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "每日哲学家"
+  },
+  "tabBar": {
+    "color": "#D0A669",
+    "selectedColor": "#000000",
+    "borderStyle": "white",
+    "backgroundColor": "#D0A669",
+    "list": [
+      {
+        "pagePath": "pages/recommend/recommend",
+        "iconPath": "/images/recommend.png",
+        "selectedIconPath": "/images/recommend_selected.png"
+      },
+      {
+        "pagePath": "pages/find/index/index",
+        "iconPath": "/images/find.png",
+        "selectedIconPath": "/images/find_selected.png"
+      },
+      {
+        "pagePath": "pages/personal/index/index",
+        "iconPath": "/images/my.png",
+        "selectedIconPath": "/images/my_selected.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

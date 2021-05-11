@@ -1,0 +1,10 @@
+{
+  "enablePullDownRefresh": true,
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "历史记录",
+  "usingComponents": {
+    "ec-canvas":"../../../ec-canvas/ec-canvas",
+    "history-item":"../../../components/history-item/history-item",
+    "question-item":"../../../components/question-item/question-item"
+  }
+}

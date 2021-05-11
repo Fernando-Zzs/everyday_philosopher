@@ -1,0 +1,58 @@
+.container{
+  background-color: rgb(255,255,255,0.7);
+  margin-top: 50rpx;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  border-radius: 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.title{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-style: bold;
+  font-size: 35rpx;
+  line-height: 100%;
+  padding-left: 70rpx;
+  padding-top: 50rpx;
+  padding-right: 70rpx;
+  line-height: 50rpx;
+}
+
+.content{
+  font-size: 26rpx;
+  padding: 30rpx 65rpx;
+  line-height: 50rpx;
+  padding-bottom: 50rpx;
+}
+
+.question-card{
+  position: relative;
+}
+
+.quote{
+  position: absolute;
+  left: 20rpx;
+  top: 30rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.corner{
+  position: absolute;
+  right: 0rpx;
+  top: 0rpx;
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.bin{
+  position: absolute;
+  right: 15rpx;
+  top: 20rpx;
+  width: 30rpx;
+  height: 30rpx;
+}

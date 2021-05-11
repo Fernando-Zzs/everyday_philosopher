@@ -1,0 +1,8 @@
+{
+  "enablePullDownRefresh": true,
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "我的分析",
+  "usingComponents": {
+    "ec-canvas":"../../../ec-canvas/ec-canvas"
+  }
+}
