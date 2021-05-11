@@ -1,0 +1,7 @@
+page{
+  background-color: #eee;
+}
+
+l-card{
+  margin-top: 25rpx
+}

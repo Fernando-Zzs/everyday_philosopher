@@ -1,0 +1,49 @@
+.container{
+  background-color: #ddd;
+  display:flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.card{
+  position: relative;
+  width: 650rpx;
+  height: 800rpx;
+  margin-top: 15rpx;
+  margin-bottom: 50rpx;
+  border-radius: 40rpx;
+  background-color: #fff;
+}
+
+.card ec-canvas{
+  position: absolute;
+  left: 8%;
+  margin-top: 10rpx;
+  margin-bottom: 15rpx;
+  width: 85%;
+  height: 600rpx;
+}
+
+.card .statistic-type{
+  width: 25%;
+  margin-left: 30rpx;
+  margin-top: 20rpx;
+  background-color: #D0A669;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  padding-top: 5rpx;
+  padding-bottom: 10rpx;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: 600;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #fff;
+  border-radius: 40rpx;
+}
+
+.card .statistic-type image{
+  width: 28rpx;
+  height: 28rpx;
+  padding-top: 15rpx;
+  margin-right: 10rpx;
+}

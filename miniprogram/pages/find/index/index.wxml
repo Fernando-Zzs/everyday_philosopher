@@ -1,0 +1,32 @@
+<!--pages/index/index.wxml-->
+<view class='page-box box'>
+
+  <view class="m-box">
+    <movable-area class="m-area">
+      <movable-view class='m-item' wx:for="{{list}}" wx:key="item" wx:index="index" x="{{item.x}}" y="{{item.y}}"
+        damping="52" direction="all" bindchange="onChange" data-index="{{index}}" catchtouchend="touchEnd"
+        catchtouchstart="touchStart" catchtouchmove="touchMove" out-of-bounds="true" data-index="{{index}}">
+        <!-- 业务逻辑 start -->
+        <view class='m-item-box item{{(index == 0 || index == list.length -1) ? 0 : 1}} '>
+          <view class="header">
+            <image src="{{item.image}}" class="image"></image>
+            <view class="question">
+              <view class='question-title'>
+                {{item.question || '--'}}
+              </view>
+              <view class='question-content'>
+                {{item.content || '--'}}
+              </view>
+            </view>
+          </view>
+          <view class="answer">
+            <l-textarea placeholder="说说你的想法吧……" maxlength="200" focus="true" class="l-class" bind:lininput></l-textarea>
+          </view>
+        </view>
+        <!-- 业务逻辑 end -->
+      </movable-view>
+    </movable-area>
+    <l-button type="default" plain="true" size="long" shape="circle" bindtap="submit">提交</l-button>
+  </view>
+
+</view>

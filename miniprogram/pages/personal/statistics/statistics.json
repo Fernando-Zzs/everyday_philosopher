@@ -1,0 +1,7 @@
+{
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "我的统计",
+  "usingComponents": {
+    "ec-canvas":"../../../ec-canvas/ec-canvas"
+  }
+}

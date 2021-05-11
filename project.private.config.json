@@ -1,0 +1,66 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "历史记录页面",
+          "pathName": "pages/personal/history/history",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "我的界面",
+          "pathName": "pages/personal/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "统计记录",
+          "pathName": "pages/personal/statistics/statistics",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "分析",
+          "pathName": "pages/personal/analysis/analysis",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "收藏夹",
+          "pathName": "pages/personal/star/star",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "探索页面",
+          "pathName": "pages/find/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "答案详情页",
+          "pathName": "pages/find/answer/answer",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "故事详情页",
+          "pathName": "pages/find/story-detail/story-detail",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

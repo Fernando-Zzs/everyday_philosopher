@@ -1,0 +1,169 @@
+page{
+  height: 1800rpx;
+  background-color: white
+}
+
+.navigation {
+  --height: 48px;
+  --right: 190rpx
+}
+
+.weui-navigation-bar {
+  overflow: hidden
+}
+
+.weui-navigation-bar .android {
+  --height: 48px;
+  --right: 222rpx
+}
+
+.weui-navigation-bar__inner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5001;
+  height: var(--height);
+  display: flex;
+  align-items: center;
+  padding-right: var(--right);
+  width: calc(100% - var(--right));
+  background-color: rgba(255, 255, 255, 0.4)
+}
+
+.weui-navigation-bar__inner .weui-navigation-bar__left {
+  position: relative;
+  width: var(--right);
+  padding-left: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  -webkit-box-pack: center
+}
+
+.weui-navigation-bar__inner .weui-navigation-bar__left .weui-navigation-bar__btn {
+  display: inline-block;
+  vertical-align: middle;
+  background-repeat: no-repeat
+}
+
+.weui-navigation-bar__inner .weui-navigation-bar__center {
+  font-size: 17px;
+  text-align: center;
+  position: relative;
+  flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center
+}
+.weui-navigation-bar__placeholder {
+  height: var(--height);
+  background: #F8F8F8;
+  position: relative;
+  z-index: 50
+}
+
+/* 上面的是WeUI的代码 */
+
+.header{
+  position: absolute;
+}
+
+.navigation-title {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: white;
+}
+
+.navigation-title text{
+  font-size: 35rpx;
+  font-style: bold;
+}
+
+.slideshow image{
+  position: relative;
+  width: 100%;
+  height: 600rpx;
+}
+
+/* 以下是我自己的 */
+.user-info{
+  position: absolute;
+  left: 290rpx;
+  top: 200rpx;
+  width: 220rpx;
+  height: 300rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.user-info .user-image {
+  width: 150rpx;
+  height: 150rpx;
+  margin-left: 20rpx;
+
+  background: rgba(0,0,0,0.4);
+  border:8rpx solid #D0A669;
+  border-radius: 80rpx;
+}
+
+.user-info .user-name{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+
+  width: 200rpx;
+  height: 50rpx;
+  border:5rpx solid #D0A669;
+  border-radius: 20rpx;
+  background: rgba(0,0,0,0.4);
+
+  font-size: 30rpx;
+  font-family: "Microsoft Yahei";
+  color:#fff;
+}
+
+.user-info .user-name button{
+  color:#fff;
+  font-size: 28rpx;
+}
+
+.content-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background:white
+}
+
+.content-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  width: 100%;
+  height: 90rpx;
+  border-bottom: 2rpx solid #D0A669;
+}
+
+.item-image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 12rpx;
+  margin-left: 35rpx;
+}
+
+.word {
+  font-size: 28rpx;
+  margin-left: 30rpx;
+}

@@ -1,0 +1,18 @@
+<view class="page">  
+  <!--顶部导航栏-->  
+  <view class="swiper-tab">  
+    <view class="tab-item {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav"><text>哲学科普</text></view>
+    <view class="tab-item {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">热搜问答</view>
+  </view>
+  <!--内容主体-->  
+  <swiper class="swiper" current="{{currentTab}}" duration="200" bindchange="swiperChange">  
+    <swiper-item class="zero">
+      <ec-canvas id="mychart-dom-line" canvas-id="mychart-dom-line" ec="{{ec}}"></ec-canvas>
+      <history-item historyItemsArray="{{datas}}"/>
+    </swiper-item>
+    <swiper-item class="one">
+      <ec-canvas id="mychart-dom-line" canvas-id="mychart-dom-line" ec="{{ec}}"></ec-canvas>
+      <question-item questionItemsArray="{{datas2}}"/>
+    </swiper-item>
+  </swiper>  
+</view>
