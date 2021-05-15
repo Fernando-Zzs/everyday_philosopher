@@ -55,6 +55,7 @@ Page({
     wx.getUserProfile({
       desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
       success: (res) => {
+        var that = this
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true
@@ -64,6 +65,21 @@ Page({
           icon: 'success',
           duration: 1000
         })
+        const db = wx.cloud.database()
+        db.collection('user').add({
+          data:{
+            nickname: that.data.userInfo.nickName,
+            avatarUrl: that.data.userInfo.avatarUrl
+          }
+        })
+        wx.cloud.callFunction({
+          name:'getUserInfo',
+          complete:res=>{
+            app.globalData.OPENID = res.result.openid
+          }
+        })
+        app.globalData.NICKNAME = this.data.userInfo.nickName
+        app.globalData.AVATARURL = this.data.userInfo.avatarUrl
       }
     })
   },

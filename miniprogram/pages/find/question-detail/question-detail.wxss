@@ -1,3 +1,44 @@
 l-card{
   margin-top: 25rpx;
 }
+
+.title{
+  font-size: 42rpx;
+  font-weight: 700;
+}
+
+.description{
+  margin-top: 30rpx;
+  font-size: 32rpx;
+}
+
+.answer{
+
+}
+
+.answer_temp{
+
+}
+
+.foot{
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.like_image{
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.like_num{
+  margin-left: 5rpx;
+}
+.collect_image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.collect_num{
+  margin-left: 5rpx;
+
+}

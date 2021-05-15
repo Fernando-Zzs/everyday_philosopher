@@ -59,6 +59,12 @@
           "pathName": "pages/find/story-detail/story-detail",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "test",
+          "pathName": "pages/test/test",
+          "query": "",
+          "scene": null
         }
       ]
     }

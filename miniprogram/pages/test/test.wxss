@@ -1,70 +1,15 @@
-page{
-  background-color: #eee;
-}
-.container{
-  display: flex;
-  flex-direction: column;
-}
-.story{
-  position: relative;
-}
-.title{
-  font-size: 56rpx;
-  font-weight: 700;
-}
-l-card .jiao{
-  position: absolute;
-  top: 25rpx;
-  right: 30rpx;
-  width: 130rpx;
-  height: 130rpx;
-}
-
-l-card .shoucang{
-  position: absolute;
-  top: 35rpx;
-  right: 40rpx;
-  width: 65rpx;
-  height: 65rpx;
-}
-
-l-card .title{
-  position: absolute;
-  top: 50rpx;
-  font-size: 50rpx;
-  font-weight: 700;
-}
-
-l-card .content{
-  margin-top: 100rpx;
-  margin-bottom: 30rpx;
-  text-indent: 2rem;
-  font-size: 30rpx;
-  line-height: 65rpx;
+page {
+  background-color:#EDEDED;
+  height: 2000rpx;
 }
 
 /* 评论相关 */
 .record {
-  width: 100%;
+  margin-top: 100rpx;
+  margin-left: 20rpx;
+  display: flex;
 }
-.comment_title{
-  font-size: 48rpx;
-  font-weight: 700;
-  margin-top: 50rpx;
-  margin-left: 25rpx;
-  margin-bottom: 25rpx;
-}
-.header{
-  display:flex;
-  justify-content: space-between;
-}
-.left,
-.right{
-  margin-top: 20rpx;
-}
-.right image{
-  margin-right: 20rpx;
-}
+
 .avator {
   display: inline-block;
   width: 60rpx;
@@ -73,35 +18,17 @@ l-card .content{
   background-color: indianred;
   margin-right: 20rpx;
 }
-.username{
-  display: inline-block;
-  font-size: 36rpx;
-  line-height: 60rpx;
-  vertical-align: middle;
-}
-.like,
-.collect{
-  display: inline-block;
-}
-.like image{
-  width: 50rpx;
-  height: 50rpx;
-}
-.collect image{
-  width: 50rpx;
-  height: 50rpx;
-}
-.num{
-  display: inline-block;
-  margin-right: 25rpx;
-}
 .comment {
   padding: 10rpx;
-  background-color: #D0A669;
+  background-color: #fff;
+  border: 2rpx solid #EDEDED;
   border-radius: 10rpx;
   font-size: 36rpx;
-  margin-top: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
   line-height: 48rpx;
+  max-width: 400rpx;
 }
 
 .emoji-wrp {
@@ -116,7 +43,7 @@ l-card .content{
   transform: scale(0.375);
 }
 
-/* 底部栏 */
+/* 底部评论栏 */
 .reply_wrp {
   position: fixed;
   bottom: 0;
@@ -172,7 +99,7 @@ l-card .content{
   caret-color: #000;
 }
 .reply_input[disabled] {
-  background-color: #D0A669;
+  background-color: #E8E8E8;
   color: #888888;
 }
 .reply_button {
@@ -230,7 +157,7 @@ l-card .content{
   position: relative;
   padding: 32rpx 24rpx;
   font-size: 34rpx;
-  background-color: #D0A669;
+  background-color: #FFFFFF;
   border-radius: 8rpx;
   margin: 16rpx;
   color: rgba(0, 0, 0, 0.9);
@@ -311,7 +238,4 @@ l-card .content{
 .reply_function_pic {
   width: 128rpx;
   height: 128rpx;
-}
-.temp{
-  height: 100rpx;
 }

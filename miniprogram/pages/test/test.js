@@ -1,14 +1,5 @@
-// miniprogram/pages/find/story-detail/story-detail.js
-const app=getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    story_id:'',
-    story_title:'',
-    story_content:'',
     lineHeight: 24,
     functionShow: false,
     emojiShow: false,
@@ -17,48 +8,15 @@ Page({
     cursor: 0,
     _keyboardShow: false,
     parsedComment: [],
-    show:[],
-    emojiSource: '../../../emoji _ 雪碧图_files/emoji-sprite.b5bd1fe0.png'
+    emojiSource: '../../emoji_image.html'
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  onLoad() {
     const emojiInstance = this.selectComponent('.mp-emoji')
     this.emojiNames = emojiInstance.getEmojiNames()
     this.parseEmoji = emojiInstance.parseEmoji
-    let value = options.story_id
-    let that = this
-    wx.cloud.callFunction({
-      name:'getComment',
-      data:{
-        story_id: value
-      },
-      complete:res=>{
-        that.setData({
-          story_id: value,
-          show: res.result
-        })
-        // console.log(that.data.show)
-      }
-    })
-    
-    wx.cloud.callFunction({
-      name:"getStory",
-      data:{
-        story_id: value,
-      },
-      complete: res=>{
-        var title_temp = res.result.title;
-        var content_temp = res.result.content[0].text;
-        that.setData({
-          story_title: title_temp,
-          story_content: content_temp
-        })
-      }
-    })
   },
+
   onkeyboardHeightChange(e) {
     const {height} = e.detail
     this.setData({
@@ -111,40 +69,12 @@ Page({
     })
   },
   onsend() {
-    // 将评论记录放入两个数据库
-    let that = this
-    let avatarurl_temp = app.globalData.AVATARURL
-    let nickname_temp = app.globalData.NICKNAME
     const comment = this.data.comment
-    // const parsedComment = this.parseEmoji(this.data.comment)
-    const parsedComment = comment
-    wx.cloud.callFunction({
-      name:'addComment',
-      data:{
-        story_id: that.data.story_id,
-        content: parsedComment,
-        avatarURL: avatarurl_temp,
-        nickname: nickname_temp
-      }
+    const parsedComment = this.parseEmoji(this.data.comment)
+    this.setData({
+      parsedComment,
+      comment: ''
     })
-    
-    // 显示到页面上
-    wx.cloud.callFunction({
-      name:'getComment',
-      data:{
-        story_id:that.data.story_id
-      },
-      complete:res=>{
-        // console.log(res.result)
-        // show = res.result
-        that.setData({
-          show: res.result,
-          parsedComment:'',
-          comment: ''
-        })
-      }
-    })
-    
   },
   deleteEmoji: function() {
     const pos = this.data.cursor
@@ -182,33 +112,5 @@ Page({
       comment: result,
       cursor: cursor
     })
-  },
-  like_it:function(e){
-    console.log(e.currentTarget.dataset.commentid);
-    var that = this;
-    wx.cloud.callFunction({
-      name:'likeComment',
-      data:{
-        _id: e.currentTarget.dataset.commentid
-      },
-      complete:res=>{
-        let that = this
-        let value = that.data.story_id
-        wx.cloud.callFunction({
-          name:'getComment',
-          data:{
-            story_id: value
-          },
-          complete:res=>{
-            that.setData({
-              show: res.result
-            })
-          }
-        })
-      }
-    })
-  },
-  collect_it:function(e){
-
   }
 })

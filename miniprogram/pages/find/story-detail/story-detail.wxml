@@ -1,5 +1,89 @@
-<l-card title="{{story_title}}">
-  <view class="content">
-    {{story_content}}
+<view class="container">
+  <!-- 故事页 -->
+  <view class="story">
+    <l-card type="avatar">
+      <image class="jiao" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/jiao.png">
+      </image>
+      <image class="shoucang"
+        src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/baishoucang.png"></image>
+      <view class="title">
+        {{story_title}}
+      </view>
+      <view class="content">
+        {{story_content}}
+      </view>
+    </l-card>
   </view>
-</l-card>
+
+  <!-- 评论栏 -->
+  <view class="record">
+    <view class="comment_title">最新热评</view>
+
+    <view class="comment">
+      <block class="comment-item" wx:for="{{show}}" wx:key="{{item._id}}">
+        <view class="header">
+          <view class="left">
+            <image class="avator" src="{{item.avatarURL}}"></image>
+            <view class="username">{{item.nickname}}</view>
+          </view>
+          <view class="right">
+            <view class="like" bindtap="like_it" data-commentID="{{item._id}}">
+              <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/baizan.png">
+              </image>
+              <view class="num" data-commentID="{{item._id}}">{{item.like_num}}</view>
+            </view>
+          </view>
+        </view>
+
+        <l-card type="avatar" full="true">{{item.content}}</l-card>
+        <!-- <view wx:if="{{item.type === 2}}"
+          style="display: inline-block; width: {{lineHeight}}px; height: {{lineHeight}}px">
+          <view class="{{item.imageClass}}"
+            style="background-image: url({{emojiSource}});transform-origin: 0 0; transform: scale({{lineHeight / 64}});">
+          </view>
+        </view> -->
+      </block>
+    </view>
+  </view>
+
+  <view class="temp"></view>
+  <!-- 底部栏 -->
+  <view class="reply_wrp" style="bottom: {{keyboardHeight}}px">
+    <view class="reply_tool">
+      <view hover-class="active" class="reply_button replay_quick_button">
+        <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/pinglun.png" mode='aspectFit' class="reply_tool_pic"></image>
+      </view>
+      <view class="reply_form_wrp">
+        <label for="" class="reply_label">
+          <input class="reply_input" cursor-spacing="8px" confirm-type="send" adjust-position="{{false}}" confirm-hold
+            value="{{comment}}" cursor="{{cursor}}" focus="{{focus}}" bindblur="onBlur" bindfocus="onFocus"
+            bindinput="onInput" bindconfirm="onConfirm" bindkeyboardheightchange="onkeyboardHeightChange" />
+        </label>
+      </view>
+      <view hover-class="active" class="reply_button replay_emotion_button" bindtap="showEmoji">
+        <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/baizan.png" mode='aspectFit' class="reply_tool_pic"></image>
+      </view>
+      <view hover-class="active" class="reply_button replay_media_button" bindtap="showFunction">
+        <image src="../../../images/view.png" mode='aspectFit' class="reply_tool_pic"></image>
+      </view>
+    </view>
+
+    <view class="reply_panel_wrp" style="height: {{emojiShow ? 300 : 200}}px;" hidden="{{!emojiShow && !functionShow}}">
+      <view class="reply_panel {{emojiShow ? 'show': ''}}" hidden="{{!emojiShow}}">
+        <mp-emoji source="{{emojiSource}}" class="mp-emoji" bindinsertemoji="insertEmoji" binddelemoji="deleteEmoji"
+          bindsend="onsend"></mp-emoji>
+      </view>
+      <view class="reply_panel {{functionShow ? 'show': ''}}" hidden="{{!functionShow}}">
+        <swiper indicator-dots="{{true}}" indicator-color="#bbbbbb" indicator-active-color="#8c8c8c">
+          <swiper-item>
+            <view class="function_list">
+              <view class="function_item" bindtap="chooseImage">
+                <image src="../../../images/find.png" class="reply_function_pic"></image>
+              </view>
+            </view>
+          </swiper-item>
+        </swiper>
+      </view>
+    </view>
+  </view>
+</view>

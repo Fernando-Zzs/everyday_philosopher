@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!-- saved from url=(0094)https://developers.weixin.qq.com/xcode/program/mp_weui/appservice?scene=1001#!emoji/emoji.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>app service</title>
+</head>
+<body>
+  
+  <script>
+    var __wxConfig = JSON.parse('{\"pages\":[\"index/index\",\"cell/cell\",\"slideview/slideview\",\"form/form\",\"uploader/uploader\",\"article/article\",\"badge/badge\",\"flex/flex\",\"footer/footer\",\"gallery/gallery\",\"grid/grid\",\"loadmore/loadmore\",\"loading/loading\",\"panel/panel\",\"preview/preview\",\"dialog/dialog\",\"msg/msg\",\"msg/msg_text\",\"msg/msg_text_primary\",\"msg/msg_success\",\"msg/msg_fail\",\"navbar/navbar\",\"navigation/navigation\",\"tabbar/tabbar\",\"searchbar/searchbar\",\"emoji/emoji\",\"video_swiper/video_swiper\",\"index_list/index_list\",\"recycle_view/recycle_view\",\"sticky/sticky\",\"tabs/tabs\",\"vtabs/vtabs\",\"barrage/barrage\",\"select_text/select_text\",\"half_screen_dialog/half_screen_dialog\",\"actionsheet/actionsheet\",\"toptips/toptips\"],\"tabBar\":{},\"resizable\":false,\"debug\":true,\"widgets\":[],\"customClose\":false,\"workers\":\"\",\"navigateToMiniProgramAppIdList\":[],\"cloud\":false,\"global\":{\"window\":{\"navigationBarTextStyle\":\"black\",\"navigationBarTitleText\":\"小程序UI组件库\",\"navigationBarBackgroundColor\":\"#f8f8f8\",\"backgroundColor\":\"#f8f8f8\",\"navigationStyle\":\"default\",\"backgroundTextStyle\":\"dark\"}},\"page\":{},\"networkTimeout\":{\"request\":10000,\"uploadFile\":10000,\"connectSocket\":10000,\"downloadFile\":10000},\"ext\":{},\"appid\":\"\",\"entryPagePath\":\"index/index.html\",\"appType\":0,\"wxAppInfo\":{\"maxRequestConcurrent\":5,\"maxUploadConcurrent\":1,\"maxDownloadConcurrent\":10},\"appLaunchInfo\":{\"path\":\"index/index\",\"scene\":1001,\"query\":{}},\"accountInfo\":{\"appId\":\"mp_weui\"},\"platform\":\"devtools\",\"id\":\"mp_weui\",\"project\":\"mp_weui\",\"env\":{\"USER_DATA_PATH\":\"/usr/mp_weui\"},\"proxy\":false,\"baseUrl\":\"/xcode\",\"programPath\":\"program\"}')
+  </script>
+   
+  <script src="./appservice.js.下载"></script>
+  <script src="./WAService.js.下载"></script>
+  <script src="./app-service.js.下载"></script>
+  <script>
+    appservice.ready()
+    if (document.readyState == 'complete') {
+      appservice.messenger.call({
+        command: 'DOCUMENT_READY'
+      })
+    } else {
+      var fn = function(event) {
+        appservice.messenger.call({
+          command: 'DOCUMENT_READY'
+        })
+        window.removeEventListener("load", fn)
+      }
+      window.addEventListener('load', fn)
+    }
+  </script>
+  
+
+</body></html>
