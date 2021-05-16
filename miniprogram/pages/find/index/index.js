@@ -1,5 +1,6 @@
 // pages/index/index.js
 import mockArr from './mock.js'
+const app = getApp()
 let winWidth = 414;
 let winHeight = 736;
 function deepClone(obj) {
@@ -25,7 +26,8 @@ Page({
     startY: '', // 初始点Y位置
     currentIndex: -1, // 当前最上层滑块
     ratio: 2, // 屏幕比例
-    context:'' // 文本框内容
+    context:'', // 文本框内容
+    currentQid:'' // 当前问题id
   },
   onLoad: function () {
     var that = this;
@@ -38,6 +40,10 @@ Page({
     this.getList()
   },
   touchStart(e) {
+    // console.log(e.currentTarget.dataset.questionid)
+    this.setData({
+      currentQid: e.currentTarget.dataset.questionid
+    })
     let index = e.currentTarget.dataset.index
     let touches = e.touches
     let list = this.data.list || []
@@ -89,6 +95,9 @@ Page({
             that.getList()
           }
         }, 300)
+        that.setData({
+          context:''
+        })
       } else if (disClientX < 1 && disClientY < 1) {
         // 点击进入
         // console.log('点击进入详情')
@@ -110,19 +119,26 @@ Page({
   },
   // 模拟获取列表数据
   getList () {
+    let that = this
     wx.showLoading({
       title: '加载中',
     })
+    
     setTimeout(() => {
-      let list = this.data.list || [];
-      let arr = deepClone(mockArr)
-      for (let i of arr) {
-        i.x = winWidth
-        i.y = 0
-        list.unshift(i)
-      }
-      this.setData({ list })
-      wx.hideLoading()
+      wx.cloud.callFunction({
+        name: 'getAllQuestion',
+        complete: res=>{
+          let list = this.data.list || [];
+          let arr = deepClone(res.result)
+          for (let i of arr) {
+            i.x = winWidth
+            i.y = 0
+            list.unshift(i)
+          }
+          this.setData({ list })
+          wx.hideLoading()
+        }
+      })
     }, 200)
   },
   true:function(e){
@@ -131,10 +147,33 @@ Page({
       context: v
     })
   },
-  submit:function(){
+  submit:function(e){
+    let that = this
     var value = this.data.context;
-    wx.navigateTo({
-      url: "../answer/answer?value=" + value
-    })
+    if(value !== ''){
+      let avatarurl_temp = app.globalData.AVATARURL
+      let nickname_temp = app.globalData.NICKNAME
+      // 将答案添加到数据库
+      wx.cloud.callFunction({
+        name:'addAnswer',
+        data:{
+          content: value,
+          question_id: that.data.currentQid,
+          avatarURL: avatarurl_temp,
+          nickname: nickname_temp
+        },
+        complete:res=>{
+          wx.navigateTo({
+            url: "../answer/answer?answer_id=" + res.result
+          })
+        }
+      })
+    } else {
+      wx.showToast({
+        title: '请输入答案',
+        duration: 2000,
+        icon: 'error',
+      })
+    }
   }
 })

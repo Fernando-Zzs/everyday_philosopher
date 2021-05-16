@@ -5,16 +5,27 @@ Page({
    * 页面的初始数据
    */
   data: {
-    answer:''
+    answer_id:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let value = options.value;
+    let that = this
+    let temp = options.answer_id;
     this.setData({
-      answer: value,
+      answer_id: temp
+    })
+    // 根据answer_id获取数据库中的信息
+    wx.cloud.callFunction({
+      name:'getAnswer',
+      data:{
+        answer_id: that.data.answer_id
+      },
+      complete:res=>{
+        console.log(res.result)
+      }
     })
   },
 

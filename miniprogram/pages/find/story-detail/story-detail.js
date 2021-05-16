@@ -18,7 +18,7 @@ Page({
     _keyboardShow: false,
     parsedComment: [],
     show:[],
-    emojiSource: '../../../emoji _ 雪碧图_files/emoji-sprite.b5bd1fe0.png'
+    emojiSource: 'cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/emoji _ 雪碧图_files/emoji-sprite.b5bd1fe0.png'
   },
 
   /**

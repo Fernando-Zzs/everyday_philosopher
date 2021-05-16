@@ -1,2 +1,2 @@
 <!--miniprogram/pages/find/answer/answer.wxml-->
-<text>{{answer}}</text>
+<text>{{answer_id}}</text>

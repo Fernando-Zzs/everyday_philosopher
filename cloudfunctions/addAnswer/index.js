@@ -14,9 +14,13 @@ exports.main = async (event, context) => {
       answer_id: total + '',
       question_id: event.question_id,
       content: event.content,
-      like_num: 0
+      like_num: 0,
+      collect_num: 0,
+      avatarURL: event.avatarURL,
+      nickname: event.nickname
     }
   })
+  return total + ''
 }
-// input: question_id content
-// output: null
+// input: question_id content avatarURL nickname
+// output: answer_id
