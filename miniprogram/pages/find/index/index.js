@@ -1,7 +1,7 @@
 // pages/index/index.js
 import mockArr from './mock.js'
 const app = getApp()
-let winWidth = 415;
+let winWidth = 416;
 let winHeight = 736;
 
 function deepClone(obj) {
