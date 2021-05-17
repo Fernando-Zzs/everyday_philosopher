@@ -1,71 +1,64 @@
-<!-- 故事页 -->
-<view class="story">
-
-</view>
-
-<!-- 评论栏 -->
-<view class="record" hidden="{{parsedComment.length === 0}}">
-  <view class="avator"></view>
-  <view class="comment">
-    <block wx:for="{{parsedComment}}" wx:key="*this">
-      <block wx:if="{{item.type === 1}}">{{item.content}}</block>
-      <view 
-        wx:if="{{item.type === 2}}" 
-        style="display: inline-block; width: {{lineHeight}}px; height: {{lineHeight}}px">
-        <view 
-          class="{{item.imageClass}}"
-          style="background-image: url({{emojiSource}});transform-origin: 0 0; transform: scale({{lineHeight / 64}});"></view>
+<view class="page1">
+  <scroll-view id="scroller" scroll-y bindscroll="scroll">
+    <view class="contanier1">
+      <image class="title" src="./death-of-socrates/title.png"></image>
+      <image class='bg i1-1' src='./death-of-socrates/i1-1.jpg' mode="aspectFill"></image>
+      <view class='text p1'>
+        一个伟大智慧对于未知的知识穷极一生不断探寻，当他们面对已知且必会降临的死亡时，他们又会怎样面对呢？阅读他们的生命终点，可以去感受如若星河般的光芒陨落；再回首，先哲那一生中的智慧和真理反而更加绚丽多彩，更加值得珍惜。
       </view>
-    </block>
-  </view>
-</view>
-
-<!-- 底部栏 -->
-<view class="reply_wrp" style="bottom: {{keyboardHeight}}px">
-  <view class="reply_tool">
-    <view hover-class="active" class="reply_button replay_quick_button">
-      <image src="../../images/comment.png" mode='aspectFit' class="reply_tool_pic"></image>
+      <view class="text p2">
+        先哲之死，颇具超人之死的意味。就从苏格拉底之死开始吧。对知识和理想国家的回答使苏格拉底付出了生命的代价，但同时也使他名垂青史。
+      </view>
+      <image class='bg i2-1' src="./death-of-socrates/i2-1.jpg" mode="aspectFill"></image>
+      <view class="text p3">
+        苏格拉底看到了当时雅典那愚蠢不堪的民主，提出了由智慧的少数人统治的“贵族制”。不妨设想一下，在战争需要压制所有的反对意见，而少数有文化的贵族正在酝酿一场革命的时候，雅典得势的大众党对这种贵族政治的言论会有什么反应。
+      </view>
+      <image class='bg i2-2' src="./death-of-socrates/i2-2.jpg" mode="aspectFill"></image>
+      <view class="text p4">
+        革命爆发了，对立双方展开了一场殊死的战斗。当民主派获胜时，苏格拉底的命运已经注定了：尽管他是那么彬彬有礼，但他毕竟是革命派的精神领袖、令人深恶痛绝的贵族哲学的源头、使年轻人沉溺于辩论之中的教唆者。有人提议说，要想扭转风气，那就处死苏格拉底吧。
+      </view>
+      <image class='bg i3-1' src="./death-of-socrates/i3-1.jpg" mode="aspectFill"></image>
+      <view class="text p5">
+        在他最后简明而又充满勇气的“辩解中，哲学的第一位殉道者宣告了思想自由的必要，肯定了自己对国家的价值，并且拒不向他素来蔑视的那些人摇尾乞怜。他们握有赦免的权力，他却不屑于上诉。
+      </view>
+      <image class='bg i4-1' src="./death-of-socrates/i4-1.jpg" mode="aspectFill"></image>
+      <view class="text p6">
+        法官们愿意释放他，而愤怒的群众则投票要求处决他，这正好是对他理论的一种奇怪的证实。这位老先生教得太快了，超出了人们的理解能力，当然会惹来杀身之祸了。
+      </view>
+      <image class='bg i4-2' src="./death-of-socrates/i4-2.jpg" mode="aspectFill"></image>
+      <view class="text p7">
+        他们判决让他饮鸩而死。他的朋友们到牢里去探望他，并给他提供一条很容易的脱身之计：他们已经买通了所有官吏。但是他拒绝逃跑。他已到古稀之年，也许觉得自己该寿终正寝了，此后再也没有这样死得其所的机会了。
+      </view>
+      <view class="text p8">
+        “振作起来吧”，他对悲痛的朋友们说，“你们掩埋的只是我的肉体”。他说完这些话之后，柏拉图在一篇伟大的文学杰作中写道：他站起身来，和克里托一起走进浴室，克里托让我们在外面守候。我们一边等候，一边谈论和思考，我们沉浸在巨大的悲痛之中。他就像我们即将失去的父亲，而我们仿佛要像孤儿一样度过今后的岁月。……夕阳西下，他已经在里面呆了很久，终于，他出来了，又和我们坐在一起，……但大家心情沉重，相对无语。
+      </view>
+      <view class="text p9">
+        不久，狱卒走了进来，站在他的身边说：“苏格拉底，我知道迄今为止，在所有来过这里的人当中你是最高贵、最温和、最优秀的人。我每次按照当局的命令要求他们服毒自尽时，他们就狂暴地咒骂我，您是不会像他们那样做的。我知道您不会恨我，因为您知道这不是我的错。别了，我的朋友，希望您轻松地做完这件不得不做的事。您知道，我干上这份差事也是不得已。”说完，狱卒已是热泪盈眶，转身走了出去。
+      </view>
+      <view class="text p10">
+        苏格拉底凝视着他的背影说：“谢谢您的好意，我听从您的安排。”然后转过身来对我们说，“他真是个可爱的人，自从我进了监狱，他经常来看我……刚才他向我表示遗憾时是多么真诚啊，我们必须按他的安排去做，克里托，如果毒酒准备好了，就叫人拿过来。”
+      </view>
+      <view class="text p11">
+        “太阳才刚过山头，”克里托说，“很多人总是想办法拖时间，接到行刑命令之后还要大吃大喝，尽量满足了身体的欲望之后才肯罢休。时间还早，您又何必着急呢?” 
+      </view>
+      <view class="text p12">
+        苏格拉底说：“是的，克里托，你说的那些人这样做是对的，因为他们认为拖延会有所收获，但是我不这样做也是对的，因为我不认为拖延一下就能得到什么，如果我还吝惜这不可挽回的生命，岂不可笑。请照我说的去做吧。”
+      </view>
+      <view class="text p13">
+        于是克里托示意侍者进来。过了一会儿，侍者和端着毒酒的狱卒来了。苏格拉底说：“我的朋友，请教我怎样服毒吧。”狱卒回答说：“您只要四处走走，等感觉到双腿沉得走不动了再躺下来，那时毒性就发作了。”说着，他把杯子递给苏格拉底。苏格拉底温和、从容地接过杯子，对狱卒说：“这杯酒我用来祭神，你说好吗?”狱卒回答说：“我们只准备了这么多，刚好够您用，苏格拉底，再也没有了。”
+      </view>
+      <view class="text p14">
+        “我明白了，”苏格拉底说，“但我必须祈求神灵保佑我在去另一个世界时一路平安，但愿我的心愿能得到满足。”说完，他举起杯，若无其事地将毒酒一饮而尽。
+      </view>
+      <view class="text p15">
+        起先我们尚能控制住自己的悲痛，但此刻我们亲眼看着他喝下毒酒，都不禁泪流满面，我用手捂住脸，泪水却像泉水般从指间涌出，我不是为他哭泣，我是在为自己哭泣。一想到自己就要失去这样一位良师益友，我就悲恸万分。不仅是我，克里托也早已泣不成声，躲到一边去了。这时，一直在一旁呜咽的阿波罗多拉斯突然放声大哭起来，这样一来，大家全都失声痛哭了。苏格拉底依然从容，他说：“哭哭啼啼像个什么样?我不让女人来这里，就是为了避免这种干扰。你们也应该知道人应该在平静中死去吧。那么就请安静下来，耐心等着吧。”
+      </view>
+      <view class="text p16">
+        听了他的话，我们都感到很羞愧，都止住了眼泪。他在房间里踱起步来，直到腿越来越沉重，才按狱卒的指导，仰面躺下。服侍他服毒的狱卒不时地查看他的腿脚，后来使劲在他脚上掐了一下，问他是否有感觉。苏格拉底回答说没有。就这样，狱卒顺着脚踝往上捏，告诉我们苏格拉底已经冰冷僵硬了。苏格拉底自己也感觉到了，他说，“毒酒到达心脏时，生命就会结束。”当他的小腹开始变凉时，他揭开盖在身上的被单，露出脸来说：“克里托，我还欠阿斯克勒庇俄斯一只公鸡，你能替我还清这笔债吗?”这句话成了苏格拉底的临终遗言。“我一定替您还，”克里托说，“您还有什么吩咐?”苏格拉底没有应声，过了一会儿，我们听见他动了一下，狱卒揭开他身上的被单，他的目光已经凝滞了。克里托合上他的双眼和嘴。这就是我们的良师益友临终时的情景。可以说，他是我所认识的人中最智慧、最正直、最优秀的人。
+      </view>
+      <view class="text p17">
+        苏格拉底一生待人温和，但面对自己该做的事却坚定而刚毅，为之殉道也在所不辞，颇具君子之风。
+      </view>
     </view>
-    <view class="reply_form_wrp">
-      <label for="" class="reply_label">
-        <input 
-          class="reply_input" 
-          cursor-spacing="8px" 
-          confirm-type="send" 
-          adjust-position="{{false}}" 
-          confirm-hold value="{{comment}}" 
-          cursor="{{cursor}}" 
-          focus="{{focus}}" 
-          bindblur="onBlur" 
-          bindfocus="onFocus" 
-          bindinput="onInput" 
-          bindconfirm="onConfirm" 
-          bindkeyboardheightchange="onkeyboardHeightChange"
-        />
-      </label>
-    </view>
-    <view hover-class="active" class="reply_button replay_emotion_button" bindtap="showEmoji">
-      <image src="../../images/like.png" mode='aspectFit' class="reply_tool_pic"></image>
-    </view>
-    <view hover-class="active" class="reply_button replay_media_button" bindtap="showFunction">
-      <image src="../../images/view.png" mode='aspectFit' class="reply_tool_pic"></image>
-    </view>
-  </view>
-
-  <view class="reply_panel_wrp" style="height: {{emojiShow ? 300 : 200}}px;" hidden="{{!emojiShow && !functionShow}}">
-    <view class="reply_panel {{emojiShow ? 'show': ''}}" hidden="{{!emojiShow}}">
-      <mp-emoji source="{{emojiSource}}" class="mp-emoji" bindinsertemoji="insertEmoji" binddelemoji="deleteEmoji" bindsend="onsend"></mp-emoji>
-    </view>
-    <view class="reply_panel {{functionShow ? 'show': ''}}" hidden="{{!functionShow}}">
-      <swiper indicator-dots="{{true}}" indicator-color="#bbbbbb" indicator-active-color="#8c8c8c">
-        <swiper-item>
-          <view class="function_list">
-            <view class="function_item" bindtap="chooseImage">
-              <image src="../../images/find.png" class="reply_function_pic"></image>
-            </view>
-          </view>
-        </swiper-item>
-      </swiper>
-    </view>
-  </view>
+  </scroll-view>
 </view>

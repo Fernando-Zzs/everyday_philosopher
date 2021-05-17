@@ -1,5 +1,6 @@
 {
+  "navigationStyle": "custom",
+  "navigationBarTextStyle": "white",
   "usingComponents": {
-    "mp-emoji": "../../components/emoji/index"
   }
 }
