@@ -28,7 +28,6 @@
       "outputPath": ""
     },
     "enableEngineNative": false,
-    "bundle": false,
     "useIsolateContext": true,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
@@ -38,7 +37,7 @@
     "minifyWXSS": true
   },
   "appid": "wx334c9204292088ac",
-  "projectname": "everyday_philosopher",
+  "projectname": "Final",
   "libVersion": "2.14.1",
   "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
   "condition": {

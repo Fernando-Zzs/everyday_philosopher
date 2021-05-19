@@ -1,8 +1,9 @@
 // pages/index/index.js
 import mockArr from './mock.js'
 const app = getApp()
-let winWidth = 414;
+let winWidth = 416;
 let winHeight = 736;
+
 function deepClone(obj) {
   if (typeof obj !== 'object' || obj === null) {
     return obj
@@ -27,8 +28,8 @@ Page({
     startY: '', // 初始点Y位置
     currentIndex: -1, // 当前最上层滑块
     ratio: 2, // 屏幕比例
-    context:'', // 文本框内容
-    currentQid:'' // 当前问题id
+    context: '', // 文本框内容
+    currentQid: '' // 当前问题id
   },
   onLoad: function () {
     this.timer = setInterval(()=>{
@@ -45,7 +46,9 @@ Page({
     winHeight = res.windowHeight;
     // console.log(res)
     let ratio = res.pixelRatio
-    this.setData({ ratio })
+    this.setData({
+      ratio
+    })
     this.getList()
   },
   touchStart(e) {
@@ -60,11 +63,16 @@ Page({
     if (touches.length > 1) {
       list[index].x = winWidth
       list[index].y = 0
-      that.setData({ list })
+      that.setData({
+        list
+      })
     } else if (index === (list.length - 1)) {
       let startX = e.touches[0].clientX;
       let startY = e.touches[0].clientY;
-      this.setData({ startX, startY }) 
+      this.setData({
+        startX,
+        startY
+      })
     }
   },
   // 拖动结束
@@ -98,14 +106,16 @@ Page({
         // 移出动画结束后 从list内移除
         setTimeout(() => {
           list.splice((list.length - 1), 1);
-          that.setData({ list })
+          that.setData({
+            list
+          })
           // 列表长度小于4的时候请求服务端
           if (list.length < 4) {
             that.getList()
           }
         }, 300)
         that.setData({
-          context:''
+          context: ''
         })
       } else if (disClientX < 1 && disClientY < 1) {
         // 点击进入
@@ -113,7 +123,9 @@ Page({
       } else {
         list[index].x = winWidth
         list[index].y = 0
-        that.setData({ list })
+        that.setData({
+          list
+        })
       }
     }
   },
@@ -130,12 +142,12 @@ Page({
     })
   },
   // 模拟获取列表数据
-  getList () {
+  getList() {
     let that = this
     setTimeout(() => {
       wx.cloud.callFunction({
         name: 'getAllQuestion',
-        complete: res=>{
+        complete: res => {
           let list = this.data.list || [];
           let arr = deepClone(res.result)
           for (let i of arr) {
@@ -143,34 +155,36 @@ Page({
             i.y = 0
             list.unshift(i)
           }
-          this.setData({ list })
+          this.setData({
+            list
+          })
           wx.hideLoading()
         }
       })
     }, 200)
   },
-  true:function(e){
+  true: function (e) {
     let v = e.detail.value;
     this.setData({
       context: v
     })
   },
-  submit:function(e){
+  submit: function (e) {
     let that = this
     var value = this.data.context;
-    if(value !== ''){
+    if (value !== '') {
       let avatarurl_temp = app.globalData.AVATARURL
       let nickname_temp = app.globalData.NICKNAME
       // 将答案添加到数据库
       wx.cloud.callFunction({
-        name:'addAnswer',
-        data:{
+        name: 'addAnswer',
+        data: {
           content: value,
           question_id: that.data.currentQid,
           avatarURL: avatarurl_temp,
           nickname: nickname_temp
         },
-        complete:res=>{
+        complete: res => {
           wx.navigateTo({
             url: "../answer/answer?answer_id=" + res.result
           })
