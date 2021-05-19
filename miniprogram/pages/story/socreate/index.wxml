@@ -1,31 +1,33 @@
 <view class="page1">
   <scroll-view id="scroller" scroll-y bindscroll="scroll">
     <view class="contanier1">
-      <image class="title" src="./death-of-socrates/title.png"></image>
-      <image class='bg i1-1' src='./death-of-socrates/i1-1.jpg' mode="aspectFill"></image>
+      
+      <image class='bg i1-1' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/death-of-socrates/i1-1.jpg' mode="aspectFill"></image>
+      <image class="title" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/death-of-socrates/title.png"></image>
+      <image class='bg i2-1' src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/death-of-socrates/i2-1.jpg" mode="aspectFill"></image>
+      <image class='bg i2-2' src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/death-of-socrates/i2-2.jpg" mode="aspectFill"></image>
+      <image class='bg i3-1' src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/death-of-socrates/i3-1.jpg" mode="aspectFill"></image>
+      <image class='bg i4-1' src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/death-of-socrates/i4-1.jpg" mode="aspectFill"></image>
+      <image class='bg i4-2' src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/death-of-socrates/i4-2.jpg" mode="aspectFill"></image>
+      <image class="bg i5-1" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/death-of-socrates/i5-1.jpg"></image>
       <view class='text p1'>
         一个伟大智慧对于未知的知识穷极一生不断探寻，当他们面对已知且必会降临的死亡时，他们又会怎样面对呢？阅读他们的生命终点，可以去感受如若星河般的光芒陨落；再回首，先哲那一生中的智慧和真理反而更加绚丽多彩，更加值得珍惜。
       </view>
       <view class="text p2">
         先哲之死，颇具超人之死的意味。就从苏格拉底之死开始吧。对知识和理想国家的回答使苏格拉底付出了生命的代价，但同时也使他名垂青史。
       </view>
-      <image class='bg i2-1' src="./death-of-socrates/i2-1.jpg" mode="aspectFill"></image>
       <view class="text p3">
         苏格拉底看到了当时雅典那愚蠢不堪的民主，提出了由智慧的少数人统治的“贵族制”。不妨设想一下，在战争需要压制所有的反对意见，而少数有文化的贵族正在酝酿一场革命的时候，雅典得势的大众党对这种贵族政治的言论会有什么反应。
       </view>
-      <image class='bg i2-2' src="./death-of-socrates/i2-2.jpg" mode="aspectFill"></image>
       <view class="text p4">
         革命爆发了，对立双方展开了一场殊死的战斗。当民主派获胜时，苏格拉底的命运已经注定了：尽管他是那么彬彬有礼，但他毕竟是革命派的精神领袖、令人深恶痛绝的贵族哲学的源头、使年轻人沉溺于辩论之中的教唆者。有人提议说，要想扭转风气，那就处死苏格拉底吧。
       </view>
-      <image class='bg i3-1' src="./death-of-socrates/i3-1.jpg" mode="aspectFill"></image>
       <view class="text p5">
         在他最后简明而又充满勇气的“辩解中，哲学的第一位殉道者宣告了思想自由的必要，肯定了自己对国家的价值，并且拒不向他素来蔑视的那些人摇尾乞怜。他们握有赦免的权力，他却不屑于上诉。
       </view>
-      <image class='bg i4-1' src="./death-of-socrates/i4-1.jpg" mode="aspectFill"></image>
       <view class="text p6">
         法官们愿意释放他，而愤怒的群众则投票要求处决他，这正好是对他理论的一种奇怪的证实。这位老先生教得太快了，超出了人们的理解能力，当然会惹来杀身之祸了。
       </view>
-      <image class='bg i4-2' src="./death-of-socrates/i4-2.jpg" mode="aspectFill"></image>
       <view class="text p7">
         他们判决让他饮鸩而死。他的朋友们到牢里去探望他，并给他提供一条很容易的脱身之计：他们已经买通了所有官吏。但是他拒绝逃跑。他已到古稀之年，也许觉得自己该寿终正寝了，此后再也没有这样死得其所的机会了。
       </view>
@@ -54,9 +56,12 @@
         起先我们尚能控制住自己的悲痛，但此刻我们亲眼看着他喝下毒酒，都不禁泪流满面，我用手捂住脸，泪水却像泉水般从指间涌出，我不是为他哭泣，我是在为自己哭泣。一想到自己就要失去这样一位良师益友，我就悲恸万分。不仅是我，克里托也早已泣不成声，躲到一边去了。这时，一直在一旁呜咽的阿波罗多拉斯突然放声大哭起来，这样一来，大家全都失声痛哭了。苏格拉底依然从容，他说：“哭哭啼啼像个什么样?我不让女人来这里，就是为了避免这种干扰。你们也应该知道人应该在平静中死去吧。那么就请安静下来，耐心等着吧。”
       </view>
       <view class="text p16">
-        听了他的话，我们都感到很羞愧，都止住了眼泪。他在房间里踱起步来，直到腿越来越沉重，才按狱卒的指导，仰面躺下。服侍他服毒的狱卒不时地查看他的腿脚，后来使劲在他脚上掐了一下，问他是否有感觉。苏格拉底回答说没有。就这样，狱卒顺着脚踝往上捏，告诉我们苏格拉底已经冰冷僵硬了。苏格拉底自己也感觉到了，他说，“毒酒到达心脏时，生命就会结束。”当他的小腹开始变凉时，他揭开盖在身上的被单，露出脸来说：“克里托，我还欠阿斯克勒庇俄斯一只公鸡，你能替我还清这笔债吗?”这句话成了苏格拉底的临终遗言。“我一定替您还，”克里托说，“您还有什么吩咐?”苏格拉底没有应声，过了一会儿，我们听见他动了一下，狱卒揭开他身上的被单，他的目光已经凝滞了。克里托合上他的双眼和嘴。这就是我们的良师益友临终时的情景。可以说，他是我所认识的人中最智慧、最正直、最优秀的人。
+        听了他的话，我们都感到很羞愧，都止住了眼泪。他在房间里踱起步来，直到腿越来越沉重，才按狱卒的指导，仰面躺下。服侍他服毒的狱卒不时地查看他的腿脚，后来使劲在他脚上掐了一下，问他是否有感觉。苏格拉底回答说没有。就这样，狱卒顺着脚踝往上捏，告诉我们苏格拉底已经冰冷僵硬了。
       </view>
       <view class="text p17">
+        苏格拉底自己也感觉到了，他说，“毒酒到达心脏时，生命就会结束。”当他的小腹开始变凉时，他揭开盖在身上的被单，露出脸来说：“克里托，我还欠阿斯克勒庇俄斯一只公鸡，你能替我还清这笔债吗?”这句话成了苏格拉底的临终遗言。“我一定替您还，”克里托说，“您还有什么吩咐?”苏格拉底没有应声，过了一会儿，我们听见他动了一下，狱卒揭开他身上的被单，他的目光已经凝滞了。克里托合上他的双眼和嘴。这就是我们的良师益友临终时的情景。可以说，他是我所认识的人中最智慧、最正直、最优秀的人。
+      </view>
+      <view class="text p18">
         苏格拉底一生待人温和，但面对自己该做的事却坚定而刚毅，为之殉道也在所不辞，颇具君子之风。
       </view>
     </view>

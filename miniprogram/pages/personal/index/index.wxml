@@ -1,4 +1,5 @@
 <view class="body">
+  <get-more-loading show="{{show}}" wx:if="{{show}}"></get-more-loading>
 	<view class="header">
 		<!-- 官方自定义导航栏抽取出来的模块 -->
 		<view class="navigation">
@@ -22,7 +23,7 @@
           <view class='user-name' wx:if="{{userInfo.nickName}}">{{userInfo.nickName}}</view>
           <view class='user-name' wx:else>
             <block wx:if="{{!hasUserInfo}}">
-              <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 登录 </button>
+              <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile" hover-class="none"> 登录 </button>
               <button wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登录 </button>
             </block>
           </view>

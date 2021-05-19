@@ -5,6 +5,7 @@
   "usingComponents": {
     "ec-canvas":"../../../ec-canvas/ec-canvas",
     "history-item":"../../../components/history-item/history-item",
-    "question-item":"../../../components/question-item/question-item"
+    "question-item":"../../../components/question-item/question-item",
+    "get-more-loading":"../../../components/get-more-loading/get-more-loading"
   }
 }

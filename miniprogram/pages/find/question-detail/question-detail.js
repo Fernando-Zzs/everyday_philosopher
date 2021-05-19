@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    show: true,
     // 问题的内容
     title_temp:'',
     description_temp:'',
@@ -18,6 +19,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.timer = setInterval(()=>{
+      if(this.data.show){
+        this.setData({
+          show: !this.data.show
+        })
+      }
+    },1000)
+
     let que_temp = options.question_id
     let ans_temp = options.answer_id
     // console.log(que_temp,ans_temp,con_temp,like_temp,collect_temp)
@@ -54,7 +63,10 @@ Page({
       }
     })
   },
-
+  
+  onUnload:function(){
+    clearInterval(this.timer)
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

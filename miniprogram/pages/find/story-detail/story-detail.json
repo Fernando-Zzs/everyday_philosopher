@@ -2,6 +2,7 @@
   "enablePullDownRefresh": true,
   "usingComponents": {
     "l-card":"../../../miniprogram_npm/lin-ui/card",
-    "mp-emoji":"../../../components/emoji"
+    "mp-emoji":"../../../components/emoji",
+    "get-more-loading":"../../../components/get-more-loading/get-more-loading"
   }
 }

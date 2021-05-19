@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    show: true,
     userInfo:{},
     hasUserInfo: false,
     canIUseGetUserProfile: false,
@@ -48,6 +49,18 @@ Page({
         canIUseGetUserProfile: true
       })
     }
+  },
+  onReady:function(){
+    this.timer = setInterval(()=>{
+      if(this.data.show){
+        this.setData({
+          show: !this.data.show
+        })
+      }
+    },1000)
+  },
+  onUnload:function(){
+    clearInterval(this.timer)
   },
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认

@@ -1,3 +1,4 @@
+<get-more-loading show="{{show}}" wx:if="{{show}}"></get-more-loading>
 <l-card type="avatar" class="question">
   <view class="title">
     {{title_temp}}

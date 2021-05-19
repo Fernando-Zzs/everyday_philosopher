@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    show: true,
     story_id:'',
     story_title:'',
     story_content:'',
@@ -25,6 +26,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.timer = setInterval(()=>{
+      if(this.data.show){
+        this.setData({
+          show: !this.data.show
+        })
+      }
+    },1000)
+    
     const emojiInstance = this.selectComponent('.mp-emoji')
     this.emojiNames = emojiInstance.getEmojiNames()
     this.parseEmoji = emojiInstance.parseEmoji
@@ -58,6 +67,9 @@ Page({
         })
       }
     })
+  },
+  onUnload:function(){
+    clearInterval(this.timer)
   },
   onkeyboardHeightChange(e) {
     const {height} = e.detail

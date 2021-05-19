@@ -1,0 +1,50 @@
+<view class="page1">
+  <scroll-view id="scroller" scroll-y bindscroll="scroll">
+    <view class="contanier1">
+      <image class="title" src=""></image>
+      <image class='bg i1-1' src='' mode="aspectFill"></image>
+      <image class='bg i2-1' src="" mode="aspectFill"></image>
+      <image class='bg i2-2' src="" mode="aspectFill"></image>
+      <image class='bg i3-1' src="" mode="aspectFill"></image>
+      <image class='bg i4-1' src="" mode="aspectFill"></image>
+      <image class='bg i4-2' src="" mode="aspectFill"></image>
+      <image class="i5-1" src=""></image>
+      <view class='text p1'>
+      </view>
+      <view class="text p2">
+      </view>
+      <view class="text p3">
+      </view>
+      <view class="text p4">
+      </view>
+      <view class="text p5">
+      </view>
+      <view class="text p6">
+      </view>
+      <view class="text p7">
+      </view>
+      <view class="text p8">
+      </view>
+      <view class="text p9">
+      </view>
+      <view class="text p10">
+      </view>
+      <view class="text p11">
+      </view>
+      <view class="text p12">
+      </view>
+      <view class="text p13">
+      </view>
+      <view class="text p14">
+      </view>
+      <view class="text p15">
+      </view>
+      <view class="text p16">
+      </view>
+      <view class="text p17">
+      </view>
+      <view class="text p18">
+      </view>
+    </view>
+  </scroll-view>
+</view>

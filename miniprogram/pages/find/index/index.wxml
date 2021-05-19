@@ -1,6 +1,6 @@
 <!--pages/index/index.wxml-->
+<get-more-loading show="{{show}}" wx:if="{{show}}"></get-more-loading>
 <view class='page-box box'>
-
   <view class="m-box">
     <movable-area class="m-area">
       <movable-view class='m-item' wx:for="{{list}}" wx:key="item" wx:index="index" x="{{item.x}}" y="{{item.y}}"

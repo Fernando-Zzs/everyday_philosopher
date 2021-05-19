@@ -8,10 +8,10 @@ Component({
   },
   methods: {
     scroll(e) {
-      console.log(e)
+      console.log(e.detail.scrollTop)
     },
     _animate() {
-      // 0-200
+      // 0-400
       this.animate(".title",
         [{
             opacity: 1,
@@ -20,17 +20,17 @@ Component({
           },
           {
             opacity: 1,
-            offset: 0.4
+            offset: 0.4,
           },
           {
             opacity: 1,
             transform: 'translateY(-100px)',
-            offset: 0.7
+            offset: 0.7,
           },
           {
             opacity: 0,
             transform: 'translateY(-100px)',
-            offset: 1
+            offset: 1,
           }
         ],
         2000, {
@@ -39,7 +39,7 @@ Component({
           startScrollOffset: 0,
           endScrollOffset: 400,
         })
-      // 200-420
+      //520-700
       this.animate(".p1",
         [{
             opacity: 0,
@@ -47,11 +47,11 @@ Component({
           },
           {
             opacity: 1,
-            offset: 0.2
+            offset: 0.1
           },
           {
             opacity: 1,
-            offset: 0.8
+            offset: 0.9
           },
           {
             opacity: 0,
@@ -61,10 +61,10 @@ Component({
         2000, {
           scrollSource: '#scroller',
           timeRange: 2000,
-          startScrollOffset: 420,
-          endScrollOffset: 550,
+          startScrollOffset: 520,
+          endScrollOffset: 700,
         })
-
+      //710-1100
       this.animate(".p2",
         [{
             opacity: 0,
@@ -83,13 +83,13 @@ Component({
             offset: 1
           }
         ],
-        1000, {
+        2000, {
           scrollSource: '#scroller',
-          timeRange: 1000,
-          startScrollOffset: 560,
-          endScrollOffset: 800,
+          timeRange: 2000,
+          startScrollOffset: 710,
+          endScrollOffset: 990,
         })
-
+      //1210-1500
       this.animate(".p3",
         [{
             opacity: 0,
@@ -101,31 +101,20 @@ Component({
           },
           {
             opacity: 1,
-            transform: 'translateY(0px)',
-            offset: 0.3
-          },
-          {
-            transform: 'translateY(250px)',
-            offset: 0.65
-          },
-          {
-            opacity: 1,
-            transform: 'translateY(250px)',
             offset: 0.9
           },
           {
             opacity: 0,
-            transform: 'translateY(250px)',
             offset: 1
           }
         ],
         2000, {
           scrollSource: '#scroller',
           timeRange: 2000,
-          startScrollOffset: 450,
-          endScrollOffset: 600,
+          startScrollOffset: 1210,
+          endScrollOffset: 1500,
         })
-
+      //1510-1810
       this.animate(".p4",
         [{
             opacity: 0,
@@ -137,31 +126,20 @@ Component({
           },
           {
             opacity: 1,
-            transform: 'translateY(0px)',
-            offset: 0.3
-          },
-          {
-            transform: 'translateY(250px)',
-            offset: 0.65
-          },
-          {
-            opacity: 1,
-            transform: 'translateY(250px)',
             offset: 0.9
           },
           {
             opacity: 0,
-            transform: 'translateY(250px)',
             offset: 1
           }
         ],
         2000, {
           scrollSource: '#scroller',
           timeRange: 2000,
-          startScrollOffset: 650,
-          endScrollOffset: 800,
+          startScrollOffset: 1510,
+          endScrollOffset: 1810,
         })
-
+      //1850-2000
       this.animate(".p5",
         [{
             opacity: 0,
@@ -169,35 +147,24 @@ Component({
           },
           {
             opacity: 1,
-            offset: 0.2
+            offset: 0.1
           },
           {
             opacity: 1,
-            transform: 'translateY(0px)',
-            offset: 0.3
-          },
-          {
-            transform: 'translateY(250px)',
-            offset: 0.65
-          },
-          {
-            opacity: 1,
-            transform: 'translateY(250px)',
             offset: 0.9
           },
           {
             opacity: 0,
-            transform: 'translateY(250px)',
             offset: 1
           }
         ],
         2000, {
           scrollSource: '#scroller',
           timeRange: 2000,
-          startScrollOffset: 850,
-          endScrollOffset: 1100,
+          startScrollOffset: 1850,
+          endScrollOffset: 2000,
         })
-
+      //2010-2290
       this.animate(".p6",
         [{
             opacity: 0,
@@ -205,35 +172,24 @@ Component({
           },
           {
             opacity: 1,
-            offset: 0.2
+            offset: 0.1
           },
           {
             opacity: 1,
-            transform: 'translateY(0px)',
-            offset: 0.3
-          },
-          {
-            transform: 'translateY(250px)',
-            offset: 0.65
-          },
-          {
-            opacity: 1,
-            transform: 'translateY(250px)',
             offset: 0.9
           },
           {
             opacity: 0,
-            transform: 'translateY(250px)',
             offset: 1
           }
         ],
         2000, {
           scrollSource: '#scroller',
           timeRange: 2000,
-          startScrollOffset: 1200,
-          endScrollOffset: 1400,
+          startScrollOffset: 2010,
+          endScrollOffset: 2290,
         })
-
+      //2810-3100
       this.animate(".p7",
         [{
             opacity: 0,
@@ -241,35 +197,24 @@ Component({
           },
           {
             opacity: 1,
-            offset: 0.2
+            offset: 0.1
           },
           {
             opacity: 1,
-            transform: 'translateY(0px)',
-            offset: 0.3
-          },
-          {
-            transform: 'translateY(250px)',
-            offset: 0.65
-          },
-          {
-            opacity: 1,
-            transform: 'translateY(250px)',
             offset: 0.9
           },
           {
             opacity: 0,
-            transform: 'translateY(250px)',
             offset: 1
           }
         ],
         2000, {
           scrollSource: '#scroller',
           timeRange: 2000,
-          startScrollOffset: 1450,
-          endScrollOffset: 1600,
+          startScrollOffset: 2810,
+          endScrollOffset: 3100,
         })
-      
+      //3110-3490
       this.animate(".p8",
         [{
             opacity: 0,
@@ -277,35 +222,24 @@ Component({
           },
           {
             opacity: 1,
-            offset: 0.2
+            offset: 0.1
           },
           {
             opacity: 1,
-            transform: 'translateY(0px)',
-            offset: 0.3
-          },
-          {
-            transform: 'translateY(250px)',
-            offset: 0.65
-          },
-          {
-            opacity: 1,
-            transform: 'translateY(250px)',
             offset: 0.9
           },
           {
             opacity: 0,
-            transform: 'translateY(250px)',
             offset: 1
           }
         ],
         2000, {
           scrollSource: '#scroller',
           timeRange: 2000,
-          startScrollOffset: 1650,
-          endScrollOffset: 1800,
+          startScrollOffset: 3110,
+          endScrollOffset: 3490,
         })
-
+      //3500-3800
       this.animate(".p9",
         [{
             opacity: 0,
@@ -317,30 +251,21 @@ Component({
           },
           {
             opacity: 1,
-            transform: 'translateY(0px)',
-            offset: 0.3
-          },
-          {
-            transform: 'translateY(250px)',
-            offset: 0.65
-          },
-          {
-            opacity: 1,
-            transform: 'translateY(250px)',
             offset: 0.9
           },
           {
             opacity: 0,
-            transform: 'translateY(250px)',
             offset: 1
           }
         ],
         2000, {
           scrollSource: '#scroller',
           timeRange: 2000,
-          startScrollOffset: 1850,
-          endScrollOffset: 2000,
+          startScrollOffset: 3500,
+          endScrollOffset: 3800,
         })
+      //3810-4000
+
       this.animate(".p10",
         [{
             opacity: 0,
@@ -348,34 +273,31 @@ Component({
           },
           {
             opacity: 1,
-            offset: 0.2
+            offset: 0.08
           },
           {
             opacity: 1,
-            transform: 'translateY(0px)',
-            offset: 0.3
-          },
-          {
-            transform: 'translateY(250px)',
+            transform: 'translateY(-50px)',
             offset: 0.65
           },
           {
             opacity: 1,
-            transform: 'translateY(250px)',
+            transform: 'translateY(-100px)',
             offset: 0.9
           },
           {
             opacity: 0,
-            transform: 'translateY(250px)',
+            transform: 'translateY(-200px)',
             offset: 1
           }
         ],
         2000, {
           scrollSource: '#scroller',
           timeRange: 2000,
-          startScrollOffset: 2050,
-          endScrollOffset: 2300,
+          startScrollOffset: 3810,
+          endScrollOffset: 4000,
         })
+      //3950-4150
       this.animate(".p11",
         [{
             opacity: 0,
@@ -383,34 +305,31 @@ Component({
           },
           {
             opacity: 1,
-            offset: 0.2
+            offset: 0.08
           },
           {
             opacity: 1,
-            transform: 'translateY(0px)',
-            offset: 0.3
-          },
-          {
-            transform: 'translateY(250px)',
+            transform: 'translateY(-50px)',
             offset: 0.65
           },
           {
             opacity: 1,
-            transform: 'translateY(250px)',
+            transform: 'translateY(-100px)',
             offset: 0.9
           },
           {
             opacity: 0,
-            transform: 'translateY(250px)',
+            transform: 'translateY(-200px)',
             offset: 1
           }
         ],
         2000, {
           scrollSource: '#scroller',
           timeRange: 2000,
-          startScrollOffset: 2100,
-          endScrollOffset: 2300,
+          startScrollOffset: 3950,
+          endScrollOffset: 4150,
         })
+      //4100-4350
       this.animate(".p12",
         [{
             opacity: 0,
@@ -418,34 +337,31 @@ Component({
           },
           {
             opacity: 1,
-            offset: 0.2
+            offset: 0.08
           },
           {
             opacity: 1,
-            transform: 'translateY(0px)',
-            offset: 0.3
-          },
-          {
-            transform: 'translateY(250px)',
+            transform: 'translateY(-50px)',
             offset: 0.65
           },
           {
             opacity: 1,
-            transform: 'translateY(250px)',
+            transform: 'translateY(-100px)',
             offset: 0.9
           },
           {
             opacity: 0,
-            transform: 'translateY(250px)',
+            transform: 'translateY(-200px)',
             offset: 1
           }
         ],
         2000, {
           scrollSource: '#scroller',
           timeRange: 2000,
-          startScrollOffset: 2350,
-          endScrollOffset: 2500,
+          startScrollOffset: 4100,
+          endScrollOffset: 4350,
         })
+      //4360-4660
       this.animate(".p13",
         [{
             opacity: 0,
@@ -453,34 +369,24 @@ Component({
           },
           {
             opacity: 1,
-            offset: 0.2
+            offset: 0.1
           },
           {
             opacity: 1,
-            transform: 'translateY(0px)',
-            offset: 0.3
-          },
-          {
-            transform: 'translateY(250px)',
-            offset: 0.65
-          },
-          {
-            opacity: 1,
-            transform: 'translateY(250px)',
             offset: 0.9
           },
           {
             opacity: 0,
-            transform: 'translateY(250px)',
             offset: 1
           }
         ],
         2000, {
           scrollSource: '#scroller',
           timeRange: 2000,
-          startScrollOffset: 2550,
-          endScrollOffset: 2700,
+          startScrollOffset: 4360,
+          endScrollOffset: 4660,
         })
+      //4670-4800
       this.animate(".p14",
         [{
             opacity: 0,
@@ -488,34 +394,24 @@ Component({
           },
           {
             opacity: 1,
-            offset: 0.2
+            offset: 0.1
           },
           {
             opacity: 1,
-            transform: 'translateY(0px)',
-            offset: 0.3
-          },
-          {
-            transform: 'translateY(250px)',
-            offset: 0.65
-          },
-          {
-            opacity: 1,
-            transform: 'translateY(250px)',
             offset: 0.9
           },
           {
             opacity: 0,
-            transform: 'translateY(250px)',
             offset: 1
           }
         ],
         2000, {
           scrollSource: '#scroller',
           timeRange: 2000,
-          startScrollOffset: 2750,
-          endScrollOffset: 3000,
+          startScrollOffset: 4670,
+          endScrollOffset: 4800,
         })
+      //4810-5150
       this.animate(".p15",
         [{
             opacity: 0,
@@ -523,34 +419,24 @@ Component({
           },
           {
             opacity: 1,
-            offset: 0.2
+            offset: 0.1
           },
           {
             opacity: 1,
-            transform: 'translateY(0px)',
-            offset: 0.3
-          },
-          {
-            transform: 'translateY(250px)',
-            offset: 0.65
-          },
-          {
-            opacity: 1,
-            transform: 'translateY(250px)',
             offset: 0.9
           },
           {
             opacity: 0,
-            transform: 'translateY(250px)',
             offset: 1
           }
         ],
         2000, {
           scrollSource: '#scroller',
           timeRange: 2000,
-          startScrollOffset: 3050,
-          endScrollOffset: 3200,
+          startScrollOffset: 4810,
+          endScrollOffset: 5150,
         })
+      //5150-5300
       this.animate(".p16",
         [{
             opacity: 0,
@@ -558,34 +444,24 @@ Component({
           },
           {
             opacity: 1,
-            offset: 0.2
+            offset: 0.1
           },
           {
             opacity: 1,
-            transform: 'translateY(0px)',
-            offset: 0.3
-          },
-          {
-            transform: 'translateY(250px)',
-            offset: 0.65
-          },
-          {
-            opacity: 1,
-            transform: 'translateY(250px)',
             offset: 0.9
           },
           {
             opacity: 0,
-            transform: 'translateY(250px)',
             offset: 1
           }
         ],
         2000, {
           scrollSource: '#scroller',
           timeRange: 2000,
-          startScrollOffset: 3250,
-          endScrollOffset: 3600,
+          startScrollOffset: 5150,
+          endScrollOffset: 5300,
         })
+      //5310-5700
       this.animate(".p17",
         [{
             opacity: 0,
@@ -593,35 +469,50 @@ Component({
           },
           {
             opacity: 1,
-            offset: 0.2
+            offset: 0.1
           },
           {
             opacity: 1,
-            transform: 'translateY(0px)',
-            offset: 0.3
-          },
-          {
-            transform: 'translateY(250px)',
-            offset: 0.65
-          },
-          {
-            opacity: 1,
-            transform: 'translateY(250px)',
             offset: 0.9
           },
           {
             opacity: 0,
-            transform: 'translateY(250px)',
             offset: 1
           }
         ],
         2000, {
           scrollSource: '#scroller',
           timeRange: 2000,
-          startScrollOffset: 3650,
-          endScrollOffset: 4000,
+          startScrollOffset: 5310,
+          endScrollOffset: 5700,
+        })
+      //5710-6000
+      this.animate(".p18",
+        [{
+            opacity: 0,
+            offset: 0
+          },
+          {
+            opacity: 1,
+            offset: 0.1
+          },
+          {
+            opacity: 1,
+            offset: 0.9
+          },
+          {
+            opacity: 0,
+            offset: 1
+          }
+        ],
+        2000, {
+          scrollSource: '#scroller',
+          timeRange: 2000,
+          startScrollOffset: 5710,
+          endScrollOffset: 6000,
         })
 
+      //0-500
       this.animate(".i1-1",
         [{
             opacity: 1,
@@ -635,10 +526,10 @@ Component({
         2000, {
           scrollSource: '#scroller',
           timeRange: 2000,
-          startScrollOffset: 50,
-          endScrollOffset: 400,
+          startScrollOffset: 0,
+          endScrollOffset: 500,
         })
-
+      //510-1200
       this.animate(".i2-1",
         [{
             opacity: 0,
@@ -662,10 +553,10 @@ Component({
         2000, {
           scrollSource: '#scroller',
           timeRange: 2000,
-          startScrollOffset: 420,
-          endScrollOffset: 900,
+          startScrollOffset: 510,
+          endScrollOffset: 1200,
         })
-
+      //1210-1820
       this.animate(".i2-2",
         [{
             opacity: 0,
@@ -691,10 +582,10 @@ Component({
         2000, {
           scrollSource: '#scroller',
           timeRange: 2000,
-          startScrollOffset: 950,
-          endScrollOffset: 1200,
+          startScrollOffset: 1210,
+          endScrollOffset: 1820,
         })
-
+      //1830-2300
       this.animate(".i3-1",
         [{
             opacity: 0,
@@ -720,10 +611,10 @@ Component({
         2000, {
           scrollSource: '#scroller',
           timeRange: 2000,
-          startScrollOffset: 1200,
-          endScrollOffset: 1700,
+          startScrollOffset: 1830,
+          endScrollOffset: 2300,
         })
-
+      //2310-2800
       this.animate(".i4-1",
         [{
             opacity: 0,
@@ -755,10 +646,10 @@ Component({
         2000, {
           scrollSource: '#scroller',
           timeRange: 2000,
-          startScrollOffset: 1700,
-          endScrollOffset: 2300
+          startScrollOffset: 2310,
+          endScrollOffset: 2800
         })
-
+      //2810-5700
       this.animate(".i4-2",
         [{
             opacity: 0,
@@ -784,8 +675,33 @@ Component({
         2000, {
           scrollSource: '#scroller',
           timeRange: 2000,
-          startScrollOffset: 2100,
-          endScrollOffset: 2650,
+          startScrollOffset: 2810,
+          endScrollOffset: 5700,
+        })
+      //5700-6000
+      this.animate(".i5-1",
+        [{
+            opacity: 0,
+            offset: 0,
+          },
+          {
+            opacity: 1,
+            offset: 0.2,
+          },
+          {
+            opacity: 1,
+            offset: 0.8,
+          },
+          {
+            opacity: 0,
+            offset: 1,
+          }
+        ],
+        2000, {
+          scrollSource: '#scroller',
+          timeRange: 2000,
+          startScrollOffset: 5700,
+          endScrollOffset: 6000,
         })
     },
 

@@ -1,4 +1,5 @@
 <view class="page">
+  <get-more-loading show="{{show}}" wx:if="{{show}}"></get-more-loading>
   <!--顶部导航栏-->  
   <view class="swiper-tab">  
     <view class="tab-item {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav"><text>哲学科普</text></view>

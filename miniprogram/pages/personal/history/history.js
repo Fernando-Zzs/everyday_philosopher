@@ -15,6 +15,7 @@ function initChart(canvas, width, height){
 
 Page({  
   data: {
+      show: true, // 是否显示加载栏
       openid:'',
       currentTab: 0, // tab切换
       ec:{
@@ -54,6 +55,7 @@ Page({
     //   }
     // })
     // 调用云函数获取用户openid
+    
     let page = this;
     wx.cloud.callFunction({
       name:'getUserInfo',
@@ -117,15 +119,24 @@ Page({
 
   onReady: function () {
       // 生命周期函数--监听页面初次渲染完成
+      this.timer = setInterval(()=>{
+        if(this.data.show){
+          this.setData({
+            show: !this.data.show
+          })
+        }
+      },1000)
   },
   onShow: function () {
       // 生命周期函数--监听页面显示
+      
   },
   onHide: function () {
       // 生命周期函数--监听页面隐藏
   },
   onUnload: function () {
       // 生命周期函数--监听页面卸载
+      clearInterval(this.timer)
   },
   onPullDownRefresh: function () {
       // 页面相关事件处理函数--监听用户下拉动作

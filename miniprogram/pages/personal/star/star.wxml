@@ -12,7 +12,8 @@
     </swiper-item>
     <swiper-item class="one">
       <ec-canvas id="mychart-dom-line" canvas-id="mychart-dom-line" ec="{{ec}}"></ec-canvas>
-      <question-item questionItemsArray="{{datas2}}"/>
+      {{http}}
+      <!-- <question-item questionItemsArray="{{datas2}}"/> -->
     </swiper-item>
   </swiper>  
 </view>

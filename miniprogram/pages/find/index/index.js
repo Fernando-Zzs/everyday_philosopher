@@ -17,6 +17,7 @@ function deepClone(obj) {
 }
 Page({
   data: {
+    show: true,
     x: winWidth,
     y: winHeight,
     animationA: {},
@@ -30,6 +31,14 @@ Page({
     currentQid:'' // 当前问题id
   },
   onLoad: function () {
+    this.timer = setInterval(()=>{
+      if(this.data.show){
+        this.setData({
+          show: !this.data.show
+        })
+      }
+    },1000)
+
     var that = this;
     var res = wx.getSystemInfoSync();
     winWidth = res.windowWidth;
@@ -108,6 +117,9 @@ Page({
       }
     }
   },
+  onUnload:function(){
+    clearInterval(this.timer)
+  },
   touchMove (e) {
     // 左滑右滑手势可优化
   },
@@ -120,10 +132,6 @@ Page({
   // 模拟获取列表数据
   getList () {
     let that = this
-    wx.showLoading({
-      title: '加载中',
-    })
-    
     setTimeout(() => {
       wx.cloud.callFunction({
         name: 'getAllQuestion',

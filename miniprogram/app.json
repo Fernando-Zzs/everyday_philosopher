@@ -10,7 +10,8 @@
     "pages/find/answer/answer",
     "pages/find/story-detail/story-detail",
     "pages/find/question-detail/question-detail",
-    "pages/test/test"
+    "pages/story/kongzi/index",
+    "pages/story/socreate/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",

@@ -61,8 +61,14 @@
           "scene": null
         },
         {
-          "name": "test",
-          "pathName": "pages/test/test",
+          "name": "苏格拉底",
+          "pathName": "pages/story/socreate/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "孔子",
+          "pathName": "pages/story/kongzi/index",
           "query": "",
           "scene": null
         }
