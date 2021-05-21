@@ -95,6 +95,12 @@
           "pathName": "pages/story/know_yourself/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "苏格拉底详情页",
+          "pathName": "pages/find/story-detail/story-detail",
+          "query": "story_id=0",
+          "scene": null
         }
       ]
     }

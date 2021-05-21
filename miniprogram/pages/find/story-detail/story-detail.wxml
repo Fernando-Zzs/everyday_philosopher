@@ -2,11 +2,22 @@
   <get-more-loading show="{{showLoading}}" wx:if="{{showLoading}}"></get-more-loading>
   <!-- 故事页 -->
   <view class="story" wx:if="{{!showLoading}}">
+    <view class="like_story" bindtap="handleLike">
+      <image wx:if="{{!liked}}"
+        src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/like_white.png"></image>
+      <image wx:if="{{liked}}"
+        src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/like_gold.png"></image>
+      <view class="like_story_num">{{like_story_num}}</view>
+    </view>
     <l-card type="avatar">
       <image class="jiao" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/jiao.png">
       </image>
-      <image class="shoucang"
-        src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/baishoucang.png"></image>
+      <image class="shoucang" wx:if="{{!collected}}"
+        src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/kongxin.png"
+        bindtap="handleCollect"></image>
+      <image class="shoucang" wx:else
+        src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/baishoucang.png"
+        bindtap="handleCollect"></image>
       <view class="title">
         {{story_title}}
       </view>
@@ -28,21 +39,24 @@
             <view class="username">{{item.nickname}}</view>
           </view>
           <view class="right">
-            <view class="like" bindtap="like_it" data-commentID="{{item._id}}">
-              <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/baizan.png">
+            <view class="like" bindtap="handleCommentLike" data-commentID="{{item.comment_id}}" data-index="{{index}}">
+              <image wx:if="{{!show[index].liked}}"
+                src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/baizan.png">
               </image>
+              <image wx:else
+                src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/like.png"></image>
               <view class="num" data-commentID="{{item._id}}">{{item.like_num}}</view>
             </view>
           </view>
         </view>
 
         <l-card type="avatar" full="true">{{item.content}}</l-card>
-        <!-- <view wx:if="{{item.type === 2}}"
+        <view wx:if="{{item.type === 2}}"
           style="display: inline-block; width: {{lineHeight}}px; height: {{lineHeight}}px">
           <view class="{{item.imageClass}}"
             style="background-image: url({{emojiSource}});transform-origin: 0 0; transform: scale({{lineHeight / 64}});">
           </view>
-        </view> -->
+        </view>
       </block>
     </view>
   </view>
@@ -51,8 +65,11 @@
   <!-- 底部栏 -->
   <view class="reply_wrp" style="bottom: {{keyboardHeight}}px">
     <view class="reply_tool">
+      <view class="send" bindtap="handleSend">发送</view>
+
       <view hover-class="active" class="reply_button replay_quick_button">
-        <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/pinglun.png" mode='aspectFit' class="reply_tool_pic"></image>
+        <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/pinglun.png"
+          mode='aspectFit' class="reply_tool_pic"></image>
       </view>
       <view class="reply_form_wrp">
         <label for="" class="reply_label">
@@ -62,11 +79,12 @@
         </label>
       </view>
       <view hover-class="active" class="reply_button replay_emotion_button" bindtap="showEmoji">
-        <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/baizan.png" mode='aspectFit' class="reply_tool_pic"></image>
+        <!-- <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/baizan.png"
+          mode='aspectFit' class="reply_tool_pic"></image> -->
       </view>
-      <view hover-class="active" class="reply_button replay_media_button" bindtap="showFunction">
+      <!-- <view hover-class="active" class="reply_button replay_media_button" bindtap="showFunction">
         <image src="../../../images/view.png" mode='aspectFit' class="reply_tool_pic"></image>
-      </view>
+      </view> -->
     </view>
 
     <view class="reply_panel_wrp" style="height: {{emojiShow ? 300 : 200}}px;" hidden="{{!emojiShow && !functionShow}}">

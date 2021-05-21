@@ -1,5 +1,44 @@
 // miniprogram/pages/find/story-detail/story-detail.js
-const app=getApp()
+const app = getApp()
+let value_global = ''
+let _this_global = this
+
+function initComment(value) {
+  let comment_arr = []
+
+  wx.cloud.callFunction({
+    name: 'getComment',
+    data: {
+      story_id: value
+    },
+    success: async function (res1) {
+      comment_arr = res1.result // checked
+
+      for (let i = 0, len = comment_arr.length; i < len; i++) {
+        comment_arr[i].liked = false
+
+        wx.cloud.callFunction({
+          name: 'isCommentLiked',
+          data: {
+            comment_id: comment_arr[i].comment_id,
+            _openid: app.globalData.OPENID
+          },
+          success: function (res2) {
+            if (res2.result) {
+              comment_arr[i].liked = true
+            } else {
+              comment_arr[i].liked = false
+            }
+            _this_global.setData({
+              show: comment_arr
+            })
+          }
+        })
+      }
+    }
+  })
+}
+
 Page({
 
   /**
@@ -7,9 +46,9 @@ Page({
    */
   data: {
     showLoading: true,
-    story_id:'',
-    story_title:'',
-    story_content:'',
+    story_id: '',
+    story_title: '',
+    story_content: '',
     lineHeight: 24,
     functionShow: false,
     emojiShow: false,
@@ -17,48 +56,114 @@ Page({
     focus: false,
     cursor: 0,
     _keyboardShow: false,
-    parsedComment: [],
-    show:[],
-    emojiSource: 'cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/emoji _ 雪碧图_files/emoji-sprite.b5bd1fe0.png'
+    parsedComment: '',
+    show: [],
+    emojiSource: 'cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/emoji _ 雪碧图_files/emoji-sprite.b5bd1fe0.png',
+    collected: false,
+    liked: false,
+    like_story_num: 0,
+    liked_comment: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.timer = setInterval(()=>{
-      if(this.data.showLoading){
+    let _this = this
+    _this_global = _this
+
+    this.timer = setInterval(() => {
+      if (this.data.showLoading) {
         this.setData({
           showLoading: !this.data.showLoading
         })
       }
-    },1000)
-    
+    }, 1000)
+
+
+
     const emojiInstance = this.selectComponent('.mp-emoji')
     this.emojiNames = emojiInstance.getEmojiNames()
     this.parseEmoji = emojiInstance.parseEmoji
     let value = options.story_id
+    value_global = value
     let that = this
+    // wx.cloud.callFunction({
+    //   name: 'getComment',
+    //   data: {
+    //     story_id: value
+    //   },
+    //   complete: res => {
+    //     that.setData({
+    //       story_id: value,
+    //       show: res.result
+    //     })
+    //     // console.log(that.data.show)
+    //   }
+    // })
+
+    const app = getApp()
+    console.log('openid: ' + app.globalData.OPENID)
+
     wx.cloud.callFunction({
-      name:'getComment',
-      data:{
+      name: 'getLikeStoryNum',
+      data: {
         story_id: value
       },
-      complete:res=>{
-        that.setData({
-          story_id: value,
-          show: res.result
+      success: function (res) {
+        console.log('likestory: ' + res.result);
+        _this_global.setData({
+          like_story_num: res.result
         })
-        // console.log(that.data.show)
       }
     })
-    
+
     wx.cloud.callFunction({
-      name:"getStory",
-      data:{
+      name: 'isStoryCollected',
+      data: {
+        story_id: value,
+        _openid: app.globalData.OPENID
+      },
+      success: function (res) {
+        console.log('collected: ' + res.result)
+        if (res.result) {
+          _this.setData({
+            collected: true
+          })
+        }
+      },
+      fail: function (res) {
+        console.log(res)
+      }
+    })
+
+    wx.cloud.callFunction({
+      name: 'isStoryLiked',
+      data: {
+        story_id: value,
+        _openid: app.globalData.OPENID
+      },
+      success: function (res) {
+        console.log('liked: ' + res.result)
+        if (res.result) {
+          _this.setData({
+            liked: true
+          })
+        }
+      },
+      fail: function (res) {
+        console.log(res)
+      }
+    })
+
+    initComment(value)
+
+    wx.cloud.callFunction({
+      name: "getStory",
+      data: {
         story_id: value,
       },
-      complete: res=>{
+      complete: res => {
         var title_temp = res.result.title;
         var content_temp = res.result.content[0].text;
         that.setData({
@@ -68,11 +173,13 @@ Page({
       }
     })
   },
-  onUnload:function(){
+  onUnload: function () {
     clearInterval(this.timer)
   },
   onkeyboardHeightChange(e) {
-    const {height} = e.detail
+    const {
+      height
+    } = e.detail
     this.setData({
       keyboardHeight: height
     })
@@ -109,12 +216,15 @@ Page({
     const value = e.detail.value
     this.data.comment = value
   },
-  onConfirm() {
-    this.onsend()
-  },
+  // onConfirm() {
+  //   this.onsend()
+  // },
   insertEmoji(evt) {
     const emotionName = evt.detail.emotionName
-    const { cursor, comment } = this.data
+    const {
+      cursor,
+      comment
+    } = this.data
     const newComment =
       comment.slice(0, cursor) + emotionName + comment.slice(cursor)
     this.setData({
@@ -130,35 +240,63 @@ Page({
     const comment = this.data.comment
     // const parsedComment = this.parseEmoji(this.data.comment)
     const parsedComment = comment
+    _this_global.setData({
+      parsedComment: '',
+      comment: ''
+    })
+    let comment_id_add = -1
     wx.cloud.callFunction({
-      name:'addComment',
-      data:{
-        story_id: that.data.story_id,
+      name: 'addComment',
+      data: {
+        story_id: value_global,
         content: parsedComment,
         avatarURL: avatarurl_temp,
-        nickname: nickname_temp
-      }
-    })
-    
-    // 显示到页面上
-    wx.cloud.callFunction({
-      name:'getComment',
-      data:{
-        story_id:that.data.story_id
+        nickname: nickname_temp,
+        timestamp: Date.parse(new Date()) / 1000,
+        _openid: app.globalData.OPENID
       },
-      complete:res=>{
-        // console.log(res.result)
-        // show = res.result
-        that.setData({
-          show: res.result,
-          parsedComment:'',
-          comment: ''
+      success: function (res) {
+        comment_id_add = res.result // checked
+
+        let comment_obj_add = {}
+        wx.cloud.callFunction({
+          name: 'getCommentById',
+          data: {
+            comment_id: comment_id_add
+          },
+          success: function (res) {
+            comment_obj_add = res.result
+
+            let show = _this_global.data.show
+            comment_obj_add.liked = false
+            comment_obj_add.like_num = 0
+            show.push(comment_obj_add)
+            _this_global.setData({
+              show
+            })
+          }
         })
       }
     })
-    
+
+    // 显示到页面上
+    // wx.cloud.callFunction({
+    //   name: 'getComment',
+    //   data: {
+    //     story_id: that.data.story_id
+    //   },
+    //   complete: res => {
+    //     // console.log(res.result)
+    //     // show = res.result
+    //     that.setData({
+    //       show: res.result,
+    //       parsedComment: '',
+    //       comment: ''
+    //     })
+    //   }
+    // })
   },
-  deleteEmoji: function() {
+  deleteEmoji: function () {
     const pos = this.data.cursor
     const comment = this.data.comment
     let result = '',
@@ -195,32 +333,106 @@ Page({
       cursor: cursor
     })
   },
-  like_it:function(e){
-    console.log(e.currentTarget.dataset.commentid);
-    var that = this;
+  // like_it: function (e) {
+  //   console.log(e.currentTarget.dataset.commentid);
+  //   var that = this;
+  //   wx.cloud.callFunction({
+  //     name: 'likeComment',
+  //     data: {
+  //       _id: e.currentTarget.dataset.commentid
+  //     },
+  //     complete: res => {
+  //       let that = this
+  //       let value = that.data.story_id
+  //       wx.cloud.callFunction({
+  //         name: 'getComment',
+  //         data: {
+  //           story_id: value
+  //         },
+  //         complete: res => {
+  //           that.setData({
+  //             show: res.result
+  //           })
+  //         }
+  //       })
+  //     }
+  //   })
+  // },
+  // collect_it: function (e) {
+
+  // },
+  handleCollect() {
+    if (_this_global.data.collected) {
+      _this_global.setData({
+        collected: false
+      })
+    } else {
+      _this_global.setData({
+        collected: true
+      })
+    }
     wx.cloud.callFunction({
-      name:'likeComment',
-      data:{
-        _id: e.currentTarget.dataset.commentid
+      name: 'tapStoryCollect',
+      data: {
+        collected: !_this_global.data.collected,
+        _openid: app.globalData.OPENID,
+        story_id: value_global
       },
-      complete:res=>{
-        let that = this
-        let value = that.data.story_id
-        wx.cloud.callFunction({
-          name:'getComment',
-          data:{
-            story_id: value
-          },
-          complete:res=>{
-            that.setData({
-              show: res.result
-            })
-          }
-        })
+      success: function (res) {
+        console.log(res.result)
       }
     })
   },
-  collect_it:function(e){
+  handleLike() {
+    let like_story_num = _this_global.data.like_story_num
+    if (_this_global.data.liked) {
+      _this_global.setData({
+        liked: false,
+        like_story_num: like_story_num - 1
+      })
+    } else {
+      _this_global.setData({
+        liked: true,
+        like_story_num: like_story_num + 1
+      })
+    }
+    wx.cloud.callFunction({
+      name: 'tapStoryLike',
+      data: {
+        liked: !_this_global.data.liked,
+        _openid: app.globalData.OPENID,
+        story_id: value_global
+      },
+      success: function (res) {
+        console.log(res.result)
+      }
+    })
+  },
+  handleCommentLike(e) {
+    let index = e.currentTarget.dataset.index
+    let like_num = _this_global.data.show[index].like_num
+    if (_this_global.data.show[index].liked) {
+      _this_global.setData({
+        ['show[' + index + '].liked']: false,
+        ['show[' + index + '].like_num']: _this_global.data.show[index].like_num - 1
+      })
+    } else {
+      _this_global.setData({
+        ['show[' + index + '].liked']: true,
+        ['show[' + index + '].like_num']: _this_global.data.show[index].like_num + 1
+      })
+    }
 
+    wx.cloud.callFunction({
+      name: 'tapCommentLike',
+      data: {
+        liked: !_this_global.data.show[index].liked,
+        _openid: app.globalData.OPENID,
+        comment_id: e.currentTarget.dataset.commentid
+      }
+    })
+  },
+  handleSend() {
+    this.onsend()
   }
 })

@@ -5,6 +5,7 @@ cloud.init({
 })
 
 const db = cloud.database()
+const _ = db.command
 exports.main = async (event, context) => {
   // 获取总记录数
   let total = await db.collection('answer').count()
@@ -14,10 +15,11 @@ exports.main = async (event, context) => {
       answer_id: total + '',
       question_id: event.question_id,
       content: event.content,
-      like_num: 0,
-      collect_num: 0,
+      like_openid: _.push(event._openid),
+      collect_openid: _.push(event._openid),
       avatarURL: event.avatarURL,
-      nickname: event.nickname
+      nickname: event.nickname,
+      _openid: event._openid
     }
   })
   return total + ''

@@ -11,16 +11,21 @@ exports.main = async (event, context) => {
   let total = await db.collection('comment').count()
   total = total.total
   db.collection('comment').add({
-    data:{
+    data: {
       comment_id: total + '',
       content: event.content,
       story_id: event.story_id,
-      like_num: 0,
       avatarURL: event.avatarURL,
-      nickname: event.nickname
+      nickname: event.nickname,
+      timestamp: event.timestamp,
+      collect_openid: [],
+      like_openid: [],
+      _openid: event._openid
     }
   })
+
+  return total + ''
 }
 
 // input: content story_id avatarURL nickname
-// output: null
+// output: total + ''
