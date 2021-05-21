@@ -1,0 +1,150 @@
+/* story3/story3.wxss */
+.broadside{
+  position:fixed;
+  height: 100vh;
+  width:60vw;
+  backdrop-filter:blur(15px);
+  background: rgba(255, 255, 255, 0.616);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  left: -60vw;
+  z-index: 100000;
+}
+.braod-item{
+  /* height:50px; */
+  width:80%;
+  /* border:red solid 2px; */
+  margin-left: 15%;
+  padding: 5px;
+  font-size: 13px;
+}
+.broad-title{
+  /* height:70px; */
+  width:100%;
+  margin-top: 20vh;
+  text-align:center;
+  line-height: 70px;
+  font-size:40px;
+  font-family:"Franklin Gothic Medium";
+}
+.broad-info{
+  width:80%;
+  padding: 5px;
+  margin: 15px;
+  border-bottom: rgb(102, 102, 102) 1px solid;
+}
+.broad-series{
+  width:80%;
+  padding: 5px;
+  margin: 15px;
+  border-bottom: rgb(102, 102, 102)  1px solid;
+}
+.broad-relative{
+  width:80%;
+  padding: 5px;
+  margin: 15px;
+  border-bottom: rgb(102, 102, 102)  1px solid;
+}
+
+.broad-button{
+  position: fixed;
+  border: 2px red solid;
+  width: 70px;
+  height: 30px;  
+  border-radius: 20px;
+  top: 30px;
+  left:20px;
+  text-align:center;
+  line-height: 30px;
+  color: aliceblue;
+  z-index: 10000000;
+}
+
+.page1 {
+  height: 100%;
+}
+scroll-view {
+  height: 100%;
+}
+
+.contanier1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 2300vh;
+}
+
+.bg {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  z-index: -1;
+}
+
+.text {
+  width: 80%;
+  color: rgb(255, 255, 255);
+  position: fixed;
+  margin-top: 400rpx;
+  z-index: -1;
+  font-family:"SimSun"
+}
+.blur {
+  backdrop-filter:blur(10px);
+  background: rgba(255, 255, 255, 0.4);
+  padding: 15px;
+  border-radius: 3px;
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, .3);
+}
+.cross{
+  width: 300vw;
+}
+
+.title{
+  z-index: -1;
+  margin-top: 80rpx;
+  position: fixed;
+  scale: 1.2;
+}
+.t1{
+  margin-top: 400rpx;
+}
+.p2{
+  margin-top: 650rpx;
+  margin-left: 500rpx;
+}
+.p3{
+  margin-top: 950rpx;
+  margin-left: -100rpx;
+}
+.i1-4{
+  height: 120%;
+}
+.i2-2{
+  height: 120%;
+  margin-top: -350rpx;
+}
+.i2-3{
+  margin-top: -250rpx;
+}
+.p4{
+  margin-top: 250rpx;
+}
+.p5{
+  margin-top: 250rpx;
+  color: rgb(44, 31, 14);
+}
+.p6{
+  margin-top: 300rpx;
+}
+.p7{
+  margin-top: 180rpx;
+}
+.i5-1{
+  height: 130%;
+}
+.i5-2{
+  width: 120%;
+  height: 130%;
+}

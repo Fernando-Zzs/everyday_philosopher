@@ -77,6 +77,24 @@
           "pathName": "pages/story/test/test",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "宇宙之卵",
+          "pathName": "pages/story/egg_of_universe/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "序言",
+          "pathName": "pages/story/pre_story/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "认识你自己",
+          "pathName": "pages/story/know_yourself/index",
+          "query": "",
+          "scene": null
         }
       ]
     }

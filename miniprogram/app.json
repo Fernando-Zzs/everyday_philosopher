@@ -12,6 +12,9 @@
     "pages/find/question-detail/question-detail",
     "pages/story/kongzi/index",
     "pages/story/socreate/index",
+    "pages/story/egg_of_universe/index",
+    "pages/story/know_yourself/index",
+    "pages/story/pre_story/index",
     "pages/story/test/test"
   ],
   "window": {

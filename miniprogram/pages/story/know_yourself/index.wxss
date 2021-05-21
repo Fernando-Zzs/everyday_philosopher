@@ -1,0 +1,95 @@
+/* story2/story2.wxss */
+page {
+
+  font-size: 14px;
+  height: 100%;
+  background-color: #ffffff;
+}
+
+scroll-view {
+  height: 100%;
+}
+
+/* story/stroy.wxss */
+.page1 {
+  height: 100%;
+}
+
+
+.contanier1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 2300vh;
+}
+
+.bg {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  z-index: -1;
+}
+
+.text {
+  width: 80%;
+  color: rgb(0, 0, 0);
+  position: fixed;
+  margin-top: 400rpx;
+  z-index: -1;
+}
+.blur {
+  backdrop-filter:blur(10px);
+  background: rgba(255, 255, 255, 0.4);
+  padding: 15px;
+  border-radius: 3px;
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, .3);
+}
+.cross{
+  width: 300vw;
+}
+
+.title{
+  margin-top: 80rpx;
+  position: fixed;
+  scale: 1.2;
+}
+
+
+.p1 {
+  margin-top: 700rpx;
+}
+.p2{
+  margin-top: 200rpx;
+  color:black
+}
+.p3{
+  margin-top: 330rpx;
+}
+.p5{
+  margin-top: 700rpx;
+}
+.p6{
+  margin-top: 600rpx;
+}
+.p7{
+  margin-top: 600rpx;
+  color:black
+}
+.p8{
+  margin-top: 900rpx;
+  color:black
+}
+.p11{
+  margin-top: 900rpx;
+}
+.p12{
+  margin-top: 900rpx;
+  
+}
+.p16{
+  margin-top: 700rpx;
+  color:rgb(0, 0, 0);
+}
+.p19{
+  margin-top: 600rpx;
+}
