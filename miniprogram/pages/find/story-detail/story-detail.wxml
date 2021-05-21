@@ -1,7 +1,7 @@
 <view class="container">
-  <get-more-loading show="{{show}}" wx:if="{{show}}"></get-more-loading>
+  <get-more-loading show="{{showLoading}}" wx:if="{{showLoading}}"></get-more-loading>
   <!-- 故事页 -->
-  <view class="story" wx:if="{{!show}}">
+  <view class="story" wx:if="{{!showLoading}}">
     <l-card type="avatar">
       <image class="jiao" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/jiao.png">
       </image>
@@ -17,7 +17,7 @@
   </view>
 
   <!-- 评论栏 -->
-  <view class="record" wx:if="{{!show}}">
+  <view class="record" wx:if="{{!showLoading}}">
     <view class="comment_title">最新热评</view>
 
     <view class="comment">

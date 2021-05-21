@@ -632,35 +632,30 @@ Component({
             opacity: 0,
             offset: 0,
             transformOrigin: "50% 70%",
-            scale: 1,
-            transform: 'translate(0px,0px)',
+            transform: 'translate(0px,0px) scale(1,1)',
           },
           {
             opacity: 1,
             offset: 0.2,
             transformOrigin: "50% 70%",
-            scale: 1,
-            transform: 'translate(0px,0px)',
+            transform: 'translate(0px,0px) scale(0.6,0.6)',
           },
           {
             opacity: 1,
             offset: 0.5,
             transformOrigin: "50% 70%",
-            scale: 1,
-            transform: 'translate(0px,0px)',
+            transform: 'translate(0px,0px) scale(0.5,0.5)',
           },
           {
             opacity: 1,
             transformOrigin: "50% 70%",
-            scale: 0.6,
-            transform: 'translate(-50px,-50px)',
-            offset: 0.95
+            transform: 'translate(-50px,-50px) scale(0.4,0.4)',
+            offset: 0.75
           },
           {
             opacity: 0,
             transformOrigin: "50% 70%",
-            transform: 'translate(-50px,-50px)',
-            scale: 0.5,
+            transform: 'translate(-50px,-50px) scale(0,0)',
             offset: 1
           }
         ],

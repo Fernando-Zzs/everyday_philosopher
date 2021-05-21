@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    show: true,
+    showLoading: true,
     story_id:'',
     story_title:'',
     story_content:'',
@@ -27,9 +27,9 @@ Page({
    */
   onLoad: function (options) {
     this.timer = setInterval(()=>{
-      if(this.data.show){
+      if(this.data.showLoading){
         this.setData({
-          show: !this.data.show
+          showLoading: !this.data.showLoading
         })
       }
     },1000)

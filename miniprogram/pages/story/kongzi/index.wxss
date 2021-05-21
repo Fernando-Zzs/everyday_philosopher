@@ -1,7 +1,7 @@
 page {
   font-size: 14px;
   height: 100%;
-  background-color: #000000;
+  background-color: #ffffff;
 }
 
 scroll-view {
@@ -18,7 +18,13 @@ scroll-view {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 1000vh;
+  height: 1200vh;
+}
+
+.paper{
+  z-index: -1;
+  height: 1200vh;
+  width: 100vw;
 }
 
 .bg{
@@ -30,10 +36,11 @@ scroll-view {
 
 .text{
   position: fixed;
+  z-index: -1;
   width: 80%;
   padding: 30rpx;
   border-radius: 25rpx;
-  background: rgba(250, 235, 215, 0.7);
+  background: rgba(250, 235, 215, 0.6);
   margin-top: 400rpx;
   text-indent: 2rem;
   font-size: 28rpx;
@@ -46,86 +53,100 @@ scroll-view {
   position: fixed;
 }
 
+.introduction{
+  margin-top: 250rpx;
+}
+
 .p1{
-  margin-top: 150rpx;
-  color: #000000;
+  margin-top: 180rpx;
 }
 
 .p2{
-  margin-top: 200rpx;
-  color: #000000;
+  margin-top: 520rpx;
 }
 
 .p3{
-  margin-top: 150rpx;
+  margin-top: 250rpx;
 }
 .p4{
   margin-top: 150rpx;
 }
 .p5{
-  margin-top: 100rpx;
+  margin-top: 130rpx;
 }
 .p6{
-  margin-top: 100rpx;
+  margin-top: 130rpx;
 }
 .p7{
-  margin-top: 200rpx;
-}
-.p8{
-  margin-top: 150rpx;
-}
-.p9{
   margin-top: 100rpx;
 }
+.p8{
+  margin-top: 330rpx;
+}
+.p9{
+  margin-top: 180rpx;
+}
 .p10{
-  margin-top: 200rpx;
+  margin-top: 180rpx;
 }
 .p11{
-  margin-top: 250rpx;
+  margin-top: 180rpx;
 }
 .p12{
-  margin-top: 280rpx;
+  margin-top: 250rpx;
 }
 .p13{
   margin-top: 150rpx;
 }
 .p14{
-  margin-top: 200rpx;
+  margin-top: 220rpx;
 }
 .p15{
-  margin-top: 80rpx;
+  margin-top: 170rpx;
 }
 .p16{
-  margin-top: 100rpx;
+  margin-top: 230rpx;
 }
 .p17{
-  margin-top: 80rpx;
+  margin-top: 230rpx;
 }
 .p18{
-  margin-top: 80rpx;
+  margin-top: 170rpx;
 }
 
-.i2-1{
+.i0{
+  height: 150vh;
+}
+
+.i1{
   width: 300vw;
 }
 
-.i2-2{
+.i2{
   width: 300vw;
 }
 
-.i3-1{
-  z-index: -1;
+.i3{
   width: 300vw;
 }
 
-.i4-2{
-  z-index: -1;
+.i4{
   width: 300vw;
 }
 
-.i5-1{
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
-  z-index: -1;
+.i5{
+  width: 300vw;
+}
+
+.i6{
+  width: 250vw;
+  height: 150vh;
+}
+
+.i7{
+  width: 150vw;
+}
+
+.i8{
+  width: 300vw;
 }
