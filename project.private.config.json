@@ -71,6 +71,12 @@
           "pathName": "pages/story/kongzi/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "test",
+          "pathName": "pages/story/test/test",
+          "query": "",
+          "scene": null
         }
       ]
     }

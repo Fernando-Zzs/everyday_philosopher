@@ -1,5 +1,18 @@
 l-card{
   margin-top: 25rpx;
+
+}
+
+l-card .jiao{
+  position: absolute;
+  top: 25rpx;
+  right: 30rpx;
+  width: 130rpx;
+  height: 130rpx;
+  overflow: hidden;
+}
+
+.question{
 }
 
 .title{
@@ -34,10 +47,13 @@ l-card{
 .like_num{
   margin-left: 5rpx;
 }
+
 .collect_image{
+  margin-left: 20rpx;
   width: 50rpx;
   height: 50rpx;
 }
+
 .collect_num{
   margin-left: 5rpx;
 

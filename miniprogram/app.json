@@ -11,7 +11,8 @@
     "pages/find/story-detail/story-detail",
     "pages/find/question-detail/question-detail",
     "pages/story/kongzi/index",
-    "pages/story/socreate/index"
+    "pages/story/socreate/index",
+    "pages/story/test/test"
   ],
   "window": {
     "backgroundTextStyle": "dark",

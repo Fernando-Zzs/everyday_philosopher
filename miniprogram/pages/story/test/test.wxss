@@ -1,131 +1,88 @@
-page {
-  font-size: 14px;
-  height: 100%;
-  background-color: #000000;
-}
+page{
+  background-color: black;
 
-scroll-view {
-  height: 100%;
 }
-
-/* story/stroy.wxss */
-.page1{
-  height: 100%;
-}
-
-.contanier1{
-  z-index: -1;
+.container{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  height: 1000vh;
+  align-items: stretch;
 }
 
-.bg{
-  position: fixed;
-  height: 100vh;
-  width: 100%;
-  z-index: -1;
-}
-
-.text{
-  position: fixed;
-  width: 80%;
+.answer-card{
+  background-color: blanchedalmond;
+  position: relative;
   padding: 30rpx;
-  border-radius: 25rpx;
-  background: rgba(250, 235, 215, 0.7);
-  margin-top: 400rpx;
-  text-indent: 2rem;
-  font-size: 28rpx;
-  line-height: 48rpx;
-  color: black;
+  border-radius: 30rpx;
+  margin-top: 40rpx;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+}
+
+.question,
+.myAnswer,
+.hotAnswers{
+  font-size: 30rpx;
+  padding: 30rpx 65rpx;
+  line-height: 50rpx;
+  padding-bottom: 50rpx;
+}
+
+.quote{
+  position: absolute;
+  left: 20rpx;
+  top: 30rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.quotes{
+  rotate: 180deg;
+  position: absolute;
+  right: 20rpx;
+  bottom: 30rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.corner{
+  position: absolute;
+  right: 0rpx;
+  top: 0rpx;
+  width: 100rpx;
+  height: 100rpx;
 }
 
 .title{
-  margin-top: 250rpx;
-  position: fixed;
+  text-align: center;
+  color:blanchedalmond;
+  font-size: 44rpx;
+  font-weight: 700;
+  margin-top: 50rpx;
+  margin-bottom: 20rpx;
 }
 
-.p1{
-  margin-top: 150rpx;
-  color: #000000;
+.line{
+  width: 80%;
+  margin-left: 10%;
+  height: 0rpx;
+  border-bottom: 10rpx dotted blanchedalmond;
 }
 
-.p2{
-  margin-top: 200rpx;
-  color: #000000;
+.new,
+.hot{
+  position: absolute;
+  right: -17rpx;
+  top: 20rpx;
+  width: 70rpx;
+  height: 30rpx;
 }
 
-.p3{
-  margin-top: 150rpx;
+.info .zan{
+  width: 40rpx;
+  height: 40rpx;
 }
-.p4{
-  margin-top: 150rpx;
-}
-.p5{
-  margin-top: 100rpx;
-}
-.p6{
-  margin-top: 100rpx;
-}
-.p7{
-  margin-top: 200rpx;
-}
-.p8{
-  margin-top: 150rpx;
-}
-.p9{
-  margin-top: 100rpx;
-}
-.p10{
-  margin-top: 200rpx;
-}
-.p11{
-  margin-top: 250rpx;
-}
-.p12{
-  margin-top: 280rpx;
-}
-.p13{
-  margin-top: 150rpx;
-}
-.p14{
-  margin-top: 200rpx;
-}
-.p15{
-  margin-top: 80rpx;
-}
-.p16{
-  margin-top: 100rpx;
-}
-.p17{
-  margin-top: 80rpx;
-}
-.p18{
-  margin-top: 80rpx;
-}
-
-.i2-1{
-  width: 300vw;
-}
-
-.i2-2{
-  width: 300vw;
-}
-
-.i3-1{
-  z-index: -1;
-  width: 300vw;
-}
-
-.i4-2{
-  z-index: -1;
-  width: 300vw;
-}
-
-.i5-1{
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
-  z-index: -1;
+.info .ai{
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 15rpx;
 }

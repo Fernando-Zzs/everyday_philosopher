@@ -7,6 +7,7 @@ Page({
   data: {
     show: true,
     // 问题的内容
+    answer_id: '',
     title_temp:'',
     description_temp:'',
     // 回答的内容
@@ -29,6 +30,9 @@ Page({
 
     let que_temp = options.question_id
     let ans_temp = options.answer_id
+    this.setData({
+      answer_id: ans_temp
+    })
     // console.log(que_temp,ans_temp,con_temp,like_temp,collect_temp)
     let that = this
     wx.cloud.callFunction({
@@ -64,6 +68,30 @@ Page({
     })
   },
   
+  zan:function(e){
+    const db = wx.cloud.database()
+    const _ = db.command
+    db.collection('answer').where({
+      answer_id: e.currentTarget.dataset.answerid
+    }).update({
+      data:{
+        like_num: _.inc(1)
+      }
+    })
+  },
+
+  ai:function(e){
+    const db = wx.cloud.database()
+    const _ = db.command
+    db.collection('answer').where({
+      answer_id: e.currentTarget.dataset.answerid
+    }).update({
+      data:{
+        collect_num: _.inc(1)
+      }
+    })
+  },
+
   onUnload:function(){
     clearInterval(this.timer)
   },

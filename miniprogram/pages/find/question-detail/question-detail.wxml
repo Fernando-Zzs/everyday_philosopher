@@ -1,5 +1,7 @@
 <get-more-loading show="{{show}}" wx:if="{{show}}"></get-more-loading>
 <l-card type="avatar" class="question">
+  <image class="jiao" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/jiao.png">
+  </image>
   <view class="title">
     {{title_temp}}
   </view>
@@ -13,12 +15,11 @@
   </view>
   <view class="foot">
     <image class="like_image"
-      src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/baizan.png"></image>
+      src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/未赞.png" bindtap="zan" data-answerid="{{answer_id}}"></image>
     <view class="like_num">{{like_num}}</view>
     <image class="collect_image"
-      src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/baishoucang.png"></image>
+      src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/未收藏.png" bindtap="ai" data-answerid="{{answer_id}}"></image>
     <view class="collect_num">{{collect_num}}</view>
   </view>
-
 
 </l-card>

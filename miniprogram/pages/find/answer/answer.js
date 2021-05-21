@@ -5,7 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    answer_id:''
+    question_description: '',
+    question_id: '',
+    answer_id: '',
+    content: '',
+    like_num: '',
+    collect_num: '',
+    avatarURL: '',
+    nickname: '',
+    hotList: []
   },
 
   /**
@@ -19,14 +27,53 @@ Page({
     })
     // 根据answer_id获取数据库中的信息
     wx.cloud.callFunction({
-      name:'getAnswer',
-      data:{
+      name: 'getAnswer',
+      data: {
         answer_id: that.data.answer_id
       },
-      complete:res=>{
-        console.log(res.result)
+      complete: res => {
+        // console.log(res.result)
+        that.setData({
+          question_id: res.result.question_id,
+          answer_id: res.result.answer_id,
+          content: res.result.content,
+          like_num: res.result.like_num,
+          collect_num: res.result.collect_num,
+          avatarURL: res.result.avatarURL,
+          nickname: res.result.nickname
+        })
+
+        // 根据question_id获取问题的title
+        var qid = that.data.question_id
+        console.log(qid)
+        
+        wx.cloud.callFunction({
+          name: 'getQuestion',
+          data: {
+            question_id: qid
+          },
+          complete: r => {
+            that.setData({
+              question_description: r.result.title
+            })
+          }
+        })
+
+        // 根据question_id获取数据库中的热答
+        wx.cloud.callFunction({
+          name: 'getTopAnswer',
+          data: {
+            question_id: qid
+          },
+          complete: resu => {
+            console.log(resu.result)
+          }
+        })
+
       }
     })
+
+
   },
 
   /**
