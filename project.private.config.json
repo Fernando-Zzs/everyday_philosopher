@@ -103,20 +103,8 @@
           "scene": null
         },
         {
-          "name": "搜索",
-          "pathName": "pages/find/search/search",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "搜索按钮",
-          "pathName": "pages/find/search_button/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "分析页面",
-          "pathName": "pages/personal/analyse/analyse",
+          "name": "pages/find/index/index",
+          "pathName": "pages/find/index/index",
           "query": "",
           "scene": null
         }

@@ -1,14 +1,15 @@
-page{
+page {
   background-color: black;
 
 }
-.container{
+
+.container {
   display: flex;
   flex-direction: column;
   align-items: stretch;
 }
 
-.answer-card{
+.answer-card {
   background-color: blanchedalmond;
   position: relative;
   padding: 30rpx;
@@ -20,14 +21,14 @@ page{
 
 .question,
 .myAnswer,
-.hotAnswers{
+.hotAnswers {
   font-size: 30rpx;
   padding: 30rpx 65rpx;
   line-height: 50rpx;
   padding-bottom: 50rpx;
 }
 
-.quote{
+.quote {
   position: absolute;
   left: 20rpx;
   top: 30rpx;
@@ -35,7 +36,7 @@ page{
   height: 40rpx;
 }
 
-.quotes{
+.quotes {
   rotate: 180deg;
   position: absolute;
   right: 20rpx;
@@ -44,7 +45,7 @@ page{
   height: 40rpx;
 }
 
-.corner{
+.corner {
   position: absolute;
   right: 0rpx;
   top: 0rpx;
@@ -52,16 +53,16 @@ page{
   height: 100rpx;
 }
 
-.title{
+.title {
   text-align: center;
-  color:blanchedalmond;
+  color: blanchedalmond;
   font-size: 44rpx;
   font-weight: 700;
   margin-top: 50rpx;
   margin-bottom: 20rpx;
 }
 
-.line{
+.line {
   width: 80%;
   margin-left: 10%;
   height: 0rpx;
@@ -69,7 +70,7 @@ page{
 }
 
 .new,
-.hot{
+.hot {
   position: absolute;
   right: -17rpx;
   top: 20rpx;
@@ -77,12 +78,29 @@ page{
   height: 30rpx;
 }
 
-.info .zan{
+.info .zan {
   width: 40rpx;
   height: 40rpx;
 }
-.info .ai{
+
+.info .ai {
   width: 40rpx;
   height: 40rpx;
   margin-left: 15rpx;
+}
+
+.zan-num {
+  font-size: 20rpx;
+}
+
+.ai-num {
+  font-size: 20rpx;
+}
+
+.handleAnswerLike {
+  display: inline-block;
+}
+
+.handleAnswerCollect {
+  display: inline-block;
 }
