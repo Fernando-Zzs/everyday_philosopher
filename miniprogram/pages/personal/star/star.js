@@ -38,7 +38,6 @@ Page({
       },
       datas:[],// 第一模块历史数据
       datas2:[],// 第二模块历史数据
-      http:''
   },
 
   onPullDownRefresh:function(){},
@@ -61,18 +60,9 @@ Page({
   onLoad: function (options) {  
       // 生命周期函数--监听页面加载  
       // 访问数据库存入本地以便渲染
-      wx.cloud.getTempFileURL({
-        fileList:[{
-          fileID:'cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/earth.glb'
-        }]
-      }).then(res=>{
-        console.log(res.fileList)
-      }).catch(error=>{
-        console.log(err)
-      })
     let that = this
     const db = wx.cloud.database()
-    db.collection('history').get({
+    db.collection('collection').get({
       success:function(res){
         that.setData({
           datas: res.data
@@ -84,7 +74,7 @@ Page({
     })
     let that2 = this
     const db2 = wx.cloud.database()
-    db2.collection('question').get({
+    db2.collection('collection').get({
       success:function(res){
         that2.setData({
           datas2: res.data

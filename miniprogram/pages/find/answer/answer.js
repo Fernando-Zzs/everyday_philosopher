@@ -79,8 +79,7 @@ Page({
   onLoad: function (options) {
     let that = this
     _this_global = this
-    // let temp = options.answer_id;
-    let temp = '1'
+    let temp = options.answer_id;
     this.setData({
       answer_id: temp
     })
