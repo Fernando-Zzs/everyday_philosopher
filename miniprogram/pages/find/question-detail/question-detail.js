@@ -8,39 +8,40 @@ Page({
     show: true,
     // 问题的内容
     answer_id: '',
-    title_temp:'',
-    description_temp:'',
+    title_temp: '',
+    description_temp: '',
     // 回答的内容
-    answer_temp:'',
-    like_num:'',
-    collect_num:''
+    answer_temp: '',
+    like_num: '',
+    collect_num: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.timer = setInterval(()=>{
-      if(this.data.show){
+    this.timer = setInterval(() => {
+      if (this.data.show) {
         this.setData({
           show: !this.data.show
         })
       }
-    },1000)
+    }, 1000)
 
     let que_temp = options.question_id
     let ans_temp = options.answer_id
+    console.log(que_temp);
     this.setData({
       answer_id: ans_temp
     })
     // console.log(que_temp,ans_temp,con_temp,like_temp,collect_temp)
     let that = this
     wx.cloud.callFunction({
-      name:"getQuestion",
-      data:{
+      name: "getQuestion",
+      data: {
         question_id: que_temp,
       },
-      complete: res=>{
+      complete: res => {
         var title_temp = res.result.title;
         var description_temp = res.result.description;
 
@@ -51,11 +52,11 @@ Page({
       }
     })
     wx.cloud.callFunction({
-      name:"getAnswer",
-      data:{
+      name: "getAnswer",
+      data: {
         answer_id: ans_temp,
       },
-      complete: res=>{
+      complete: res => {
         var answer_temp = res.result.content;
         var like_num = res.result.like_num;
         var collect_num = res.result.collect_num;
@@ -67,32 +68,32 @@ Page({
       }
     })
   },
-  
-  zan:function(e){
+
+  zan: function (e) {
     const db = wx.cloud.database()
     const _ = db.command
     db.collection('answer').where({
       answer_id: e.currentTarget.dataset.answerid
     }).update({
-      data:{
+      data: {
         like_num: _.inc(1)
       }
     })
   },
 
-  ai:function(e){
+  ai: function (e) {
     const db = wx.cloud.database()
     const _ = db.command
     db.collection('answer').where({
       answer_id: e.currentTarget.dataset.answerid
     }).update({
-      data:{
+      data: {
         collect_num: _.inc(1)
       }
     })
   },
 
-  onUnload:function(){
+  onUnload: function () {
     clearInterval(this.timer)
   },
   /**

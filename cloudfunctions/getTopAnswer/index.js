@@ -9,9 +9,17 @@ exports.main = async (event, context) => {
   let ret = await db.collection('answer').where({
       question_id: event.question_id
     })
-    .orderBy('like_num','desc')
+    .orderBy('like_num', 'desc')
     .get()
-  return ret.data
+
+  ret = ret.data
+
+  for (let i = 0, len = ret.length; i < len; i++) {
+    ret[i].like_num = ret[i].like_openid.length
+    ret[i].collect_num = ret[i].collect_openid.length
+  }
+
+  return ret
 }
 
 // input: question_id

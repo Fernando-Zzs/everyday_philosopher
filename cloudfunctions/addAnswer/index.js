@@ -15,8 +15,8 @@ exports.main = async (event, context) => {
       answer_id: total + '',
       question_id: event.question_id,
       content: event.content,
-      like_openid: _.push(event._openid),
-      collect_openid: _.push(event._openid),
+      like_openid: [],
+      collect_openid: [],
       avatarURL: event.avatarURL,
       nickname: event.nickname,
       _openid: event._openid

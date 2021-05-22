@@ -32,13 +32,13 @@ Page({
     currentQid: '' // 当前问题id
   },
   onLoad: function () {
-    this.timer = setInterval(()=>{
-      if(this.data.show){
+    this.timer = setInterval(() => {
+      if (this.data.show) {
         this.setData({
           show: !this.data.show
         })
       }
-    },1000)
+    }, 1000)
 
     var that = this;
     var res = wx.getSystemInfoSync();
@@ -129,10 +129,10 @@ Page({
       }
     }
   },
-  onUnload:function(){
+  onUnload: function () {
     clearInterval(this.timer)
   },
-  touchMove (e) {
+  touchMove(e) {
     // 左滑右滑手势可优化
   },
   onChange: function (e) {
@@ -182,7 +182,8 @@ Page({
           content: value,
           question_id: that.data.currentQid,
           avatarURL: avatarurl_temp,
-          nickname: nickname_temp
+          nickname: nickname_temp,
+          _openid: app.globalData.OPENID
         },
         complete: res => {
           wx.navigateTo({

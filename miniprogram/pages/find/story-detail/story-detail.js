@@ -35,6 +35,7 @@ function initComment(value) {
           }
         })
       }
+      console.log(comment_arr);
     }
   })
 }

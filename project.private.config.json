@@ -101,6 +101,12 @@
           "pathName": "pages/find/story-detail/story-detail",
           "query": "story_id=0",
           "scene": null
+        },
+        {
+          "name": "pages/find/index/index",
+          "pathName": "pages/find/index/index",
+          "query": "",
+          "scene": null
         }
       ]
     }

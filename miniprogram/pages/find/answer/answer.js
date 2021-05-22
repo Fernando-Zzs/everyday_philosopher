@@ -1,4 +1,61 @@
 // miniprogram/pages/find/answer/answer.js
+const app = getApp()
+let _this_global = null
+
+function initAnswer(value) {
+  let hotList = []
+
+  wx.cloud.callFunction({
+    name: 'getTopAnswer',
+    data: {
+      question_id: value
+    },
+    success: async function (res1) {
+      hotList = res1.result // checked
+
+      for (let i = 0, len = hotList.length; i < len; i++) {
+        hotList[i].liked = false
+        hotList[i].collected = false
+
+        wx.cloud.callFunction({
+          name: 'isAnswerLiked',
+          data: {
+            answer_id: hotList[i].answer_id,
+            _openid: app.globalData.OPENID
+          },
+          success: function (res2) {
+            if (res2.result) {
+              hotList[i].liked = true
+            } else {
+              hotList[i].liked = false
+            }
+            _this_global.setData({
+              hotList
+            })
+          }
+        })
+        wx.cloud.callFunction({
+          name: 'isAnswerCollected',
+          data: {
+            answer_id: hotList[i].answer_id,
+            _openid: app.globalData.OPENID
+          },
+          success: function (res2) {
+            if (res2.result) {
+              hotList[i].collected = true
+            } else {
+              hotList[i].collected = false
+            }
+            _this_global.setData({
+              hotList
+            })
+          }
+        })
+      }
+    }
+  })
+}
+
 Page({
 
   /**
@@ -9,8 +66,8 @@ Page({
     question_id: '',
     answer_id: '',
     content: '',
-    like_num: '',
-    collect_num: '',
+    like_num: 0,
+    collect_num: 0,
     avatarURL: '',
     nickname: '',
     hotList: []
@@ -21,32 +78,31 @@ Page({
    */
   onLoad: function (options) {
     let that = this
-    let temp = options.answer_id;
+    _this_global = this
+    // let temp = options.answer_id;
+    let temp = '1'
     this.setData({
       answer_id: temp
     })
-    // 根据answer_id获取数据库中的信息
+
     wx.cloud.callFunction({
       name: 'getAnswer',
       data: {
         answer_id: that.data.answer_id
       },
-      complete: res => {
-        // console.log(res.result)
+      success: function (res) {
         that.setData({
           question_id: res.result.question_id,
           answer_id: res.result.answer_id,
           content: res.result.content,
-          like_num: res.result.like_num,
-          collect_num: res.result.collect_num,
+          like_num: res.result.like_openid.length,
+          collect_num: res.result.collect_openid.length,
           avatarURL: res.result.avatarURL,
           nickname: res.result.nickname
         })
 
-        // 根据question_id获取问题的title
         var qid = that.data.question_id
-        console.log(qid)
-        
+
         wx.cloud.callFunction({
           name: 'getQuestion',
           data: {
@@ -56,72 +112,108 @@ Page({
             that.setData({
               question_description: r.result.title
             })
-          }
-        })
 
-        // 根据question_id获取数据库中的热答
-        wx.cloud.callFunction({
-          name: 'getTopAnswer',
-          data: {
-            question_id: qid
-          },
-          complete: resu => {
-            console.log(resu.result)
+            initAnswer(that.data.question_id)
           }
         })
 
       }
     })
-
-
   },
+  handleAnswerLike(e) {
+    let index = e.currentTarget.dataset.index
+    let like_num = _this_global.data.hotList[index].like_num
+    if (_this_global.data.hotList[index].liked) {
+      _this_global.setData({
+        ['hotList[' + index + '].liked']: false,
+        ['hotList[' + index + '].like_num']: _this_global.data.hotList[index].like_num - 1
+      })
+    } else {
+      _this_global.setData({
+        ['hotList[' + index + '].liked']: true,
+        ['hotList[' + index + '].like_num']: _this_global.data.hotList[index].like_num + 1
+      })
+    }
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+    wx.cloud.callFunction({
+      name: 'tapAnswerLike',
+      data: {
+        liked: !_this_global.data.hotList[index].liked,
+        _openid: app.globalData.OPENID,
+        answer_id: e.currentTarget.dataset.answerid
+      }
+    })
   },
+  handleAnswerCollect(e) {
+    let index = e.currentTarget.dataset.index
+    let collect_num = _this_global.data.hotList[index].collect_num
+    if (_this_global.data.hotList[index].collected) {
+      _this_global.setData({
+        ['hotList[' + index + '].collected']: false,
+        ['hotList[' + index + '].collect_num']: _this_global.data.hotList[index].collect_num - 1
+      })
+    } else {
+      _this_global.setData({
+        ['hotList[' + index + '].collected']: true,
+        ['hotList[' + index + '].collect_num']: _this_global.data.hotList[index].collect_num + 1
+      })
+    }
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    wx.cloud.callFunction({
+      name: 'tapAnswerCollect',
+      data: {
+        collected: !_this_global.data.hotList[index].collected,
+        _openid: app.globalData.OPENID,
+        answer_id: e.currentTarget.dataset.answerid
+      }
+    })
   }
 })
+
+// 根据answer_id获取数据库中的信息
+// wx.cloud.callFunction({
+//   name: 'getAnswer',
+//   data: {
+//     answer_id: that.data.answer_id
+//   },
+//   complete: res => {
+//     // console.log(res.result)
+//     that.setData({
+//       question_id: res.result.question_id,
+//       answer_id: res.result.answer_id,
+//       content: res.result.content,
+//       like_num: res.result.like_num,
+//       collect_num: res.result.collect_num,
+//       avatarURL: res.result.avatarURL,
+//       nickname: res.result.nickname
+//     })
+
+//     // 根据question_id获取问题的title
+//     var qid = that.data.question_id
+//     console.log(qid)
+
+//     wx.cloud.callFunction({
+//       name: 'getQuestion',
+//       data: {
+//         question_id: qid
+//       },
+//       complete: r => {
+//         that.setData({
+//           question_description: r.result.title
+//         })
+//       }
+//     })
+
+//     // 根据question_id获取数据库中的热答
+//     wx.cloud.callFunction({
+//       name: 'getTopAnswer',
+//       data: {
+//         question_id: qid
+//       },
+//       complete: resu => {
+//         console.log(resu.result)
+//       }
+//     })
+
+//   }
+// })
