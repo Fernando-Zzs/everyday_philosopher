@@ -3,57 +3,57 @@
     <view class="contanier1">
 
       <!-- 1 -->
-      <image class='title i0' mode="aspectFit" src='/story2/image/1/title.png'></image>
-      <image class='bg i1-1 cross' mode="aspectFill" src='/story2/image/1/1.jpg'></image>
+      <image class='title i0' mode="aspectFit" src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/knowyourself/1/title.png'></image>
+      <image class='bg i1-1 cross' mode="aspectFill" src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/knowyourself/1/1.jpg'></image>
       <view class='text blur p1'>开始我们的故事前，介绍下古希腊的基本情况是重要的。正是这里诞生了古希腊三贤，也正是我们接下来的几位主人公</view>
 
       <!-- 2 -->
       <!-- <image class='bg cross i2-1'  mode="aspectFill" src='/story2/image/2/1.jpg'></image> -->
-      <image class='bg  i2-2'  mode="aspectFill" src='/story2/image/2/2.jpg'></image>
+      <image class='bg  i2-2'  mode="aspectFill" src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/knowyourself/2/2.jpg'></image>
       <view class='text blur p2'>如果你仔细看看欧洲地图就会发现一只瘦骨嶙峋的手伸进了地中海，这只手就是希腊。在希腊的南面是巨大的克里特岛。公元前2000年，从那里伸出的手抓住了文明最初的源头。</view>
 
       <!-- 3 -->
-      <image class='bg i3-1 cross' src='/story2/image/3/1.jpg'></image>
+      <image class='bg i3-1 cross' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/knowyourself/3/1.jpg'></image>
       <view class="text blur p3">希腊被这些海陆的天然屏障分割得异常零碎。当时的旅行远比现在困难和危险，因此各流域都形成了自给自足的经济环境、独立的政府、社会制度、方言、宗教和文化。</view>
 
       <!-- 4 -->
-      <image class="bg i4-1 cross"  mode="aspectFill" src='/story2/image/4/1.jpg'></image>
+      <image class="bg i4-1 cross"  mode="aspectFill" src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/knowyourself/4/1.jpg'></image>
       <view class="text blur p4">公元前400年至公元前470年斯巴达和雅典握手言和,联合挫败了大流士和薛西斯把希腊变成亚细亚帝国殖民地的企图。在年轻的欧洲和古老的东方之间的这场对抗中,斯巴达派出了陆军,雅典则派出了海军。</view>
 
       <!-- 5 -->
-      <image class="bg i5-1 cross" mode="aspectFill" src='/story2/image/5/1.jpg'></image>
+      <image class="bg i5-1 cross" mode="aspectFill" src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/knowyourself/5/1.jpg'></image>
       <view class="text blur p5">
       <text>'战争结束后，斯巴达人解散了自己的军队，这一过程不可避免地给他们带来了经济上的混乱。\n 而雅典的海军变成了商业船队，雅典成了古代世界最大的贸易城市之一。斯巴达重新回到农业社会封闭的状态中，而雅典则成了一个繁华的商业中心和港口，成了各民族信仰和习俗的汇集之地。\n比较、分析和思考在这种广泛的接触与竞争中产生了。'
       </text>
       </view>
       <!-- 6 -->
-      <image class='bg i6-1' mode="aspectFill" src='/story2/image/6/4.png'></image>
-      <image class='bg i6-2' mode="aspectFill" src='/story2/image/6/1.png'></image>
+      <image class='bg i6-1' mode="aspectFill" src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/knowyourself/6/4.png'></image>
+      <image class='bg i6-2' mode="aspectFill" src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/knowyourself/6/1.png'></image>
       <view class="text blur p6">如果古代流传下来的那尊半身雕像可以作为依据的话，苏格拉底即使作为一位哲学家也远远不能算英俊。然而如果我们观察得再仔细一些，就会透过这块粗糙的石头感觉到他的忠厚和朴实，正是这些品质使得这位相貌平平的思想家成了雅典优秀青年推崇备至的良师益友。</view>
 
       <!-- 7 -->
-      <image class='bg i7-1' mode="aspectFill" src='/story2/image/7/1.jpg'></image>
+      <image class='bg i7-1' mode="aspectFill" src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/knowyourself/7/1.jpg'></image>
       <view class="text blur p7">为什么苏格拉底能够备受学生尊敬呢?也许是因为他不仅是个哲学家，还是个富有人情味的男子汉吧。在战场上他曾冒着生命危险救过亚西比德的命，他饮酒时颇有绅士风度，既不怯场也不滥饮。</view>
 
       <!-- 8 -->
-      <image class='bg i8-1 cross' mode="aspectFit" src='/story2/image/8/1.jpg'></image>
+      <image class='bg i8-1 cross' mode="aspectFit" src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/knowyourself/8/1.jpg'></image>
       <view class='text blur p8'>但毫无疑问学生们最喜欢他的还是他谦虚的品格。尽管他是那么智慧，他从不自夸是个智者，只是说自己是智慧的爱好者，而不是它的拥有者。据说德尔斐城的神谕宣称他是希腊最智慧的人，他却认为这是对不可知论的赞同。</view>
 
       <!-- 9 -->
-      <image class='title i9-1 ' mode="aspectFit" src='/story2/image/9/1.png'></image>
+      <image class='title i9-1 ' mode="aspectFit" src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/knowyourself/9/1.png'></image>
       <view class="text blur p9">——这是他哲学的起点。当我们学会了怀疑，尤其是怀疑自己的信念和原则时，哲学就产生了。</view>
 
       <!-- 10 -->
-      <image class='bg  i10-1 cross' mode="aspectFit" src='/story2/image/10/1.jpg'></image>
+      <image class='bg  i10-1 cross' mode="aspectFit" src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/knowyourself/10/1.jpg'></image>
       <view class="text blur p10"><text>当然，在苏格拉底之前也有过哲学家，有的像泰勒斯和赫拉克利特那样坚定；有的像巴门尼德和芝诺那样喜欢深究；有的像毕达格拉斯和恩培多克勒那样善于观察。但他们大多是自然哲学家，他们探寻的是外界事物的本质和客观世界的原理。
       苏格拉底认为那种研究固然很有价值，但是对于哲学家来说，应该有比树木、石头，甚至所有的星辰更值得关注的对象，那就是人的心灵。人到底是什么?你将成为什么?</text></view>
 
       <!-- 11 -->
-      <image class='bg  i11-1 cross' mode="aspectFit" src='/story2/image/11/1.jpg'></image>
+      <image class='bg  i11-1 cross' mode="aspectFit" src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/knowyourself/11/1.jpg'></image>
       <view class="text blur p11">他常常对一些假说进行论证，对确定无疑的事情提出质疑。一些在这种“苏格拉底问答”面前栽过跟头的人反对说他的问题多、答案少，只能使人的思维比以前更混乱。不过他为两个最让我们头疼的问题给出了明确的答案，那就是美德的含义是什么?什么是最理想的国家?</view>
 
       <!-- 12 -->
-      <image class='bg  i12-1 cross' mode="aspectFit" src='/story2/image/12/1.jpg'></image>
+      <image class='bg  i12-1 cross' mode="aspectFit" src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/knowyourself/12/1.jpg'></image>
       <view class="text blur p12">对那个时代的雅典青年来说，这些都是最为重要的问题。智者派已经摧毁了他们对奥林匹斯山上诸神和道德、法律的信仰，显然，人们认为只要在法律允许之内，就可以为所欲为。这种造成人心涣散的个人主义削弱了雅典人的精神，使雅典在著名的伯罗奔尼撒战争中被经过严格训练的斯巴达人征服。</view>
 
       <!-- 13 -->
@@ -61,22 +61,22 @@
       <view class='text blur p13'>雅典因其民主而闻名，但是苏格拉底看到了致命的缺点。还有什么比这种在冲动的暴民控制下的民主政治更可笑的?还有什么比这种在吵吵嚷嚷的团体领导下的政府更滑稽的?还有什么比随便升迁、罢免和处决将军们更荒谬的?还有什么比这种不论才智高低，按照字母顺序把头脑简单的农夫和工匠选进国家最高法院更令人哭笑不得的呢?</view>
 
       <!-- 14 -->
-      <image class='bg  i14-1 cross' mode="aspectFit" src='/story2/image/14/1.jpg'></image>
-      <image class='title i14-2 ' mode="aspectFit" src='/story2/image/14/2.png'></image>
+      <image class='bg  i14-1 cross' mode="aspectFit" src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/knowyourself/14/1.jpg'></image>
+      <image class='title i14-2 ' mode="aspectFit" src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/knowyourself/14/2.png'></image>
       <view class='text blur p14'>——这是他的名言。如果能通过教育使人们看清自己的利益，预见到自己行为的后果，使自己的欲望脱离愚昧，那么全部罪恶都可能来源于错误和偏见。也许有知识的人和愚昧的人一样具有强烈的反社会的冲动，但他们肯定能更好地控制自己的冲动，不会动辄就像野兽那样残暴。</view>
 
       <!-- 15 -->
       <view class="text blur p15">但是如果政府本身就是荒谬的，只知道统治人民而不给予帮助；只知道发布命令而不以身作则。在这样的国家里我们怎么能说服个人去遵守法纪并限制他在不损害整体利益的前提下去谋取私利呢? 难怪亚西比德要反抗不相信能力、崇尚数量胜于推崇知识的国家。</view>
 
       <!-- 16 -->
-      <image class='bg  i16-1 cross' mode="aspectFit" src='/story2/image/16/1.jpg'></image>
+      <image class='bg  i16-1 cross' mode="aspectFit" src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/knowyourself/16/1.jpg'></image>
       <view class="text blur p16">没有思想的地方就会出现混乱，而乌合之众做出草率的决定，却又在事后品尝苦果时后悔不已。人数多就能做出英明的决定,这不是十足的迷信吗?事实正相反，人们聚在一起要比独处时更糊涂、更残忍。这难道不是一个明摆着的事实吗?</view>
 
       <!-- 17 -->
       <view class="text blur p17">演说家“口若悬河像被人敲一下就响个不停的桶”。人们受这种人的摆布难道不觉得羞耻吗?显然治理好一个国家需要人们奉献出自己全部的才智，需要杰出的思想家畅所欲言地发表自己的意见。除非由智者来领导否则一个社会怎么可能得到拯救怎么可能变得富强呢？</view>
 
       <!-- 18 -->
-      <image class='bg  i18-1 cross' mode="aspectFit" src='/story2/image/18/1.jpg'></image>
+      <image class='bg  i18-1 cross' mode="aspectFit" src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/knowyourself/18/1.jpg'></image>
       <view class="text blur p18">不妨设想一下，在战争需要压制所有的反对意见，而少数有文化的贵族正在酝酿一场革命的时候，雅典得势的大众党对这种贵族政治的言论会有什么反应。苏格拉底的命运已经注定。</view>
 
       <!-- 19 -->

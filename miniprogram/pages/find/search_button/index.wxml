@@ -1,0 +1,15 @@
+<view class="g-container">
+  
+    <view class="a m-btn s-irregularShadowMove" bindtap="search">{{search_state}}
+    
+    </view>
+    <view class='inputer'><input class='input' focus="{{search_state}}" bindblur="disfoucus" bindconfirm='search_confirm'></input>
+   
+    </view> 
+    <view class='history' >
+    <view class='historyItem'>first</view>
+    </view>
+    <!-- <view class="b m-btn s-irregularShadowScale">2</view> -->
+     <image class='i' src="" style="z-index:-2"></image>
+        
+</view>

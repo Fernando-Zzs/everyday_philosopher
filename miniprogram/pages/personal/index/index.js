@@ -151,7 +151,7 @@ Page({
   /* 进入分析列表 */
   openAnalysis: function () {
     wx.navigateTo({
-      url: '../../personal/analysis/analysis'
+      url: '../../personal/analyse/analyse'
     })
   },
 
