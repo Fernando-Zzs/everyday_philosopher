@@ -16,8 +16,8 @@
 
       <!--第二页  -->
       <!-- 背景 -->
-      <image class='bg i2-1' src="	cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/second/1.png"></image>
-      <image class='bg i2-2' src="	cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/second/2.png"></image>
+      <image class='bg i2-1' src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/second/1.png"></image>
+      <image class='bg i2-2' src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/second/2.png"></image>
       <image class='bg i2-3' src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/second/3.png"></image>
 
       <view class='text p3'>这时候你看到了我。
@@ -26,14 +26,14 @@
       </view>
 
       <!--第三页  -->
-      <image class='bg i3-1' mode="aspectFill" src="/index/image/third/1.PNG"></image>
+      <image class='bg i3-1' mode="aspectFill" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/third/1.PNG"></image>
       <view class='text p4'>“一辆……一辆卡车，它侧滑了……”
         “没错，”我说。
         “我……我死了？”
         “嗯。但是别难过，人固有一死。”我说。
       </view>
       <!-- 第四页 -->
-      <image class="bg i4-3" src='	cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/fourth/3.png'></image>
+      <image class="bg i4-3" src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/fourth/3.png'></image>
       <image class='bg i4-1' mode="aspectFill" src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/fourth/1.png'></image>
 
       <image class='bg i4-2' mode="aspectFill" src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/fourth/2.png'></image>
@@ -61,7 +61,7 @@
       <image class='bg i7-1' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/7/1.png'></image>
       <!-- 眼睛效果 -->
       <view class='eye'>
-        <image class='i7-2' src='	cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/7/2.jpg'></image>
+        <image class='i7-2' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/7/2.jpg'></image>
         <image class='i7-3' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/7/3.jpg'></image>
       </view>
 
@@ -87,7 +87,7 @@
       </view>
 
       <!-- 第十页 -->
-      <image class='bg i10-1' mode='aspectFill' src='	cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/10/1.jpg'></image>
+      <image class='bg i10-1' mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/10/1.jpg'></image>
       <image class='bg i10-2' mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/10/2.jpg'></image>
       <image class='bg i10-3' mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/10/3.jpg'></image>
       <view class='text p11'>
@@ -105,14 +105,14 @@
 
       <!-- 第十二页 -->
       <image class="bg i12-1" mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/12/1.jpg'></image>
-      <image class="bg i12-2" mode='aspectFill' src='	cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/12/2.jpg'></image>
+      <image class="bg i12-2" mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/12/2.jpg'></image>
       <view class='text p13'>“那你从哪里来的？”你问。
         “这样的，”我解释道，“我来自某处。在别的地方，那里也有像我这样的。我知道你想知道那里是什么样的，但老实说，你不会理解的。”
       </view>
 
       <!-- 第十三页 -->
       <image class='bg i13-1' mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/13/1.jpg'></image>
-      <image class='bg i13-2' mode='aspectFill' src='	cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/13/2.png'></image>
+      <image class='bg i13-2' mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/13/2.png'></image>
       <view class='text p14'>“哦，”你有点沮丧，“但是等等，如果我可以转世到其他时间，就说明某些情况下我可以遇到我自己。”
         “当然。这是一直都有的事。但每世都只有自己那一段生命的记忆，所以你们相遇的时候，你自己是毫无察觉的。”
         “那这一切到底意义何在？”
@@ -131,7 +131,7 @@
 
       <!-- 第十五页 -->
       <image class='bg i15-1' mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/15/1.png'></image>
-      <image class='bg i15-2' mode='aspectFill' src='	cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/15/2.png'></image>
+      <image class='bg i15-2' mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/15/2.png'></image>
       <view class='text p16'>“只有我？那其他人呢？”
         “没有其他人，”我说，“在这个宇宙中，只有你和我。”
         你茫然地瞪著我，“但这世界上所有其他人……”
@@ -172,7 +172,7 @@
       <!-- 第二十页 -->
       <!-- 核心---------------------------------------------------------------------------------->
       <image class="bg i20-1" mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/20/1.jpg'></image>
-      <image class="bg i20-2" mode='aspectFill' src='	cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/20/2.png'></image>
+      <image class="bg i20-2" mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/20/2.png'></image>
       <image class="bg i20-3" mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/20/3.png'></image>
       <image class="bg i20-4" mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/20/4.png'></image>
       <image class="bg i20-5" mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/20/5.png'></image>
