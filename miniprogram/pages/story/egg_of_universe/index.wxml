@@ -1,8 +1,8 @@
 <view class="page1">
   <scroll-view id="scroller" scroll-y bindscroll="scroll">
     <view class="contanier1">
-      <image class='bg i1-1' src='/index/image/1.png'></image>
-      <image class='title ' src="/index/image/title.png"></image>
+      <image class='bg i1-1' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/1.png'></image>
+      <image class='title ' src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/title.png"></image>
       <view class='text p1'>你死在回家的路上。
       </view>
 
@@ -16,9 +16,9 @@
 
       <!--第二页  -->
       <!-- 背景 -->
-      <image class='bg i2-1' src="/index/image/second/1.png"></image>
-      <image class='bg i2-2' src="/index/image/second/2.png"></image>
-      <image class='bg i2-3' src="/index/image/second/3.png"></image>
+      <image class='bg i2-1' src="	cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/second/1.png"></image>
+      <image class='bg i2-2' src="	cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/second/2.png"></image>
+      <image class='bg i2-3' src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/second/3.png"></image>
 
       <view class='text p3'>这时候你看到了我。
         “怎……怎么回事？”你问，“我在哪？”
@@ -33,10 +33,10 @@
         “嗯。但是别难过，人固有一死。”我说。
       </view>
       <!-- 第四页 -->
-      <image class="bg i4-3" src='/index/image/fourth/3.png'></image>
-      <image class='bg i4-1' mode="aspectFill" src='/index/image/fourth/1.png'></image>
+      <image class="bg i4-3" src='	cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/fourth/3.png'></image>
+      <image class='bg i4-1' mode="aspectFill" src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/fourth/1.png'></image>
 
-      <image class='bg i4-2' mode="aspectFill" src='/index/image/fourth/2.png'></image>
+      <image class='bg i4-2' mode="aspectFill" src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/fourth/2.png'></image>
       <view class='text p5'>你四下张望，周围一片虚空，只有你我。“这是什么地方？”你问，“这是死后的世界吗？”
         “可以这么说吧，”我说。
         “你是上帝吗？”你问。
@@ -44,7 +44,7 @@
       </view>
 
       <!-- 第五页 -->
-      <image class="bg i5-1" mode='aspectFill' src="/index/image/fifth/1.png"></image>
+      <image class="bg i5-1" mode='aspectFill' src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/fifth/1.png"></image>
       <view class='text p6'>“我的孩子们……还有我太太，”你说。
         “他们怎么了？”
         “他们会没事吗？”
@@ -52,17 +52,17 @@
       </view>
 
       <!-- 第六页 -->
-      <image class="bg i6-1" mode="aspectFill" src='/index/image/6/1.png'></image>
-      <image class="bg i6-2" mode="aspectFill" src='/index/image/6/2.png'></image>
+      <image class="bg i6-1" mode="aspectFill" src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/6/1.png'></image>
+      <image class="bg i6-2" mode="aspectFill" src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/6/2.png'></image>
       <view class="text p7">你痴痴地看著我。对你来说我看起来不像上帝，只像一个平常人，也可能是女人。一个模糊的权威形象，可能吧，比起万能的上帝，更像是一个语法学校老师。</view>
 
       <!-- 第七页 -->
 
-      <image class='bg i7-1' src='/index/image/7/1.png'></image>
+      <image class='bg i7-1' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/7/1.png'></image>
       <!-- 眼睛效果 -->
       <view class='eye'>
-        <image class='i7-2' src='/index/image/7/2.jpg'></image>
-        <image class='i7-3' src='/index/image/7/3.jpg'></image>
+        <image class='i7-2' src='	cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/7/2.jpg'></image>
+        <image class='i7-3' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/7/3.jpg'></image>
       </view>
 
       <view class='text p8'>
@@ -70,7 +70,7 @@
       </view>
 
       <!-- 第八页 -->
-      <image class='bg i8-1' mode='aspectFill' src='/index/image/8/1.png'></image>
+      <image class='bg i8-1' mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/8/1.png'></image>
       <view class='text p9'>“哦，”你说，“那么现在呢？我是上天堂还是下地狱或者去别的什么地方？”
         “都不是，”我说，“你会去转世。”
         “啊，”你说，“所以印度教是对的。”
@@ -78,8 +78,8 @@
       </view>
 
       <!-- 第九页 -->
-      <image class='bg i9-1' mode='aspectFill' src='/index/image/9/1.png'></image>
-      <image class='i9-2' mode='aspectFill' src='/index/image/9/2.png'></image>
+      <image class='bg i9-1' mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/9/1.png'></image>
+      <image class='i9-2' mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/9/2.png'></image>
       <view class='text p10'>你跟著我在虚空中穿行，“我们去哪里？”
         “不去哪里，”我说，“我们边说边走走就好。”
         “那意义何在？”你问，“我转世后，我又会变成白板一块，对吧？ 一个婴儿。此生中我经历的一切，我做的事，都不再有所谓。”
@@ -87,16 +87,16 @@
       </view>
 
       <!-- 第十页 -->
-      <image class='bg i10-1' mode='aspectFill' src='/index/image/10/1.jpg'></image>
-      <image class='bg i10-2' mode='aspectFill' src='/index/image/10/2.jpg'></image>
-      <image class='bg i10-3' mode='aspectFill' src='/index/image/10/3.jpg'></image>
+      <image class='bg i10-1' mode='aspectFill' src='	cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/10/1.jpg'></image>
+      <image class='bg i10-2' mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/10/2.jpg'></image>
+      <image class='bg i10-3' mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/10/3.jpg'></image>
       <view class='text p11'>
         我停下来握住你的肩膀，“你的灵魂远比你所想的要壮观、美丽和宏大。一个人脑只能承载你的很小很小一部分。就像用一个指头试探一杯水的凉热。你只需投入你的一小部分到这个容器之中，将其取出之后，就获得了它所有的智识。
         “你刚为人四十八年，还没来得及伸展自己，感受你巨大意识的其他部分。如果我们在此逗留时间够长，你就会开始想起所有事。不过我们没必要在每世之间这么做。”
       </view>
 
       <!-- 第十一页 -->
-      <image class='bg i11-1' mode='aspectFill' src='/index/image/11/1.png'></image>
+      <image class='bg i11-1' mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/11/1.png'></image>
       <view class='text p12'>“那我到现在转世多少次了？”
         “噢，很多。很多很多。很多不同的人生。”我说，“下面这一世，你会是公元540年的一个中国的农家女孩。”
         “等等，什么？”你结结巴巴地问，“你要把我送到过去？”
@@ -104,15 +104,15 @@
       </view>
 
       <!-- 第十二页 -->
-      <image class="bg i12-1" mode='aspectFill' src='/index/image/12/1.jpg'></image>
-      <image class="bg i12-2" mode='aspectFill' src='/index/image/12/2.jpg'></image>
+      <image class="bg i12-1" mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/12/1.jpg'></image>
+      <image class="bg i12-2" mode='aspectFill' src='	cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/12/2.jpg'></image>
       <view class='text p13'>“那你从哪里来的？”你问。
         “这样的，”我解释道，“我来自某处。在别的地方，那里也有像我这样的。我知道你想知道那里是什么样的，但老实说，你不会理解的。”
       </view>
 
       <!-- 第十三页 -->
-      <image class='bg i13-1' mode='aspectFill' src='/index/image/13/1.jpg'></image>
-      <image class='bg i13-2' mode='aspectFill' src='/index/image/13/2.png'></image>
+      <image class='bg i13-1' mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/13/1.jpg'></image>
+      <image class='bg i13-2' mode='aspectFill' src='	cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/13/2.png'></image>
       <view class='text p14'>“哦，”你有点沮丧，“但是等等，如果我可以转世到其他时间，就说明某些情况下我可以遇到我自己。”
         “当然。这是一直都有的事。但每世都只有自己那一段生命的记忆，所以你们相遇的时候，你自己是毫无察觉的。”
         “那这一切到底意义何在？”
@@ -121,8 +121,8 @@
       </view>
 
       <!-- 第十四页 -->
-      <image class='bg i14-2' mode='aspectFill' src='/index/image/14/2.jpg'></image>
-      <image class='bg i14-3' mode='aspectFill' src='/index/image/14/3.png'></image>
+      <image class='bg i14-2' mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/14/2.jpg'></image>
+      <image class='bg i14-3' mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/14/3.png'></image>
       <image></image>
       <view class="text p15">我看著你的眼睛，“生命的意义，我为你创造这整个宇宙的原因，在于为了让你成熟。”
         “你是说全人类？你希望我们成熟？”
@@ -130,18 +130,18 @@
       </view>
 
       <!-- 第十五页 -->
-      <image class='bg i15-1' mode='aspectFill' src='/index/image/15/1.png'></image>
-      <image class='bg i15-2' mode='aspectFill' src='/index/image/15/2.png'></image>
+      <image class='bg i15-1' mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/15/1.png'></image>
+      <image class='bg i15-2' mode='aspectFill' src='	cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/15/2.png'></image>
       <view class='text p16'>“只有我？那其他人呢？”
         “没有其他人，”我说，“在这个宇宙中，只有你和我。”
         你茫然地瞪著我，“但这世界上所有其他人……”
       </view>
 
       <!-- 第十六页 -->
-      <image class='bg i16-1' mode='aspectFill' src='/index/image/16/1.jpg'></image>
-      <image class='bg i16-2' mode='aspectFill' src='/index/image/16/2.jpg'></image>
-      <image class='bg i16-3' mode='aspectFill' src='/index/image/16/3.jpg'></image>
-      <image class='bg i16-4' mode='aspectFill' src='/index/image/16/4.jpg'></image>
+      <image class='bg i16-1' mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/16/1.jpg'></image>
+      <image class='bg i16-2' mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/16/2.jpg'></image>
+      <image class='bg i16-3' mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/16/3.jpg'></image>
+      <image class='bg i16-4' mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/16/4.jpg'></image>
       <view class='text p17'>“都是你。都是你不同的转世。”
         “等等！我是所有人！”
         “现在你明白了，”我说，拍拍你的背表示祝贺。
@@ -150,42 +150,42 @@
       </view>
 
       <!-- 第十七页 -->
-      <image class="bg i17-1" mode='aspectFill' src='/index/image/17/1.jpg'></image>
-      <image class="bg i17-2" mode='aspectFill' src='/index/image/17/2.png'></image>
+      <image class="bg i17-1" mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/17/1.jpg'></image>
+      <image class="bg i17-2" mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/17/2.png'></image>
       <view class="text p18">“我是亚伯拉罕·林肯？”
         “你同时也是约翰·威尔克斯·布斯（刺杀林肯的人），”我补充道。
       </view>
 
       <!-- 第十八页 -->
-      <image class="bg i18-1" mode='aspectFill' src='/index/image/18/1.jpg'></image>
-      <image class="bg i18-2" mode='aspectFill' src='/index/image/18/2.jpg'></image>
+      <image class="bg i18-1" mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/18/1.jpg'></image>
+      <image class="bg i18-2" mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/18/2.jpg'></image>
       <view class="text p19">“我是希特勒？”你骇然道。
         “你也是他杀害的千百万人。”
       </view>
 
       <!-- 第十九页 -->
-      <image class="bg i19-1" mode='aspectFill' src='/index/image/19/1.gif'></image>
+      <image class="bg i19-1" mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/19/1.gif'></image>
       <view class="text p20">“我是耶稣？”
         “你也是他的所有信徒。”
       </view>
 
       <!-- 第二十页 -->
       <!-- 核心---------------------------------------------------------------------------------->
-      <image class="bg i20-1" mode='aspectFill' src='/index/image/20/1.jpg'></image>
-      <image class="bg i20-2" mode='aspectFill' src='/index/image/20/2.png'></image>
-      <image class="bg i20-3" mode='aspectFill' src='/index/image/20/3.png'></image>
-      <image class="bg i20-4" mode='aspectFill' src='/index/image/20/4.png'></image>
-      <image class="bg i20-5" mode='aspectFill' src='/index/image/20/5.png'></image>
-      <image class="bg i20-6" mode='aspectFill' src='/index/image/20/6.png'></image>
-      <image class="bg i20-7" mode='aspectFill' src='/index/image/20/7.png'></image>
+      <image class="bg i20-1" mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/20/1.jpg'></image>
+      <image class="bg i20-2" mode='aspectFill' src='	cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/20/2.png'></image>
+      <image class="bg i20-3" mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/20/3.png'></image>
+      <image class="bg i20-4" mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/20/4.png'></image>
+      <image class="bg i20-5" mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/20/5.png'></image>
+      <image class="bg i20-6" mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/20/6.png'></image>
+      <image class="bg i20-7" mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/20/7.png'></image>
 
       <view class="text p21">你陷入沉默。
         “每一次你伤害他人，”我说，“都是在伤害自己。每一次你行善举，都是在帮助自己。他人经历过或即将经历的一切快乐和痛苦，你都会经历。”
       </view>
 
       <!-- 第二十一页 -->
-      <image class="bg i21-1" mode='aspectFill' src='/index/image/21/1.jpg'></image>
-      <image class="bg i21-2" mode='aspectFill' src='/index/image/21/2.jpg'></image>
+      <image class="bg i21-1" mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/21/1.jpg'></image>
+      <image class="bg i21-2" mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/21/2.jpg'></image>
       <view class="text p22">“为什么？”你问我，“为什么要做这些？”
         “因为有一天，你会成为我。因为这就是你。你是我的同类，你是我的孩子。”
         “哇，”你难以置信，“你是说我是一个上帝？”
@@ -193,8 +193,8 @@
       </view>
 
       <!-- 第二十二页 -->
-      <image class="bg i22-1" mode='aspectFill' src='/index/image/22/1.jpg'></image>
-      <image class="bg i22-2" mode='aspectFill' src='/index/image/22/2.jpg'></image>
+      <image class="bg i22-1" mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/22/1.jpg'></image>
+      <image class="bg i22-2" mode='aspectFill' src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/universe/22/2.jpg'></image>
       <view class="text p23">“所以这整个宇宙，”你说，“只是一个……”
         “一个蛋，”我答，“现在该是你去下一世的时候了。”
         然后，我送你上了路。

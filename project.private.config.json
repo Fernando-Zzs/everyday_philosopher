@@ -101,6 +101,24 @@
           "pathName": "pages/find/story-detail/story-detail",
           "query": "story_id=0",
           "scene": null
+        },
+        {
+          "name": "搜索",
+          "pathName": "pages/find/search/search",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "搜索按钮",
+          "pathName": "pages/find/search_button/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "分析页面",
+          "pathName": "pages/personal/analyse/analyse",
+          "query": "",
+          "scene": null
         }
       ]
     }

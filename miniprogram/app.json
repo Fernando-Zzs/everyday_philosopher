@@ -1,15 +1,20 @@
 {
   "pages": [
     "pages/personal/index/index",
-    "pages/find/index/index",
-    "pages/recommend/recommend",
     "pages/personal/history/history",
     "pages/personal/star/star",
-    "pages/personal/analysis/analysis",
     "pages/personal/statistics/statistics",
+    "pages/personal/analyse/analyse",
+
+    "pages/recommend/recommend",
+
+    "pages/find/index/index",
     "pages/find/answer/answer",
     "pages/find/story-detail/story-detail",
     "pages/find/question-detail/question-detail",
+    "pages/find/search/search",
+    "pages/find/search_button/index",
+    
     "pages/story/kongzi/index",
     "pages/story/socreate/index",
     "pages/story/egg_of_universe/index",

@@ -1,0 +1,18 @@
+<!--pages/search/search.wxml-->
+<!-- 搜索框 -->
+<view class="container">
+<image class="bg" mode="aspectFill" src="./image/1.jpg"></image>
+<view class="search-bar">
+<view class="search-icon">sea</view>
+<input class='input' placeholder='input' bindconfirm='search_confirm'></input>
+</view>
+
+
+<view class="serach-item" wx:for="{{search_items}}" wx:key='id'>
+<view class="serach-item-head">
+<view class="serach-item-icon"></view>
+<view class="serach-item-title">{{item.title}}</view>
+</view>
+<view class="serach-item-content"><text>{{item.content}}</text></view>
+</view>
+</view>
