@@ -1,0 +1,143 @@
+.page-section-spacing{
+  margin-top: 0rpx;
+}
+.page-body{
+  position: relative;
+}
+.scroll-view_H{
+
+  white-space: nowrap;
+  position: relative;
+  width: 100vw;
+  height:100%;
+  /* top:200rpx; */
+  /* padding-top: 30%; */
+  /* flex-direction: row; */
+  /* border: 2rpx yellow solid; */
+}
+.search-btn{
+  z-index: 999;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+  position:fixed;
+  width: 60rpx;
+  height: 60rpx;
+}
+.scroll-view-item_H{
+  /* position:absolute; */
+  /* position: sticky; */
+  display: inline-block;
+  /* display: flex; */
+  /* top:30%; */
+  /* width:100px; */
+  height: 100vh;
+  /* background-image: linear-gradient(to right,rgb(111,22,25),rgb(22,33,255)); */
+  /* border: 2rpx red solid; */
+}
+/*  滑块 */
+.m-box {
+  padding-top: 30rpx;
+}
+.m-area {
+  left: -100vw;
+  height: 70vh; 
+  width: 200vw; 
+  background:rgba(0,0,0,0); 
+  z-index: 99;
+}
+.m-item {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 50%;
+  margin-top: -5px;
+}
+.m-item-box {
+  overflow: hidden;
+  margin-left: 42rpx;
+  width: 666rpx;
+  height: 80vh;
+  position: absolute;
+  top: -333rpx;
+  border-radius: 10rpx;
+  z-index: 9;
+  background: #fff;
+  /* padding-top: 76rpx; */
+  border-radius: 60rpx;
+  box-shadow:5px 9px 10px 0px rgba(0,0,0,0.1);
+  border: solid 1px black;
+}
+.header{
+  padding-top: 50rpx;
+  display: flex;
+  padding-bottom: 50rpx;
+  align-items: center;
+  border-bottom: 3rpx solid #ccc;
+}
+
+
+.circle
+{
+  /* padding-top:300rpx; */
+  /* position: relative; */
+  /* top:50%; */
+  align-items: center;
+  display: inline-block;
+  width:100px;
+  height:100px;
+  /* border:solid blue 2rpx ; */
+  border-radius: 50%;
+  text-align: center;
+  line-height: 100px;
+  /* background-image: linear-gradient(to right top,#B3FFAB,#12FFF7); */
+
+
+}
+.question-title{
+  /* text-align: center; */
+  margin-top: 5rpx;
+  line-height: 60rpx;
+  font-size: 40rpx;
+  font-weight: 700;
+}
+
+l-button{
+  position: absolute;
+  width:200%;
+  height:100vh;
+  /* border: 2rpx red solid; */
+  animation: sun 8s  infinite linear;
+}
+.answer{
+  /* margin-left: 2.5%; */
+  /* margin-top: 15rpx; */
+  width: 86%;
+  padding: 7%;
+  /* height:300rpx; */
+}
+.bg{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  /* filter: blur(5px); */
+}
+.button{
+  position: absolute;
+  bottom: 10%;
+  width: 30%;
+  height: 80rpx;
+  background-color: rgba(255, 255, 255, 0.671);
+  backdrop-filter: blur(20px);
+  border-radius: 40rpx;
+  line-height: 80rpx;
+  text-align: center;
+  color: rgb(36, 110, 85);
+}
+.b1{
+  left: 15%;
+}
+.b2{
+ right:15% ;
+}
+

@@ -1,34 +1,22 @@
-<!--pages/index/index.wxml-->
-<get-more-loading show="{{show}}" wx:if="{{show}}"></get-more-loading>
-<view class='page-box box'>
-  <view class="m-box">
-    <movable-area class="m-area">
-      <movable-view class='m-item' wx:for="{{list}}" wx:key="item" wx:index="index" x="{{item.x}}" y="{{item.y}}"
-        damping="52" direction="all" bindchange="onChange" data-index="{{index}}" 
-        data-questionid="{{item.question_id}}"
-        catchtouchend="touchEnd"
-        catchtouchstart="touchStart" catchtouchmove="touchMove" out-of-bounds="true" data-index="{{index}}">
-        <!-- 业务逻辑 start -->
-        <view class='m-item-box item{{(index == 0 || index == list.length -1) ? 0 : 1}} '>
-          <view class="header">
-            <image src="{{item.image}}" class="image"></image>
-            <view class="question">
-              <view class='question-title'>
-                {{item.title || '--'}}
-              </view>
-              <view class='question-content'>
-                {{item.description || '--'}}
-              </view>
+<view class="container">
+  
+  <view class="page-body">
+    <image class="bg" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/background2.png" mode="aspectFill"></image>
+    <view class="page-section">
+      <view class="page-section-spacing">
+        
+        <scroll-view id ="scroll-view_H" class="scroll-view_H" scroll-x="true" bindscroll="scroll"  
+        >
+        <image class="search-btn" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/搜索.png" bindtap="search"></image>
+        <!-- lower-threshold -->
+          <block wx:for="{{items}}" wx:for-item="itemName" wx:key="id">
+            <view class="scroll-view-item_H">
+              <image id="{{itemName.id}}" class="circle" src="{{itemName.url}}" bindtap="enter" data-no="{{itemName.no}}"></image>
+              <pop isStory="{{isStory}}" show="{{showNow}}"></pop>
             </view>
-          </view>
-          <view class="answer">
-            <l-textarea placeholder="说说你的想法吧……" maxlength="200" focus="true" class="l-class" bind:lininput></l-textarea>
-          </view>
-        </view>
-        <!-- 业务逻辑 end -->
-      </movable-view>
-    </movable-area>
-    <l-button type="default" plain="true" size="long" shape="circle" bindtap="submit">提交</l-button>
+          </block>
+        </scroll-view>
+      </view>
+    </view>
   </view>
-
 </view>

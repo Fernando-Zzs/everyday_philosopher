@@ -1,21 +1,5 @@
 <!--story3/story3.wxml-->
 <!-- 侧边栏 -->
-<view class="broadside">
-<!-- 标题 -->
-<view class="broad-title">第零章 序言</view>
-<!-- 信息 -->
-<view class="broad-info">信息</view>
-<view class='braod-item'>开始哲学之旅！</view>
-<!-- 系列 -->
-<view class="broad-series">系列</view>
-<view class='braod-item'>苏格拉底：认识你自己</view>
-<!-- 相似推荐 -->
-<view class="broad-relative">相似推荐</view>
-<view class='braod-item'>宇宙之卵</view>
-</view>
-
-<view class="broad-button" bindtap="broad">{{broad_state}}</view>
-
 
 <view class="page1">
   <scroll-view id="scroller" scroll-y bindscroll="scroll">
@@ -89,3 +73,32 @@
 
 
 </view>
+<view  wx:if="{{!broad_state}}" class="broad-button" bindtap="broad">{{broad_state}}</view>
+<page-container 
+  show="{{broad_state}}"
+  round="false"
+  overlay="true"
+  duration="400"
+  position="center"
+  close-on-slide-down="false"
+  bindenter="onEnter"
+  bind:beforeleave="beforeLeave"
+  custom-style="  backdrop-filter:blur(15px);height:100vh;width:65vw;background-color:rgba(255,255,255,0);z-index:100;"
+  overlay-style="background-color: rgba(0, 0, 0, 0.3)"
+>
+<view class="broadside">
+
+<view class="broad-title">第零章 序言</view>
+
+<view class="broad-info">信息</view>
+<view class='braod-item'>开始哲学之旅！</view>
+
+<view class="broad-series">系列</view>
+<view class='braod-item'>苏格拉底：认识你自己</view>
+
+<view class="broad-relative">相似推荐</view>
+<view class='braod-item'>宇宙之卵</view>
+
+<view class="share_button" bindtap='share_story'>分享故事海报</view>
+</view>
+</page-container>

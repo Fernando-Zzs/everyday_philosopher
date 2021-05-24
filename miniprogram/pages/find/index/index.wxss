@@ -1,135 +1,72 @@
-/* pages/index/index.wxss */
-.page-box {
-  height: 100%;
+.page-section-spacing{
+  margin-top: 0rpx;
 }
-/* swiper */
-.top-box {
-  height: 88rpx;
-  line-height: 88rpx;
+.page-body{
   position: relative;
-  background: #f7f7f7;
-  padding-left: 10rpx;
 }
-.top-local{
-  width: 44rpx;
-  height: 44rpx;
-  display: block;
-  float: left;
-  margin-top: 20rpx;
-}
-.top-text {
-  float: left;
-  line-height: 88rpx;
-  margin-left: 12rpx;
-}
-.top-notify{
-  width: 500rpx;
-  height: 60rpx;
-  line-height: 60rpx;
-  margin-top: 14rpx;
-  border-radius: 8rpx;
-  float: left;
-  color: #ff6428;
-  margin-left: 52rpx;
-  overflow: hidden;
-  padding-left: 60rpx;
-  background: #fff url(http://welfare.img.shanshizhe.cn/icon5.png) 18rpx center no-repeat;
-  background-size: 28rpx 28rpx;
-}
-.swiper_item{
-  width:100%;
-  height:100%;
-  position:relative;
-  overflow: hidden;
-}
-.swiper_img{
-  width: 102%;
-  height: 102%;
-  position: absolute;
-  left: -2%;
-  top: -2%;
-}
-/* swiper end */
+.scroll-view_H{
 
-/*  滑块 */
-.m-box {
-  padding-top: 50rpx;
-}
-.m-area {
-  left: -100vw;
-  height: 696rpx; 
-  width: 200vw; 
-  background:rgba(0,0,0,0); 
-  z-index: 99;
-}
-.m-item {
-  width: 10px;
-  height: 10px;
-  position: absolute;
-  top: 50%;
-  margin-top: -5px;
-}
-.m-item-box {
-  margin-left: 42rpx;
-  width: 666rpx;
-  height: 856rpx;
-  position: absolute;
-  top: -333rpx;
-  border-radius: 10rpx;
-  z-index: 9;
-  background: #fff;
-  padding-top: 76rpx;
-}
-.header{
-  display: flex;
-  padding-bottom: 50rpx;
-  border-bottom: 3rpx solid #ccc;
-}
-.question{
-  display: flex;
-  flex-direction: column;
-  margin-right: 30rpx;
-}
-.image {
-  flex-shrink: 0;
-  width: 100rpx;
-  height: 100rpx;
-  margin: 0 50rpx;
-  border-radius: 50%;
-}
-.item-star{
-  width: 100%;
-  margin-top: 40rpx;
-  text-align: center;
-}
-.item0{
-  box-shadow:0px 9px 10px 0px rgba(0,0,0,0.1);
-}
-.question-title{
-  text-align: center;
-  margin-top: 5rpx;
-  line-height: 40rpx;
-  font-size: 40rpx;
-  font-weight: 700;
-}
-.question-content{
-  line-height: 48rpx;
-  margin-top: 30rpx;
-  font-size: 28rpx;
-  color: #777;
-  text-indent: 2rem;
+  white-space: nowrap;
   position: relative;
+  width: 100vw;
+  height:100%;
+  /* top:200rpx; */
+  /* padding-top: 30%; */
+  /* flex-direction: row; */
+  /* border: 2rpx yellow solid; */
 }
-l-button{
+.search-btn{
+  z-index: 999;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+  position:fixed;
+  width: 60rpx;
+  height: 60rpx;
+}
+.scroll-view-item_H{
+  /* position:absolute; */
+  /* position: sticky; */
+  display: inline-block;
+  /* display: flex; */
+  /* top:30%; */
+  /* width:100px; */
+  height: 100vh;
+  /* background-image: linear-gradient(to right,rgb(111,22,25),rgb(22,33,255)); */
+  /* border: 2rpx red solid; */
+
+}
+
+
+.circle
+{
+  /* padding-top:300rpx; */
+  /* position: relative; */
+  /* top:50%; */
+  align-items: center;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  /* border:solid blue 2rpx ; */
+  border-radius: 50%;
+  text-align: center;
+  line-height: 100px;
+  /* background-image: linear-gradient(to right top,#B3FFAB,#12FFF7); */
+
+
+}
+
+.bg{
   position: absolute;
-  width: 666rpx;
-  left: 42rpx;
-  bottom: 10rpx;
+  width:200%;
+  height:100vh;
+  /* border: 2rpx red solid; */
+  animation: sun 8s  infinite linear;
 }
-.answer{
-  margin-left: 2.5%;
-  margin-top: 15rpx;
-  width: 95%;
-  height:200rpx;
+
+@keyframes sun{
+  100%{
+    transform:translateX(-100vw);
+
+  }
 }
-/* 滑块end */
+

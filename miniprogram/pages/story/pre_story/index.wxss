@@ -1,15 +1,20 @@
 /* story3/story3.wxss */
+
 .broadside{
-  position:fixed;
+  /* position:fixed;
   height: 100vh;
-  width:60vw;
-  backdrop-filter:blur(15px);
-  background: rgba(255, 255, 255, 0.616);
+  width:60vw; */
+  position:fixed;
+  width: 65vw;
+  height: 100%;
+  /* backdrop-filter:blur(15px); */
+
+  background: rgba(255, 255, 255, 0.65);
   display:flex;
   flex-direction:column;
   align-items:center;
   left: -60vw;
-  z-index: 100000;
+  /* z-index: 100000; */
 }
 .braod-item{
   /* height:50px; */
@@ -49,7 +54,7 @@
 
 .broad-button{
   position: fixed;
-  border: 2px red solid;
+  border: 2px white solid;
   width: 70px;
   height: 30px;  
   border-radius: 20px;
@@ -58,11 +63,22 @@
   text-align:center;
   line-height: 30px;
   color: aliceblue;
-  z-index: 10000000;
+  /* z-index: 10000000; */
+  z-index: 1;
 }
-
+.share_button{
+  position: absolute;
+  width: 85%;
+  height: 40px;  
+  border-radius: 20px;
+  bottom: 150rpx;
+  border: 1px solid black;
+  text-align:center;
+  line-height:40px;
+  /* z-index: 1; */
+}
 .page1 {
-  height: 100%;
+  height: 100vh;
 }
 scroll-view {
   height: 100%;

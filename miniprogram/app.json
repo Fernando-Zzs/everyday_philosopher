@@ -5,26 +5,27 @@
     "pages/personal/star/star",
     "pages/personal/statistics/statistics",
     "pages/personal/analyse/analyse",
-
     "pages/recommend/recommend",
-
     "pages/find/index/index",
+    "pages/find/QandA/index",
     "pages/find/answer/answer",
     "pages/find/story-detail/story-detail",
     "pages/find/question-detail/question-detail",
     "pages/find/search/search",
     "pages/find/search_button/index",
-    
+    "pages/find/write/write",
     "pages/story/kongzi/index",
     "pages/story/socreate/index",
     "pages/story/egg_of_universe/index",
     "pages/story/know_yourself/index",
     "pages/story/pre_story/index",
-    "pages/story/test/test"
+    "pages/story/test/test",
+    "components/pop/pop",
+    "pages/find/question/question"
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#D0A669",
+    "navigationBarBackgroundColor": "#000",
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "每日哲学家"
   },

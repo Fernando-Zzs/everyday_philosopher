@@ -65,7 +65,7 @@ function initChart2(canvas, width, height){
                 {value: 30, name: '马克思主义哲学'},
                 {value: 28, name: '逻辑学'},
                 {value: 26, name: '心理学'},
-                {value: 22, name: '民哲'},
+                {value: 22, name: '政治学'},
                 {value: 18, name: '艺术学'}
             ]
         }
@@ -123,7 +123,13 @@ Page({
     },
     ec3:{
       onInit:initChart3
-    }
+    },
+    index:0,
+    x:35
+  },
+  swip(e){
+    console.log(e)
+    this.setData({x:this.data.x+=e.detail.dx/2000})
   },
 
   /**
