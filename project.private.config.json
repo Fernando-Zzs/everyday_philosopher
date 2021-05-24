@@ -43,7 +43,7 @@
           "scene": null
         },
         {
-          "name": "探索页面",
+          "name": "第二页/回答",
           "pathName": "pages/find/index/index",
           "query": "",
           "scene": null
@@ -105,6 +105,18 @@
         {
           "name": "pages/find/index/index",
           "pathName": "pages/find/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/find/search/search",
+          "pathName": "pages/find/search/search",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "第二页/问题",
+          "pathName": "pages/find/question/question",
           "query": "",
           "scene": null
         }

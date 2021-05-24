@@ -1,0 +1,12 @@
+<!--miniprogram/pages/find/question/question.wxml-->
+<!-- 弃用 -->
+<view class="container">
+<view class="question-container">
+
+<view class="question-card">
+<image class="bg" mode="aspectFill" src="../index/image/1.jpg"></image>
+<view class="title"></view>
+<view class="content"></view>
+</view>
+</view>
+</view>

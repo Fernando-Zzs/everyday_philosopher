@@ -11,7 +11,8 @@ Component({
       console.log(e)
     },
     broad(e){
-      if(!this.data.broad_state){
+      this.setData({broad_state:true})
+    //   if(!this.data.broad_state){
 
       this.animate('.broadside',
       [
@@ -25,26 +26,46 @@ Component({
           offset:0,
           ease:'ease-in'
         }
-      ],300,()=>{this.setData({broad_state:true})})
+      ],150)
 
-    }
-    else{
+    // }
+    // else{
        
-        this.animate('.broadside',
-        [
-          {
-            left:'0vw',
-            offset:0,
-            ease:'ease-out'
-          },
-          {
-            left:'-60vw',
-            offset:0,
-            ease:'ease-out'
-          }
-        ],300,()=>{this.setData({broad_state:false})  })
+    //     this.animate('.broadside',
+    //     [
+    //       {
+    //         left:'0vw',
+    //         offset:0,
+    //         ease:'ease-out'
+    //       },
+    //       {
+    //         left:'-60vw',
+    //         offset:0,
+    //         ease:'ease-out'
+    //       }
+    //     ],300,()=>{this.setData({broad_state:false})  })
 
-    }
+    // }
+    },
+    onEnter(e){},
+    beforeLeave(e){
+      this.animate('.broadside',
+      [
+        {
+          left:'0vw',
+          offset:0,
+          ease:'ease-out'
+        },
+        {
+          left:'-60vw',
+          offset:0,
+          ease:'ease-out'
+        }
+      ],150,()=>{this.setData({broad_state:false})  })
+    },
+    share_story(e){
+      console.log('share')
+      wx.showShareImageMenu({path:'../../find/index/image/1.jpg'})
     },
     _animate() {
       this.animate(".t1",
