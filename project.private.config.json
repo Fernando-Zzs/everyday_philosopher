@@ -13,74 +13,8 @@
     "miniprogram": {
       "list": [
         {
-          "name": "历史记录页面",
-          "pathName": "pages/personal/history/history",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "我的界面",
-          "pathName": "pages/personal/index/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "统计记录",
-          "pathName": "pages/personal/statistics/statistics",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "分析",
-          "pathName": "pages/personal/analysis/analysis",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "收藏夹",
-          "pathName": "pages/personal/star/star",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "探索页面",
-          "pathName": "pages/find/index/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "答案详情页",
-          "pathName": "pages/find/answer/answer",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "故事详情页",
-          "pathName": "pages/find/story-detail/story-detail",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "苏格拉底",
-          "pathName": "pages/story/socreate/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "孔子",
-          "pathName": "pages/story/kongzi/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "test",
-          "pathName": "pages/story/test/test",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "宇宙之卵",
-          "pathName": "pages/story/egg_of_universe/index",
+          "name": "问题浏览",
+          "pathName": "pages/find/QandA/index",
           "query": "",
           "scene": null
         },
@@ -91,32 +25,8 @@
           "scene": null
         },
         {
-          "name": "认识你自己",
-          "pathName": "pages/story/know_yourself/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "苏格拉底详情页",
-          "pathName": "pages/find/story-detail/story-detail",
-          "query": "story_id=0",
-          "scene": null
-        },
-        {
-          "name": "pages/find/index/index",
+          "name": "小星球",
           "pathName": "pages/find/index/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "实时回答详情页",
-          "pathName": "pages/find/QandA/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "搜索按钮",
-          "pathName": "pages/find/search_button/index",
           "query": "",
           "scene": null
         },
@@ -127,8 +37,14 @@
           "scene": null
         },
         {
-          "name": "模态框",
-          "pathName": "pages/find/index1/index",
+          "name": "主页",
+          "pathName": "pages/personal/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "回答页面（待改）",
+          "pathName": "pages/find/answer/answer",
           "query": "",
           "scene": null
         },

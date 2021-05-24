@@ -20,11 +20,12 @@
     "pages/story/know_yourself/index",
     "pages/story/pre_story/index",
     "pages/story/test/test",
-    "components/pop/pop"
+    "components/pop/pop",
+    "pages/find/question/question"
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#D0A669",
+    "navigationBarBackgroundColor": "#000",
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "每日哲学家"
   },
