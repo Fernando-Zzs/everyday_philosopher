@@ -35,5 +35,17 @@ exports.main = async (event, context) => {
   }
 
   let ret_question_id_arr_from_all = ret_question_id_arr_from_title.concat(ret_question_id_arr_from_description).unique()
+
+  // for( let i=0,len = ret_question_id_arr_from_all.length;i<len;i++){
+  //   wx.cloud.callFunction({
+  //     name:'getQuestion',
+  //     data:{
+  //       question_id: ret_question_id_arr_from_all[i]
+  //     },
+  //     complete:res=>{
+  //       ret_question_id_arr_from_all[i] = res
+  //     }
+  //   })
+  // }
   return ret_question_id_arr_from_all
 }

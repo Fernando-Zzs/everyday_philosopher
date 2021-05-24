@@ -1,202 +1,250 @@
-// pages/index/index.js
-import mockArr from './mock.js'
-const app = getApp()
-let winWidth = 416;
-let winHeight = 736;
-
-function deepClone(obj) {
-  if (typeof obj !== 'object' || obj === null) {
-    return obj
-  }
-  let newObj = obj instanceof Array ? [] : {}
-  for (let key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      newObj[key] = typeof obj[key] === 'object' ? deepClone(obj[key]) : obj[key]
-    }
-  }
-  return newObj
-}
+const order = ['demo1', 'demo2', 'demo3']
 Page({
+  onLoad()
+  {  
+  },
+  onShareAppMessage() {
+    return {
+      title: 'scroll-view',
+      path: 'page/component/pages/scroll-view/scroll-view'
+    }
+  },
   data: {
-    show: true,
-    x: winWidth,
-    y: winHeight,
-    animationA: {},
-    list: [],
-    distance: "",
-    startX: '', // 初始点X位置
-    startY: '', // 初始点Y位置
-    currentIndex: -1, // 当前最上层滑块
-    ratio: 2, // 屏幕比例
-    context: '', // 文本框内容
-    currentQid: '' // 当前问题id
+    ww: wx.getSystemInfoSync().windowWidth,
+    toView: 'green',
+    dWidth: 100,
+    dHeight: 600,
+    isStory: '',
+    showNow: '',
+    items:[],
+    virtualView:[
+      4,0,3,1,1,
+      3,2,0,2,1,
+      2,3,2,2,2,
+      0,0,4,0,2
+    ],
+    position:[
+      {x:0,y:206,r:100,i:1},
+      {x:100,y:50,r:100,i:2},
+      {x:200,y:275,r:120,i:3},
+      {x:300,y:70,r:105,i:4},
+      {x:400,y:332,r:103,i:5},
+      {x:500,y:148,r:119,i:6},
+      {x:600,y:341,r:113,i:7},
+      {x:700,y:52,r:127,i:8},
+      {x:800,y:312,r:106,i:9},
+      {x:900,y:114,r:106,i:10},
+      {x:1000,y:328,r:114,i:11},
+      {x:1100,y:140,r:112,i:12},
+      {x:1200,y:340,r:107,i:13},
+      {x:1300,y:176,r:104,i:14},
+      {x:1400,y:337,r:104,i:15},
+      {x:1500,y:61,r:101,i:16},
+      {x:1600,y:244,r:104,i:17},
+      {x:1700,y:229,r:106,i:18},
+      {x:1800,y:320,r:111,i:19},
+      {x:1900,y:71,r:104,i:20}
+    ],
+    depth:[0,100,150,200,300]
   },
-  onLoad: function () {
-    this.timer = setInterval(() => {
-      if (this.data.show) {
-        this.setData({
-          show: !this.data.show
-        })
-      }
-    }, 1000)
-
-    var that = this;
-    var res = wx.getSystemInfoSync();
-    winWidth = res.windowWidth;
-    winHeight = res.windowHeight;
-    // console.log(res)
-    let ratio = res.pixelRatio
-    this.setData({
-      ratio
-    })
-    this.getList()
+  upper(e) {
+    console.log(e)
   },
-  touchStart(e) {
-    // console.log(e.currentTarget.dataset.questionid)
-    this.setData({
-      currentQid: e.currentTarget.dataset.questionid
-    })
-    let index = e.currentTarget.dataset.index
-    let touches = e.touches
-    let list = this.data.list || []
-    // 多点触摸让图片回到原位
-    if (touches.length > 1) {
-      list[index].x = winWidth
-      list[index].y = 0
+  lower(e) {
+    console.log(e)
+  },
+  enter(e){
+    console.log(e)
+    let that = this
+    console.log(e.currentTarget.dataset.no)
+    if(e.currentTarget.dataset.no % 2 == 0){
       that.setData({
-        list
+        isStory: true,
+        showNow: true
       })
-    } else if (index === (list.length - 1)) {
-      let startX = e.touches[0].clientX;
-      let startY = e.touches[0].clientY;
-      this.setData({
-        startX,
-        startY
+    }
+    else{
+      that.setData({
+        isStory: false,
+        showNow: true
       })
     }
   },
-  // 拖动结束
-  touchEnd(e) {
-    let index = e.currentTarget.dataset.index
-    let list = this.data.list || []
-    if (index === (list.length - 1)) {
-      let that = this;
-      let startX = this.data.startX;
-      let startY = this.data.startY;
-      let endX = e.changedTouches[0].clientX;
-      let endY = e.changedTouches[0].clientY;
-      var distance = that.data.distance;
-      // 与结束点与图片初始位置距离
-      let disX = Math.abs(distance - winWidth)
-      // 当前操作，初始点与结束点距离
-      let disClientX = Math.abs(endX - startX)
-      let disClientY = Math.abs(endY - startY)
-      // 当滑动大于 滑块宽度的1/3翻页
-      let ratio = this.data.ratio
-      let moveDis = 666 / (ratio * 3);
-      // console.log(disX, moveDis)
-      if (disX > moveDis && disClientX > moveDis) {
-        list[index].x = (endX - startX) > 0 ? winWidth * 2 : -winWidth
-        // 移除时距离竖向距离
-        // list[index].y = disClientY
-        that.setData({
-          list: list,
-          animationA: null
-        });
-        // 移出动画结束后 从list内移除
-        setTimeout(() => {
-          list.splice((list.length - 1), 1);
-          that.setData({
-            list
-          })
-          // 列表长度小于4的时候请求服务端
-          if (list.length < 4) {
-            that.getList()
-          }
-        }, 300)
-        that.setData({
-          context: ''
+  scroll(e) {
+
+     console.log(e.detail.scrollLeft)
+    // wx.createSelectorQuery().select('.container').node(function(res){
+    //    console.log(res) // 节点对应的 Canvas 实例。
+    //   res.setStyle(
+    //     {
+    //         "border":"solid green 2rpx"
+    //     }
+    //   )
+
+    // }).exec()
+    // wx.createSelectorQuery().select("#scroll-view_H").fields({
+    //   scrollOffset: true,
+    //   size: true,
+    // },(res)=>
+    // {
+    //   console.log(res);
+    //   console.log(res.scrollLeft);
+    // })
+  },
+
+  scrollToTop() {
+    this.setAction({
+      scrollTop: 0
+    })
+  },
+
+  tap() {
+    for (let i = 0; i < order.length; ++i) {
+      if (order[i] === this.data.toView) {
+        this.setData({
+          toView: order[i + 1],
+          scrollTop: (i + 1) * 200
         })
-      } else if (disClientX < 1 && disClientY < 1) {
-        // 点击进入
-        // console.log('点击进入详情')
-      } else {
-        list[index].x = winWidth
-        list[index].y = 0
-        that.setData({
-          list
-        })
+        break
       }
     }
   },
-  onUnload: function () {
-    clearInterval(this.timer)
-  },
-  touchMove(e) {
-    // 左滑右滑手势可优化
-  },
-  onChange: function (e) {
-    var that = this;
-    that.setData({
-      distance: e.detail.x
-    })
-  },
-  // 模拟获取列表数据
-  getList() {
-    let that = this
-    setTimeout(() => {
-      wx.cloud.callFunction({
-        name: 'getAllQuestion',
-        complete: res => {
-          let list = this.data.list || [];
-          let arr = deepClone(res.result)
-          for (let i of arr) {
-            i.x = winWidth
-            i.y = 0
-            list.unshift(i)
-          }
-          this.setData({
-            list
-          })
-          wx.hideLoading()
-        }
-      })
-    }, 200)
-  },
-  true: function (e) {
-    let v = e.detail.value;
+
+  tapMove() {
     this.setData({
-      context: v
+      scrollTop: this.data.scrollTop + 10
     })
   },
-  submit: function (e) {
-    let that = this
-    var value = this.data.context;
-    if (value !== '') {
-      let avatarurl_temp = app.globalData.AVATARURL
-      let nickname_temp = app.globalData.NICKNAME
-      // 将答案添加到数据库
-      wx.cloud.callFunction({
-        name: 'addAnswer',
-        data: {
-          content: value,
-          question_id: that.data.currentQid,
-          avatarURL: avatarurl_temp,
-          nickname: nickname_temp,
-          _openid: app.globalData.OPENID
-        },
-        complete: res => {
-          wx.navigateTo({
-            url: "../answer/answer?answer_id=" + res.result
-          })
+
+  randomCircle(i){
+    //第i个节点，坐标i-1
+    let x,y,r=50;
+
+    // var left=dWidth*(i-8);
+    var right=this.data.dWidth*(i-1);
+
+    let createCircleTimes = 0
+    // console.log(right);
+        while(true) {
+            
+            // console.log("createCircleTimes",createCircleTimes);
+            // x = right-Math.floor(Math.random()*this.data.dWidth*4);
+            x=right;
+            y=Math.floor(50+Math.random()*300);
+            r=Math.floor(Math.random()*100 + 100);
+            
+            if((y+r>550))
+            {
+              // console.log("position not","y",y,"r",r,)
+              continue;
+            }
+            createCircleTimes ++ ;
+            
+            if(this.check(x,y,r,i,createCircleTimes)) {
+                break;
+            }
+            if ((createCircleTimes>2000))
+            {
+              console.log("times not")
+              break;
+            }
         }
-      })
-    } else {
-      wx.showToast({
-        title: '请输入答案',
-        duration: 2000,
-        icon: 'error',
-      })
+       
+    if(i==1)
+        r=100;
+    this.data.position.push({x,y,r,i});
+    this.setData({position:this.data.position});
+
+  },
+  
+  check(x,y,r,t,s)
+  {
+    
+    for(let i=2;i<8;i++)
+    {
+      if(t-i<0)
+        continue;
+      if(Math.pow(this.data.position[t-i].x-x,2)
+      +Math.pow(this.data.position[t-i].y-y,2)
+      <Math.pow(this.data.position[t-i].r+r,2)*0.8)
+      {
+        // console.log("check not",Math.pow(this.data.position[t-i].x-x,2),Math.pow(this.data.position[t-i].y-y,2),Math.pow(this.data.position[t-i].r+r,2)*1.5,
+        // "x:",this.data.position[t-i].x-x,
+        // "y:",this.data.position[t-i].y-y,
+        // "r:",r,"last-r:",this.data.position[t-i].r)
+        if(s>2000)
+        console.log("wrong with",t-i)
+        return false;
+      }
     }
+    return true;
+  },
+  getOffset(i)
+  {
+    var offX=this.data.position[i-1].x-this.data.dWidth*i;
+    var offY=this.data.position[i-1].y;
+    offX=0;
+    // offY=100;
+
+    return {offX,offY};
+  },
+  scrolltolower(e)
+  { 
+    
+  },
+
+  onReady() {
+    this._animate()
+  },
+
+  _animate()
+  {
+    this.addItem();
+  },
+
+  addItem()
+  {
+    let s=0;
+    for(;s<20;){
+    s++;//第s个
+    this.data.items.push({id:"item"+s, no:s, url:"cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球1.png"});
+    // this.randomCircle(s);
+    this.setData({items:this.data.items});
+    var {offX,offY}=this.getOffset(s);
+    var factor =this.data.position[s-1].r/100;
+    // factor=1;
+    // var z_index=Math.floor(Math.random()*5);
+    var z_index = this.data.virtualView[s]
+
+    this.animate(
+      '#item'+(s),
+      [
+        {
+          transform: 'scale('+factor+') translate('+offX+'px,'+offY+'px)',
+          offset:0
+        }, {
+        transform: 'scale('+factor+') translate('+(offX+(this.data.depth[z_index])/2)+'px,'+offY+'px)',
+        offset:0.4
+      }, {
+        transform: 'scale('+factor+') translate('+(offX+this.data.depth[z_index])+'px,'+offY+'px)',
+        offset:1
+      }],
+      2000, {
+        scrollSource: '#scroll-view_H',
+        timeRange: 2000,
+        startScrollOffset: (this.data.position[s-1].x-500),//150*(s-6),////
+        endScrollOffset:(this.data.position[s-1].x+500),//200+150*(s),////
+        orientation: 'horizontal',
+      }
+    )
+    console.log(s,"position:x",offX,this.data.position[s-1].x,
+    "y",offY,this.data.position[s-1].y,
+    "r",this.data.position[s-1].r,z_index);
+   }
+  },
+  search:function(e){
+    wx.redirectTo({
+      url: '../search/search',
+    })
   }
 })

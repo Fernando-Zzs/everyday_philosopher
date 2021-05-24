@@ -107,6 +107,36 @@
           "pathName": "pages/find/index/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "实时回答详情页",
+          "pathName": "pages/find/QandA/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "搜索按钮",
+          "pathName": "pages/find/search_button/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "搜索",
+          "pathName": "pages/find/search/search",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "模态框",
+          "pathName": "pages/find/index1/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "写回答",
+          "pathName": "pages/find/write/write",
+          "query": "",
+          "scene": null
         }
       ]
     }

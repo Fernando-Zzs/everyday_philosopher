@@ -1,17 +1,18 @@
+// write/write.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    question_title:'什么是哲学的基本问题'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
 
   /**
