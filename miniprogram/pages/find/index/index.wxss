@@ -44,8 +44,8 @@
   /* top:50%; */
   align-items: center;
   display: inline-block;
-  width:100px;
-  height:100px;
+  width: 100px;
+  height: 100px;
   /* border:solid blue 2rpx ; */
   border-radius: 50%;
   text-align: center;

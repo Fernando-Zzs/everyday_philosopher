@@ -1,7 +1,10 @@
 const order = ['demo1', 'demo2', 'demo3']
 Page({
-  onLoad()
-  {  
+  onLoad(){
+    // 随机从数据库中获取10个故事和10个问题
+    // wx.cloud.callFunction({
+    //   name:''
+    // })
   },
   onShareAppMessage() {
     return {
@@ -45,7 +48,10 @@ Page({
       {x:1800,y:320,r:111,i:19},
       {x:1900,y:71,r:104,i:20}
     ],
-    depth:[0,100,150,200,300]
+    depth:[0,100,150,200,300],
+    url:[
+      "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球1.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球2.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球3.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球4.png"
+    ]
   },
   upper(e) {
     console.log(e)
@@ -204,17 +210,18 @@ Page({
 
   addItem()
   {
-    let s=0;
-    for(;s<20;){
-    s++;//第s个
-    this.data.items.push({id:"item"+s, no:s, url:"cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球1.png"});
+    let that = this;
+    let s = 0;
+    for(;s < 20;){
+    s ++; //第s个
+    this.data.items.push({id:"item"+s, no:s, url:that.data.url[Math.floor(Math.random()*4)]});
     // this.randomCircle(s);
     this.setData({items:this.data.items});
     var {offX,offY}=this.getOffset(s);
     var factor =this.data.position[s-1].r/100;
     // factor=1;
     // var z_index=Math.floor(Math.random()*5);
-    var z_index = this.data.virtualView[s]
+    var z_index = this.data.virtualView[s-1]
 
     this.animate(
       '#item'+(s),

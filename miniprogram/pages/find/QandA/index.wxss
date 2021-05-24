@@ -93,9 +93,6 @@
 
 
 }
-.item0{
-
-}
 .question-title{
   /* text-align: center; */
   margin-top: 5rpx;

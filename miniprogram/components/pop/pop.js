@@ -45,7 +45,6 @@ Component({
     exit() {
       this.setData({
         show: false,
-        isStory:''
       })
     },
   
@@ -55,13 +54,15 @@ Component({
       })
     },
     enterAnswer(e){
+      console.log(e.currentTarget.dataset.question_id)
       wx.navigateTo({
-        url: 'url',
+        url: '../../pages/find/question-detail/question-detail?question_id='+e.currentTarget.dataset.question_id,
       })
     },
     enterStory(e){
+      console.log(e.currentTarget.dataset.story_id)
       wx.navigateTo({
-        url: 'url',
+        url: '../../pages/find/story-detail/story-detail?story_id='+e.currentTarget.dataset.story_id,
       })
     }
   }
