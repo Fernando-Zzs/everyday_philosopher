@@ -77,9 +77,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.cloud.callFunction({
+      name: 'searchStory',
+      data: {
+        keywords: '开始'
+      },
+      success: function (res) {
+        console.log(res.result);
+      },
+      fail: function (err) {
+        console.log(err);
+      }
+    })
+
     let that = this
     _this_global = this
-    let temp = options.answer_id;
+    // let temp = options.answer_id;
+    let temp = '0'
     this.setData({
       answer_id: temp
     })
@@ -127,10 +141,31 @@ Page({
         ['hotList[' + index + '].liked']: false,
         ['hotList[' + index + '].like_num']: _this_global.data.hotList[index].like_num - 1
       })
+
+      wx.cloud.callFunction({
+        name: 'deleteLike',
+        data: {
+          _openid: app.globalData.OPENID,
+          type: 'answer',
+          id: _this_global.data.hotList[index].answer_id
+        }
+      })
     } else {
       _this_global.setData({
         ['hotList[' + index + '].liked']: true,
         ['hotList[' + index + '].like_num']: _this_global.data.hotList[index].like_num + 1
+      })
+
+      wx.cloud.callFunction({
+        name: 'addLike',
+        data: {
+          _openid: app.globalData.OPENID,
+          description: 'des1',
+          id: _this_global.data.hotList[index].answer_id,
+          timestamp: Date.parse(new Date()) / 1000,
+          title: '',
+          type: 'answer'
+        }
       })
     }
 
@@ -151,10 +186,31 @@ Page({
         ['hotList[' + index + '].collected']: false,
         ['hotList[' + index + '].collect_num']: _this_global.data.hotList[index].collect_num - 1
       })
+
+      wx.cloud.callFunction({
+        name: 'deleteCollection',
+        data: {
+          _openid: app.globalData.OPENID,
+          type: 'answer',
+          id: _this_global.data.hotList[index].answer_id
+        }
+      })
     } else {
       _this_global.setData({
         ['hotList[' + index + '].collected']: true,
         ['hotList[' + index + '].collect_num']: _this_global.data.hotList[index].collect_num + 1
+      })
+
+      wx.cloud.callFunction({
+        name: 'addCollection',
+        data: {
+          _openid: app.globalData.OPENID,
+          description: 'des1',
+          id: _this_global.data.hotList[index].answer_id,
+          timestamp: Date.parse(new Date()) / 1000,
+          title: '',
+          type: 'answer'
+        }
       })
     }
 
@@ -164,6 +220,12 @@ Page({
         collected: !_this_global.data.hotList[index].collected,
         _openid: app.globalData.OPENID,
         answer_id: e.currentTarget.dataset.answerid
+      },
+      success: function (res) {
+        console.log('success');
+      },
+      fail: function (err) {
+        console.log(err);
       }
     })
   }

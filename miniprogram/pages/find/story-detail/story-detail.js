@@ -63,13 +63,23 @@ Page({
     collected: false,
     liked: false,
     like_story_num: 0,
-    liked_comment: false
+    liked_comment: false,
+    story_description: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.cloud.callFunction({
+      name: 'getAnalysisTagsPlus',
+      data: {
+        _openid: 'oMvG85TcKyxuM3KXlkmNaXu6CKYM'
+      },
+      success: function (res) {
+        console.log('ceshijieguo', res.result);
+      }
+    })
     let _this = this
     _this_global = _this
 
@@ -169,7 +179,8 @@ Page({
         var content_temp = res.result.content[0].text;
         that.setData({
           story_title: title_temp,
-          story_content: content_temp
+          story_content: content_temp,
+          story_description: res.result.description
         })
       }
     })
@@ -367,9 +378,30 @@ Page({
       _this_global.setData({
         collected: false
       })
+
+      wx.cloud.callFunction({
+        name: 'deleteCollection',
+        data: {
+          _openid: app.globalData.OPENID,
+          type: 'story',
+          id: value_global
+        }
+      })
     } else {
       _this_global.setData({
         collected: true
+      })
+
+      wx.cloud.callFunction({
+        name: 'addCollection',
+        data: {
+          _openid: app.globalData.OPENID,
+          description: _this_global.data.story_description,
+          id: value_global,
+          timestamp: Date.parse(new Date()) / 1000,
+          title: _this_global.data.story_title,
+          type: 'story'
+        }
       })
     }
     wx.cloud.callFunction({
@@ -391,10 +423,31 @@ Page({
         liked: false,
         like_story_num: like_story_num - 1
       })
+
+      wx.cloud.callFunction({
+        name: 'deleteLike',
+        data: {
+          _openid: app.globalData.OPENID,
+          type: 'story',
+          id: value_global
+        }
+      })
     } else {
       _this_global.setData({
         liked: true,
         like_story_num: like_story_num + 1
+      })
+
+      wx.cloud.callFunction({
+        name: 'addLike',
+        data: {
+          _openid: app.globalData.OPENID,
+          description: _this_global.data.story_description,
+          id: value_global,
+          timestamp: Date.parse(new Date()) / 1000,
+          title: _this_global.data.story_title,
+          type: 'story'
+        }
       })
     }
     wx.cloud.callFunction({
@@ -417,10 +470,31 @@ Page({
         ['show[' + index + '].liked']: false,
         ['show[' + index + '].like_num']: _this_global.data.show[index].like_num - 1
       })
+
+      wx.cloud.callFunction({
+        name: 'deleteLike',
+        data: {
+          _openid: app.globalData.OPENID,
+          type: 'comment',
+          id: e.currentTarget.dataset.commentid
+        }
+      })
     } else {
       _this_global.setData({
         ['show[' + index + '].liked']: true,
         ['show[' + index + '].like_num']: _this_global.data.show[index].like_num + 1
+      })
+
+      wx.cloud.callFunction({
+        name: 'addLike',
+        data: {
+          _openid: app.globalData.OPENID,
+          description: 'des1',
+          id: e.currentTarget.dataset.commentid,
+          timestamp: Date.parse(new Date()) / 1000,
+          title: '',
+          type: 'comment'
+        }
       })
     }
 

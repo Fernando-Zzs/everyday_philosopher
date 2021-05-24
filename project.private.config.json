@@ -107,6 +107,12 @@
           "pathName": "pages/find/index/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/personal/star/star",
+          "pathName": "pages/personal/star/star",
+          "query": "",
+          "scene": null
         }
       ]
     }
