@@ -53,6 +53,12 @@
           "pathName": "pages/find/write/write",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "加东西",
+          "pathName": "pages/story/test/test",
+          "query": "",
+          "scene": null
         }
       ]
     }

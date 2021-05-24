@@ -2,13 +2,6 @@
   <get-more-loading show="{{showLoading}}" wx:if="{{showLoading}}"></get-more-loading>
   <!-- 故事页 -->
   <view class="story" wx:if="{{!showLoading}}">
-    <view class="like_story" bindtap="handleLike">
-      <image wx:if="{{!liked}}"
-        src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/like_white.png"></image>
-      <image wx:if="{{liked}}"
-        src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/like_gold.png"></image>
-      <view class="like_story_num">{{like_story_num}}</view>
-    </view>
     <l-card type="avatar">
       <image class="jiao" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/jiao.png">
       </image>
@@ -23,6 +16,13 @@
       </view>
       <view class="content">
         {{story_content}}
+      </view>
+      <view class="like_story" bindtap="handleLike">
+        <image wx:if="{{!liked}}"
+          src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/like_white.png"></image>
+        <image wx:if="{{liked}}"
+          src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/like_gold.png"></image>
+        <view class="like_story_num">{{like_story_num}}</view>
       </view>
     </l-card>
   </view>

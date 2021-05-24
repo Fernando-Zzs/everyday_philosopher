@@ -1,18 +1,24 @@
 // write/write.js
+const app=getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    question_title:'什么是哲学的基本问题'
+    question_title:'什么是哲学的基本问题',
+    user_avater:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let avatarurl_temp = app.globalData.AVATARURL
+    let nickname_temp = app.globalData.NICKNAME
+    this.setData({
+      user_avater: avatarurl_temp
+    })
   },
 
   /**
