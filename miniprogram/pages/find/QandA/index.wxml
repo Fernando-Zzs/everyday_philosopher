@@ -10,12 +10,12 @@
         catchtouchstart="touchStart" catchtouchmove="touchMove" out-of-bounds="true" data-index="{{index}}">
 
         <view class='m-item-box item{{(index == 0 || index == list.length -1) ? 0 : 1}} '>
-        <image class="bg" mode="aspectFill" src="./image/1.jpg"></image>
+        <image class="bg" mode="aspectFill" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/1.jpg"></image>
           <view class="header">
-            <image src="{{item.image}}" class="image"></image>
+            <image src="{{item.avatarURL}}" class="image"></image>
             <view class="question">
               <view class='question-title'>
-                {{item.title || '--'}}
+                {{item.nickname || '--'}}
               </view>
               <!-- <view class='question-content'>
                 {{item.description || '--'}}
@@ -23,10 +23,10 @@
             </view>
           </view>
           <view class="answer a">
-          {{item.description || '--'}}
+          {{item.content || '--'}}
           </view>
-          <view class="button b1">点赞</view>
-          <view class="button b2">收藏</view>
+          <view class="button b1" bindtap="zan" data-question_id="{{item.question_id}}">点赞</view>
+          <view class="button b2" bindtap="star" data-question_id="{{item.question_id}}">收藏</view>
         </view>
 
       </movable-view>

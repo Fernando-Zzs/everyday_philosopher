@@ -13,7 +13,7 @@ App({
     this.globalData = {
       OPENID: '',
       NICKNAME: '',
-      AVATARURL: ''
+      AVATARURL: 'cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/匿名用户.png'
     }
   }
 })

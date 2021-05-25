@@ -35,28 +35,35 @@ page {
   z-index: -1;
 }
 .title{
-  margin-top: 10%;
-  width: 80%;
-  padding: 10%;
-  font-size:50rpx;
+  /* position: absolute; */
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  margin-top: 80rpx;
+  font-size: 50rpx;
   line-height: 70rpx;
   color: #323232;
-
 }
 .close-icon{
   position: absolute;
-  right: 5%;
-  top: 4%;
+  width: 50rpx;
+  height: 50rpx;
+  right: 10rpx;
+  top: 20rpx;
 }
 .tag{
   position: absolute;
   left: 5%;
+  right: 5%;
   top: 4%;
 }
+.card{
+  width: 600rpx;
+  height: 800rpx;
+}
 .content{
-  width: 80%;
-  padding: 0 10% 10% 10%;
-  /* font-size: medium; */
+  position: absolute;
+  left: 5%;
+  /* font-size: medium;*/
 }
 .button{
   position: absolute;

@@ -33,7 +33,13 @@ swiper{
   border: 1px black solid;
   border-radius:35rpx ;
 }
-
+.back{
+  position: absolute;
+  width: 40rpx;
+  height: 40rpx;
+  left: 30rpx;
+  top: 100rpx;
+}
 .card{
   position: relative;
   width: 650rpx;

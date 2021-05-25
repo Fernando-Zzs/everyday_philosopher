@@ -1,24 +1,25 @@
 <page-container show="{{show}}" round="{{true}}" overlay="true" duration="500" position="center"
-  close-on-slide-down="{{false}}" bindenter="onEnter" custom-style="{{customStyle}}" overlay-style="{{overlayStyle}}">
-  <view bindtap="exit" class="close-icon">❎</view>
+  close-on-slide-down="{{false}}" bindenter="onEnter" custom-style="{{customStyle}}" overlay-style="{{overlayStyle}}" class="card">
+  <!-- <view bindtap="exit" class="close-icon">❎</view> -->
+  <image bindtap="exit" class="close-icon"
+    src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/取消.png"></image>
   <view class="detail-page">
     <image class="bg" mode="aspectFill"
       src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/1.jpg"></image>
 
-    <block wx:if="{{isStory}}">
+    <view wx:if="{{isStory}}">
       <view class="tag">⊙故事</view>
       <image class="poster" mode="aspectFill" src="{{posterURL}}"></image>
-      <view class="button b3" bindtap="enterStory">进入故事</view>
-    </block>
+      <view class="button b3" bindtap="enterStory" data-story_id="{{story_id}}">进入故事</view>
+    </view>
 
-    <block wx:if="{{!isStory}}">
+    <view wx:if="{{!isStory}}">
       <view class="tag">⊙问题</view>
-      <view class="title"><text>苏格拉底：
-          苏格拉底之死</text></view>
-      <view class="content"><text>苏格拉底之死是必然吗</text> </view>
-      <view class="button b1" bindtap="enterWrite">写回答</view>
-      <view class="button b2" bindtap="enterAnswer">查看回答</view>
-    </block>
+      <view class="title">{{title}}</view>
+      <view class="content">{{content}}</view>
+      <view class="button b1" bindtap="enterWrite" data-question_id="{{question_id}}">写回答</view>
+      <view class="button b2" bindtap="enterAnswer" data-question_id="{{question_id}}">查看回答</view>
+    </view>
 
   </view>
 </page-container>

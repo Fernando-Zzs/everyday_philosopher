@@ -11,6 +11,22 @@ Component({
     show:{
       type: Boolean,
       value:''
+    },
+    question_id:{
+      type: String,
+      value:''
+    },
+    story_id:{
+      type: String,
+      value:''
+    },
+    title:{
+      type: String,
+      value: ''
+    },
+    content:{
+      type: String,
+      value: ''
     }
   },
 
@@ -30,6 +46,9 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    onLoad(){
+      console.log(this.data.question_id)
+    },
     // popup_story(e) {
     //   this.setData({
     //     isStory:true,
@@ -50,15 +69,16 @@ Component({
   
     enterWrite(e){
       wx.navigateTo({
-        url: '../../find/write/write',
+        url: '../../find/write/write?question_id='+e.currentTarget.dataset.question_id,
       })
     },
     enterAnswer(e){
       console.log(e.currentTarget.dataset.question_id)
       wx.navigateTo({
-        url: '../../pages/find/question-detail/question-detail?question_id='+e.currentTarget.dataset.question_id,
+        url: '../../find/QandA/index?question_id='+e.currentTarget.dataset.question_id,
       })
     },
+
     enterStory(e){
       console.log(e.currentTarget.dataset.story_id)
       wx.navigateTo({

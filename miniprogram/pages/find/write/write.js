@@ -6,18 +6,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-    question_title:'什么是哲学的基本问题',
-    user_avater:''
+    question_title:'',
+    user_avatar:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this
+    // console.log(options.question_id)
+    wx.cloud.callFunction({
+      name:'getQuestion',
+      data:{
+        question_id: options.question_id
+      },
+      complete:res=>{
+        that.setData({
+          question_title: res.result.title
+        })
+      }
+    })
     let avatarurl_temp = app.globalData.AVATARURL
     let nickname_temp = app.globalData.NICKNAME
     this.setData({
-      user_avater: avatarurl_temp
+      user_avatar: avatarurl_temp
     })
   },
 

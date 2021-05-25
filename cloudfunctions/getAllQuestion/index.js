@@ -8,7 +8,7 @@ cloud.init({
 const db = cloud.database()
 exports.main = async (event, context) => {
   let ret = await db.collection('question')
-    .orderBy('question_id','desc')
+    .orderBy('question_id','asc')
     .get()
   return ret.data
 }

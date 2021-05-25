@@ -113,6 +113,18 @@
           "pathName": "pages/personal/star/star",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/find/index/index",
+          "pathName": "pages/find/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/find/QandA/index",
+          "pathName": "pages/find/QandA/index",
+          "query": "",
+          "scene": null
         }
       ]
     }

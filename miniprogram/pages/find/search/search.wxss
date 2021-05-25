@@ -10,6 +10,13 @@
   width: 100%;
   z-index: -1;
 }
+.back{
+  position: fixed;
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 30rpx;
+  margin-top: 110rpx;
+}
 .search-bar{
   backdrop-filter:blur(15px);
   background: rgba(255, 255, 255, 0.616);

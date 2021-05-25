@@ -9,6 +9,11 @@ Page({
     search_items:[],
     story_items:[]
   },
+  back:function(){
+    wx.switchTab({
+      url: '../index/index',
+    })
+  },
   search(value){
 
   },

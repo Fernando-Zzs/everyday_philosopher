@@ -4,8 +4,14 @@
 .page-body{
   position: relative;
 }
+.image{
+  flex-shrink: 0;
+  margin-left: 50rpx;
+  margin-right: 20rpx;
+  width: 100rpx;
+  height: 100rpx;
+}
 .scroll-view_H{
-
   white-space: nowrap;
   position: relative;
   width: 100vw;
@@ -95,6 +101,7 @@
 }
 .question-title{
   /* text-align: center; */
+  margin-right: 30rpx;
   margin-top: 5rpx;
   line-height: 60rpx;
   font-size: 40rpx;
@@ -135,9 +142,13 @@ l-button{
   color: rgb(36, 110, 85);
 }
 .b1{
+  border: 4rpx solid rgb(36, 110, 85);
+  border-radius: 20rpx;
   left: 15%;
 }
 .b2{
- right:15% ;
+  border: 4rpx solid rgb(36, 110, 85);
+  border-radius: 20rpx;
+  right:15%;
 }
 

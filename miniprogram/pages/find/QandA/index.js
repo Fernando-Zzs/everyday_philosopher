@@ -20,6 +20,9 @@ function deepClone(obj) {
 }
 Page({
   data: {
+    user_avatar: '',
+    user_nickname: '',
+    allAnswer:[],
     show: true,
     x: winWidth,
     y: winHeight,
@@ -34,7 +37,27 @@ Page({
     context: '', // 文本框内容
     currentQid: '' // 当前问题id
   },
-  onLoad: function () {
+  onLoad: function (options){
+    // console.log(options.question_id)
+    let that = this
+    wx.cloud.callFunction({
+      name:'getAnswerByQuestionId',
+      data:{
+        question_id: options.question_id
+      },
+      complete:res=>{
+        that.setData({
+          allAnswer: res.result,
+          user_avatar: res.result.avatarURL,
+          user_nickname: res.result.nickname
+        })
+      }
+    })
+    // let avatarurl_temp = app.globalData.AVATARURL
+    // let nickname_temp = app.globalData.NICKNAME
+    // this.setData({
+    //   user_avatar: avatarurl_temp
+    // })
     this.timer = setInterval(() => {
       if (this.data.show) {
         this.setData({
@@ -42,7 +65,6 @@ Page({
         })
       }
     }, 1000)
-    var that = this;
     var res = wx.getSystemInfoSync();
     winWidth = res.windowWidth;
     winHeight = res.windowHeight;
@@ -164,7 +186,7 @@ Page({
         this.setData({
           list
         })
-        console.log(1)
+        // console.log(1)
     }
   }},
   onUnload: function () {
@@ -201,7 +223,7 @@ Page({
           if(chance==1){
           var index = (this.data.list.length - 1)
           if(index-1>=0){
-            console.log('1')
+            // console.log('1')
             list[index].x-=7
           // 移除时距离竖向距离
           list[index].y +=7
@@ -269,5 +291,11 @@ Page({
         icon: 'error',
       })
     }
+  },
+  zan: function(e){
+    console.log(e)
+  },
+  star: function(e){
+    console.log(e.currentTarget.dataset.question_id)
   }
 })
