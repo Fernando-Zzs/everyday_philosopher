@@ -6,8 +6,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    question_id:'',
+    answer_id:'',
     question_title:'',
-    user_avatar:''
+    user_avatar:'',
+    user_nickname:'',
+    content:''
   },
 
   /**
@@ -15,7 +19,10 @@ Page({
    */
   onLoad: function (options) {
     let that = this
-    // console.log(options.question_id)
+    console.log(options.question_id)
+    this.setData({
+      question_id:options.question_id
+    })
     wx.cloud.callFunction({
       name:'getQuestion',
       data:{
@@ -30,10 +37,38 @@ Page({
     let avatarurl_temp = app.globalData.AVATARURL
     let nickname_temp = app.globalData.NICKNAME
     this.setData({
-      user_avatar: avatarurl_temp
+      user_avatar: avatarurl_temp,
+      user_nickname: nickname_temp
     })
   },
 
+  submit:function(){
+    let that = this
+    
+    // console.log(this.data.content)
+    wx.cloud.callFunction({
+      name:'addAnswer',
+      data:{
+        question_id: that.data.question_id,
+        content: that.data.content,
+        avatarURL: that.data.user_avatar,
+        nickname: that.data.user_nickname
+      },
+      complete:res=>{
+        wx.navigateTo({
+          url: '../question-detail/question-detail?question_id='+that.data.question_id+'&answer_id='+res.result,
+        })
+      }
+    })
+    
+    
+  },
+
+  inputChange(e){
+    this.setData({
+      content: e.detail.value
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -1,37 +1,42 @@
 <view class="container">
-<image class="back" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/返回.png" bindtap="back"></image>
-<swiper previous-margin="20px" next-margin="20px" bindtransition="swip">
-<swiper-item class="swiper-item">
-  <view class="card" >
-    <view class="statistic-type">
-      <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/tongji.png"></image>
-      一周阅读
-    </view>
-    <ec-canvas id="mychart-dom-column" canvas-id="mychart-dom-column" ec="{{ec1}}"></ec-canvas>
-  </view>
   
-</swiper-item>
-<swiper-item class="swiper-item">
-  <view class="card">
-    <view class="statistic-type">
-      <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/tongji.png"></image>
-      阅读习惯
-    </view>
-    <ec-canvas id="mychart-dom-cake" canvas-id="mychart-dom-cake" ec="{{ec2}}"></ec-canvas>
-  </view>
-</swiper-item>
-<swiper-item class="swiper-item">
-  <view class="card">
-    <view class="statistic-type">
-      <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/tongji.png"></image>
-      哲学素养
-    </view>
-    <ec-canvas id="mychart-dom-line" canvas-id="mychart-dom-line" ec="{{ec3}}"></ec-canvas>
-  </view>
-</swiper-item>
-</swiper>
-<!-- dots -->
-<!-- 仍需更改 -->
-<!-- <view class="dot" style="left:{{x}}vw">{{index}}</view>
+  <image class="back" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/返回.png"
+    bindtap="back"></image>
+  <swiper previous-margin="20px" next-margin="20px" bindtransition="swip">
+    <swiper-item class="swiper-item">
+      <view class="card">
+        <view class="statistic-type">
+          <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/tongji.png">
+          </image>
+          一周阅读
+        </view>
+        <ec-canvas id="mychart-dom-column" canvas-id="mychart-dom-column" ec="{{ec1}}"></ec-canvas>
+      </view>
+
+    </swiper-item>
+    <swiper-item class="swiper-item">
+      <view class="card">
+        <view class="statistic-type">
+          <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/tongji.png">
+          </image>
+          阅读习惯
+        </view>
+        <ec-canvas id="mychart-dom-cake" canvas-id="mychart-dom-cake" ec="{{ec2}}"></ec-canvas>
+      </view>
+    </swiper-item>
+    <swiper-item class="swiper-item">
+      <view class="card">
+        <view class="statistic-type">
+          <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/tongji.png">
+          </image>
+          哲学素养
+        </view>
+        <ec-canvas id="mychart-dom-line" canvas-id="mychart-dom-line" ec="{{ec3}}"></ec-canvas>
+      </view>
+    </swiper-item>
+  </swiper>
+  <!-- dots -->
+  <!-- 仍需更改 -->
+  <!-- <view class="dot" style="left:{{x}}vw">{{index}}</view>
 <view class="dot-back"></view> -->
 </view>

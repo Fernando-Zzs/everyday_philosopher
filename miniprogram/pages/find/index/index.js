@@ -19,7 +19,7 @@ Page({
             this.data.items.push({ // 问题
               id: "item" + s,
               no: s,
-              url: that.data.url[Math.floor(Math.random() * 4)],
+              url: that.data.url[Math.floor(Math.random() * 10)],
               question_id: seed,
               title: allQuestion[seed].title,
               content: allQuestion[seed].description
@@ -81,6 +81,7 @@ Page({
     showNow: '',
     question_id: '',
     items: [],
+    currentIndex: 0,
     virtualView: [
       4, 0, 3, 1, 1,
       3, 2, 0, 2, 1,
@@ -90,127 +91,127 @@ Page({
     position: [{
         x: 0,
         y: 206,
-        r: 100,
+        r: 110,
         i: 1
       },
       {
         x: 100,
         y: 50,
-        r: 100,
+        r: 110,
         i: 2
       },
       {
         x: 200,
         y: 275,
-        r: 120,
+        r: 130,
         i: 3
       },
       {
         x: 300,
         y: 70,
-        r: 105,
+        r: 115,
         i: 4
       },
       {
         x: 400,
         y: 332,
-        r: 103,
+        r: 113,
         i: 5
       },
       {
         x: 500,
         y: 148,
-        r: 119,
+        r: 129,
         i: 6
       },
       {
         x: 600,
         y: 341,
-        r: 113,
+        r: 123,
         i: 7
       },
       {
         x: 700,
         y: 52,
-        r: 127,
+        r: 137,
         i: 8
       },
       {
         x: 800,
         y: 312,
-        r: 106,
+        r: 116,
         i: 9
       },
       {
         x: 900,
         y: 114,
-        r: 106,
+        r: 116,
         i: 10
       },
       {
         x: 1000,
         y: 328,
-        r: 114,
+        r: 124,
         i: 11
       },
       {
         x: 1100,
         y: 140,
-        r: 112,
+        r: 122,
         i: 12
       },
       {
         x: 1200,
         y: 340,
-        r: 107,
+        r: 117,
         i: 13
       },
       {
         x: 1300,
         y: 176,
-        r: 104,
+        r: 114,
         i: 14
       },
       {
         x: 1400,
         y: 337,
-        r: 104,
+        r: 114,
         i: 15
       },
       {
         x: 1500,
         y: 61,
-        r: 101,
+        r: 111,
         i: 16
       },
       {
         x: 1600,
         y: 244,
-        r: 104,
+        r: 114,
         i: 17
       },
       {
         x: 1700,
         y: 229,
-        r: 106,
+        r: 116,
         i: 18
       },
       {
         x: 1800,
         y: 320,
-        r: 111,
+        r: 121,
         i: 19
       },
       {
         x: 1900,
         y: 71,
-        r: 104,
+        r: 114,
         i: 20
       }
     ],
     depth: [0, 100, 150, 200, 300],
     url: [
-      "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球1.png", "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球2.png", "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球3.png", "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球4.png"
+      "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球1.png", "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球2.png", "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球3.png", "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球4.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球5.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球6.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球7.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球8.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球9.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球10.png"
     ]
   },
   upper(e) {
@@ -220,12 +221,14 @@ Page({
     console.log(e)
   },
   enter(e) {
+    console.log(e.currentTarget.dataset.no)
     let that = this
     // console.log(e.currentTarget.dataset.question_id)
     let qid = e.currentTarget.dataset.question_id
     that.setData({
       showNow: true,
-      question_id: qid
+      question_id: qid,
+      currentIndex: e.currentTarget.dataset.no
     })
   },
   scroll(e) {

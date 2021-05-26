@@ -31,6 +31,7 @@ Page({
     let que_temp = options.question_id
     let ans_temp = options.answer_id
     console.log(que_temp);
+    console.log(ans_temp)
     this.setData({
       answer_id: ans_temp
     })
@@ -42,6 +43,7 @@ Page({
         question_id: que_temp,
       },
       complete: res => {
+        // console.log(res)
         var title_temp = res.result.title;
         var description_temp = res.result.description;
 

@@ -36,8 +36,8 @@ Page({
     ec: {
       onInit: initChart
     },
-    datas: [], // 第一模块历史数据
-    datas2: [], // 第二模块历史数据
+    datas: [], // 第一模块收藏数据
+    datas2: [], // 第二模块收藏数据
   },
 
   onPullDownRefresh: function () {},
@@ -60,7 +60,10 @@ Page({
   onLoad: function (options) {
     let that = this
     const db = wx.cloud.database()
-    db.collection('collection').get({
+    db.collection('collection').where({
+      type: 'story'
+    })
+    .get({
       success: function (res) {
         that.setData({
           datas: res.data
@@ -73,7 +76,10 @@ Page({
     })
     let that2 = this
     const db2 = wx.cloud.database()
-    db2.collection('collection').get({
+    db2.collection('collection').where({
+      type: 'answer'
+    })
+    .get({
       success: function (res) {
         that2.setData({
           datas2: res.data

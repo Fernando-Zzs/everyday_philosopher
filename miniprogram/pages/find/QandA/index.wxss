@@ -71,7 +71,7 @@
   /* padding-top: 76rpx; */
   border-radius: 60rpx;
   box-shadow:5px 9px 10px 0px rgba(0,0,0,0.1);
-  border: solid 1px black;
+  border: solid 4rpx black;
 }
 .header{
   padding-top: 50rpx;
