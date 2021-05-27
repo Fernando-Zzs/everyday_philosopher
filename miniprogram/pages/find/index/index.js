@@ -1,4 +1,5 @@
 const order = ['demo1', 'demo2', 'demo3']
+const app = getApp()
 Page({
   onLoad() {
     let that = this
@@ -58,9 +59,9 @@ Page({
                 orientation: 'horizontal',
               }
             )
-            console.log(s, "position:x", offX, this.data.position[s - 1].x,
-              "y", offY, this.data.position[s - 1].y,
-              "r", this.data.position[s - 1].r, z_index);
+            // console.log(s, "position:x", offX, this.data.position[s - 1].x,
+            //   "y", offY, this.data.position[s - 1].y,
+            //   "r", this.data.position[s - 1].r, z_index);
           }
         })
       }
@@ -225,6 +226,16 @@ Page({
     let that = this
     // console.log(e.currentTarget.dataset.question_id)
     let qid = e.currentTarget.dataset.question_id
+    // let openid_temp=app.globalData.OPENID
+    // wx.cloud.callFunction({
+    //   name:'addHistory',
+    //   data:{
+    //     _openid: openid_temp,
+    //     timestamp: Date.parse(new Date()) / 1000,
+    //     type: 'answer',
+    //     id: qid
+    //   },
+    // })
     that.setData({
       showNow: true,
       question_id: qid,

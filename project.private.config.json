@@ -31,8 +31,8 @@
           "scene": null
         },
         {
-          "name": "分析",
-          "pathName": "pages/personal/analysis/analysis",
+          "name": "分析页面",
+          "pathName": "pages/personal/analyse/analyse",
           "query": "",
           "scene": null
         },

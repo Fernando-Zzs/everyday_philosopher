@@ -1,10 +1,9 @@
 /* pages/analyse/analyse.wxss */
 .circle-item{
   position: absolute;
-  width: 100px;
-  height: 100px;
+  width: 200rpx;
+  height: 200rpx;
   border-radius: 50%;
-  /* border: 1px solid gold; */
   animation: float 2.5s infinite ease-in-out;
   backdrop-filter:blur(5px);
   border: white 1px solid;
@@ -20,36 +19,51 @@
 .bg {
   position: fixed;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   z-index: -1;
 }
 
 .i1{
-  left: 300px;
-  top: 300px;
+  position: absolute;
+  left: 270rpx;
+  top: 600rpx; 
+  scale: 1.8;
+  z-index: 5;
 }
 .i2{
-  left: 200px;
-  top: 100px;
-
+  position: absolute;
+  left: 90rpx;
+  top: 350rpx;
+  scale: 1.5;
+  z-index: 4;
 }
 .i3{
-  left: 150px;
-  top: 300px; 
-   scale: 2;
+  position: absolute;
+  left: 450rpx;
+  top: 830rpx;
+  scale: 1.3;
+  z-index: 3;
 }
 .i4{
-  left: 70px;
-  top: 450px;
+  position: absolute;
+  left: 480rpx;
+  top: 380rpx;
+  scale: 1.1;
+  z-index: 2;
 }
 .i5{
-  left: 70px;
-  top: 170px;
-  scale: 1.2;
+  position: absolute;
+  left: 100rpx;
+  top: 900rpx;
+  scale: 1.05;
+  z-index: 1;
 }
 .i6{
-  left: 220px;
-  top: 500px;
+  position: absolute;
+  left: 400rpx;
+  top: 200rpx;
+  scale: 0.8;
+  z-index: 0;
 }
 .info{
   position: absolute;

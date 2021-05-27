@@ -1,14 +1,15 @@
 <!--pages/analyse/analyse.wxml-->
-<view class="contianer">
-<image class="bg" mode="aspectFill" src="./image/2.jpg"></image>
-<view class="circle-item i1">1</view>
-<view class="circle-item i2">2</view>
-<view class="circle-item i3">3</view>
-<view class="circle-item i4">4</view>
-<view class="circle-item i5">5</view>
-<view class="circle-item i6">6</view>
+<view class="container">
+  <image class="bg" mode="aspectFill" src="./image/1.jpg"></image>
+  <view class="container">
+    <view class="circle-item i1">1</view>
+    <view class="circle-item i2">2</view>
+    <view class="circle-item i3">3</view>
+    <view class="circle-item i4">4</view>
+    <view class="circle-item i5">5</view>
+    <view class="circle-item i6">6</view>
+  </view>
 
-<view class="info">星球越大，表示了解程度越高哦</view>
-
+  <view class="info">泡泡越大，表示了解程度越高哦</view>
 
 </view>
