@@ -1,11 +1,14 @@
 // pages/index/index.js
 import mockArr from './mock.js'
 const app = getApp()
+let value_global = ''
+let that = this
+
 let winWidth = 416;
 let winHeight = 736;
 
 let chance = 1;
-let canUp = true;
+let next = false;
 
 function deepClone(obj) {
   if (typeof obj !== 'object' || obj === null) {
@@ -21,44 +24,38 @@ function deepClone(obj) {
 }
 Page({
   data: {
-    user_avatar: '',
-    user_nickname: '',
-    allAnswer: [],
     show: true,
     x: winWidth,
     y: winHeight,
     animationA: {},
     list: [],
     arr: [],
+    initLength:'',
     distance: "",
     startX: '', // 初始点X位置
     startY: '', // 初始点Y位置
     currentIndex: -1, // 当前最上层滑块
     ratio: 2, // 屏幕比例
     context: '', // 文本框内容
-    currentQid: '' // 当前问题id
+    Qid: '', // 问题id
+    like_num:'',
+    collect_num:''
   },
+
   onLoad: function (options) {
-    // console.log(options.question_id)
-    let that = this
-    wx.cloud.callFunction({
-      name: 'getAnswerByQuestionId',
-      data: {
-        question_id: options.question_id
-      },
-      complete: res => {
-        that.setData({
-          allAnswer: res.result,
-          user_avatar: res.result.avatarURL,
-          user_nickname: res.result.nickname
-        })
-      }
+    // 获取传来的question_id
+    this.setData({
+      Qid: options.question_id
     })
-    // let avatarurl_temp = app.globalData.AVATARURL
-    // let nickname_temp = app.globalData.NICKNAME
-    // this.setData({
-    //   user_avatar: avatarurl_temp
-    // })
+  },
+
+  onShow: function(){
+    if (app.globalData.TIMESTAMP_ANSWER_START == 0) {
+      app.globalData.TIMESTAMP_ANSWER_START = Date.parse(new Date()) / 1000
+    }
+    chance = 1;
+    let that = this
+    // 缓冲
     this.timer = setInterval(() => {
       if (this.data.show) {
         this.setData({
@@ -69,19 +66,112 @@ Page({
     var res = wx.getSystemInfoSync();
     winWidth = res.windowWidth;
     winHeight = res.windowHeight;
-    // console.log(res)
     let ratio = res.pixelRatio
     this.setData({
       ratio
     })
-    this.getList()
-    setTimeout(() => {
-      this.setData({
-        list: this.data.list
-      })
-    }, 500)
 
+    
+    // 获取list数组
+    this.getList()
   },
+  handleLike: function (e) {
+    // console.log(e.currentTarget.dataset.answerid)
+    let index = e.currentTarget.dataset.index
+    // console.log(index)
+    let like_num = this.data.list[index].like_openid.length
+    console.log(like_num)
+    if (this.data.list[index].liked) {
+      this.setData({
+        ['list[' + index + '].liked']: false,
+        like_num: this.data.like_num - 1
+      })
+
+      wx.cloud.callFunction({
+        name: 'deleteLike',
+        data: {
+          _openid: app.globalData.OPENID,
+          type: 'answer',
+          id: e.currentTarget.dataset.answerid
+        }
+      })
+    } else {
+      this.setData({
+        ['list[' + index + '].liked']: true,
+        like_num: this.data.like_num + 1
+      })
+
+      wx.cloud.callFunction({
+        name: 'addLike',
+        data: {
+          _openid: app.globalData.OPENID,
+          description: '',
+          id: e.currentTarget.dataset.answerid,
+          timestamp: Date.parse(new Date()) / 1000,
+          title: '',
+          type: 'answer'
+        }
+      })
+    }
+
+    wx.cloud.callFunction({
+      name: 'tapAnswerLike',
+      data: {
+        liked: !this.data.list[index].liked,
+        _openid: app.globalData.OPENID,
+        answer_id: e.currentTarget.dataset.answerid
+      }
+    })
+  },
+  handleCollect: function (e) {
+    // console.log(e.currentTarget.dataset.answerid)
+    let index = e.currentTarget.dataset.index
+    console.log(index)
+    // let collect_num = this.data.list[index].collect_openid.length
+    // console.log(collect_num)
+    if (this.data.list[index].collected) {
+      this.setData({
+        ['list[' + index + '].collected']: false,
+        collect_num: this.data.collect_num - 1
+      })
+
+      wx.cloud.callFunction({
+        name: 'deleteCollection',
+        data: {
+          _openid: app.globalData.OPENID,
+          type: 'answer',
+          id: e.currentTarget.dataset.answerid
+        }
+      })
+    } else {
+      this.setData({
+        ['list[' + index + '].collected']: true,
+        collect_num: this.data.collect_num + 1
+      })
+
+      wx.cloud.callFunction({
+        name: 'addCollection',
+        data: {
+          _openid: app.globalData.OPENID,
+          description: '',
+          id: e.currentTarget.dataset.answerid,
+          timestamp: Date.parse(new Date()) / 1000,
+          title: '',
+          type: 'answer'
+        }
+      })
+    }
+
+    wx.cloud.callFunction({
+      name: 'tapAnswerCollect',
+      data: {
+        collected: !this.data.list[index].collected,
+        _openid: app.globalData.OPENID,
+        answer_id: e.currentTarget.dataset.answerid
+      }
+    })
+  },
+
   touchStart(e) {
     // console.log(e.currentTarget.dataset.questionid)
     this.setData({
@@ -117,14 +207,11 @@ Page({
   },
   // 拖动结束
   touchEnd(e) {
-
+    let that = this
     let index = e.currentTarget.dataset.index
     let list = this.data.list || []
-
+    // console.log(index)
     if (index === (list.length - 1)) {
-      //   if(list.length < 4){ 
-      //     this.moveList()
-      // }
       let that = this;
       let startX = this.data.startX;
       let startY = this.data.startY;
@@ -142,7 +229,21 @@ Page({
       // console.log(disX, moveDis)
       if (disX > moveDis && disClientX > moveDis) {
         // console.log(disX, moveDis)disX > moveDis && 
-        if (disClientX > moveDis && list.length > 1) {
+        if (list.length > 1) {
+
+          if(index % this.data.initLength == 0){
+            // console.log(this.data.initLength-1)
+            that.setData({
+              like_num: that.data.list[that.data.initLength-1].like_openid.length,
+              collect_num: that.data.list[that.data.initLength-1].collect_openid.length
+            })
+          }else{
+            // console.log(index%this.data.initLength - 1)
+            that.setData({
+              like_num: that.data.list[index%this.data.initLength - 1].like_openid.length,
+              collect_num: that.data.list[index%this.data.initLength - 1].collect_openid.length
+            })
+          }
           list[index].x = (endX - startX) > 0 ? winWidth * 2 : -winWidth
           // 移除时距离竖向距离
           // list[index].y = disClientY
@@ -154,47 +255,56 @@ Page({
           }
           that.setData({
             list: list,
-            animationA: null
+            // animationA: null
             // animationA: null
           });
           // 移出动画结束后 从list内移除
           setTimeout(() => {
 
             list.splice((list.length - 1), 1);
+
             this.setData({
               list
             })
             // 列表长度小于4的时候请求服务端
-            if (list.length < 4) {
 
-              if (list.length < 4) {
-                that.getList()
-              }
+            if (next) {
+              next = false;
+              this.moveList()
 
             }
+            if (list.length < 4) {
+              that.getList()
+
+            }
+
           }, 300)
           that.setData({
             context: ''
           })
-        } else if (disClientX < 1 && disClientY < 1) {
-          // 点击进入
-          // console.log('点击进入详情')
         } else {
-          list[index].x = winWidth
-          list[index].y = 0
+          list[index].x = winWidth - 7
+          list[index].y = 0 + 7
           that.setData({
             list
           })
         }
       } else {
-        list[index].x = winWidth
-        list[index].y = 0
+        list[index].x = winWidth - 7
+        list[index].y = 0 + 7
         this.setData({
           list
         })
         // console.log(1)
       }
+    } else {
+      list[index].x = winWidth
+      list[index].y = 0
+      this.setData({
+        list
+      })
     }
+
   },
   onUnload: function () {
     clearInterval(this.timer)
@@ -215,49 +325,80 @@ Page({
     setTimeout(() => {
       // setTimeout(() => {
       wx.cloud.callFunction({
-        name: 'getAllQuestion',
+        name: 'getAnswerByQuestionId',
+        data: {
+          question_id: that.data.Qid
+        },
         complete: res => {
-
           this.data.arr = deepClone(res.result)
-          let list = this.data.list || [];
-          let arr = deepClone(res.result)
-          for (let i of arr) {
-            for (let i of this.data.arr) {
-              i.x = winWidth
-              i.y = 0
-              list.unshift(i)
-            }
-            if (chance == 1) {
-              var index = (this.data.list.length - 1)
-              if (index - 1 >= 0) {
-                // console.log('1')
-                list[index].x -= 7
-                // 移除时距离竖向距离
-                list[index].y += 7
-                chance = 0;
-              }
-            }
-            // if(canUp){
-            //   this.setData({
-            //     list:this.data.list
-            //   })
-            //   canUp=false;
-            // }
-            this.setData({
-              list
-            })
+          // console.log("arr",this.data.arr)
+          this.setData({
+            arr: this.data.arr,
+            initLength: this.data.arr.length
+          })
+          next = true
+          // 初次赋值
+          this.setData({
+            like_num: this.data.arr[0].like_openid.length,
+            collect_num: this.data.arr[0].collect_openid.length
+          })
 
-            wx.hideLoading()
+          if (chance == 1) {
+            this.moveList()
+            chance = 0;
+            next = false
+            var index = (this.data.list.length - 1)
+            if (index - 1 >= 0) {
+              this.data.list[index].x -= 7
+              this.data.list[index].y += 7
+            }
+            this.setData({
+              list: this.data.list,
+            })
           }
+          wx.hideLoading()
+
         }
       })
     }, 200)
+    
   },
   moveList() {
     let list = this.data.list || [];
+    // console.log(this.data.arr)
+    var count = this.data.initLength - 1
     for (let i of this.data.arr) {
       i.x = winWidth
       i.y = 0
+      wx.cloud.callFunction({
+        name: 'isAnswerLiked',
+        data: {
+          answer_id: i.answer_id,
+          _openid: app.globalData.OPENID
+        },
+        success: function (res2) {
+          if (res2.result) {
+            i.liked = true
+          } else {
+            i.liked = false
+          }
+        }
+      })
+      wx.cloud.callFunction({
+        name: 'isAnswerCollected',
+        data: {
+          answer_id: i.answer_id,
+          _openid: app.globalData.OPENID
+        },
+        success: function (res2) {
+          if (res2.result) {
+            i.collected = true
+          } else {
+            i.collected = false
+          }
+        }
+      })
+      i.index = count--
       list.unshift(i)
     }
     this.setData({
@@ -299,17 +440,6 @@ Page({
         duration: 2000,
         icon: 'error',
       })
-    }
-  },
-  zan: function (e) {
-    console.log(e)
-  },
-  star: function (e) {
-    console.log(e.currentTarget.dataset.question_id)
-  },
-  onShow: function () {
-    if (app.globalData.TIMESTAMP_ANSWER_START == 0) {
-      app.globalData.TIMESTAMP_ANSWER_START = Date.parse(new Date()) / 1000
     }
   },
 

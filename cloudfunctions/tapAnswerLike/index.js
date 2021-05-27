@@ -44,3 +44,5 @@ exports.main = async (event, context) => {
     })
   }
 }
+
+//Input: answer_id, _openid, liked

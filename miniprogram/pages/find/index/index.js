@@ -82,7 +82,7 @@ Page({
     showNow: '',
     question_id: '',
     items: [],
-    currentIndex: 0,
+    currentIndex: '',
     virtualView: [
       4, 0, 3, 1, 1,
       3, 2, 0, 2, 1,
@@ -239,7 +239,7 @@ Page({
     that.setData({
       showNow: true,
       question_id: qid,
-      currentIndex: e.currentTarget.dataset.no
+      currentIndex: e.currentTarget.dataset.no - 1
     })
   },
   scroll(e) {

@@ -103,7 +103,7 @@
           "scene": null
         },
         {
-          "name": "pages/find/index/index",
+          "name": "小星球",
           "pathName": "pages/find/index/index",
           "query": "",
           "scene": null
@@ -121,27 +121,15 @@
           "scene": null
         },
         {
-          "name": "pages/find/QandA/index",
+          "name": "回答卡片",
           "pathName": "pages/find/QandA/index",
           "query": "",
           "scene": null
         },
         {
-          "name": "pages/personal/history/history",
-          "pathName": "pages/personal/history/history",
+          "name": "动态故事页",
+          "pathName": "pages/recommend/recommend",
           "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/find/write/write",
-          "pathName": "pages/find/write/write",
-          "query": "question_id=1",
-          "scene": null
-        },
-        {
-          "name": "pages/find/QandA/index",
-          "pathName": "pages/find/QandA/index",
-          "query": "question_id=0",
           "scene": null
         }
       ]
