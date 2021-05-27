@@ -4,14 +4,8 @@
 .page-body{
   position: relative;
 }
-.image{
-  flex-shrink: 0;
-  margin-left: 50rpx;
-  margin-right: 20rpx;
-  width: 100rpx;
-  height: 100rpx;
-}
 .scroll-view_H{
+
   white-space: nowrap;
   position: relative;
   width: 100vw;
@@ -67,11 +61,11 @@
   top: -333rpx;
   border-radius: 10rpx;
   z-index: 9;
-  background: #fff;
   /* padding-top: 76rpx; */
-  border-radius: 60rpx;
+  border-radius: 80rpx;
   box-shadow:5px 9px 10px 0px rgba(0,0,0,0.1);
-  border: solid 4rpx black;
+  border: solid 2px white;
+  color: white;
 }
 .header{
   padding-top: 50rpx;
@@ -81,40 +75,21 @@
   border-bottom: 3rpx solid #ccc;
 }
 
-
-.circle
-{
-  /* padding-top:300rpx; */
-  /* position: relative; */
-  /* top:50%; */
-  align-items: center;
-  display: inline-block;
-  width:100px;
-  height:100px;
-  /* border:solid blue 2rpx ; */
-  border-radius: 50%;
-  text-align: center;
-  line-height: 100px;
-  /* background-image: linear-gradient(to right top,#B3FFAB,#12FFF7); */
-
-
+.head-image{
+  height:100rpx;
+  width: 100rpx;
+  margin: 0 0 0 40rpx;
+  flex:none;
 }
-.question-title{
+.nickname{
   /* text-align: center; */
-  margin-right: 30rpx;
-  margin-top: 5rpx;
+  /* margin-top: 5rpx; */
+  padding: 0 30rpx 0 30rpx;
   line-height: 60rpx;
   font-size: 40rpx;
   font-weight: 700;
 }
 
-l-button{
-  position: absolute;
-  width:200%;
-  height:100vh;
-  /* border: 2rpx red solid; */
-  animation: sun 8s  infinite linear;
-}
 .answer{
   /* margin-left: 2.5%; */
   /* margin-top: 15rpx; */
@@ -129,26 +104,26 @@ l-button{
   z-index: -1;
   /* filter: blur(5px); */
 }
-.button{
-  position: absolute;
-  bottom: 10%;
-  width: 30%;
-  height: 80rpx;
-  background-color: rgba(255, 255, 255, 0.671);
-  backdrop-filter: blur(20px);
-  border-radius: 40rpx;
-  line-height: 80rpx;
-  text-align: center;
-  color: rgb(36, 110, 85);
-}
-.b1{
-  border: 4rpx solid rgb(36, 110, 85);
-  border-radius: 20rpx;
+
+.like{
   left: 15%;
+  bottom: 10%;
+  position: absolute;
 }
-.b2{
-  border: 4rpx solid rgb(36, 110, 85);
-  border-radius: 20rpx;
+.like image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.star{
+  position: absolute;
   right:15%;
+  bottom: 10%;
+}
+.star image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.num{
+  margin-left: 15rpx;
 }
 

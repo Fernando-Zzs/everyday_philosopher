@@ -3,30 +3,40 @@
 <view class='page-box box'>
   <view class="m-box">
     <movable-area class="m-area">
-      <movable-view class='m-item' wx:for="{{list}}" wx:key="index" wx:index="index" x="{{item.x+index*0}}" y="{{item.y+index*0}}"
-        damping="52" direction="all" bindchange="onChange" data-index="{{index}}" 
-        data-questionid="{{item.question_id}}"
-        catchtouchend="touchEnd"
-        catchtouchstart="touchStart" catchtouchmove="touchMove" out-of-bounds="true" data-index="{{index}}">
+      <movable-view class='m-item' wx:for="{{list}}" wx:key="index" wx:index="index" x="{{item.x+index*0}}"
+        y="{{item.y+index*0}}" damping="52" direction="all" bindchange="onChange" data-index="{{index}}"
+        data-questionid="{{item.question_id}}" bindtouchend="touchEnd" bindtouchstart="touchStart"
+        bindtouchmove="touchMove" out-of-bounds="true" data-index="{{index}}">
 
         <view class='m-item-box item{{(index == 0 || index == list.length -1) ? 0 : 1}} '>
-        <image class="bg" mode="aspectFill" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/1.jpg"></image>
+          <image class="bg" mode="aspectFill" src="./image_test/1.png"></image>
           <view class="header">
-            <image src="{{item.avatarURL}}" class="image"></image>
-            <view class="question">
-              <view class='question-title'>
-                {{item.nickname || '--'}}
-              </view>
-              <!-- <view class='question-content'>
-                {{item.description || '--'}}
-              </view> -->
+            <image src="{{item.avatarURL}}" mode="aspectFit" class="head-image"></image>
+
+            <view class='nickname'>
+              {{item.nickname || '匿名用户'}}
+
             </view>
           </view>
           <view class="answer a">
-          {{item.content || '--'}}
+            {{item.content || '--'}}
           </view>
-          <view class="button b1" bindtap="zan" data-question_id="{{item.question_id}}">点赞</view>
-          <view class="button b2" bindtap="star" data-question_id="{{item.question_id}}">收藏</view>
+          <view class="like" bindtap="handleLike" data-answerid="{{item.answer_id}}" data-index="{{item.index}}">
+            <image wx:if="{{!item.liked}}"
+              src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/未赞.png">
+            </image>
+            <image wx:else
+              src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/已赞.png"></image>
+            <view class="num">{{like_num}}</view>
+          </view>
+          <view class="star" bindtap="handleCollect" data-answerid="{{item.answer_id}}" data-index="{{item.index}}">
+            <image wx:if="{{!item.collected}}"
+              src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/未收藏.png">
+            </image>
+            <image wx:else src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/已收藏.png">
+            </image>
+            <view class="num">{{collect_num}}</view>
+          </view>
         </view>
 
       </movable-view>

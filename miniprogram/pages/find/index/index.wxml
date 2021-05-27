@@ -12,7 +12,7 @@
           <block wx:for="{{items}}" wx:for-item="itemName" wx:key="id">
             <view class="scroll-view-item_H">
               <image id="{{itemName.id}}" class="circle" src="{{itemName.url}}" bindtap="enter" data-question_id="{{itemName.question_id}}" data-no="{{itemName.no}}"></image>
-              <pop isStory="{{false}}" show="{{showNow}}" question_id="{{itemName.question_id}}" title="{{items[currentIndex].title}}" content="{{items[currentIndex].content}}"></pop>
+              <pop isStory="{{false}}" show="{{showNow}}" question_id="{{items[currentIndex].question_id}}" title="{{items[currentIndex].title}}" content="{{items[currentIndex].content}}"></pop>
             </view>
           </block>
         </scroll-view>
