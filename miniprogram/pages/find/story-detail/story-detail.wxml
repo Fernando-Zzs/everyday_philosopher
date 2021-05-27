@@ -29,7 +29,7 @@
 
   <!-- 评论栏 -->
   <view class="record" wx:if="{{!showLoading}}">
-    <view class="comment_title">最新热评</view>
+    <view id="comment_title">最新热评</view>
 
     <view class="comment">
       <block class="comment-item" wx:for="{{show}}" wx:key="{{item._id}}">

@@ -9,6 +9,23 @@ const _ = db.command
 
 cloud.init()
 
+Date.prototype.Format = function (fmt) {
+  var o = {
+    "M+": this.getMonth() + 1, // 月份
+    "d+": this.getDate(), // 日
+    "h+": this.getHours(), // 小时
+    "m+": this.getMinutes(), // 分
+    "s+": this.getSeconds(), // 秒
+    "q+": Math.floor((this.getMonth() + 3) / 3), // 季度
+    "S": this.getMilliseconds() // 毫秒
+  };
+  if (/(y+)/.test(fmt))
+    fmt = fmt.replace(RegExp.$1, (this.getFullYear() + ""));
+  for (var k in o)
+    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+  return fmt;
+}
+
 function string_to_arr(str) {
   eval('let ' + str + ' = []')
 }
@@ -214,17 +231,33 @@ function get_percentage(story_arr, tag_mapping_obj, tags_and_count_final) {
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  let timestamp_end = Date.parse(new Date()) / 1000
-  console.log('end: ', timestamp_end);
-  let day = new Date().getDay()
+  // let timestamp_end = Date.parse(new Date()) / 1000
+  // console.log('end: ', timestamp_end);
+  // let day = new Date().getDay()
+
+  // let today_0 = new Date()
+  // today_0.setHours(0)
+  // today_0.setMinutes(0)
+  // today_0.setSeconds(0)
+  // today_0.setMilliseconds(0)
+  // let timestamp_start = Date.parse(today_0) / 1000 - 86400 * day
+  // console.log('start', timestamp_start);
 
   let today_0 = new Date()
+  let day = new Date().getDay()
+  let timestamp_end = 0
+  let timestamp_start = 0
   today_0.setHours(0)
   today_0.setMinutes(0)
   today_0.setSeconds(0)
   today_0.setMilliseconds(0)
-  let timestamp_start = Date.parse(today_0) / 1000 - 86400 * day
-  console.log('start', timestamp_start);
+
+  if (day == 0) {
+    timestamp_end = Date.parse(today_0) / 1000 - 86400 * 6
+  } else {
+    timestamp_end = Date.parse(today_0) / 1000 - 86400 * (day - 1)
+  }
+  timestamp_start = timestamp_end - 86400 * 7
 
   let story_arr = await db.collection('story').get()
   story_arr = story_arr.data

@@ -3,6 +3,13 @@ const app = getApp()
 let value_global = ''
 let _this_global = this
 
+let content_height = 0
+let timestamp_story_start = 0
+let timestamp_comment_start = 0
+let timestamp_story_end = 0
+let timestamp_comment_end = 0
+let lock = false
+
 function initComment(value) {
   let comment_arr = []
 
@@ -509,5 +516,42 @@ Page({
   },
   handleSend() {
     this.onsend()
+  },
+  onPageScroll: function (e) {
+    if (content_height == 0) {
+      wx.createSelectorQuery().select('.content').boundingClientRect(function (rect) {
+        content_height = rect.height - wx.getSystemInfoSync().windowHeight
+      }).exec()
+    }
+
+    if (!lock && content_height != 0 && e.scrollTop >= content_height) {
+      lock = true
+      timestamp_story_end = Date.parse(new Date()) / 1000
+      timestamp_comment_start = Date.parse(new Date()) / 1000
+      console.log('storyover', timestamp_story_end);
+      wx.cloud.callFunction({
+        name: 'addTime',
+        data: {
+          _openid: app.globalData.OPENID,
+          type: 'story',
+          addedTime: timestamp_story_end - timestamp_story_start
+        }
+      })
+    }
+  },
+  onShow: function () {
+    timestamp_story_start = Date.parse(new Date()) / 1000
+    console.log('show', timestamp_story_start);
+  },
+  onUnload: function () {
+    timestamp_comment_end = Date.parse(new Date()) / 1000
+    wx.cloud.callFunction({
+      name: 'addTime',
+      data: {
+        _openid: app.globalData.OPENID,
+        type: 'comment',
+        addedTime: timestamp_comment_end - timestamp_comment_start
+      }
+    })
   }
 })

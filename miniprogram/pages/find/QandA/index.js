@@ -4,8 +4,9 @@ const app = getApp()
 let winWidth = 416;
 let winHeight = 736;
 
-let chance=1;
-let canUp=true;
+let chance = 1;
+let canUp = true;
+
 function deepClone(obj) {
   if (typeof obj !== 'object' || obj === null) {
     return obj
@@ -22,13 +23,13 @@ Page({
   data: {
     user_avatar: '',
     user_nickname: '',
-    allAnswer:[],
+    allAnswer: [],
     show: true,
     x: winWidth,
     y: winHeight,
     animationA: {},
     list: [],
-    arr:[],
+    arr: [],
     distance: "",
     startX: '', // 初始点X位置
     startY: '', // 初始点Y位置
@@ -37,15 +38,15 @@ Page({
     context: '', // 文本框内容
     currentQid: '' // 当前问题id
   },
-  onLoad: function (options){
+  onLoad: function (options) {
     // console.log(options.question_id)
     let that = this
     wx.cloud.callFunction({
-      name:'getAnswerByQuestionId',
-      data:{
+      name: 'getAnswerByQuestionId',
+      data: {
         question_id: options.question_id
       },
-      complete:res=>{
+      complete: res => {
         that.setData({
           allAnswer: res.result,
           user_avatar: res.result.avatarURL,
@@ -74,7 +75,11 @@ Page({
       ratio
     })
     this.getList()
-    setTimeout(()=>{this.setData({list:this.data.list})},500)
+    setTimeout(() => {
+      this.setData({
+        list: this.data.list
+      })
+    }, 500)
 
   },
   touchStart(e) {
@@ -93,22 +98,23 @@ Page({
         list
       })
     } else if (index === (list.length - 1)) {
-    // if (touches.length > 1) {
-    //   list[index].x = winWidth
-    //   list[index].y = 0
-    //   that.setData({
-    //     list
-    //   })
-    // } else 
-    if (index === (list.length - 1)) {
-      let startX = e.touches[0].clientX;
-      let startY = e.touches[0].clientY;
-      this.setData({
-        startX,
-        startY
-      })
+      // if (touches.length > 1) {
+      //   list[index].x = winWidth
+      //   list[index].y = 0
+      //   that.setData({
+      //     list
+      //   })
+      // } else 
+      if (index === (list.length - 1)) {
+        let startX = e.touches[0].clientX;
+        let startY = e.touches[0].clientY;
+        this.setData({
+          startX,
+          startY
+        })
+      }
     }
-  }},
+  },
   // 拖动结束
   touchEnd(e) {
 
@@ -116,9 +122,9 @@ Page({
     let list = this.data.list || []
 
     if (index === (list.length - 1)) {
-    //   if(list.length < 4){ 
-    //     this.moveList()
-    // }
+      //   if(list.length < 4){ 
+      //     this.moveList()
+      // }
       let that = this;
       let startX = this.data.startX;
       let startY = this.data.startY;
@@ -135,60 +141,61 @@ Page({
       let moveDis = 666 / (ratio * 3);
       // console.log(disX, moveDis)
       if (disX > moveDis && disClientX > moveDis) {
-      // console.log(disX, moveDis)disX > moveDis && 
-      if (disClientX > moveDis&&list.length>1) {
-        list[index].x = (endX - startX) > 0 ? winWidth * 2 : -winWidth
-        // 移除时距离竖向距离
-        // list[index].y = disClientY
-        list[index].y = disClientY
-        if(index-1>=0){
-          list[index-1].x-=7
-        // 移除时距离竖向距离
-        list[index-1].y +=7
-        }
-        that.setData({
-          list: list,
-          animationA: null
-          // animationA: null
-        });
-        // 移出动画结束后 从list内移除
-        setTimeout(() => {
+        // console.log(disX, moveDis)disX > moveDis && 
+        if (disClientX > moveDis && list.length > 1) {
+          list[index].x = (endX - startX) > 0 ? winWidth * 2 : -winWidth
+          // 移除时距离竖向距离
+          // list[index].y = disClientY
+          list[index].y = disClientY
+          if (index - 1 >= 0) {
+            list[index - 1].x -= 7
+            // 移除时距离竖向距离
+            list[index - 1].y += 7
+          }
+          that.setData({
+            list: list,
+            animationA: null
+            // animationA: null
+          });
+          // 移出动画结束后 从list内移除
+          setTimeout(() => {
 
-          list.splice((list.length - 1), 1);
-          this.setData({
+            list.splice((list.length - 1), 1);
+            this.setData({
+              list
+            })
+            // 列表长度小于4的时候请求服务端
+            if (list.length < 4) {
+
+              if (list.length < 4) {
+                that.getList()
+              }
+
+            }
+          }, 300)
+          that.setData({
+            context: ''
+          })
+        } else if (disClientX < 1 && disClientY < 1) {
+          // 点击进入
+          // console.log('点击进入详情')
+        } else {
+          list[index].x = winWidth
+          list[index].y = 0
+          that.setData({
             list
           })
-          // 列表长度小于4的时候请求服务端
-          if (list.length < 4) {
-
-         if (list.length < 4) {
-            that.getList()
-          }
-
-        }}, 300)
-        that.setData({
-          context: ''
-        })
-      } else if (disClientX < 1 && disClientY < 1) {
-        // 点击进入
-        // console.log('点击进入详情')
+        }
       } else {
         list[index].x = winWidth
-        list[index].y = 0
-        that.setData({
-          list
-        })
-      }
-    }
-    else{
-      list[index].x = winWidth
         list[index].y = 0
         this.setData({
           list
         })
         // console.log(1)
+      }
     }
-  }},
+  },
   onUnload: function () {
     clearInterval(this.timer)
   },
@@ -206,55 +213,57 @@ Page({
   getList() {
     let that = this
     setTimeout(() => {
-    // setTimeout(() => {
+      // setTimeout(() => {
       wx.cloud.callFunction({
         name: 'getAllQuestion',
         complete: res => {
 
-          this.data.arr= deepClone(res.result)
+          this.data.arr = deepClone(res.result)
           let list = this.data.list || [];
           let arr = deepClone(res.result)
           for (let i of arr) {
-          for (let i of this.data.arr) {
-            i.x = winWidth
-            i.y = 0
-            list.unshift(i)
-          }
-          if(chance==1){
-          var index = (this.data.list.length - 1)
-          if(index-1>=0){
-            // console.log('1')
-            list[index].x-=7
-          // 移除时距离竖向距离
-          list[index].y +=7
-          chance=0;
-          }}
-          // if(canUp){
-          //   this.setData({
-          //     list:this.data.list
-          //   })
-          //   canUp=false;
-          // }
-          this.setData({
-            list
-          })
+            for (let i of this.data.arr) {
+              i.x = winWidth
+              i.y = 0
+              list.unshift(i)
+            }
+            if (chance == 1) {
+              var index = (this.data.list.length - 1)
+              if (index - 1 >= 0) {
+                // console.log('1')
+                list[index].x -= 7
+                // 移除时距离竖向距离
+                list[index].y += 7
+                chance = 0;
+              }
+            }
+            // if(canUp){
+            //   this.setData({
+            //     list:this.data.list
+            //   })
+            //   canUp=false;
+            // }
+            this.setData({
+              list
+            })
 
-          wx.hideLoading()
+            wx.hideLoading()
+          }
         }
-      }})
+      })
     }, 200)
   },
-  moveList(){
+  moveList() {
     let list = this.data.list || [];
-          for (let i of this.data.arr) {
-            i.x = winWidth
-            i.y = 0
-            list.unshift(i)
-          }
-          this.setData({
-            list
-          })
-          console.log(list)
+    for (let i of this.data.arr) {
+      i.x = winWidth
+      i.y = 0
+      list.unshift(i)
+    }
+    this.setData({
+      list
+    })
+    console.log(list)
   },
   true: function (e) {
     let v = e.detail.value;
@@ -292,10 +301,32 @@ Page({
       })
     }
   },
-  zan: function(e){
+  zan: function (e) {
     console.log(e)
   },
-  star: function(e){
+  star: function (e) {
     console.log(e.currentTarget.dataset.question_id)
+  },
+  onShow: function () {
+    if (app.globalData.TIMESTAMP_ANSWER_START == 0) {
+      app.globalData.TIMESTAMP_ANSWER_START = Date.parse(new Date()) / 1000
+    }
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+    app.globalData.TIMESTAMP_ANSWER_END = Date.parse(new Date()) / 1000
+    wx.cloud.callFunction({
+      name: 'addTime',
+      data: {
+        _openid: app.globalData.OPENID,
+        type: 'answer',
+        addedTime: app.globalData.TIMESTAMP_ANSWER_END - app.globalData.TIMESTAMP_ANSWER_START
+      }
+    })
+    app.globalData.TIMESTAMP_ANSWER_START = 0
+    app.globalData.TIMESTAMP_ANSWER_END = 0
   }
 })
