@@ -1,17 +1,17 @@
 // write/write.js
-const app=getApp()
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    question_id:'',
-    answer_id:'',
-    question_title:'',
-    user_avatar:'',
-    user_nickname:'',
-    content:''
+    question_id: '',
+    answer_id: '',
+    question_title: '',
+    user_avatar: '',
+    user_nickname: '',
+    content: ''
   },
 
   /**
@@ -21,14 +21,14 @@ Page({
     let that = this
     console.log(options.question_id)
     this.setData({
-      question_id:options.question_id
+      question_id: options.question_id
     })
     wx.cloud.callFunction({
-      name:'getQuestion',
-      data:{
+      name: 'getQuestion',
+      data: {
         question_id: options.question_id
       },
-      complete:res=>{
+      complete: res => {
         that.setData({
           question_title: res.result.title
         })
@@ -42,29 +42,29 @@ Page({
     })
   },
 
-  submit:function(){
+  submit: function () {
     let that = this
-    
+
     // console.log(this.data.content)
     wx.cloud.callFunction({
-      name:'addAnswer',
-      data:{
+      name: 'addAnswer',
+      data: {
         question_id: that.data.question_id,
         content: that.data.content,
         avatarURL: that.data.user_avatar,
         nickname: that.data.user_nickname
       },
-      complete:res=>{
+      complete: res => {
         wx.navigateTo({
-          url: '../question-detail/question-detail?question_id='+that.data.question_id+'&answer_id='+res.result,
+          url: '../question-detail/question-detail?question_id=' + that.data.question_id + '&answer_id=' + res.result,
         })
       }
     })
-    
-    
+
+
   },
 
-  inputChange(e){
+  inputChange(e) {
     this.setData({
       content: e.detail.value
     })
@@ -80,21 +80,25 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+    if (app.globalData.TIMESTAMP_ANSWER_START == 0) {
+      app.globalData.TIMESTAMP_ANSWER_START = Date.parse(new Date()) / 1000
+    }
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    app.globalData.TIMESTAMP_ANSWER_END = Date.parse(new Date()) / 1000
+    wx.cloud.callFunction({
+      name: 'addTime',
+      data: {
+        _openid: app.globalData.OPENID,
+        type: 'answer',
+        addedTime: app.globalData.TIMESTAMP_ANSWER_END - app.globalData.TIMESTAMP_ANSWER_START
+      }
+    })
+    app.globalData.TIMESTAMP_ANSWER_START = 0
   },
 
   /**

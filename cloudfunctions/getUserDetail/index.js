@@ -13,7 +13,7 @@ exports.main = async (event, context) => {
       _openid: event._openid
     })
     .get()
-  return ret.data
+  return ret.data[0]
 }
 
 // input: _openid

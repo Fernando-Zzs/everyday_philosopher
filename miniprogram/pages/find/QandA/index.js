@@ -50,6 +50,9 @@ Page({
   },
 
   onShow: function(){
+    if (app.globalData.TIMESTAMP_ANSWER_START == 0) {
+      app.globalData.TIMESTAMP_ANSWER_START = Date.parse(new Date()) / 1000
+    }
     chance = 1;
     let that = this
     // 缓冲
@@ -438,5 +441,22 @@ Page({
         icon: 'error',
       })
     }
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+    app.globalData.TIMESTAMP_ANSWER_END = Date.parse(new Date()) / 1000
+    wx.cloud.callFunction({
+      name: 'addTime',
+      data: {
+        _openid: app.globalData.OPENID,
+        type: 'answer',
+        addedTime: app.globalData.TIMESTAMP_ANSWER_END - app.globalData.TIMESTAMP_ANSWER_START
+      }
+    })
+    app.globalData.TIMESTAMP_ANSWER_START = 0
+    app.globalData.TIMESTAMP_ANSWER_END = 0
   }
 })
