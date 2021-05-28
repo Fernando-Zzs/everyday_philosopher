@@ -9,7 +9,7 @@
         bindtouchmove="touchMove" out-of-bounds="true" data-index="{{index}}">
 
         <view class='m-item-box item{{(index == 0 || index == list.length -1) ? 0 : 1}} '>
-          <image class="bg" mode="aspectFill" src="./image_test/1.png"></image>
+          <image class="bg" mode="aspectFill" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/answer_card.png"></image>
           <view class="header">
             <image src="{{item.avatarURL}}" mode="aspectFit" class="head-image"></image>
 

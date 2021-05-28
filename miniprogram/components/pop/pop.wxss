@@ -52,7 +52,7 @@ page {
 }
 .container{
   position: absolute;
-  width: 100%;
+  width: 93%;
   left: 25rpx;
   top: 80rpx;
 }
@@ -60,12 +60,16 @@ page {
   font-size: 40rpx;
   line-height: 50rpx;
   color: #323232;
+  white-space: pre-wrap;
+  word-break: break-all;
 }
 .content{
   margin-top: 20rpx;
   line-height: 40rpx;
   color: #323232;
   font-size: 30rpx;
+  white-space: pre-wrap;
+  word-break: break-all;
 }
 .button{
   position: absolute;

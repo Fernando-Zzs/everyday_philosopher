@@ -1,8 +1,24 @@
+/* .bg1{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+} */
+/* .switchMode{
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  bottom: 30rpx;
+} */
 .page-section-spacing{
   margin-top: 0rpx;
 }
 .page-body{
   position: relative;
+}
+.swiper{
+  width: 100vw;
+  height: 100vh;
 }
 .scroll-view_H{
 

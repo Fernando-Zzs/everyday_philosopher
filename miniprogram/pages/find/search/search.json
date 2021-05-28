@@ -1,4 +1,6 @@
 {
   "navigationStyle": "custom",
-  "usingComponents": {}
+  "usingComponents": {
+    "get-more-loading":"../../../components/get-more-loading/get-more-loading"
+  }
 }
