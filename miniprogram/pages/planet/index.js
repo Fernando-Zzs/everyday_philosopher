@@ -10,9 +10,40 @@ import registerOrbit from "./orbit"
 
 
 const app = getApp()
-
+const position=[
+  {x:70,y:70,z:70},
+  {x:100,y:10,z:70},
+  {x:-70,y:-70,z:-70},
+  {x:-50,y:100,z:-47},
+  {x:10,y:-50,z:110},
+]
 Page({
-  data: {},
+  data: {
+    //存放故事
+    storys:[
+      {
+        story_id:0,
+        title_url:"./image/title1.png"
+      },
+      {
+        story_id:1,
+        title_url:"./image/title1.png"
+      },
+      {
+        story_id:2,
+        title_url:"./image/title1.png"
+      },
+      {
+        story_id:3,
+        title_url:"./image/title1.png"
+      },
+      {
+        story_id:4,
+        title_url:"./image/title1.png"
+      }
+    ],
+    story_id:''
+  },
   onLoad: function () {
     wx.createSelectorQuery()
       .select('#webgl')
@@ -110,68 +141,38 @@ Page({
   //     material: 0.5,//透明度 取值0-1；
   //     transparent: true,//设置是否为透明
   // });
-
-    var geometry = new this.THREE.IcosahedronGeometry(5);
     // var material = new this.THREE.MeshBasicMaterial({
     //   color: 0x3ca756,
     //   side: this.THREE.DoubleSide
     // });
-    const material2 = new this.THREE.MeshPhongMaterial({
-            side: this.THREE.DoubleSide,
-        });
 
-        const hue = Math.random();
-        const saturation = 1;
-        const luminance = .5;
-        material2.color.setHSL(hue, saturation, luminance);
-    var mesh = new this.THREE.Mesh(geometry, material2);
-    mesh.name = 'plato'
-    mesh.position.x = 70;
-    mesh.position.y = 70;
-    mesh.position.z = 70;
-    this.scene.add(mesh);
+    var geometry = new this.THREE.IcosahedronGeometry(5);
+    for(var i =0;i< this.data.storys.length;i++){
+      var material = new this.THREE.MeshPhongMaterial({
+        side: this.THREE.DoubleSide,
+      });
+      var item=this.data.storys[i]
+      var hue = Math.random();
+      var saturation = 1;
+      var luminance = .5;
+      material.color.setHSL(hue, saturation, luminance);
 
-//"https://636c-cloud1-6gm7hn7636af92c5-1305725653.tcb.qcloud.la/images/polato.png?sign=03df2825bac0d65ed059cc0b00dcc336&t=1622184129"
-    var spriteMap = new this.THREE.TextureLoader().load("https://636c-cloud1-6gm7hn7636af92c5-1305725653.tcb.qcloud.la/images/polato.png");
-    var spriteMaterial = new this.THREE.SpriteMaterial({
-      map: spriteMap,
-      color: 0xffffff
-    });
-    var sprite = new this.THREE.Sprite(spriteMaterial);
-    sprite.name = 'plato_name'
-    sprite.scale.set(30, 30, 20)
-    sprite.position.x = 75;
-    sprite.position.y = 75;
-    sprite.position.z = 75;
-    this.scene.add(sprite);
+      var mesh = new this.THREE.Mesh(geometry, material);
+      mesh.name = item.story_id
+      mesh.position.set(position[i].x,position[i].y,position[i].z)
+      this.scene.add(mesh);
 
-  //   var particleMaterial = new this.THREE.SpriteCanvasMaterial( {  
-  //     color: 0x000000,
-  //     program: function ( context ) {
-  //         context.beginPath();
-  //         context.font="bold 20px Arial";
-  //         context.fillStyle="#058";
-  //         context.fillText( 'a' , 0, 0 );
-  //     }
-
-  // } );
-
-  // var particle = new this.THREE.Sprite( particleMaterial );
-  // particle.position.x = 75;
-  // particle.position.y = 75;
-  // particle.position.z = 75;
-  // this.scene.add( particle );
-
-//   var texture = new this.THREE.CanvasTexture(getCanvasFont(111, 111, 'textvalue', '0xffffff','0x444444' ));
-// var fontMesh = new this.THREE.Sprite(
-// new this.THREE.SpriteMaterial({
-// map: texture
-// })
-// )
-// fontMesh.position.x = 80;
-// fontMesh.position.y = 75;
-// fontMesh.position.z = 75;
-// this.scene.add( fontMesh );
+      var spriteMap = new this.THREE.TextureLoader().load(item.title_url);
+      var spriteMaterial = new this.THREE.SpriteMaterial({
+        map: spriteMap,
+        color: 0xffffff
+      });
+      var sprite = new this.THREE.Sprite(spriteMaterial);
+      sprite.name = item.story_id
+      sprite.scale.set(60, 30, 1)
+      sprite.position.set(position[i].x*1.1,position[i].y*1.1,position[i].z*1.1)
+      this.scene.add(sprite);
+    }
   },
   animate() {
     var dt = this.clock.getDelta();
@@ -180,19 +181,19 @@ Page({
     this.controls.update()
     this.renderer.render(this.scene, this.camera);
   },
-  touchStart1(e) {
+  touchStart(e) {
     this.canvas.dispatchTouchEvent({
       ...e,
       type: 'touchstart'
     })
   },
-  touchMove1(e) {
+  touchMove(e) {
     this.canvas.dispatchTouchEvent({
       ...e,
       type: 'touchmove'
     })
   },
-  touchEnd1(e) {
+  touchEnd(e) {
     this.canvas.dispatchTouchEvent({
       ...e,
       type: 'touchend'
@@ -201,19 +202,19 @@ Page({
   tap(e) {
     let touch = e.touches[0];
     // console.log(touch)
-
     this.mouse.x = (touch.pageX / this.canvas._width) * 2 - 1;
     this.mouse.y = -(touch.pageY / this.canvas._height) * 2 + 1;
     this.raycaster.setFromCamera(this.mouse, this.camera);
     var intersects = this.raycaster.intersectObjects(this.scene.children);
     console.log(intersects, this.canvas._width, this.canvas._height, this.mouse.x, this.mouse.y, 'int')
+
     if (intersects.length > 0) {
-      
       console.log(intersects[0].object.name, 'yes')
+      this.setData({story_id:intersects[0].object.name})
+      // 展示弹窗
+
       
-
+      
     }
-
-
   }
 })
