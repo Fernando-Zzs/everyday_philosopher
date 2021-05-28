@@ -1,10 +1,12 @@
-<image class="bg" mode="aspectFill"></image>
+<image class="bg" mode="aspectFill" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/planet/bg-star.png"></image>
 <canvas
   type="webgl"
   id="webgl"
   style="width: 100%; height: 100vh;margin-top:0px;"
-  bindtouchstart="touchStart1"
-  bindtouchmove="touchMove1"
-  bindtouchend="touchEnd1"
+  bindtouchstart="touchStart"
+  bindtouchmove="touchMove"
+  bindtouchend="touchEnd"
   bindtap='tap'
 ></canvas>
+<!-- 显示数据 -->
+<!-- <view class="cover">{{story_id}}</view> -->
