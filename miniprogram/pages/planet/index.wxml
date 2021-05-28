@@ -8,4 +8,3 @@
   bindtouchend="touchEnd1"
   bindtap='tap'
 ></canvas>
-<view class="cover">456666666666</view>

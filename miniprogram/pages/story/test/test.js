@@ -19,6 +19,12 @@ Page({
     // })
   },
 
+  to:function(e){
+    console.log(e.currentTarget.dataset.storyid)
+    wx.navigateTo({
+      url: '../../find/SandC/index?story_id='+e.currentTarget.dataset.storyid,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

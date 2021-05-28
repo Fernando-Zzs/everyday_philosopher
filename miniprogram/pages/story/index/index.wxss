@@ -1,0 +1,158 @@
+/* story3/story3.wxss */
+
+.broadside{
+  /* position:fixed;
+  height: 100vh;
+  width:60vw; */
+  position:fixed;
+  width: 65vw;
+  height: 100%;
+  /* backdrop-filter:blur(15px); */
+
+  background: rgba(255, 255, 255, 0.65);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  left: -60vw;
+  /* z-index: 100000; */
+}
+.braod-item{
+  /* height:50px; */
+  width:80%;
+  /* border:red solid 2px; */
+  margin-left: 15%;
+  padding-top: 32rpx;
+  font-size: 27rpx;
+}
+.broad-title{
+  /* height:70px; */
+  width:100%;
+  margin: 10vh 0 10rpx 0;
+  text-align:center;
+  line-height: 100rpx;
+  font-size:70rpx;
+  font-family:"Franklin Gothic Medium";
+}
+.broad-small-title{
+  width:80%;
+  padding: 10rpx;
+  margin: 30rpx 15px 0 25rpx;
+  font-size:40rpx;
+  border-bottom: rgb(102, 102, 102) 1px solid;
+}
+/* .broad-info{
+  width:80%;
+  padding: 5px;
+  margin: 15px;
+  border-bottom: rgb(102, 102, 102) 1px solid;
+}
+.broad-series{
+  width:80%;
+  padding: 5px;
+  margin: 15px;
+  border-bottom: rgb(102, 102, 102)  1px solid;
+}
+.broad-relative{
+  width:80%;
+  padding: 5px;
+  margin: 15px;
+  border-bottom: rgb(102, 102, 102)  1px solid;
+} */
+
+.broad-button{
+  position: fixed;
+  border: 1px white solid;
+  width: 70rpx;
+  height: 70rpx;  
+  border-radius: 20px;
+  top: 0px;
+  padding-top: env(safe-area-inset-top);
+  left:20px;
+  text-align:center;
+  line-height: 70rpx;
+  color: aliceblue;
+  /* z-index: 10000000; */
+  z-index: 1;
+}
+.share_button{
+  position: absolute;
+  width: 85%;
+  height: 40px;  
+  border-radius: 20px;
+  bottom: 170rpx;
+  border: 1px solid black;
+  text-align:center;
+  line-height:40px;
+  
+  /* z-index: 1; */
+}
+.end-button{
+  position: fixed;
+  width: 30vw;
+  height: 40px;
+  border-radius: 20px;
+  /* border: 1px solid rgb(255, 255, 255); */
+  text-align:center;
+  line-height:40px;
+  color: rgb(0, 0, 0);
+  bottom: 150rpx;
+  backdrop-filter:blur(15px);
+  background: rgba(255, 255, 255, 0.548);
+  z-index: 1;
+}
+.end-comment-button{
+  left: 15vw;
+}
+.end-share-button{
+  right: 15vw;
+}
+.page1 {
+  height: 100vh;
+}
+scroll-view {
+  height: 100%;
+}
+
+.contanier1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bg {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  z-index: -1;
+}
+
+.text {
+  width: 80%;
+  color: rgb(255, 255, 255);
+  position: fixed;
+  /* margin-top: 400rpx; */
+  top:400rpx;
+  z-index: -1;
+  font-family:"SimSun"
+}
+.blur {
+  backdrop-filter:blur(10px);
+  background: rgba(255, 255, 255, 0.4);
+  padding: 15px;
+  border-radius: 3px;
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, .3);
+}
+.cross{
+  width: 300vw;
+}
+
+.title{
+  z-index: -1;
+  margin-top: 80rpx;
+  position: fixed;
+  scale: 1.2;
+}
+
+.black{
+  color: rgb(0, 0, 0);
+}

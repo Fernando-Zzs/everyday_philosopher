@@ -98,6 +98,7 @@ Page({
     this.controls.keyPanSpeed=15
     this.controls.maxDistance=700
     this.controls.minDistance=300
+    this.controls.enablePan=false
     // this.controls.target=new THREE.Vector3( 0, 0, 0 );
     this.controls.update();
   },
@@ -131,7 +132,7 @@ Page({
     this.scene.add(mesh);
 
 //"https://636c-cloud1-6gm7hn7636af92c5-1305725653.tcb.qcloud.la/images/polato.png?sign=03df2825bac0d65ed059cc0b00dcc336&t=1622184129"
-    var spriteMap = new this.THREE.TextureLoader().load("./polato.png");
+    var spriteMap = new this.THREE.TextureLoader().load("https://636c-cloud1-6gm7hn7636af92c5-1305725653.tcb.qcloud.la/images/polato.png");
     var spriteMaterial = new this.THREE.SpriteMaterial({
       map: spriteMap,
       color: 0xffffff

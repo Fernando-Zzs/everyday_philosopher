@@ -131,6 +131,12 @@
           "pathName": "pages/recommend/recommend",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/planet/index",
+          "pathName": "pages/planet/index",
+          "query": "",
+          "scene": null
         }
       ]
     }

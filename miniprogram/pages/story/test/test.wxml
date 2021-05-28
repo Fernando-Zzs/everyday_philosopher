@@ -1,8 +1,4 @@
-<swiper class="container" vertical="true" indicator-dots="true">
-  <swiper-item>
-    <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球14.png"></image>
-  </swiper-item>
-  <swiper-item>
-    <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球13.png"></image>
-  </swiper-item>
-</swiper>
+<view>
+  <button class="btn" bindtap="to" data-storyid="0">hello
+</button>
+</view>
