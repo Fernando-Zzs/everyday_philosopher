@@ -26,6 +26,40 @@ Date.prototype.Format = function (fmt) {
   return fmt;
 }
 
+function get_class_from_tag(tag_mapping_obj, tag) {
+  let tags_period_arr = tag_mapping_obj.period
+  let tags_region_arr = tag_mapping_obj.region
+  let tags_subject_arr = tag_mapping_obj.subject
+  let tags_content_arr = tag_mapping_obj.content
+  let tags_other_arr = tag_mapping_obj.other
+
+  for (let i = 0, len = tags_period_arr.length; i < len; i++) {
+    if (tags_period_arr[i] == tag) {
+      return 'period'
+    }
+  }
+  for (let i = 0, len = tags_region_arr.length; i < len; i++) {
+    if (tags_region_arr[i] == tag) {
+      return 'region'
+    }
+  }
+  for (let i = 0, len = tags_subject_arr.length; i < len; i++) {
+    if (tags_subject_arr[i] == tag) {
+      return 'subject'
+    }
+  }
+  for (let i = 0, len = tags_content_arr.length; i < len; i++) {
+    if (tags_content_arr[i] == tag) {
+      return 'content'
+    }
+  }
+  for (let i = 0, len = tags_other_arr.length; i < len; i++) {
+    if (tags_other_arr[i] == tag) {
+      return 'other'
+    }
+  }
+}
+
 function string_to_arr(str) {
   eval('let ' + str + ' = []')
 }
@@ -208,7 +242,7 @@ function get_percentage(story_arr, tag_mapping_obj, tags_and_count_final) {
     let tags = story_arr[i].tags
     for (let j = 0, len_j = tags.length; j < len_j; j++) {
       let tag_position = get_tag_position(tags_and_max_count_arr, tags[j])
-      tags_and_max_count_arr[tag_position].count += 5.5
+      tags_and_max_count_arr[tag_position].count += 2.5
     }
   }
 
@@ -393,7 +427,60 @@ exports.main = async (event, context) => {
   }
 
   let tags_and_count_final = merge_tags_and_count_xx_arr(tags_and_count_history_arr, tags_and_count_collection_arr, tags_and_count_like_arr, tags_and_count_comment_arr, tag_mapping_obj)
-  return get_percentage(story_arr, tag_mapping_obj, tags_and_count_final)
+  let percentage_count_arr = get_percentage(story_arr, tag_mapping_obj, tags_and_count_final)
+
+  for (let i = 0, len = percentage_count_arr.length; i < len; i++) {
+    if (!(percentage_count_arr[i].count >= 0)) {
+      percentage_count_arr[i].count = 0
+    }
+  }
+
+  percentage_count_arr.sort(compare('count'))
+
+  let ret_arr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  for (let i = 0, len = percentage_count_arr.length; i < len; i++) {
+    switch (get_class_from_tag(tag_mapping_obj, percentage_count_arr[i].tag)) {
+      case 'period':
+        if (ret_arr[0] == 0) {
+          ret_arr[0] = percentage_count_arr[i]
+        } else if (ret_arr[1] == 0) {
+          ret_arr[1] = percentage_count_arr[i]
+        }
+        break
+      case 'region':
+        if (ret_arr[2] == 0) {
+          ret_arr[2] = percentage_count_arr[i]
+        } else if (ret_arr[3] == 0) {
+          ret_arr[3] = percentage_count_arr[i]
+        }
+        break
+      case 'subject':
+        if (ret_arr[4] == 0) {
+          ret_arr[4] = percentage_count_arr[i]
+        } else if (ret_arr[5] == 0) {
+          ret_arr[5] = percentage_count_arr[i]
+        }
+        break
+      case 'content':
+        if (ret_arr[6] == 0) {
+          ret_arr[6] = percentage_count_arr[i]
+        } else if (ret_arr[7] == 0) {
+          ret_arr[7] = percentage_count_arr[i]
+        }
+        break
+      case 'other':
+        if (ret_arr[8] == 0) {
+          ret_arr[8] = percentage_count_arr[i]
+        } else if (ret_arr[9] == 0) {
+          ret_arr[9] = percentage_count_arr[i]
+        }
+        break
+      default:
+        break
+    }
+  }
+
+  return ret_arr
 }
 
 // 分析思路：

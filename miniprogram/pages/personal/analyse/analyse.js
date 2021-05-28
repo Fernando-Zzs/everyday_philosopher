@@ -1,32 +1,77 @@
 // pages/analyse/analyse.js
+let that = null
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    analysis:[]
+    analysis: [],
+    scale_arr: [{
+      tag: '',
+      scale: 1
+    }, {
+      tag: '',
+      scale: 1
+    }, {
+      tag: '',
+      scale: 1
+    }, {
+      tag: '',
+      scale: 1
+    }, {
+      tag: '',
+      scale: 1
+    }, {
+      tag: '',
+      scale: 1
+    }, {
+      tag: '',
+      scale: 1
+    }, {
+      tag: '',
+      scale: 1
+    }]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    that = this
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    if(this.data.analysis.length>0){
-    for(var i=0;i<this.data.analysis.length;i++){
-      this.animate('.i'+(i+1),
-      [
-        {transform:'scale('+this.data.analysis[i]+')'}
-      ])
+    wx.cloud.callFunction({
+      name: 'getAnalysisTagsPlus',
+      data: {
+        _openid: 'oMvG85TcKyxuM3KXlkmNaXu6CKYM'
+      },
+      success: function (res) {
+        let res_arr = res.result
+        for (let i = 0; i < 8; i++) {
+          that.setData({
+            ['scale_arr[' + i + '].tag']: res.result[i].tag,
+            ['scale_arr[' + i + '].scale']: res_arr[i].count,
+          })
+        }
+
+      },
+      fail: function (err) {
+        console.log(err)
+      }
+    })
+    if (this.data.analysis.length > 0) {
+      for (var i = 0; i < this.data.analysis.length; i++) {
+        this.animate('.i' + (i + 1),
+          [{
+            transform: 'scale(' + this.data.analysis[i] + ')'
+          }])
+      }
     }
-  }
   },
 
   /**
