@@ -21,7 +21,8 @@
     "pages/story/pre_story/index",
     "pages/story/test/test",
     "components/pop/pop",
-    "pages/find/question/question"
+    "pages/find/question/question",
+    "pages/planet/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -34,6 +35,7 @@
     "selectedColor": "#000000",
     "borderStyle": "white",
     "backgroundColor": "#D0A669",
+    "custom": true,
     "list": [
       {
         "pagePath": "pages/recommend/recommend",
@@ -47,6 +49,11 @@
       },
       {
         "pagePath": "pages/personal/index/index",
+        "iconPath": "/images/my.png",
+        "selectedIconPath": "/images/my_selected.png"
+      },
+      {
+        "pagePath": "pages/planet/index",
         "iconPath": "/images/my.png",
         "selectedIconPath": "/images/my_selected.png"
       }

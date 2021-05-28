@@ -48,7 +48,15 @@ Page({
       Qid: options.question_id
     })
   },
-
+  onReady: function () {
+    this.timer = setInterval(() => {
+      if (this.data.show) {
+        this.setData({
+          show: !this.data.show
+        })
+      }
+    }, 1000)
+  },
   onShow: function () {
     if (app.globalData.TIMESTAMP_ANSWER_START == 0) {
       app.globalData.TIMESTAMP_ANSWER_START = Date.parse(new Date()) / 1000
