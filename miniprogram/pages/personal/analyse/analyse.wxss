@@ -1,8 +1,8 @@
 /* pages/analyse/analyse.wxss */
 .circle-item {
   position: absolute;
-  width: 200rpx;
-  height: 200rpx;
+  width: 300rpx;
+  height: 300rpx;
   border-radius: 50%;
   animation: float 2.5s infinite ease-in-out;
   backdrop-filter: blur(5px);
@@ -77,6 +77,22 @@
   position: absolute;
   left: 400rpx;
   top: 200rpx;
+  scale: 0.8;
+  z-index: 0;
+}
+
+.i7 {
+  position: absolute;
+  left: 128rpx;
+  top: 163rpx;
+  scale: 0.8;
+  z-index: 0;
+}
+
+.i8 {
+  position: absolute;
+  left: 50rpx;
+  top: 600rpx;
   scale: 0.8;
   z-index: 0;
 }
