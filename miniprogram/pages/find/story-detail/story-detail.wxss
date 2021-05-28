@@ -124,6 +124,10 @@ l-card .content {
   line-height: 48rpx;
 }
 
+.btn{
+  width: 50rpx;
+}
+
 .emoji-wrp {
   display: inline-block;
   width: 48rpx;

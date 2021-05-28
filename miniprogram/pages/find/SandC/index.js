@@ -126,9 +126,9 @@ Page({
 
   touchStart(e) {
     // console.log(e.currentTarget.dataset.questionid)
-    this.setData({
-      currentQid: e.currentTarget.dataset.questionid
-    })
+    // this.setData({
+    //   currentQid: e.currentTarget.dataset.questionid
+    // })
     let index = e.currentTarget.dataset.index
     let touches = e.touches
     let list = this.data.list || []
@@ -184,13 +184,13 @@ Page({
         if (list.length > 1) {
 
           if (index % this.data.initLength == 0) {
-            // console.log(this.data.initLength-1)
+            console.log(this.data.initLength-1)
             that.setData({
               like_num: that.data.list[that.data.initLength - 1].like_openid.length,
               collect_num: that.data.list[that.data.initLength - 1].collect_openid.length
             })
           } else {
-            // console.log(index%this.data.initLength - 1)
+            console.log(index%this.data.initLength - 1)
             that.setData({
               like_num: that.data.list[index % this.data.initLength - 1].like_openid.length,
               collect_num: that.data.list[index % this.data.initLength - 1].collect_openid.length
