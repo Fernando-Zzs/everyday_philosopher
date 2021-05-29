@@ -66,6 +66,7 @@ Page({
     var res = wx.getSystemInfoSync();
     winWidth = res.windowWidth;
     winHeight = res.windowHeight;
+    console.log(res)
     let ratio = res.pixelRatio
     this.setData({
       ratio
