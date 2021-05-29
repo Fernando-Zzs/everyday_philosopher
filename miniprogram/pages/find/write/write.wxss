@@ -41,19 +41,18 @@
 .input-ans{
   flex:auto;
   padding: 5%;
-  line-height: 48rpx;
+  line-height: 50rpx;
   margin:5%;
-  font-size: 28rpx;
-  color: rgb(255, 255, 255);
+  font-size: 32rpx;
+  color: black;
   /* text-indent: 2rem; */
   position: relative;
-  border: 1px solid white;
+  border: 2rpx solid whitesmoke;
   border-radius: 60rpx;
   z-index: 2;
 }
 .input-area{
   width: 100%;
-
   height: 100%;
 }
 .image {
@@ -72,9 +71,9 @@
 }
 .button{
   position: absolute;
-  left:30%;
-  bottom: 12%;
-  width: 40%;
+  left: 42rpx;
+  bottom: 16%;
+  width: 666rpx;
   height: 80rpx;
   border: 1px solid black;
   background-color: rgba(255, 255, 255, 0.671);

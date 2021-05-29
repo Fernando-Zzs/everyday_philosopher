@@ -12,8 +12,16 @@ page {
 }
 
 .like_story image {
+  position: absolute;
+  right: 100rpx;
+  bottom: 30rpx;
   width: 60rpx;
   height: 60rpx;
+}
+.like_story_num{
+  position: absolute;
+  right: 60rpx;
+  bottom: 30rpx;
 }
 
 .title {
@@ -122,6 +130,10 @@ l-card .content {
   font-size: 36rpx;
   margin-top: 0;
   line-height: 48rpx;
+}
+
+.btn{
+  width: 50rpx;
 }
 
 .emoji-wrp {

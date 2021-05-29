@@ -1,0 +1,4 @@
+<view>
+  <button class="btn" bindtap="to" data-storyid="0">hello
+</button>
+</view>

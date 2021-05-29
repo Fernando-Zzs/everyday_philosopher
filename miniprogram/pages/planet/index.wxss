@@ -1,0 +1,13 @@
+
+.bg{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+.cover{
+  position: fixed;
+  left:110px;
+  top:110px;
+  color: white;
+}

@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    show: true,
     analysis: [],
     scale_arr: [{
       tag: '',
@@ -45,6 +46,13 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    this.timer = setInterval(() => {
+      if (this.data.show) {
+        this.setData({
+          show: !this.data.show
+        })
+      }
+    }, 1000),
     wx.cloud.callFunction({
       name: 'getAnalysisTagsPlus',
       data: {
@@ -92,7 +100,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    clearInterval(this.timer)
   },
 
   /**

@@ -30,7 +30,7 @@ Page({
     animationA: {},
     list: [],
     arr: [],
-    initLength:'',
+    initLength: '',
     distance: "",
     startX: '', // 初始点X位置
     startY: '', // 初始点Y位置
@@ -38,8 +38,8 @@ Page({
     ratio: 2, // 屏幕比例
     context: '', // 文本框内容
     Qid: '', // 问题id
-    like_num:'',
-    collect_num:''
+    like_num: '',
+    collect_num: ''
   },
 
   onLoad: function (options) {
@@ -48,21 +48,21 @@ Page({
       Qid: options.question_id
     })
   },
-
-  onShow: function(){
-    if (app.globalData.TIMESTAMP_ANSWER_START == 0) {
-      app.globalData.TIMESTAMP_ANSWER_START = Date.parse(new Date()) / 1000
-    }
-    chance = 1;
-    let that = this
-    // 缓冲
+  onReady: function () {
     this.timer = setInterval(() => {
       if (this.data.show) {
         this.setData({
           show: !this.data.show
         })
       }
-    }, 1000)
+    }, 3000)
+  },
+  onShow: function () {
+    if (app.globalData.TIMESTAMP_ANSWER_START == 0) {
+      app.globalData.TIMESTAMP_ANSWER_START = Date.parse(new Date()) / 1000
+    }
+    chance = 1;
+    let that = this
     var res = wx.getSystemInfoSync();
     winWidth = res.windowWidth;
     winHeight = res.windowHeight;
@@ -71,7 +71,7 @@ Page({
       ratio
     })
 
-    
+
     // 获取list数组
     this.getList()
   },
@@ -231,17 +231,17 @@ Page({
         // console.log(disX, moveDis)disX > moveDis && 
         if (list.length > 1) {
 
-          if(index % this.data.initLength == 0){
+          if (index % this.data.initLength == 0) {
             // console.log(this.data.initLength-1)
             that.setData({
-              like_num: that.data.list[that.data.initLength-1].like_openid.length,
-              collect_num: that.data.list[that.data.initLength-1].collect_openid.length
+              like_num: that.data.list[that.data.initLength - 1].like_openid.length,
+              collect_num: that.data.list[that.data.initLength - 1].collect_openid.length
             })
-          }else{
+          } else {
             // console.log(index%this.data.initLength - 1)
             that.setData({
-              like_num: that.data.list[index%this.data.initLength - 1].like_openid.length,
-              collect_num: that.data.list[index%this.data.initLength - 1].collect_openid.length
+              like_num: that.data.list[index % this.data.initLength - 1].like_openid.length,
+              collect_num: that.data.list[index % this.data.initLength - 1].collect_openid.length
             })
           }
           list[index].x = (endX - startX) > 0 ? winWidth * 2 : -winWidth
@@ -361,7 +361,7 @@ Page({
         }
       })
     }, 200)
-    
+
   },
   moveList() {
     let list = this.data.list || [];

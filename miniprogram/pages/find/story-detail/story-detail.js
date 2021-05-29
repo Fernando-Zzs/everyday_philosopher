@@ -187,7 +187,8 @@ Page({
         that.setData({
           story_title: title_temp,
           story_content: content_temp,
-          story_description: res.result.description
+          story_description: res.result.description,
+          story_id: value
         })
       }
     })
@@ -421,6 +422,12 @@ Page({
       success: function (res) {
         console.log(res.result)
       }
+    })
+  },
+  to:function(e){
+    console.log(e.currentTarget.dataset.storyid)
+    wx.navigateTo({
+      url: '../../find/SandC/index?story_id='+e.currentTarget.dataset.storyid,
     })
   },
   handleLike() {

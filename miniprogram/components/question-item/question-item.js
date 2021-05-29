@@ -88,7 +88,7 @@ Component({
           var ret_collect_num = res.result.collect_num
           
           wx.navigateTo({
-            url: '/pages/find/question-detail/question-detail?question_id='+ret_ques+'&answer_id='+ret_answ+'&content='+ret_content+'&like_num='+ret_like_num+'&collect_num='+ret_collect_num,
+            url: '/pages/find/answer-detail/answer-detail?question_id='+ret_ques+'&answer_id='+ret_answ,
           })
         }
       })

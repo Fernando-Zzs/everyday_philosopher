@@ -56,7 +56,7 @@ Page({
       },
       complete: res => {
         wx.navigateTo({
-          url: '../question-detail/question-detail?question_id=' + that.data.question_id + '&answer_id=' + res.result,
+          url: '../../find/QandA/index?question_id=' + that.data.question_id + '&answer_id=' + res.result,
         })
       }
     })

@@ -131,6 +131,12 @@
           "pathName": "pages/recommend/recommend",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "第二页/",
+          "pathName": "pages/planet/index",
+          "query": "",
+          "scene": null
         }
       ]
     }

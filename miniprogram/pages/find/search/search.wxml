@@ -1,4 +1,5 @@
 <!--pages/search/search.wxml-->
+<get-more-loading show="{{show}}" wx:if="{{show}}"></get-more-loading>
 <!-- 搜索框 -->
 <image class="back" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/返回.png" bindtap="back"></image>
 <view class="container">

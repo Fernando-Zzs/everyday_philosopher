@@ -1,6 +1,8 @@
 <!--pages/analyse/analyse.wxml-->
+<get-more-loading show="{{show}}" wx:if="{{show}}"></get-more-loading>
+
 <view class="container">
-  <image class="bg" mode="aspectFill" src="./image/1.jpg"></image>
+  <image class="bg" mode="aspectFill" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/analysis_bg.jpg"></image>
   <view class="container">
     <view class="circle-item i1" style="scale: {{scale_arr[0].scale}}">{{scale_arr[0].tag}}</view>
     <view class="circle-item i2" style="scale: {{scale_arr[1].scale}}">{{scale_arr[1].tag}}</view>

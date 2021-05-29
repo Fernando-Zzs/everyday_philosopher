@@ -5,23 +5,32 @@
     "pages/personal/star/star",
     "pages/personal/statistics/statistics",
     "pages/personal/analyse/analyse",
+
     "pages/recommend/recommend",
+
     "pages/find/index/index",
     "pages/find/QandA/index",
+    "pages/find/SandC/index",
     "pages/find/answer/answer",
     "pages/find/story-detail/story-detail",
-    "pages/find/question-detail/question-detail",
+    "pages/find/answer-detail/answer-detail",
     "pages/find/search/search",
     "pages/find/search_button/index",
     "pages/find/write/write",
+    "pages/find/writeComment/write",
+    "pages/find/question/question",
+
+    "pages/story/index/index",
     "pages/story/kongzi/index",
     "pages/story/socreate/index",
     "pages/story/egg_of_universe/index",
     "pages/story/know_yourself/index",
     "pages/story/pre_story/index",
     "pages/story/test/test",
-    "components/pop/pop",
-    "pages/find/question/question"
+
+    "pages/planet/index",
+
+    "components/pop/pop"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -34,9 +43,10 @@
     "selectedColor": "#000000",
     "borderStyle": "white",
     "backgroundColor": "#D0A669",
+    "custom": true,
     "list": [
       {
-        "pagePath": "pages/recommend/recommend",
+        "pagePath": "pages/story/index/index",
         "iconPath": "/images/recommend.png",
         "selectedIconPath": "/images/recommend_selected.png"
       },
@@ -47,6 +57,11 @@
       },
       {
         "pagePath": "pages/personal/index/index",
+        "iconPath": "/images/my.png",
+        "selectedIconPath": "/images/my_selected.png"
+      },
+      {
+        "pagePath": "pages/planet/index",
         "iconPath": "/images/my.png",
         "selectedIconPath": "/images/my_selected.png"
       }

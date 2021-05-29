@@ -1,7 +1,0 @@
-{
-  "enablePullDownRefresh": true,
-  "usingComponents": {
-    "l-card":"../../../miniprogram_npm/lin-ui/card",
-    "get-more-loading":"../../../components/get-more-loading/get-more-loading"
-  }
-}
