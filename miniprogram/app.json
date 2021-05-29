@@ -16,7 +16,6 @@
     "pages/find/search_button/index",
     "pages/find/write/write",
     "pages/find/writeComment/write",
-    "pages/find/question/question",
 
     "pages/story/index/index",
     "pages/story/kongzi/index",

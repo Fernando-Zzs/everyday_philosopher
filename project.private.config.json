@@ -143,6 +143,12 @@
           "pathName": "pages/story/index/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "第二页/搜索",
+          "pathName": "pages/find/search/search",
+          "query": "",
+          "scene": null
         }
       ]
     }

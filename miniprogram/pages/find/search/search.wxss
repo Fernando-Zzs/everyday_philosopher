@@ -46,6 +46,9 @@
   height: 100%;
   padding-left: 25rpx;
 }
+.warning{
+  margin-top:40rpx;
+}
 .serach-item{
   backdrop-filter:blur(15px);
   background: rgba(255, 255, 255, 0.616);

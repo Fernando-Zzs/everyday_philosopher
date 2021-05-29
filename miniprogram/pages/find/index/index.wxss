@@ -33,7 +33,7 @@
 }
 .search-btn{
   z-index: 999;
-  margin-left: 20rpx;
+  margin-left: 35rpx;
   margin-top: 20rpx;
   position:fixed;
   width: 60rpx;

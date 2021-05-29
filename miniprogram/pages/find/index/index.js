@@ -88,6 +88,7 @@ Page({
   },
   data: {
     currentScene: false,
+    sysInfo: wx.getSystemInfoSync(),
     ww: wx.getSystemInfoSync().windowWidth,
     toView: 'green',
     dWidth: 100,
