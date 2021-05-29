@@ -5,9 +5,7 @@
     "pages/personal/star/star",
     "pages/personal/statistics/statistics",
     "pages/personal/analyse/analyse",
-
-    "pages/recommend/recommend",
-
+    
     "pages/find/index/index",
     "pages/find/QandA/index",
     "pages/find/SandC/index",

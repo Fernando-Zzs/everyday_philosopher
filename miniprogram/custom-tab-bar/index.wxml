@@ -2,9 +2,7 @@
 
 <view class="tab-bar" style="bottom:{{b}}px">
   <cover-view class="tab-bar-border"></cover-view>
-  <!-- <cover-view class="chose"></cover-view> -->
-  <cover-view wx:for="{{list}}" wx:key="index" class="tab-bar-item" data-path="{{item.pagePath}}" data-index="{{index}}"
-    bindtap="myswitchTab">
+  <cover-view wx:for="{{list}}" wx:key="index" class="tab-bar-item" data-path="{{item.pagePath}}" data-index="{{index}}" bindtap="myswitchTab" style="left:{{index*25}}vw">
     <cover-image mode='aspectFit' src="{{selected === index ? item.selectedIconPath : item.iconPath}}"></cover-image>
     <!-- <cover-view style="color: {{selected === index ? selectedColor : color}}">{{item.text}}{{index}}</cover-view> -->
     <cover-view class="tab-text">{{item.text}}</cover-view>

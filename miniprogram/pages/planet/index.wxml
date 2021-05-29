@@ -8,5 +8,7 @@
   bindtouchend="touchEnd"
   bindtap='tap'
 ></canvas>
-<!-- 显示数据 -->
-<!-- <view class="cover">{{story_id}}</view> -->
+<view style="color:white;top:50px;left:100px">{{currentIndex}}</view>
+<pop type="{{items[currentIndex].type}}" show="{{showNow}}" story_id="{{items[currentIndex].id}}"
+ posterURL="{{items[currentIndex].posterURL}}">
+</pop>

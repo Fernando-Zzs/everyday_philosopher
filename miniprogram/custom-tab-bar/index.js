@@ -6,19 +6,19 @@ Component({
    */
   data: {
     selected: 0,
-   b:0,
+    b:0,
     list: [
       {
         "pagePath": "/pages/story/index/index",
         "iconPath": "/images/recommend.png",
         "selectedIconPath": "/images/recommend_selected.png",
-        "text":"故事视界"
+        "text":"阅读视界"
       },
       {
         "pagePath": "/pages/planet/index",
         "iconPath": "/images/find.png",
         "selectedIconPath": "/images/find_selected.png",
-        "text":"哲学星球"
+        "text":"故事星球"
       },
       {
         "pagePath": "/pages/find/index/index",
@@ -62,30 +62,33 @@ Component({
       var b=0
       var i=setInterval(()=>{
         this.setData({b:b--})    
-      },5)
+      },3)
       setTimeout(()=>{ 
         clearInterval(i)
-        this.setData({b:-50})
+        this.setData({b:-70})
         console.log(this.data.b)
-      },300)
+      },250)
     
   }
   },
   showTabBar(){
     if(!show){
       show=true
+      this.setData({b:0})
     this.animate('.tab-bar',
     [
       {
         offset:0,
-        bottom:'-50px'
+        bottom:'-70px'
       },
       {
         offset:1,
         bottom:0
       }
     ],300,function () {
-      this.setData({b:0})
+      this.clearAnimation('.tab-bar', function () {
+        
+      }.bind(this))     
   }.bind(this))
   }
 }

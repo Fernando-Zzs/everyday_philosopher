@@ -1,5 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "pop":"../../../components/pop/pop"
+  },
   "disableScroll": true,
   "navigationStyle": "custom"
 }
