@@ -64,6 +64,6 @@
 <view class="broad-small-title broad-relative">相似推荐</view>
 <view wx:for="{{story_relative}}" class='braod-item' data-story_id="{{item.story_id}}" bindtap="jump">{{item.title}}</view>
 
-<view  class="share_button" bindtap='share_story'>分享故事海报</view>
+<view  class="share_button s-irregularShadowMove" bindtap='share_story'>分享故事海报</view>
 </view>
 </page-container>

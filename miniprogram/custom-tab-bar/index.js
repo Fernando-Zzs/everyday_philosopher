@@ -12,13 +12,13 @@ Component({
         "pagePath": "/pages/story/index/index",
         "iconPath": "/images/recommend.png",
         "selectedIconPath": "/images/recommend_selected.png",
-        "text":"故事视界"
+        "text":"阅读视界"
       },
       {
         "pagePath": "/pages/planet/index",
         "iconPath": "/images/find.png",
         "selectedIconPath": "/images/find_selected.png",
-        "text":"哲学星球"
+        "text":"故事星球"
       },
       {
         "pagePath": "/pages/find/index/index",

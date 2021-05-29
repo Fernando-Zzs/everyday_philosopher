@@ -113,7 +113,7 @@ Page({
     comment_story(e){
       //跳转至评论
       wx.navigateTo({
-        url: ''+'?story_id='+this.data.story_id,
+        url: '../../find/SandC/index'+'?story_id='+this.data.story_id,
       })
     },
     load(){
