@@ -6,7 +6,7 @@ Component({
    */
   data: {
     selected: 0,
-   b:0,
+    b:0,
     list: [
       {
         "pagePath": "/pages/story/index/index",
@@ -62,30 +62,33 @@ Component({
       var b=0
       var i=setInterval(()=>{
         this.setData({b:b--})    
-      },5)
+      },3)
       setTimeout(()=>{ 
         clearInterval(i)
-        this.setData({b:-50})
+        this.setData({b:-70})
         console.log(this.data.b)
-      },300)
+      },250)
     
   }
   },
   showTabBar(){
     if(!show){
       show=true
+      this.setData({b:0})
     this.animate('.tab-bar',
     [
       {
         offset:0,
-        bottom:'-50px'
+        bottom:'-70px'
       },
       {
         offset:1,
         bottom:0
       }
     ],300,function () {
-      this.setData({b:0})
+      this.clearAnimation('.tab-bar', function () {
+        
+      }.bind(this))     
   }.bind(this))
   }
 }
