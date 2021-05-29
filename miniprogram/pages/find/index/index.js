@@ -71,13 +71,13 @@ Page({
             this.animate(
               '#item' + (s),
               [{
-                transform: 'scale(' + factor + ') translate(' + offX + 'px,' + offY + 'px)',
+                transform: 'scale(' + factor + ') translate(' + offX + 'px,' + offY/724*that.data.wh + 'px)',
                 offset: 0
               }, {
-                transform: 'scale(' + factor + ') translate(' + (offX + (this.data.depth[z_index]) / 2) + 'px,' + offY + 'px)',
+                transform: 'scale(' + factor + ') translate(' + (offX + (this.data.depth[z_index]) / 2) + 'px,' + offY/724*that.data.wh + 'px)',
                 offset: 0.4
               }, {
-                transform: 'scale(' + factor + ') translate(' + (offX + this.data.depth[z_index]) + 'px,' + offY + 'px)',
+                transform: 'scale(' + factor + ') translate(' + (offX + this.data.depth[z_index]) + 'px,' + offY/724*that.data.wh + 'px)',
                 offset: 1
               }],
               2000, {
@@ -248,6 +248,8 @@ Page({
   data: {
     currentScene: false,
     ww: wx.getSystemInfoSync().windowWidth,
+    wh: wx.getSystemInfoSync().windowHeight,
+    ratio: wx.getSystemInfoSync().pixelRatio,
     toView: 'green',
     dWidth: 100,
     dHeight: 600,
@@ -263,121 +265,121 @@ Page({
     ],
     position: [{
         x: 0,
-        y: 206,
+        y: 256,
         r: 110,
         i: 1
       },
       {
         x: 100,
-        y: 50,
+        y: 100,
         r: 110,
         i: 2
       },
       {
         x: 200,
-        y: 275,
+        y: 325,
         r: 130,
         i: 3
       },
       {
         x: 300,
-        y: 70,
+        y: 120,
         r: 115,
         i: 4
       },
       {
         x: 400,
-        y: 332,
+        y: 382,
         r: 113,
         i: 5
       },
       {
         x: 500,
-        y: 148,
+        y: 198,
         r: 129,
         i: 6
       },
       {
         x: 600,
-        y: 341,
+        y: 391,
         r: 123,
         i: 7
       },
       {
         x: 700,
-        y: 52,
+        y: 102,
         r: 137,
         i: 8
       },
       {
         x: 800,
-        y: 312,
+        y: 362,
         r: 116,
         i: 9
       },
       {
         x: 900,
-        y: 114,
+        y: 164,
         r: 116,
         i: 10
       },
       {
         x: 1000,
-        y: 328,
+        y: 378,
         r: 124,
         i: 11
       },
       {
         x: 1100,
-        y: 140,
+        y: 190,
         r: 122,
         i: 12
       },
       {
         x: 1200,
-        y: 340,
+        y: 390,
         r: 117,
         i: 13
       },
       {
         x: 1300,
-        y: 176,
+        y: 236,
         r: 114,
         i: 14
       },
       {
         x: 1400,
-        y: 337,
+        y: 387,
         r: 114,
         i: 15
       },
       {
         x: 1500,
-        y: 61,
+        y: 111,
         r: 111,
         i: 16
       },
       {
         x: 1600,
-        y: 244,
+        y: 294,
         r: 114,
         i: 17
       },
       {
         x: 1700,
-        y: 229,
+        y: 279,
         r: 116,
         i: 18
       },
       {
         x: 1800,
-        y: 320,
+        y: 370,
         r: 121,
         i: 19
       },
       {
         x: 1900,
-        y: 71,
+        y: 121,
         r: 114,
         i: 20
       }
@@ -499,10 +501,13 @@ Page({
       r,
       i
     });
+    for(let i of this.data.position){
+      i.y =  y / 724 * wh
+      list.unshift(i)
+    }
     this.setData({
       position: this.data.position
     });
-
   },
 
   check(x, y, r, t, s) {
