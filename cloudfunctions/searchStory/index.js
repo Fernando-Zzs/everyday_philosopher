@@ -23,6 +23,7 @@ exports.main = async (event, context) => {
 
   let ret_story_id_arr_from_title = []
   let ret_story_id_arr_from_content = []
+  let ret_story_id_arr_from_tags = []
   for (let i = 0, len = story_arr.length; i < len; i++) {
     if (story_arr[i].title.indexOf(event.keywords) != -1) {
       ret_story_id_arr_from_title.push(story_arr[i].story_id)
@@ -30,14 +31,23 @@ exports.main = async (event, context) => {
   }
   for (let i = 0, len_i = story_arr.length; i < len_i; i++) {
     let total_content = ''
-    for (let j = 0, len_j = story_arr[i].content.length; j < len_j; j++) {
-      total_content += story_arr[i].content[j].text
+    for (let j = 0, len_j = story_arr[i].story_content.length; j < len_j; j++) {
+      total_content += story_arr[i].story_content[j].content
     }
     if (total_content.indexOf(event.keywords) != -1) {
       ret_story_id_arr_from_content.push(story_arr[i].story_id)
     }
   }
+  for (let i = 0, len = story_arr.length; i < len; i++) {
+    let total_tags = ''
+    for (let j = 0, len_j = story_arr[i].tags.length; j < len_j; j++) {
+      total_tags += story_arr[i].tags[j]
+    }
+    if (total_tags.indexOf(event.keywords) != -1) {
+      ret_story_id_arr_from_tags.push(story_arr[i].story_id)
+    }
+  }
 
-  let ret_story_id_arr_from_all = ret_story_id_arr_from_title.concat(ret_story_id_arr_from_content).unique()
+  let ret_story_id_arr_from_all = ret_story_id_arr_from_title.concat(ret_story_id_arr_from_content).concat(ret_story_id_arr_from_tags).unique()
   return ret_story_id_arr_from_all
 }
