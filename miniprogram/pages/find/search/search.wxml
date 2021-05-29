@@ -1,18 +1,22 @@
 <!--pages/search/search.wxml-->
 <get-more-loading show="{{show}}" wx:if="{{show}}"></get-more-loading>
 <!-- 搜索框 -->
-<image class="back" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/返回.png" bindtap="back"></image>
+<image class="back" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/返回.png"
+  bindtap="back"></image>
 <view class="container">
   <image class="bg" mode="aspectFill"
     src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/1.jpg"></image>
-  <view class="search-bar">
-    <image class="search-icon" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/黑搜索.png"></image>
+
+  <view class="search-bar" style="position:{{fixed?'fixed':''}}">
+    <image class="search-icon"
+      src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/黑搜索.png"></image>
     <input class='input' placeholder='请输入关键词' bindconfirm='search_confirm'>
-      {{keywords}}
+    {{keywords}}
     </input>
   </view>
 
-  <view class="serach-item" wx:for="{{search_items}}" wx:key='_id' data-questionid="{{item.question_id}}" bindtap="showQuestionDetail">
+  <view class="serach-item" wx:for="{{search_items}}" wx:key='_id' data-questionid="{{item.question_id}}"
+    bindtap="showQuestionDetail">
     <view class="serach-item-head">
       <image class="serach-item-icon" src="{{item.image}}"></image>
       <view class="serach-item-title">{{item.title}}</view>
@@ -20,7 +24,8 @@
     <view class="serach-item-content"><text>{{item.description}}</text></view>
   </view>
 
-  <view class="serach-item" wx:for="{{story_items}}" wx:key='_id' data-storyid="{{item.story_id}}" bindtap="showStoryDetail">
+  <view class="serach-item" wx:for="{{story_items}}" wx:key='_id' data-storyid="{{item.story_id}}"
+    bindtap="showStoryDetail">
     <view class="serach-item-head">
       <image class="serach-item-icon" src="{{item.icon}}"></image>
       <view class="serach-item-title">{{item.title}}</view>
