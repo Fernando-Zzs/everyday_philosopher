@@ -11,12 +11,13 @@ exports.main = async (event, context) => {
   total = total.total
   db.collection('question').add({
     data: {
+      collect_openid: [],
+      description: event.description,
+      image: 'cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/问号.png',
+      like_openid: [],
       question_id: total + '',
-      title: event.title,
-      discription: event.discription,
       story_id: event.story_id,
-      answer_detail: [{}],
-      collect_num: 0
+      title: event.title
     }
   })
 }

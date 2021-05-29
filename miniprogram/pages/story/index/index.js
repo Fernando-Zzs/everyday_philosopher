@@ -38,11 +38,11 @@ Page({
     this.getStory(this.data.story_id)
     // 获取故事id对应海报
     wx.cloud.callFunction({
-      name:'getStory',
-      data:{
+      name: 'getStory',
+      data: {
         story_id: '5'
       },
-      complete:res=>{
+      complete: res => {
         // console.log(res.result)
         that.setData({
           posterURL: res.result.poster[1]
