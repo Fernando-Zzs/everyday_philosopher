@@ -58,12 +58,19 @@ Page({
     objects : []
   },
   onLoad: function () {
+    console.log(app.globalData.OPENID)
     wx.createSelectorQuery()
       .select('#webgl')
       .node()
       .exec((res) => {
         //获取故事和一句
-
+        wx.cloud.callFunction({
+          name: 'recommendStory',
+          data: {
+            _openid: app.globalData.OPENID,
+            num: 2
+          }
+        }).then(console.log)
 
 
         const canvas = res[0].node
@@ -74,6 +81,7 @@ Page({
       })
   },
   onShow(){
+
     if (typeof this.getTabBar === 'function' &&
     this.getTabBar()) {
     this.getTabBar().setData({

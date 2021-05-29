@@ -79,6 +79,7 @@
   height:100rpx;
   width: 100rpx;
   margin: 0 0 0 40rpx;
+  border-radius: 50px;
   flex:none;
 }
 .nickname{
