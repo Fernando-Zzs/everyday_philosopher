@@ -1,6 +1,8 @@
 {
   "navigationStyle": "custom",
   "usingComponents": {
-    "get-more-loading":"../../../components/get-more-loading/get-more-loading"
+    "get-more-loading":"../../../components/get-more-loading/get-more-loading",
+    "l-sticky":"../../../miniprogram_npm/lin-ui/sticky/index",
+    "l-sticky-item":"../../../miniprogram_npm/lin-ui/sticky-item/index"
   }
 }

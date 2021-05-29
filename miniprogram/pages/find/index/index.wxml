@@ -1,33 +1,33 @@
 <view class="page">
 
-<!-- 小星球 -->
-    <view class="container">
-      <view class="page-body">
-        <image class="bg"
-          src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/background2.png"
-          mode="aspectFill"></image>
-        <view class="page-section">
-          <view class="page-section-spacing">
+  <!-- 小星球 -->
+  <view class="container">
+    <view class="page-body">
+      <image class="bg"
+        src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/background2.png"
+        mode="aspectFill"></image>
+      <view class="page-section">
+        <view class="page-section-spacing">
 
-            <scroll-view id="scroll-view_H" class="scroll-view_H" scroll-x="true" bindscroll="scroll">
-              <image class="search-btn"
-                src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/搜索.png"
-                bindtap="search"></image>
-              <!-- lower-threshold -->
-              <block wx:for="{{items}}" wx:for-item="itemName" wx:key="id">
-                <view class="scroll-view-item_H">
-                  <image id="{{itemName.id}}" class="circle" src="{{itemName.url}}" bindtap="enter"
-                    data-question_id="{{itemName.question_id}}" data-no="{{itemName.no}}"></image>
-                </view>
-              </block>
-            </scroll-view>
-          </view>
+          <scroll-view id="scroll-view_H" class="scroll-view_H" scroll-x="true" bindscroll="scroll">
+            <image class="search-btn"
+              src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/搜索.png"
+              bindtap="search"></image>
+            <!-- lower-threshold -->
+            <block wx:for="{{items}}" wx:for-item="itemName" wx:key="id">
+              <view class="scroll-view-item_H">
+                <image id="{{itemName.id}}" class="circle" src="{{itemName.url}}" bindtap="enter"
+                  data-question_id="{{itemName.question_id}}" data-no="{{itemName.no}}"></image>
+              </view>
+            </block>
+          </scroll-view>
         </view>
       </view>
     </view>
+  </view>
 
 
-    <pop type="question" show="{{showNow}}" question_id="{{items[currentIndex].question_id}}"
-        title="{{items[currentIndex].title}}" content="{{items[currentIndex].content}}">
-    </pop>
+  <pop type="question" show="{{showNow}}" question_id="{{items[currentIndex].question_id}}"
+    title="{{items[currentIndex].title}}" content="{{items[currentIndex].content}}">
+  </pop>
 </view>

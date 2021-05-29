@@ -349,7 +349,7 @@ Page({
           // 初次赋值
           this.setData({
             like_num: this.data.arr[0].like_openid.length,
-            collect_num:this.data.arr[0].collect_openid.length
+            collect_num: this.data.arr[0].collect_openid.length
           })
 
           if (chance == 1) {

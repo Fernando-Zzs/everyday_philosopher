@@ -78,8 +78,12 @@ Component({
 
     enterStory(e){
       console.log(e.currentTarget.dataset.story_id)
-      wx.navigateTo({
-        url: '../../pages/find/story-detail/story-detail?story_id='+e.currentTarget.dataset.story_id,
+      // wx.navigateTo({
+      //   url: '../../pages/find/story-detail/story-detail?story_id='+e.currentTarget.dataset.story_id,
+      // })
+      app.story_id=e.currentTarget.dataset.story_id
+      wx.switchTab({
+        url: '/pages/story/index/index',
       })
     },
 

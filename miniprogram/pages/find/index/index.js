@@ -15,9 +15,10 @@ Page({
         // 先获取当前数据库中问题数,然后随机给把question_id分配到一个空数组中
         const db = wx.cloud.database()
         db.collection('question').count().then(res => {
-          // console.log(res.total)
+          console.log(res.total)
           for (var s = 1; s < 21; s++) {
             var seed = Math.floor(Math.random() * res.total)
+
             this.data.items.push({ // 问题
               id: "item" + s,
               no: s,
@@ -228,7 +229,7 @@ Page({
   enter(e) {
     console.log(e.currentTarget.dataset.no)
     let that = this
-    // console.log(e.currentTarget.dataset.question_id)
+    console.log(e.currentTarget.dataset.question_id)
     let qid = e.currentTarget.dataset.question_id
     // let openid_temp=app.globalData.OPENID
     // wx.cloud.callFunction({

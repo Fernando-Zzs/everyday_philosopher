@@ -7,6 +7,7 @@ Page({
   data: {
     show: true,
     keywords: '',
+    fixed: false,
     search_items: [],
     story_items: []
   },
@@ -104,7 +105,21 @@ Page({
     // console.log(options)
 
   },
-
+  onPageScroll(res){
+    let that = this
+    this.setData({
+      scrollTop: res.scrollTop
+    })
+    if(this.data.scrollTop> 64){
+      that.setData({
+        fixed: true
+      })
+    } else{
+      that.setData({
+        fixed: false
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
