@@ -1,14 +1,33 @@
 <view class="page1">
-  <scroll-view id="scroller" scroll-y bindscroll="scroll" >
+  <scroll-view id="scroller" scroll-y bindscroll="scroll" scroll-top="{{scroll_top}}" >
     <view class="contanier1" style="height:{{container_height}}px">
     <!-- 生成组件 -->
     <block wx:for="{{story_content}}" wx:key="index">
-      <image wx:if="{{item.component=='image'}}" mode="{{item.parament}}" src="{{item.src}}"
-      class="{{item.class}}"></image>
 
-      <view wx:if="{{item.component=='text'}}"  class="{{item.class}}">
+      <image wx:if="{{item.component=='image'}}" mode="{{item.parament}}" src="{{item.src}}"
+      class="{{item.class}}" style="{{item.style}}"></image>
+
+      <view wx:elif="{{item.component=='text'}}"  class="{{item.class}}" style="{{item.style}}">
         <text>{{item.content}}</text>
       </view>
+
+      <view wx:elif="{{item.component=='view'}}"  class="{{item.class}}" style="{{item.style}}">{{item.content}}
+      </view>
+
+      <view wx:if="{{item.component=='nest'}}"  class="{{item.class}}" style="{{item.style}}">
+        <block wx:for="{{item.son}}" wx:key="index" wx:for-item="i">
+          <image wx:if="{{i.component=='image'}}" mode="{{i.parament}}" src="{{i.src}}"
+          class="{{i.class}}" style="{{i.style}}"></image>
+
+          <view wx:elif="{{i.component=='text'}}"  class="{{i.class}}" style="{{i.style}}">
+            <text>{{i.content}}</text>
+          </view>
+
+          <view wx:elif="{{i.component=='view'}}"  class="{{i.class}}" style="{{i.style}}">{{i.content}}
+          </view>
+        </block>
+      </view>
+
     </block>
     <!-- 结尾时按钮 -->
     <view class='end-button end-comment-button'  bindtap='comment_story'>评论</view>
@@ -18,7 +37,7 @@
 </view>
 
 <!-- 侧边栏 -->
-<view  wx:if="{{!broad_state}}" class="broad-button" bindtap="broad" style="top:{{sysInfo.safeArea.top}}px">💨</view>
+<view  wx:if="{{!broad_state}}" class="broad-button" bindtap="broad" style="top:{{sysInfo.statusBarHeight+5}}px">💨</view>
 <page-container 
   show="{{broad_state}}"
   round="false"
@@ -42,7 +61,7 @@
 <view wx:for="{{story_series}}"  class='braod-item' bindtap="jump_series">{{item.title}}</view>
 
 <view class="broad-small-title broad-relative">相似推荐</view>
-<view wx:for="{{story_relative}}" class='braod-item' data-id="{{item.story_id}}" bindtap="jump">{{item.title}}</view>
+<view wx:for="{{story_relative}}" class='braod-item' data-story_id="{{item.story_id}}" bindtap="jump">{{item.title}}</view>
 
 <view  class="share_button" bindtap='share_story'>分享故事海报</view>
 </view>

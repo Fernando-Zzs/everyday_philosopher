@@ -1,8 +1,10 @@
 let can_tab_state=true
+let app = getApp()
 Page({
   data: {
     sysInfo: wx.getSystemInfoSync(),
     broad_state:false,
+    scroll_top:0,
     story:{},
     story_id:'0',
     title:"序言",
@@ -14,15 +16,8 @@ Page({
     story_content:[]
   },
   onLoad(options){
-    // console.log('o',options)
-   if(options.story_id){
-    this.setData({story_id})
-  }
-  else{
     //每日推荐
-  }
     this.getStory(this.data.story_id)
-    // this.load()
   },
   onShow(){
     if (typeof this.getTabBar === 'function' &&
@@ -33,6 +28,11 @@ Page({
   }
   this.setData({broad_state:false})
   
+  if(app.story_id!=this.data.story_id){
+    this.setData({story_id:app.story_id})
+    this.getStory(this.data.story_id)
+  }
+
   },
   onReady() {
     
@@ -54,8 +54,6 @@ Page({
     },
     broad(e){
       this.setData({broad_state:true})
-    //   if(!this.data.broad_state){
-
       this.animate('.broadside',
       [
         {
@@ -117,6 +115,24 @@ Page({
               startScrollOffset: startScrollOffset+offset,
               endScrollOffset: endScrollOffset+offset,
             })
+          if(item.component=="nest"){
+            for(var j=0;j<item.son.length;j++){
+              var it=item.son[j]
+              var selector=it.selector
+              var keyframes=it.keyframes
+              var offset=it.offset
+              var  startScrollOffset=it.startScrollOffset
+              var endScrollOffset=it.endScrollOffset
+              this.animate(selector,
+            keyframes,
+            2000, {
+              scrollSource: '#scroller',
+              timeRange: 2000,
+              startScrollOffset: startScrollOffset+offset,
+              endScrollOffset: endScrollOffset+offset,
+            })
+            }
+          }
         }
         //添加按钮动画
         this.animate(".end-comment-button",
@@ -213,10 +229,13 @@ Page({
 
     },
     jump(e){
-      const data = e.currentTarget.dataset
-      const id = data.story_id
+      var data = e.currentTarget.dataset
+      var id = data.story_id
+      console.log(e)
+      this.setData({scroll_top:0})
       this.getStory(id)
-      this.load()
+      app.story_id=id
+      
     }
 
 

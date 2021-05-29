@@ -4,8 +4,8 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    isStory:{
-      type: Boolean,
+    type:{
+      type: String,
       value: ''
     },
     show:{
@@ -20,11 +20,19 @@ Component({
       type: String,
       value:''
     },
+    word_id:{
+      type: String,
+      value:''
+    },
     title:{
       type: String,
       value: ''
     },
     content:{
+      type: String,
+      value: ''
+    },
+    posterURL:{
       type: String,
       value: ''
     }
@@ -39,7 +47,8 @@ Component({
     round: false,
     overlay: true,
     customStyle:'margin-left:15%;margin-top:20%;width:70%;height: 60%;border-radius:20px;background-color: rgba(0, 0, 0, 0);z-index: 999',
-    overlayStyle: 'background-color: rgba(0, 0, 0, 0.7)'
+    overlayStyle: 'background-color: rgba(0, 0, 0, 0.7)',
+
   },
 
   /**
@@ -49,18 +58,6 @@ Component({
     onLoad(){
       console.log(this.data.question_id)
     },
-    // popup_story(e) {
-    //   this.setData({
-    //     isStory:true,
-    //     customStyle:this.data.customStoryStyle
-    //   })
-    // },
-    // popup_question(e){
-    //   this.setData({
-    //     customStyle:this.data.customQuestionStyle,
-    //     isStory:false
-    //   })
-    // },
     exit() {
       this.setData({
         show: false,
@@ -84,6 +81,10 @@ Component({
       wx.navigateTo({
         url: '../../pages/find/story-detail/story-detail?story_id='+e.currentTarget.dataset.story_id,
       })
+    },
+
+    sharePoster(e){
+      wx.showShareImageMenu({path:this.data.posterURL})
     }
   }
 })

@@ -20,29 +20,40 @@ const position=[
 Page({
   data: {
     //存放故事
-    storys:[
+    items:[
       {
-        story_id:0,
-        title_url:"./image/title1.png"
+        id:0,
+        type:'story',
+        title_url:"./image/title1.png",
+        posterURL:""
       },
       {
-        story_id:1,
-        title_url:"./image/title1.png"
+        id:1,
+        type:'oneWord',
+        title_url:"./image/title1.png",
+        posterURL:""
       },
       {
-        story_id:2,
-        title_url:"./image/title1.png"
+        id:2,
+        type:'story',
+        title_url:"./image/title1.png",
+        posterURL:""
       },
       {
-        story_id:3,
-        title_url:"./image/title1.png"
+        id:3,
+        type:'story',
+        title_url:"./image/title1.png",
+        posterURL:""
       },
       {
-        story_id:4,
-        title_url:"./image/title1.png"
+        id:4,
+        type:'story',
+        title_url:"./image/title1.png",
+        posterURL:""
       }
     ],
-    story_id:''
+    showNow:false,
+    currentIndex:0
   },
   onLoad: function () {
     wx.createSelectorQuery()
@@ -147,18 +158,18 @@ Page({
     // });
 
     var geometry = new this.THREE.IcosahedronGeometry(5);
-    for(var i =0;i< this.data.storys.length;i++){
+    for(var i =0;i< this.data.items.length;i++){
       var material = new this.THREE.MeshPhongMaterial({
         side: this.THREE.DoubleSide,
       });
-      var item=this.data.storys[i]
+      var item=this.data.items[i]
       var hue = Math.random();
       var saturation = 1;
       var luminance = .5;
       material.color.setHSL(hue, saturation, luminance);
 
       var mesh = new this.THREE.Mesh(geometry, material);
-      mesh.name = item.story_id
+      mesh.name = i
       mesh.position.set(position[i].x,position[i].y,position[i].z)
       this.scene.add(mesh);
 
@@ -168,7 +179,7 @@ Page({
         color: 0xffffff
       });
       var sprite = new this.THREE.Sprite(spriteMaterial);
-      sprite.name = item.story_id
+      sprite.name = i
       sprite.scale.set(60, 30, 1)
       sprite.position.set(position[i].x*1.1,position[i].y*1.1,position[i].z*1.1)
       this.scene.add(sprite);
@@ -210,8 +221,10 @@ Page({
 
     if (intersects.length > 0) {
       console.log(intersects[0].object.name, 'yes')
-      this.setData({story_id:intersects[0].object.name})
-      // 展示弹窗
+      this.setData({
+        currentIndex:intersects[0].object.name,
+        showNow:true
+      })
 
       
       

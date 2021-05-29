@@ -1,19 +1,20 @@
 <page-container show="{{show}}" round="{{true}}" overlay="true" duration="500" position="center"
   close-on-slide-down="{{false}}" bindenter="onEnter" custom-style="{{customStyle}}" overlay-style="{{overlayStyle}}"
   class="card">
-  <!-- <view bindtap="exit" class="close-icon">❎</view> -->
 
-  <image class="bg detail-page" mode="aspectFill"
-    src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/1.jpg">
     <image bindtap="exit" class="close-icon"
-      src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/取消.png"></image>
-    <view wx:if="{{isStory}}">
+      src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/取消.png">
+    </image>
+    <view wx:if="{{type=='story'}}">
       <view class="tag">⊙故事</view>
       <image class="poster" mode="aspectFill" src="{{posterURL}}"></image>
       <view class="button b3" bindtap="enterStory" data-story_id="{{story_id}}">进入故事</view>
     </view>
 
-    <view wx:if="{{!isStory}}">
+    <view wx:elif="{{type=='question'}}"> 
+      <image class="bg detail-page" mode="aspectFill"
+        src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/1.jpg">
+      </image>
       <view class="tag">⊙问题</view>
       <view class="container">
         <view class="title">{{title}}</view>
@@ -22,7 +23,12 @@
       <view class="button b1" bindtap="enterWrite" data-question_id="{{question_id}}">写回答</view>
       <view class="button b2" bindtap="enterAnswer" data-question_id="{{question_id}}">查看回答</view>
     </view>
-  </image>
+
+    <view wx:else>
+      <view class="tag">⊙一句</view>
+      <image class="poster" mode="aspectFill" src="{{posterURL}}"></image>
+      <view class="button b3" bindtap="sharePoster" data-word_id="{{word_id}}">分享海报</view>
+    </view>
 
 
 
