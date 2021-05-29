@@ -62,14 +62,14 @@ Page({
       .select('#webgl')
       .node()
       .exec((res) => {
+        //获取故事和一句
+
+
+
         const canvas = res[0].node
         console.log(canvas)
         this.canvas = canvas
         const THREE = createScopedThreejs(canvas)
-
-        // renderSphere(canvas, THREE)
-        // renderCube(canvas, THREE)
-        // renderCubes(canvas, THREE)
         this.renderModel1(canvas, THREE)
       })
   },

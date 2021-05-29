@@ -14,10 +14,11 @@
               src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/搜索.png"
               bindtap="search" style="top:{{sysInfo.statusBarHeight}}px"></image>
             <!-- lower-threshold -->
-            <block wx:for="{{items}}" wx:for-item="itemName" wx:key="id">
-              <view class="scroll-view-item_H">
-                <image id="{{itemName.id}}" class="circle" src="{{itemName.url}}" bindtap="enter"
+            <block wx:for="{{items}}" wx:for-item="itemName" wx:key="id" >
+              <view class="scroll-view-item_H" id="{{itemName.id}}">
+                <image  class="circle" src="{{itemName.url}}" bindtap="enter"
                   data-question_id="{{itemName.question_id}}" data-no="{{itemName.no}}"></image>
+                  <view class="tag">{{itemName.title}}</view>
               </view>
             </block>
           </scroll-view>
