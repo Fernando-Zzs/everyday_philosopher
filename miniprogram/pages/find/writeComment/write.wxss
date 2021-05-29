@@ -21,9 +21,10 @@
   border: solid 1px black;
 }
 .header{
-  padding-top: 76rpx;
+  padding-top: 30rpx;
   display: flex;
-  padding-bottom: 50rpx;
+  align-items: center;
+  padding-bottom: 30rpx;
   border-bottom: 2px dashed rgb(255, 255, 255);
 }
 .story{
@@ -34,9 +35,9 @@
 .story-title{
   /* text-align: center; */
   margin-top: 5rpx;
-  line-height: 60rpx;
-  font-size: 40rpx;
-  font-weight: 700;
+  line-height: 50rpx;
+  font-size: 30rpx;
+  font-weight: 670;
 }
 .input-ans{
   flex:auto;
@@ -48,7 +49,7 @@
   /* text-indent: 2rem; */
   position: relative;
   border: 2rpx solid whitesmoke;
-  border-radius: 60rpx;
+  border-radius: 40rpx;
   z-index: 2;
 }
 .input-area{
@@ -57,9 +58,9 @@
 }
 .image {
   flex-shrink: 0;
-  width: 100rpx;
-  height: 100rpx;
-  margin: 0 50rpx;
+  width: 70rpx;
+  height: 70rpx;
+  margin: 0 5% 0 10%;
   border-radius: 50%;
 }
 .bg{
