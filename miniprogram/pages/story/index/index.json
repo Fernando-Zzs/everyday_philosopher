@@ -3,5 +3,7 @@
   "backgroundColor": "#EEE",
   "navigationStyle": "custom",
   "navigationBarTextStyle": "white",
-  "usingComponents": {}
+  "usingComponents": {
+    "get-more-loading":"../../../components/get-more-loading/get-more-loading"
+  }
 }

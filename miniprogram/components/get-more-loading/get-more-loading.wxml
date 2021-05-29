@@ -8,8 +8,9 @@
       custom="{{true}}"
     >
     <view class="con">
-      <image class="loading-img" class="logo" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/苏格拉底图标.png"></image>
-
-      <l-loading show="{{true}}" class="changing" type="change" color="#D0A669"></l-loading>
+      
+        <image class="loading-img" class="logo" src="{{logoURL}}" mode="aspectFit">
+      </image>
+      <l-loading show="{{true}}" class="changing" type="change" color="#ffffff"></l-loading>
     </view>
   </l-loading>

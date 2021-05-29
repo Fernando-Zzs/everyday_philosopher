@@ -54,7 +54,7 @@ Page({
           show: !this.data.show
         })
       }
-    }, 1000)
+    }, 3000)
   },
   onShow: function () {
     if (app.globalData.TIMESTAMP_COMMENT_START == 0) {
