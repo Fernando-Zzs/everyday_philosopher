@@ -149,6 +149,12 @@
           "pathName": "pages/find/search/search",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "第一页/评论",
+          "pathName": "pages/find/SandC/index",
+          "query": "story_id=0",
+          "scene": null
         }
       ]
     }

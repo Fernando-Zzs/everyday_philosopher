@@ -75,6 +75,11 @@ Page({
     // 获取list数组
     this.getList()
   },
+  write(e){
+    wx.navigateTo({
+      url: "/pages/find/writeComment/write?story_id"+this.data.Sid,
+    })
+  },
   handleLike: function (e) {
     // console.log(e.currentTarget.dataset.commentid)
     let index = e.currentTarget.dataset.index

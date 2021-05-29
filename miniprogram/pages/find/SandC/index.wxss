@@ -56,7 +56,7 @@
   overflow: hidden;
   margin-left: 42rpx;
   width: 666rpx;
-  height: 80vh;
+  height: 70vh;
   position: absolute;
   top: -333rpx;
   border-radius: 10rpx;
@@ -119,3 +119,14 @@
   margin-left: 15rpx;
 }
 
+.write-button{
+  position: fixed;
+  bottom:7vh;
+  width: 50vw;
+  left: 25vw;
+  height: 120rpx;
+  line-height: 120rpx;
+  text-align: center;
+  border: 8rpx solid #fff;
+  border-radius: 70rpx;
+}

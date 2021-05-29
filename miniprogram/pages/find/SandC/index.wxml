@@ -35,5 +35,5 @@
     </movable-area>
   </view>
 
-  <view class="button write-button">写评论</view>
+  <view class="button write-button" bindtap="write">写评论</view>
 </view>

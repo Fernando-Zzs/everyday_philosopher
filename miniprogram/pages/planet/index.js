@@ -58,30 +58,31 @@ Page({
     objects : []
   },
   onLoad: function () {
-    console.log(app.globalData.OPENID)
+
     wx.createSelectorQuery()
       .select('#webgl')
       .node()
       .exec((res) => {
         //获取故事和一句
-        wx.cloud.callFunction({
-          name: 'recommendStory',
-          data: {
-            _openid: app.globalData.OPENID,
-            num: 2
-          }
-        }).then(console.log)
+       
 
 
         const canvas = res[0].node
         console.log(canvas)
         this.canvas = canvas
         const THREE = createScopedThreejs(canvas)
-        this.renderModel1(canvas, THREE)
+        // this.renderModel1(canvas, THREE)
       })
   },
   onShow(){
-
+    console.log(app.globalData.OPENID)
+    wx.cloud.callFunction({
+      name: 'recommendStory',
+      data: {
+        _openid: app.globalData.OPENID,
+        num: 2
+      }
+    }).then(console.log)
     if (typeof this.getTabBar === 'function' &&
     this.getTabBar()) {
     this.getTabBar().setData({
