@@ -9,8 +9,7 @@ Page({
     keywords: '',
     fixed: false,
     placeholder:"请输入关键词",
-    warning_info:"没有匹配的内容，换个关键词试试吧",
-    blank_info:"还没输入关键字哦",
+    warn_info:["","","没有匹配的内容，换个关键词试试吧","还没输入关键字哦"],
     warn:0,
     search_items: [],
     story_items: []
@@ -28,7 +27,7 @@ Page({
     this.setData({warn:0})
     var keyword = e.detail.value
       if(keyword==""||keyword.match(/^\s+$/)){
-        this.setData({warn:-1})
+        this.setData({warn:3})
         return
        }
     var that = this

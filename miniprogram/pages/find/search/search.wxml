@@ -15,7 +15,7 @@
     </input>
   </view>
 <!--  -->
-  <view wx:if="{{warn!=0}}" class="warning">{{warn==-1?blank_info:warning_info}}</view>
+  <view wx:if="{{warn!=0}}" class="warning">{{warn_info[warn]}}</view>
 
   <view class="serach-item" wx:for="{{search_items}}" wx:key='_id' data-questionid="{{item.question_id}}"
     bindtap="showQuestionDetail">
