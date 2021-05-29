@@ -16,11 +16,79 @@ function compare(property) {
   }
 }
 
+function read_pre(history_arr) {
+  for (let i = 0, len = history_arr.length; i < len; i++) {
+    if (history_arr[i].type == 'story' && history_arr[i].id == '0') {
+      return true
+    }
+  }
+
+  return false
+}
+
+function read_egg(history_arr) {
+  for (let i = 0, len = history_arr.length; i < len; i++) {
+    if (history_arr[i].type == 'story' && history_arr[i].id == '5') {
+      return true
+    }
+  }
+
+  return false
+}
+
+function randomNum(minNum, maxNum) {
+  switch (arguments.length) {
+    case 1:
+      return parseInt(Math.random() * minNum + 1, 10);
+      break;
+    case 2:
+      return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+      break;
+    default:
+      return 0;
+      break;
+  }
+}
+
+function isExist(arr, str) {
+  for (let i = 0, len = arr.length; i < len; i++) {
+    if (arr[i] == str) {
+      return true
+    }
+  }
+
+  return false
+}
 exports.main = async (event, context) => {
+  // let history_arr = await db.collection('history').where({
+  //   _openid: event._openid
+  // }).get()
+  // history_arr = history_arr.data
+
+  // if (!read_pre(history_arr)) {
+  //   return ['0']
+  // }
+  // if (!read_egg(history_arr)) {
+  //   return ['5']
+  // }
+
   let story_arr = await db.collection('story').get()
   story_arr = story_arr.data
   let user_arr = await db.collection('user').get()
   user_arr = user_arr.data
+
+  let ret_arr = []
+  if (user_arr.length < 100) {
+    while (ret_arr.length < event.num) {
+      let sid = story_arr[randomNum(0, story_arr.length - 1)].story_id
+      if (!isExist(ret_arr, sid)) {
+        ret_arr.push(sid)
+      }
+    }
+
+    return ret_arr
+  }
+
   let dataBase = {}
   for (let i = 0, u_len = user_arr.length; i < u_len; i++) {
     dataBase[user_arr[i]._openid] = {}

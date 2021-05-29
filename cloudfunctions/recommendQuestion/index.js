@@ -16,11 +16,48 @@ function compare(property) {
   }
 }
 
+function isExist(arr, str) {
+  for (let i = 0, len = arr.length; i < len; i++) {
+    if (arr[i] == str) {
+      return true
+    }
+  }
+
+  return false
+}
+
+function randomNum(minNum, maxNum) {
+  switch (arguments.length) {
+    case 1:
+      return parseInt(Math.random() * minNum + 1, 10);
+      break;
+    case 2:
+      return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+      break;
+    default:
+      return 0;
+      break;
+  }
+}
+
 exports.main = async (event, context) => {
   let question_arr = await db.collection('question').get()
   question_arr = question_arr.data
   let user_arr = await db.collection('user').get()
   user_arr = user_arr.data
+
+  let ret_arr = []
+  if (user_arr.length < 100) {
+    while (ret_arr.length < event.num) {
+      let qid = question_arr[randomNum(0, question_arr.length - 1)].question_id
+      if (!isExist(ret_arr, qid)) {
+        ret_arr.push(qid)
+      }
+    }
+
+    return ret_arr
+  }
+
   let dataBase = {}
   for (let i = 0, u_len = user_arr.length; i < u_len; i++) {
     dataBase[user_arr[i]._openid] = {}
