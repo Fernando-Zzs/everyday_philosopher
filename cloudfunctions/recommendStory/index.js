@@ -60,17 +60,17 @@ function isExist(arr, str) {
   return false
 }
 exports.main = async (event, context) => {
-  // let history_arr = await db.collection('history').where({
-  //   _openid: event._openid
-  // }).get()
-  // history_arr = history_arr.data
+  let history_arr = await db.collection('history').where({
+    _openid: event._openid
+  }).get()
+  history_arr = history_arr.data
 
-  // if (!read_pre(history_arr)) {
-  //   return ['0']
-  // }
-  // if (!read_egg(history_arr)) {
-  //   return ['5']
-  // }
+  if (!read_pre(history_arr)) {
+    return ['0']
+  }
+  if (!read_egg(history_arr)) {
+    return ['5']
+  }
 
   let story_arr = await db.collection('story').get()
   story_arr = story_arr.data
