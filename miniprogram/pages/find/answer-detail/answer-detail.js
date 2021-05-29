@@ -1,5 +1,3 @@
-// pages/index/index.js
-import mockArr from './mock.js'
 const app = getApp()
 let value_global = ''
 let that = this
@@ -22,6 +20,7 @@ function deepClone(obj) {
   }
   return newObj
 }
+
 Page({
   data: {
     show: true,
@@ -38,14 +37,16 @@ Page({
     ratio: 2, // 屏幕比例
     context: '', // 文本框内容
     Qid: '', // 问题id
+    Aid: '', // 回答id
     like_num: '',
     collect_num: ''
   },
 
   onLoad: function (options) {
-    // 获取传来的question_id
+    // 获取传来的question_id和要查看的第一张answer_id
     this.setData({
-      Qid: options.question_id
+      Qid: options.question_id,
+      Aid: options.answer_id
     })
   },
   onReady: function () {
@@ -55,7 +56,7 @@ Page({
           show: !this.data.show
         })
       }
-    }, 3000)
+    }, 1000)
   },
   onShow: function () {
     if (app.globalData.TIMESTAMP_ANSWER_START == 0) {
@@ -63,6 +64,14 @@ Page({
     }
     chance = 1;
     let that = this
+    // 缓冲
+    this.timer = setInterval(() => {
+      if (this.data.show) {
+        this.setData({
+          show: !this.data.show
+        })
+      }
+    }, 1000)
     var res = wx.getSystemInfoSync();
     winWidth = res.windowWidth;
     winHeight = res.windowHeight;
@@ -70,7 +79,6 @@ Page({
     this.setData({
       ratio
     })
-
 
     // 获取list数组
     this.getList()
@@ -325,9 +333,10 @@ Page({
     setTimeout(() => {
       // setTimeout(() => {
       wx.cloud.callFunction({
-        name: 'getAnswerByQuestionId',
+        name: 'getAnswerFromBoth',
         data: {
-          question_id: that.data.Qid
+          question_id: that.data.Qid,
+          answer_id: that.data.Aid
         },
         complete: res => {
           this.data.arr = deepClone(res.result)
@@ -340,7 +349,7 @@ Page({
           // 初次赋值
           this.setData({
             like_num: this.data.arr[0].like_openid.length,
-            collect_num: this.data.arr[0].collect_openid.length
+            collect_num:this.data.arr[0].collect_openid.length
           })
 
           if (chance == 1) {

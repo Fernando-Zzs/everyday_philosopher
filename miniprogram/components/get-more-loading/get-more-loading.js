@@ -7,9 +7,10 @@ Component({
     show:{
       type: String,
       value: '',
-      observer: function(newVal, oldVal) {
-        console.log('properties-num', newVal)
-      }
+    },
+    logoURL:{
+      type: String,
+      value: 'cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/苏格拉底图标.png'
     }
   },
 
@@ -26,10 +27,4 @@ Component({
   methods: {
 
   },
-
-  observers:{
-    'show'(val){
-      console.log('observers-num',val)
-    }
-  }
 })

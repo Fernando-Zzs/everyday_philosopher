@@ -2,13 +2,14 @@ let can_tab_state=true
 let app = getApp()
 Page({
   data: {
+    show: true,
     sysInfo: wx.getSystemInfoSync(),
     broad_state:false,
     scroll_top:0,
     story:{},
     story_id:'0',
     title:"序言",
-    poster:"",
+    posterURL: '',
     container_height:9000,
     story_info:["欢迎","开始"],
     story_series:[{title:"小说"},{title:"先哲之死"}],
@@ -17,6 +18,19 @@ Page({
   },
   onLoad(options){
     //每日推荐
+        // 获取故事id对应海报
+        wx.cloud.callFunction({
+          name:'getStory',
+          data:{
+            story_id: '5'
+          },
+          complete:res=>{
+            // console.log(res.result)
+            this.setData({
+              posterURL: res.result.poster[1]
+            })
+          }
+        })
     this.getStory(this.data.story_id)
   },
   onShow(){
@@ -35,7 +49,13 @@ Page({
 
   },
   onReady() {
-    
+    this.timer = setInterval(() => {
+      if (this.data.show) {
+        this.setData({
+          show: !this.data.show
+        })
+      }
+    }, 3000)
   },
 
     scroll(e) {
@@ -214,7 +234,7 @@ Page({
           story:res,
           story_id:res.story_id,
     title:res.title,
-    poster:res.poster,
+    posterURL:res.posterURL,
     container_height:res.container_height,
     story_info:res.info,
     story_series:res.series,
@@ -236,6 +256,9 @@ Page({
       this.getStory(id)
       app.story_id=id
       
+    },
+    onUnload: function () {
+      clearInterval(this.timer)
     }
 
 

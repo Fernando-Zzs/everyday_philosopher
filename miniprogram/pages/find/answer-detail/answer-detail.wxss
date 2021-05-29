@@ -90,7 +90,7 @@
   font-weight: 700;
 }
 
-.comment{
+.answer{
   /* margin-left: 2.5%; */
   /* margin-top: 15rpx; */
   width: 86%;
@@ -106,7 +106,7 @@
 }
 
 .like{
-  left: 48%;
+  left: 15%;
   bottom: 10%;
   position: absolute;
 }
@@ -114,7 +114,15 @@
   width: 50rpx;
   height: 50rpx;
 }
+.star{
+  position: absolute;
+  right:15%;
+  bottom: 10%;
+}
+.star image{
+  width: 50rpx;
+  height: 50rpx;
+}
 .num{
   margin-left: 15rpx;
 }
-

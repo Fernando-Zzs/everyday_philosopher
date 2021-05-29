@@ -11,10 +11,11 @@
     "pages/find/SandC/index",
     "pages/find/answer/answer",
     "pages/find/story-detail/story-detail",
-    "pages/find/question-detail/question-detail",
+    "pages/find/answer-detail/answer-detail",
     "pages/find/search/search",
     "pages/find/search_button/index",
     "pages/find/write/write",
+    "pages/find/writeComment/write",
     "pages/find/question/question",
 
     "pages/story/index/index",

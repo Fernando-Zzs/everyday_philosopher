@@ -12,8 +12,16 @@ page {
 }
 
 .like_story image {
+  position: absolute;
+  right: 100rpx;
+  bottom: 30rpx;
   width: 60rpx;
   height: 60rpx;
+}
+.like_story_num{
+  position: absolute;
+  right: 60rpx;
+  bottom: 30rpx;
 }
 
 .title {

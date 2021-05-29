@@ -26,12 +26,12 @@
   padding-bottom: 50rpx;
   border-bottom: 2px dashed rgb(255, 255, 255);
 }
-.question{
+.story{
   display: flex;
   flex-direction: column;
   margin-right: 30rpx;
 }
-.question-title{
+.story-title{
   /* text-align: center; */
   margin-top: 5rpx;
   line-height: 60rpx;

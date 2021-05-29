@@ -6,12 +6,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    question_id: '',
-    answer_id: '',
-    question_title: '',
+    story_id: '',
+    comment_id: '',
+    story_title: '',
     user_avatar: '',
     user_nickname: '',
-    content: ''
+    content: '',
   },
 
   /**
@@ -19,18 +19,18 @@ Page({
    */
   onLoad: function (options) {
     let that = this
-    console.log(options.question_id)
+    console.log(options.story_id)
     this.setData({
-      question_id: options.question_id
+      story_id: options.story_id
     })
     wx.cloud.callFunction({
-      name: 'getQuestion',
+      name: 'getStory',
       data: {
-        question_id: options.question_id
+        story_id: options.story_id
       },
       complete: res => {
         that.setData({
-          question_title: res.result.title
+          story_title: res.result.title
         })
       }
     })
@@ -44,15 +44,16 @@ Page({
 
   submit: function () {
     let that = this
-
     // console.log(this.data.content)
     wx.cloud.callFunction({
-      name: 'addAnswer',
+      name: 'addComment',
       data: {
-        question_id: that.data.question_id,
+        story_id: that.data.question_id,
         content: that.data.content,
         avatarURL: that.data.user_avatar,
-        nickname: that.data.user_nickname
+        nickname: that.data.user_nickname,
+        timestamp: Date.parse(new Date()) / 1000,
+        _openid: app.globalData.OPENID
       },
       complete: res => {
         wx.navigateTo({
