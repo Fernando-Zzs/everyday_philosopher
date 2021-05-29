@@ -73,6 +73,14 @@ Page({
         this.renderModel1(canvas, THREE)
       })
   },
+  onShow(){
+    if (typeof this.getTabBar === 'function' &&
+    this.getTabBar()) {
+    this.getTabBar().setData({
+      selected: 1
+    })
+  }
+},
   renderModel1(canvas, THREE) {
     registerGLTFLoader(THREE)
     this.THREE = THREE;
