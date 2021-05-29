@@ -137,6 +137,12 @@
           "pathName": "pages/planet/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/story/index/index",
+          "pathName": "pages/story/index/index",
+          "query": "",
+          "scene": null
         }
       ]
     }

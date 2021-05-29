@@ -265,33 +265,21 @@ function get_percentage(story_arr, tag_mapping_obj, tags_and_count_final) {
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  // let timestamp_end = Date.parse(new Date()) / 1000
-  // console.log('end: ', timestamp_end);
-  // let day = new Date().getDay()
-
   // let today_0 = new Date()
+  // let day = new Date().getDay()
+  // let timestamp_end = 0
+  // let timestamp_start = 0
   // today_0.setHours(0)
   // today_0.setMinutes(0)
   // today_0.setSeconds(0)
   // today_0.setMilliseconds(0)
-  // let timestamp_start = Date.parse(today_0) / 1000 - 86400 * day
-  // console.log('start', timestamp_start);
 
-  let today_0 = new Date()
-  let day = new Date().getDay()
-  let timestamp_end = 0
-  let timestamp_start = 0
-  today_0.setHours(0)
-  today_0.setMinutes(0)
-  today_0.setSeconds(0)
-  today_0.setMilliseconds(0)
-
-  if (day == 0) {
-    timestamp_end = Date.parse(today_0) / 1000 - 86400 * 6
-  } else {
-    timestamp_end = Date.parse(today_0) / 1000 - 86400 * (day - 1)
-  }
-  timestamp_start = timestamp_end - 86400 * 7
+  // if (day == 0) {
+  //   timestamp_end = Date.parse(today_0) / 1000 - 86400 * 6
+  // } else {
+  //   timestamp_end = Date.parse(today_0) / 1000 - 86400 * (day - 1)
+  // }
+  // timestamp_start = timestamp_end - 86400 * 7
 
   let story_arr = await db.collection('story').get()
   story_arr = story_arr.data
@@ -303,8 +291,8 @@ exports.main = async (event, context) => {
   answer_arr = answer_arr.data
 
   let history_arr = await db.collection('history').where({
-      _openid: event._openid,
-      timestamp: _.lte(timestamp_end).and(_.gte(timestamp_start))
+      _openid: event._openid
+      // timestamp: _.lte(timestamp_end).and(_.gte(timestamp_start))
     })
     .get()
   history_arr = history_arr.data // 得到相应时间戳内的history数据
@@ -335,21 +323,21 @@ exports.main = async (event, context) => {
 
   let collection_arr = await db.collection('collection').where({
       _openid: event._openid,
-      timestamp: _.lte(timestamp_end).and(_.gte(timestamp_start))
+      // timestamp: _.lte(timestamp_end).and(_.gte(timestamp_start))
     })
     .get()
   collection_arr = collection_arr.data // 得到相应时间戳内的collection数据
 
   let like_arr = await db.collection('like').where({
       _openid: event._openid,
-      timestamp: _.lte(timestamp_end).and(_.gte(timestamp_start))
+      // timestamp: _.lte(timestamp_end).and(_.gte(timestamp_start))
     })
     .get()
   like_arr = like_arr.data
 
   let comment_arr = await db.collection('comment').where({
       _openid: event._openid,
-      timestamp: _.lte(timestamp_end).and(_.gte(timestamp_start))
+      // timestamp: _.lte(timestamp_end).and(_.gte(timestamp_start))
     })
     .get()
   comment_arr = comment_arr.data
