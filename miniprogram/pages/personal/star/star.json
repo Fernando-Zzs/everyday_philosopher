@@ -1,5 +1,4 @@
 {
-  "enablePullDownRefresh": true,
   "navigationBarTextStyle": "white",
   "navigationBarTitleText": "收藏夹",
   "usingComponents": {

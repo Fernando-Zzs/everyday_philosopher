@@ -22,7 +22,8 @@ Page({
         onInit:initChart
       },
       phi:[],
-      que:[]
+      que:[],
+      backgroundImage:''
   },
 
   onPullDownRefresh:function(){},
@@ -56,6 +57,16 @@ Page({
     // })
     // 调用云函数获取用户openid
     
+    wx.cloud.downloadFile({
+      fileID: 'cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星空11.jpg',
+      maxAge: 120*60*1000,
+      success:res=>{
+        that.setData({
+          backgroundImage: res.tempFilePath
+        })
+      }
+    })
+
     let page = this;
     wx.cloud.callFunction({
       name:'getUserInfo',

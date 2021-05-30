@@ -22,15 +22,15 @@
       <image mode="aspectFill"
         src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星空1.jpg' class="bg">
         <view class='user-info'>
-          <image class='user-image' src='{{userInfo.avatarUrl}}'></image>
-          <view class='user-name' wx:if="{{userInfo.nickName}}">{{userInfo.nickName}}</view>
+          <image class='user-image' src='{{userInfo.avatarUrl}}' bindtap="getUserProfile"></image>
+        </view>
+        <view class='user-name' wx:if="{{userInfo.nickName}}">{{userInfo.nickName}}</view>
           <view class='user-name' wx:else>
             <block wx:if="{{!hasUserInfo}}">
               <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile" hover-class="none"> 登录 </button>
               <button wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登录 </button>
             </block>
           </view>
-        </view>
         <view class="menu">
           <view class='content-container'>
             <view class='content-item' bindtap='openHistory'>

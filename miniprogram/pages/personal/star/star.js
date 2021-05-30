@@ -38,6 +38,7 @@ Page({
     },
     datas: [], // 第一模块收藏数据
     datas2: [], // 第二模块收藏数据
+    backgroundImage: ''
   },
 
   onPullDownRefresh: function () {},
@@ -59,6 +60,17 @@ Page({
   },
   onLoad: function (options) {
     let that = this
+
+    wx.cloud.downloadFile({
+      fileID: 'cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星空11.jpg',
+      maxAge: 120*60*1000,
+      success:res=>{
+        that.setData({
+          backgroundImage: res.tempFilePath
+        })
+      }
+    })
+
     const db = wx.cloud.database()
     db.collection('collection').where({
       type: 'story'

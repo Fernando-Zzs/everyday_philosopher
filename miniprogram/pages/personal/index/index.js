@@ -73,36 +73,38 @@ Page({
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
     // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-    wx.getUserProfile({
-      desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-      success: (res) => {
-        var that = this
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-        wx.showToast({
-          title: '登录成功',
-          icon: 'success',
-          duration: 1000
-        })
-        const db = wx.cloud.database()
-        db.collection('user').add({
-          data:{
-            nickname: that.data.userInfo.nickName,
-            avatarUrl: that.data.userInfo.avatarUrl
-          }
-        })
-        wx.cloud.callFunction({
-          name:'getUserInfo',
-          complete:res=>{
-            app.globalData.OPENID = res.result.openid
-          }
-        })
-        app.globalData.NICKNAME = this.data.userInfo.nickName
-        app.globalData.AVATARURL = this.data.userInfo.avatarUrl
-      }
-    })
+    if(!this.data.hasUserInfo){
+      wx.getUserProfile({
+        desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+        success: (res) => {
+          var that = this
+          this.setData({
+            userInfo: res.userInfo,
+            hasUserInfo: true
+          })
+          wx.showToast({
+            title: '登录成功',
+            icon: 'success',
+            duration: 1000
+          })
+          const db = wx.cloud.database()
+          db.collection('user').add({
+            data:{
+              nickname: that.data.userInfo.nickName,
+              avatarUrl: that.data.userInfo.avatarUrl
+            }
+          })
+          wx.cloud.callFunction({
+            name:'getUserInfo',
+            complete:res=>{
+              app.globalData.OPENID = res.result.openid
+            }
+          })
+          app.globalData.NICKNAME = this.data.userInfo.nickName
+          app.globalData.AVATARURL = this.data.userInfo.avatarUrl
+        }
+      })
+    }
   },
   getUserInfo(e) {
     // 不推荐使用getUserInfo获取用户信息，预计自2021年4月13日起，getUserInfo将不再弹出弹窗，并直接返回匿名的用户个人信息
