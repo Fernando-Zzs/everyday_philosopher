@@ -168,9 +168,9 @@ page{
 
 .item-image {
   justify-content: flex-start;
-  width: 45rpx;
-  height: 45rpx;
-  margin-top: 8rpx;
+  width: 70rpx;
+  height: 70rpx;
+  margin-top: 0rpx;
 }
 
 .word {

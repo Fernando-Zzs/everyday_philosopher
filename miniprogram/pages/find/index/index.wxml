@@ -4,15 +4,16 @@
   <view class="container">
     <view class="page-body">
       <image class="bg"
-        src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/background2.png"
+        src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/3_bg.jpg"
         mode="aspectFill"></image>
+        <!-- cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/background2.png -->
       <view class="page-section">
         <view class="page-section-spacing">
 
           <scroll-view id="scroll-view_H" class="scroll-view_H" scroll-x="true" bindscroll="scroll">
             <image class="search-btn"
               src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/搜索.png"
-              bindtap="search" style="top:{{sysInfo.statusBarHeight}}px"></image>
+              bindtap="search" mode="aspectFill" style="top:{{menuButton.top}}px;"></image>
             <!-- lower-threshold -->
             <block wx:for="{{items}}" wx:for-item="itemName" wx:key="id">
               <view class="scroll-view-item_H" id="{{itemName.id}}">

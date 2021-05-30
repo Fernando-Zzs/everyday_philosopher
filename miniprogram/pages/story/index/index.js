@@ -6,6 +6,7 @@ Page({
     data: {
         show: true,
         sysInfo: wx.getSystemInfoSync(),
+        menuButton:wx.getMenuButtonBoundingClientRect(),
         broad_state: false,
         scroll_top: 0,
         story: {},

@@ -87,6 +87,7 @@ Page({
   data: {
     currentScene: false,
     sysInfo: wx.getSystemInfoSync(),
+    menuButton:wx.getMenuButtonBoundingClientRect(),
     ww: wx.getSystemInfoSync().windowWidth,
     toView: 'green',
     dWidth: 100,
