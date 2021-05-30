@@ -73,34 +73,36 @@ Page({
 
     const db = wx.cloud.database()
     db.collection('collection').where({
-      type: 'story'
-    })
-    .get({
-      success: function (res) {
-        that.setData({
-          datas: res.data
-        })
-        console.log();
-      },
-      fail: (err) => {
-        console.log(err);
-      }
-    })
+        _openid: app.globalData.OPENID,
+        type: 'story'
+      })
+      .get({
+        success: function (res) {
+          that.setData({
+            datas: res.data
+          })
+          console.log();
+        },
+        fail: (err) => {
+          console.log(err);
+        }
+      })
     let that2 = this
     const db2 = wx.cloud.database()
     db2.collection('collection').where({
-      type: 'answer'
-    })
-    .get({
-      success: function (res) {
-        that2.setData({
-          datas2: res.data
-        })
-      },
-      fail: (err) => {
-        console.log(err);
-      }
-    })
+        openid: app.globalData.OPENID,
+        type: 'answer'
+      })
+      .get({
+        success: function (res) {
+          that2.setData({
+            datas2: res.data
+          })
+        },
+        fail: (err) => {
+          console.log(err);
+        }
+      })
     // wx.cloud.callFunction({
     //   name: 'getCollectedAnswers',
     //   data: {
