@@ -9,7 +9,8 @@
   </image>
   <view wx:if="{{type=='story'}}">
     <view class="tag">⊙故事</view>
-    <image class="poster" mode="aspectFill" src="{{posterURL}}"></image>
+    <!-- <image class="bg poster" mode="aspectFill" src="{{posterURL}}"></image> -->
+    
     <view class="button b3" bindtap="enterStory" data-story_id="{{story_id}}">进入故事</view>
   </view>
 
@@ -25,8 +26,9 @@
   </view>
 
   <view wx:else>
-    <view class="tag">⊙一句</view>
-    <image class="poster" mode="aspectFill" src="{{posterURL}}"></image>
+    <view class="tag">⊙一句+{{posterURL}}</view>
+
+   
     <view class="button b3" bindtap="sharePoster" data-word_id="{{word_id}}">分享海报</view>
   </view>
 

@@ -34,7 +34,7 @@ Component({
     },
     posterURL:{
       type: String,
-      value: ''
+      value: 'cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/poster/宇宙之卵poster1.png'
     }
   },
 
@@ -46,7 +46,7 @@ Component({
     position: 'center',
     round: false,
     overlay: true,
-    customStyle:'margin-left:15%;margin-top:20%;width:70%;height: 60%;border-radius:20px;background-color: rgba(0, 0, 0, 0);z-index: 999',
+    customStyle:'margin-left:15%;margin-top:35%;width:70%;height: 60%;border-radius:20px;background-color: rgba(0, 0, 0, 0);z-index: 999;overflow:hidden;',
     overlayStyle: 'background-color: rgba(0, 0, 0, 0.7)',
 
   },
@@ -57,6 +57,7 @@ Component({
   methods: {
     onLoad(){
       console.log(this.data.question_id)
+      
     },
     exit() {
       this.setData({
@@ -88,6 +89,7 @@ Component({
     },
 
     sharePoster(e){
+      
       wx.showShareImageMenu({path:this.data.posterURL})
     }
   }

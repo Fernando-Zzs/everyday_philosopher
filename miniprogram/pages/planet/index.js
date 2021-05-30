@@ -17,6 +17,7 @@ const position=[
   {x:-50,y:100,z:-47},
   {x:10,y:-50,z:110},
 ]
+const oneWord_title="https://636c-cloud1-6gm7hn7636af92c5-1305725653.tcb.qcloud.la/sentence/oneWord.png?sign=41606dadbfbb68966d464526f8741ce0&t=1622363193"
 
 Page({
   data: {
@@ -31,8 +32,8 @@ Page({
       {
         id:1,
         type:'oneWord',
-        title_url:"./image/title1.png",
-        posterURL:""
+        title_url:"https://636c-cloud1-6gm7hn7636af92c5-1305725653.tcb.qcloud.la/sentence/oneWord.png?sign=3c453f80b85371ceb2baf56c9a381326&t=1622361393",
+        posterURL:"https://636c-cloud1-6gm7hn7636af92c5-1305725653.tcb.qcloud.la/sentence/20.png"
       },
       {
         id:2,
@@ -42,15 +43,15 @@ Page({
       },
       {
         id:3,
-        type:'story',
-        title_url:"./image/title1.png",
-        posterURL:""
+        type:'oneWord',
+        title_url:"https://636c-cloud1-6gm7hn7636af92c5-1305725653.tcb.qcloud.la/sentence/oneWord.png?sign=3c453f80b85371ceb2baf56c9a381326&t=1622361393",
+        posterURL:"https://636c-cloud1-6gm7hn7636af92c5-1305725653.tcb.qcloud.la/sentence/20.png"
       },
       {
         id:4,
-        type:'story',
-        title_url:"./image/title1.png",
-        posterURL:""
+        type:'oneWord',
+        title_url:"https://636c-cloud1-6gm7hn7636af92c5-1305725653.tcb.qcloud.la/sentence/oneWord.png?sign=3c453f80b85371ceb2baf56c9a381326&t=1622361393",
+        posterURL:"https://636c-cloud1-6gm7hn7636af92c5-1305725653.tcb.qcloud.la/sentence/20.png"
       }
     ],
     showNow:false,
@@ -58,31 +59,49 @@ Page({
     objects : []
   },
   onLoad: function () {
-
+    console.log("select")
     wx.createSelectorQuery()
       .select('#webgl')
       .node()
       .exec((res) => {
         //获取故事和一句
-       
+       for(var i=0;i<5;i++){
+         if(i==0)
+         this.data.items[i]={
+          id:"5",
+          type:'story',
+          title_url:"https://636c-cloud1-6gm7hn7636af92c5-1305725653.tcb.qcloud.la/title/title1.png?sign=e799504b42a69b9c7914dc59080f0f8a&t=1622363137",
+          posterURL:"cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/poster/宇宙之卵poster1.png"
+        }
+        else{
+          this.data.items[i]={
+            id:i,
+            type:'oneWOrd',
+            title_url:oneWord_title,
+            posterURL:"https://636c-cloud1-6gm7hn7636af92c5-1305725653.tcb.qcloud.la/sentence/"+
+             Math.floor((Math.random()*22+1)) +".png"
+          }
+        }
+       }
+       this.setData({items:this.data.items})
 
 
         const canvas = res[0].node
-        console.log(canvas)
+        console.log("canvas",canvas)
         this.canvas = canvas
         const THREE = createScopedThreejs(canvas)
-        // this.renderModel1(canvas, THREE)
+        this.renderModel1(canvas, THREE)
       })
   },
   onShow(){
-    console.log(app.globalData.OPENID)
-    wx.cloud.callFunction({
-      name: 'recommendStory',
-      data: {
-        _openid: app.globalData.OPENID,
-        num: 3
-      }
-    }).then(console.log)
+    // console.log(app.globalData.OPENID)
+    // wx.cloud.callFunction({
+    //   name: 'recommendStory',
+    //   data: {
+    //     _openid: app.globalData.OPENID,
+    //     num: 3
+    //   }
+    // }).then(console.log)
     if (typeof this.getTabBar === 'function' &&
     this.getTabBar()) {
     this.getTabBar().setData({
@@ -200,7 +219,7 @@ Page({
       });
       var sprite = new this.THREE.Sprite(spriteMaterial);
       sprite.name = i
-      sprite.scale.set(60, 30, 1)
+      sprite.scale.set(70, 30, 1)
       sprite.position.set(position[i].x*1.1,position[i].y*1.1,position[i].z*1.1)
       this.scene.add(sprite);
     }
