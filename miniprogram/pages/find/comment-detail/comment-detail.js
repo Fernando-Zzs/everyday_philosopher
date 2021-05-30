@@ -1,5 +1,3 @@
-// pages/index/index.js
-import mockArr from './mock.js'
 const app = getApp()
 let value_global = ''
 let that = this
@@ -22,6 +20,7 @@ function deepClone(obj) {
   }
   return newObj
 }
+
 Page({
   data: {
     show: true,
@@ -37,14 +36,17 @@ Page({
     currentIndex: -1, // 当前最上层滑块
     ratio: 2, // 屏幕比例
     context: '', // 文本框内容
-    Sid: '', // 故事id
-    like_num: ''
+    Sid: '', // 问题id
+    Cid: '', // 回答id
+    like_num: '',
+    collect_num: ''
   },
 
   onLoad: function (options) {
-    // 获取传来的story_id
+    // 获取传来的story_id和要查看的第一张comment_id
     this.setData({
-      Sid: options.story_id
+      Sid: options.story_id,
+      Cid: options.comment_id
     })
   },
   onReady: function () {
@@ -54,7 +56,7 @@ Page({
           show: !this.data.show
         })
       }
-    }, 3000)
+    }, 1000)
   },
   onShow: function () {
     if (app.globalData.TIMESTAMP_COMMENT_START == 0) {
@@ -62,7 +64,14 @@ Page({
     }
     chance = 1;
     let that = this
-    
+    // 缓冲
+    this.timer = setInterval(() => {
+      if (this.data.show) {
+        this.setData({
+          show: !this.data.show
+        })
+      }
+    }, 1000)
     var res = wx.getSystemInfoSync();
     winWidth = res.windowWidth;
     winHeight = res.windowHeight;
@@ -71,15 +80,8 @@ Page({
       ratio
     })
 
-
     // 获取list数组
     this.getList()
-  },
-  write(e){
-    let story_id=this.data.Sid
-    wx.navigateTo({
-      url: "/pages/find/writeComment/write?story_id="+story_id,
-    })
   },
   handleLike: function (e) {
     // console.log(e.currentTarget.dataset.commentid)
@@ -121,7 +123,7 @@ Page({
     }
 
     wx.cloud.callFunction({
-      name: 'tapCommentLike',
+      name: 'tapcommentLike',
       data: {
         liked: !this.data.list[index].liked,
         _openid: app.globalData.OPENID,
@@ -129,12 +131,60 @@ Page({
       }
     })
   },
+  handleCollect: function (e) {
+    // console.log(e.currentTarget.dataset.commentid)
+    let index = e.currentTarget.dataset.index
+    console.log(index)
+    // let collect_num = this.data.list[index].collect_openid.length
+    // console.log(collect_num)
+    if (this.data.list[index].collected) {
+      this.setData({
+        ['list[' + index + '].collected']: false,
+        collect_num: this.data.collect_num - 1
+      })
+
+      wx.cloud.callFunction({
+        name: 'deleteCollection',
+        data: {
+          _openid: app.globalData.OPENID,
+          type: 'comment',
+          id: e.currentTarget.dataset.commentid
+        }
+      })
+    } else {
+      this.setData({
+        ['list[' + index + '].collected']: true,
+        collect_num: this.data.collect_num + 1
+      })
+
+      wx.cloud.callFunction({
+        name: 'addCollection',
+        data: {
+          _openid: app.globalData.OPENID,
+          description: '',
+          id: e.currentTarget.dataset.commentid,
+          timestamp: Date.parse(new Date()) / 1000,
+          title: '',
+          type: 'comment'
+        }
+      })
+    }
+
+    wx.cloud.callFunction({
+      name: 'tapcommentCollect',
+      data: {
+        collected: !this.data.list[index].collected,
+        _openid: app.globalData.OPENID,
+        comment_id: e.currentTarget.dataset.commentid
+      }
+    })
+  },
 
   touchStart(e) {
-    // console.log(e.currentTarget.dataset.questionid)
-    // this.setData({
-    //   currentQid: e.currentTarget.dataset.questionid
-    // })
+    // console.log(e.currentTarget.dataset.storyid)
+    this.setData({
+      currentSid: e.currentTarget.dataset.storyid
+    })
     let index = e.currentTarget.dataset.index
     let touches = e.touches
     let list = this.data.list || []
@@ -190,13 +240,13 @@ Page({
         if (list.length > 1) {
 
           if (index % this.data.initLength == 0) {
-            console.log(this.data.initLength-1)
+            // console.log(this.data.initLength-1)
             that.setData({
               like_num: that.data.list[that.data.initLength - 1].like_openid.length,
               collect_num: that.data.list[that.data.initLength - 1].collect_openid.length
             })
           } else {
-            console.log(index%this.data.initLength - 1)
+            // console.log(index%this.data.initLength - 1)
             that.setData({
               like_num: that.data.list[index % this.data.initLength - 1].like_openid.length,
               collect_num: that.data.list[index % this.data.initLength - 1].collect_openid.length
@@ -283,13 +333,15 @@ Page({
     setTimeout(() => {
       // setTimeout(() => {
       wx.cloud.callFunction({
-        name: 'getComment',
+        name: 'getCommentFromBoth',
         data: {
-          story_id: that.data.Sid
+          story_id: that.data.Sid,
+          comment_id: that.data.Cid
         },
         complete: res => {
+          console.log(res.result)
           this.data.arr = deepClone(res.result)
-          // console.log("arr",this.data.arr)
+          console.log("arr",this.data.arr)
           this.setData({
             arr: this.data.arr,
             initLength: this.data.arr.length
@@ -297,7 +349,8 @@ Page({
           next = true
           // 初次赋值
           this.setData({
-            like_num: this.data.arr[0].like_openid.length
+            like_num: this.data.arr[0].like_openid.length,
+            collect_num: this.data.arr[0].collect_openid.length
           })
 
           if (chance == 1) {
@@ -328,7 +381,7 @@ Page({
       i.x = winWidth
       i.y = 0
       wx.cloud.callFunction({
-        name: 'isCommentLiked',
+        name: 'iscommentLiked',
         data: {
           comment_id: i.comment_id,
           _openid: app.globalData.OPENID
@@ -341,6 +394,20 @@ Page({
           }
         }
       })
+      wx.cloud.callFunction({
+        name: 'iscommentCollected',
+        data: {
+          comment_id: i.comment_id,
+          _openid: app.globalData.OPENID
+        },
+        success: function (res2) {
+          if (res2.result) {
+            i.collected = true
+          } else {
+            i.collected = false
+          }
+        }
+      })
       i.index = count--
       list.unshift(i)
     }
@@ -348,6 +415,42 @@ Page({
       list
     })
     console.log(list)
+  },
+  true: function (e) {
+    let v = e.detail.value;
+    this.setData({
+      context: v
+    })
+  },
+  submit: function (e) {
+    let that = this
+    var value = this.data.context;
+    if (value !== '') {
+      let avatarurl_temp = app.globalData.AVATARURL
+      let nickname_temp = app.globalData.NICKNAME
+      // 将答案添加到数据库
+      wx.cloud.callFunction({
+        name: 'addcomment',
+        data: {
+          content: value,
+          story_id: that.data.currentSid,
+          avatarURL: avatarurl_temp,
+          nickname: nickname_temp,
+          _openid: app.globalData.OPENID
+        },
+        complete: res => {
+          wx.navigateTo({
+            url: "../comment/comment?comment_id=" + res.result
+          })
+        }
+      })
+    } else {
+      wx.showToast({
+        title: '请输入答案',
+        duration: 2000,
+        icon: 'error',
+      })
+    }
   },
 
   /**

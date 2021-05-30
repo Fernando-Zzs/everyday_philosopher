@@ -127,12 +127,6 @@
           "scene": null
         },
         {
-          "name": "动态故事页",
-          "pathName": "pages/recommend/recommend",
-          "query": "",
-          "scene": null
-        },
-        {
           "name": "第二页/",
           "pathName": "pages/planet/index",
           "query": "",
@@ -154,6 +148,12 @@
           "name": "第一页/评论",
           "pathName": "pages/find/SandC/index",
           "query": "story_id=0",
+          "scene": null
+        },
+        {
+          "name": "为你推荐",
+          "pathName": "pages/story/index/index",
+          "query": "",
           "scene": null
         }
       ]

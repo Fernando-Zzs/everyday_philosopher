@@ -340,7 +340,7 @@ Page({
         },
         complete: res => {
           this.data.arr = deepClone(res.result)
-          // console.log("arr",this.data.arr)
+          console.log("arr",this.data.arr)
           this.setData({
             arr: this.data.arr,
             initLength: this.data.arr.length
