@@ -1,5 +1,7 @@
 let can_tab_state = true
 let app = getApp()
+let timestamp_start = 0
+let timestamp_end = 0
 Page({
   data: {
     show: true,
@@ -44,6 +46,8 @@ Page({
     this.getStory(this.data.story_id)
   },
   onShow() {
+    timestamp_start = Date.parse(new Date()) / 1000
+
     if (typeof this.getTabBar === 'function' &&
       this.getTabBar()) {
       this.getTabBar().setData({
@@ -297,6 +301,18 @@ Page({
   },
   onUnload: function () {
     clearInterval(this.timer)
+  },
+  onHide: function () {
+    timestamp_end = Date.parse(new Date()) / 1000
+    console.log(timestamp_start, timestamp_end);
+    wx.cloud.callFunction({
+      name: 'addTime',
+      data: {
+        _openid: app.globalData.OPENID,
+        type: 'story',
+        addedTime: timestamp_end - timestamp_start
+      }
+    })
   }
 
 

@@ -179,6 +179,12 @@
           "pathName": "pages/find/SandC/index",
           "query": "story_id=0",
           "scene": null
+        },
+        {
+          "name": "pages/personal/index/index",
+          "pathName": "pages/personal/index/index",
+          "query": "",
+          "scene": null
         }
       ]
     }
