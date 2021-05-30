@@ -10,10 +10,12 @@
   <view class="search-bar" style="position:{{fixed?'fixed':''}}">
     <image class="search-icon"
       src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/黑搜索.png"></image>
-    <input class='input' placeholder='请输入关键词' bindconfirm='search_confirm'>
+    <input class='input' focus="true"  placeholder='{{placeholder}}' bindconfirm='search_confirm'>
     {{keywords}}
     </input>
   </view>
+
+  <view wx:if="{{warn!=0}}" class="warning">{{warn_info[warn]}}</view>
 
   <view class="serach-item" wx:for="{{search_items}}" wx:key='_id' data-questionid="{{item.question_id}}"
     bindtap="showQuestionDetail">
@@ -21,7 +23,7 @@
       <image class="serach-item-icon" src="{{item.image}}"></image>
       <view class="serach-item-title">{{item.title}}</view>
     </view>
-    <view class="serach-item-content"><text>{{item.description}}</text></view>
+    <view class="serach-item-content"><text>{{item.description==""?"如题":item.description}}</text></view>
   </view>
 
   <view class="serach-item" wx:for="{{story_items}}" wx:key='_id' data-storyid="{{item.story_id}}"

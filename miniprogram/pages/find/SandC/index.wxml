@@ -34,4 +34,6 @@
       </movable-view>
     </movable-area>
   </view>
+
+  <view class="button write-button" bindtap="write">写评论</view>
 </view>

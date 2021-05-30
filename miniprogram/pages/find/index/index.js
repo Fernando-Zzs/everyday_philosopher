@@ -70,6 +70,14 @@ Page({
     })
 
   },
+  onShow(){
+    if (typeof this.getTabBar === 'function' &&
+    this.getTabBar()) {
+    this.getTabBar().setData({
+      selected: 2
+    })
+  }
+  },
   
   //**********************小星球页面**************************
   onShareAppMessage() {
@@ -80,6 +88,7 @@ Page({
   },
   data: {
     currentScene: false,
+    sysInfo: wx.getSystemInfoSync(),
     ww: wx.getSystemInfoSync().windowWidth,
     toView: 'green',
     dWidth: 100,
@@ -96,7 +105,7 @@ Page({
     ],
     position: [{
         x: 0,
-        y: 206,
+        y: 25,
         r: 110,
         i: 1
       },
@@ -108,117 +117,128 @@ Page({
       },
       {
         x: 200,
-        y: 275,
+        y: 40,
         r: 130,
         i: 3
       },
       {
         x: 300,
-        y: 70,
+        y: 15,
         r: 115,
         i: 4
       },
       {
         x: 400,
-        y: 332,
+        y: 63,
         r: 113,
         i: 5
       },
       {
         x: 500,
-        y: 148,
+        y: 15,
         r: 129,
         i: 6
       },
       {
         x: 600,
-        y: 341,
+        y: 40,
         r: 123,
         i: 7
       },
       {
         x: 700,
-        y: 52,
+        y: 62,
         r: 137,
         i: 8
       },
       {
         x: 800,
-        y: 312,
+        y: 55,
         r: 116,
         i: 9
       },
       {
         x: 900,
-        y: 114,
+        y: 20,
         r: 116,
         i: 10
       },
       {
         x: 1000,
-        y: 328,
+        y: 60,
         r: 124,
         i: 11
       },
       {
         x: 1100,
-        y: 140,
+        y: 40,
         r: 122,
         i: 12
       },
       {
         x: 1200,
-        y: 340,
+        y: 65,
         r: 117,
         i: 13
       },
       {
         x: 1300,
-        y: 176,
+        y: 25,
         r: 114,
         i: 14
       },
       {
         x: 1400,
-        y: 337,
+        y: 62,
         r: 114,
         i: 15
       },
       {
         x: 1500,
-        y: 61,
+        y: 12,
         r: 111,
         i: 16
       },
       {
         x: 1600,
-        y: 244,
+        y: 35,
         r: 114,
         i: 17
       },
       {
         x: 1700,
-        y: 229,
+        y: 25,
         r: 116,
         i: 18
       },
       {
         x: 1800,
-        y: 320,
+        y: 48,
         r: 121,
         i: 19
       },
       {
         x: 1900,
-        y: 71,
+        y: 60,
         r: 114,
         i: 20
       }
     ],
-    depth: [0, 100, 150, 200, 300],
+    depth: [50, 100, 200, 300, 400],
     url: [
       "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球1.png", "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球2.png", "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球3.png", "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球4.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球5.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球6.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球7.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球8.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球9.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球10.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球11.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球12.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球13.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球14.png"
     ]
+  },
+  getOffset(i) {
+    var offX = this.data.position[i - 1].x - this.data.dWidth * i;
+    var offY = this.data.position[i - 1].y;
+    offX = 0;
+    
+    offY=this.data.position[i - 1].y*this.data.sysInfo.windowHeight/100
+    return {
+      offX,
+      offY
+    };
   },
   upper(e) {
     console.log(e)
@@ -357,17 +377,7 @@ Page({
     }
     return true;
   },
-  getOffset(i) {
-    var offX = this.data.position[i - 1].x - this.data.dWidth * i;
-    var offY = this.data.position[i - 1].y;
-    offX = 0;
-    // offY=100;
 
-    return {
-      offX,
-      offY
-    };
-  },
   scrolltolower(e) {
 
   },

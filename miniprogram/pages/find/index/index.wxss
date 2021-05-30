@@ -1,15 +1,3 @@
-/* .bg1{
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-} */
-/* .switchMode{
-  width: 50rpx;
-  height: 50rpx;
-  position: absolute;
-  bottom: 30rpx;
-} */
 .page-section-spacing{
   margin-top: 0rpx;
 }
@@ -21,64 +9,58 @@
   height: 100vh;
 }
 .scroll-view_H{
-
   white-space: nowrap;
   position: relative;
   width: 100vw;
-  height:100%;
-  /* top:200rpx; */
-  /* padding-top: 30%; */
-  /* flex-direction: row; */
-  /* border: 2rpx yellow solid; */
+  /* height:100%; */
 }
 .search-btn{
   z-index: 999;
-  margin-left: 20rpx;
+  margin-left: 35rpx;
   margin-top: 20rpx;
   position:fixed;
   width: 60rpx;
   height: 60rpx;
 }
 .scroll-view-item_H{
-  /* position:absolute; */
-  /* position: sticky; */
   display: inline-block;
-  /* display: flex; */
-  /* top:30%; */
-  /* width:100px; */
   height: 100vh;
-  /* background-image: linear-gradient(to right,rgb(111,22,25),rgb(22,33,255)); */
-  /* border: 2rpx red solid; */
-
 }
-
-
 .circle
 {
-  /* padding-top:300rpx; */
-  /* position: relative; */
-  /* top:50%; */
   align-items: center;
   display: inline-block;
   width: 100px;
   height: 100px;
-  /* border:solid blue 2rpx ; */
   border-radius: 50%;
   text-align: center;
   line-height: 100px;
-  /* background-image: linear-gradient(to right top,#B3FFAB,#12FFF7); */
-
-
 }
 
 .bg{
   position: absolute;
   width:200%;
   height:100vh;
-  /* border: 2rpx red solid; */
   animation: sun 8s  infinite linear;
 }
-
+.tag{
+  position: absolute;
+  color: white;
+  /* border:1px white solid; */
+  width: 130%;
+  height: 60rpx;
+  line-height: 30rpx;
+  font-size:25rpx;
+  left:-15%;
+  text-align: center;
+  white-space:pre-wrap;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 @keyframes sun{
   100%{
     transform:translateX(-100vw);

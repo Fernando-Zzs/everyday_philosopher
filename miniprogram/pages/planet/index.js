@@ -58,21 +58,38 @@ Page({
     objects : []
   },
   onLoad: function () {
+
     wx.createSelectorQuery()
       .select('#webgl')
       .node()
       .exec((res) => {
+        //获取故事和一句
+       
+
+
         const canvas = res[0].node
         console.log(canvas)
         this.canvas = canvas
         const THREE = createScopedThreejs(canvas)
-
-        // renderSphere(canvas, THREE)
-        // renderCube(canvas, THREE)
-        // renderCubes(canvas, THREE)
-        this.renderModel1(canvas, THREE)
+        // this.renderModel1(canvas, THREE)
       })
   },
+  onShow(){
+    console.log(app.globalData.OPENID)
+    wx.cloud.callFunction({
+      name: 'recommendStory',
+      data: {
+        _openid: app.globalData.OPENID,
+        num: 3
+      }
+    }).then(console.log)
+    if (typeof this.getTabBar === 'function' &&
+    this.getTabBar()) {
+    this.getTabBar().setData({
+      selected: 1
+    })
+  }
+},
   renderModel1(canvas, THREE) {
     registerGLTFLoader(THREE)
     this.THREE = THREE;

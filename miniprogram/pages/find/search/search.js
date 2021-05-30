@@ -8,6 +8,9 @@ Page({
     show: true,
     keywords: '',
     fixed: false,
+    placeholder:"请输入关键词",
+    warn_info:["","","没有匹配的内容，换个关键词试试吧","还没输入关键字哦"],
+    warn:0,
     search_items: [],
     story_items: []
   },
@@ -21,7 +24,12 @@ Page({
   },
   search_confirm(e) {
     // console.log(e.detail.value)
+    this.setData({warn:0})
     var keyword = e.detail.value
+      if(keyword==""||keyword.match(/^\s+$/)){
+        this.setData({warn:3})
+        return
+       }
     var that = this
     wx.cloud.callFunction({
       name: 'searchQuestion',
@@ -30,8 +38,11 @@ Page({
       },
       complete: res => {
         var temp = res.result
-        if (!temp) {
+        console.log(temp)
+        if (temp.length==0) {
           console.log('无匹配问题')
+          console.log(this.data.warn)
+          this.setData({warn:this.data.warn+1})
         } else {
           var empty = []
           for (let i = 0, len = temp.length; i < len; i++) {
@@ -61,8 +72,9 @@ Page({
       },
       complete: res => {
         var temp = res.result
-        if (!temp) {
+        if (temp.length==0) {
           console.log('无匹配故事')
+          this.setData({warn:this.data.warn+1})
         } else {
           var empty = []
           for (let i = 0, len = temp.length; i < len; i++) {
@@ -80,7 +92,7 @@ Page({
             })
           }
           that.setData({
-            search_items: temp
+            story_items: temp
           })
         }
       }
