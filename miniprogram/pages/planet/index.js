@@ -78,7 +78,7 @@ Page({
             id:i,
             type:'oneWOrd',
             title_url:oneWord_title,
-            posterURL:"https://636c-cloud1-6gm7hn7636af92c5-1305725653.tcb.qcloud.la/sentence/"+
+            posterURL:"cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/sentence/"+
              Math.floor((Math.random()*22+1)) +".png"
           }
         }
