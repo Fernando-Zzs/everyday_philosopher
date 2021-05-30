@@ -124,9 +124,9 @@
   bottom:7vh;
   width: 50vw;
   left: 25vw;
-  height: 120rpx;
-  line-height: 120rpx;
+  height: 80rpx;
+  line-height: 80rpx;
   text-align: center;
   border: 8rpx solid #fff;
-  border-radius: 70rpx;
+  border-radius: 40rpx;
 }

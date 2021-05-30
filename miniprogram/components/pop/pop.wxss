@@ -1,6 +1,6 @@
 page {
   background-color: #f7f8fa;
-  color: #323232;
+  color: #ffffff;
   width: 100%;
   height: 100%;
 }
@@ -15,8 +15,8 @@ page {
 .detail-page {
   z-index: -1;
   position: relative;
-  width: 600rpx;
-  height: 800rpx;
+  /* width: 600rpx;
+  height: 849rpx; */
   min-height: 300px;
   display: flex;
   align-items: center;
@@ -41,14 +41,15 @@ page {
   position: absolute;
   width: 50rpx;
   height: 50rpx;
-  right: 10rpx;
-  top: 20rpx;
+  right: 5%;
+  top: 3%;
 }
 .tag{
   position: absolute;
   left: 5%;
   right: 5%;
-  top: 4%;
+  top: 3%;
+  mix-blend-mode: difference;
 }
 .container{
   position: absolute;
@@ -78,7 +79,7 @@ page {
   border: 1px solid white;
   color: #fff;
   border-radius: 30rpx;
-  bottom:15%;
+  bottom:5%;
   line-height: 60rpx;
   text-align: center;
   backdrop-filter:blur(15px);

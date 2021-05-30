@@ -8,8 +8,11 @@
         data-questionid="{{item.question_id}}" bindtouchend="touchEnd" bindtouchstart="touchStart"
         bindtouchmove="touchMove" out-of-bounds="true" data-index="{{index}}">
 
-        <view class='m-item-box item{{(index == 0 || index == list.length -1) ? 0 : 1}} '>
-          <image class="bg" mode="aspectFill" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/answer_card.png"></image>
+        <view class='m-item-box item{{(index == 0 || index == list.length -1) ? 0 : 1}} ' bindtouchstart="handleHistory"
+          data-index="{{index}}">
+          <image class="bg" mode="aspectFill"
+            src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/answer_card.png">
+          </image>
           <view class="header">
             <image src="{{item.avatarURL}}" mode="aspectFit" class="head-image"></image>
 
@@ -25,8 +28,8 @@
             <image wx:if="{{!item.liked}}"
               src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/未赞.png">
             </image>
-            <image wx:else
-              src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/已赞.png"></image>
+            <image wx:else src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/已赞.png">
+            </image>
             <view class="num">{{like_num}}</view>
           </view>
           <view class="star" bindtap="handleCollect" data-answerid="{{item.answer_id}}" data-index="{{item.index}}">

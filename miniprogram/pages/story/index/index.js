@@ -306,6 +306,19 @@ Page({
           story_relative: res.relative,
           story_content: res.story_content
         })
+
+        wx.cloud.callFunction({
+          name: 'addHistory',
+          data: {
+            _openid: app.globalData.OPENID,
+            description: '',
+            id: res.story_id,
+            timestamp: Date.parse(new Date()) / 1000,
+            title: res.title,
+            type: 'story'
+          }
+        })
+
         this.load()
         console.log(res)
       }
