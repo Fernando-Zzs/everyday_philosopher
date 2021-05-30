@@ -2,7 +2,7 @@
   <get-more-loading show="{{show}}" wx:if="{{show}}"></get-more-loading>
   <view class="header">
     <!-- 官方自定义导航栏抽取出来的模块 -->
-    <view class="navigation">
+    <!-- <view class="navigation">
       <view class="weui-navigation-bar {{extClass}}">
         <view class="weui-navigation-bar__placeholder {{ios ? 'ios' : 'android'}}"
           style="padding-top: {{statusBarHeight}}px;visibility: hidden;"></view>
@@ -15,7 +15,7 @@
           </view>
         </view>
       </view>
-    </view>
+    </view> -->
   </view>
   <view class="main">
     <view class="slideshow">
