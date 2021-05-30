@@ -80,7 +80,7 @@ Page({
       name: 'recommendStory',
       data: {
         _openid: app.globalData.OPENID,
-        num: 2
+        num: 3
       }
     }).then(console.log)
     if (typeof this.getTabBar === 'function' &&

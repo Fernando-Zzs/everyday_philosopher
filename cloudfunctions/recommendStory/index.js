@@ -74,11 +74,11 @@ exports.main = async (event, context) => {
 
   let story_arr = await db.collection('story').get()
   story_arr = story_arr.data
-  let user_arr = await db.collection('user').get()
-  user_arr = user_arr.data
+  let user_arr1 = await db.collection('user').get()
+  user_arr1 = user_arr1.data
 
   let ret_arr = []
-  if (user_arr.length < 100) {
+  if (user_arr1.length < 100) {
     while (ret_arr.length < event.num) {
       let sid = story_arr[randomNum(0, story_arr.length - 1)].story_id
       if (!isExist(ret_arr, sid)) {
@@ -90,12 +90,12 @@ exports.main = async (event, context) => {
   }
 
   let dataBase = {}
-  for (let i = 0, u_len = user_arr.length; i < u_len; i++) {
-    dataBase[user_arr[i]._openid] = {}
+  for (let i = 0, u_len = user_arr1.length; i < u_len; i++) {
+    dataBase[user_arr1[i]._openid] = {}
   }
 
-  for (let i = 0, u_len = user_arr.length; i < u_len; i++) {
-    let _openid = user_arr[i]._openid
+  for (let i = 0, u_len = user_arr1.length; i < u_len; i++) {
+    let _openid = user_arr1[i]._openid
     for (let j = 0, s_len = story_arr.length; j < s_len; j++) {
       let score = 0
       let story_id = story_arr[j].story_id
@@ -146,8 +146,8 @@ exports.main = async (event, context) => {
   let min = 999999
   let _openid_position = 0
   let min_position = 0
-  for (let i = 0, len = user_arr.length; i < len; i++) {
-    if (user_arr[i]._openid == event._openid) {
+  for (let i = 0, len = user_arr1.length; i < len; i++) {
+    if (user_arr1[i]._openid == event._openid) {
       _openid_position = i
       break
     }
@@ -163,7 +163,7 @@ exports.main = async (event, context) => {
     }
   }
 
-  let recommend_openid = user_arr[min_position]._openid
+  let recommend_openid = user_arr1[min_position]._openid
   let recommend_stories = dataBase[recommend_openid]
   let recommend_stories_arr = []
 
