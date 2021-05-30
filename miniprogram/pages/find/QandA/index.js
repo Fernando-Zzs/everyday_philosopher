@@ -3,7 +3,7 @@ import mockArr from './mock.js'
 const app = getApp()
 let value_global = ''
 let that = this
-
+let this_global = null
 let winWidth = 416;
 let winHeight = 736;
 
@@ -43,10 +43,13 @@ Page({
   },
 
   onLoad: function (options) {
+    this_global = this
     // 获取传来的question_id
     this.setData({
       Qid: options.question_id
+      // Qid: '0'
     })
+
   },
   onReady: function () {
     this.timer = setInterval(() => {
@@ -459,5 +462,22 @@ Page({
     })
     app.globalData.TIMESTAMP_ANSWER_START = 0
     app.globalData.TIMESTAMP_ANSWER_END = 0
+  },
+  handleHistory(e) {
+    let index = e.currentTarget.dataset.index
+    let answer = this_global.data.list[this_global.data.list.length - 1]
+    console.log(answer);
+
+    wx.cloud.callFunction({
+      name: 'addHistory',
+      data: {
+        _openid: app.globalData.OPENID,
+        description: '',
+        id: answer.answer_id,
+        timestamp: Date.parse(new Date()) / 1000,
+        title: answer.content,
+        type: 'answer'
+      }
+    })
   }
 })

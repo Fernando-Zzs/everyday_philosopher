@@ -155,6 +155,30 @@
           "pathName": "pages/find/SandC/index",
           "query": "story_id=0",
           "scene": null
+        },
+        {
+          "name": "pages/story/index/index",
+          "pathName": "pages/story/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/find/index/index",
+          "pathName": "pages/find/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/find/QandA/index",
+          "pathName": "pages/find/QandA/index",
+          "query": "question_id=60",
+          "scene": null
+        },
+        {
+          "name": "pages/find/SandC/index",
+          "pathName": "pages/find/SandC/index",
+          "query": "story_id=0",
+          "scene": null
         }
       ]
     }

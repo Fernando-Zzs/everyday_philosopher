@@ -1,12 +1,12 @@
 // pages/index/index.js
+import arr from './mock.js';
 import mockArr from './mock.js'
 const app = getApp()
 let value_global = ''
 let that = this
-
 let winWidth = 416;
 let winHeight = 736;
-
+let this_global = null
 let chance = 1;
 let next = false;
 
@@ -42,6 +42,7 @@ Page({
   },
 
   onLoad: function (options) {
+    this_global = this
     // 获取传来的story_id
     this.setData({
       Sid: options.story_id
@@ -62,7 +63,7 @@ Page({
     }
     chance = 1;
     let that = this
-    
+
     var res = wx.getSystemInfoSync();
     winWidth = res.windowWidth;
     winHeight = res.windowHeight;
@@ -75,9 +76,9 @@ Page({
     // 获取list数组
     this.getList()
   },
-  write(e){
+  write(e) {
     wx.navigateTo({
-      url: "/pages/find/writeComment/write?story_id"+this.data.Sid,
+      url: "/pages/find/writeComment/write?story_id" + this.data.Sid,
     })
   },
   handleLike: function (e) {
@@ -189,13 +190,13 @@ Page({
         if (list.length > 1) {
 
           if (index % this.data.initLength == 0) {
-            console.log(this.data.initLength-1)
+            console.log(this.data.initLength - 1)
             that.setData({
               like_num: that.data.list[that.data.initLength - 1].like_openid.length,
               collect_num: that.data.list[that.data.initLength - 1].collect_openid.length
             })
           } else {
-            console.log(index%this.data.initLength - 1)
+            console.log(index % this.data.initLength - 1)
             that.setData({
               like_num: that.data.list[index % this.data.initLength - 1].like_openid.length,
               collect_num: that.data.list[index % this.data.initLength - 1].collect_openid.length
@@ -364,5 +365,22 @@ Page({
     })
     app.globalData.TIMESTAMP_COMMENT_START = 0
     app.globalData.TIMESTAMP_COMMENT_END = 0
+  },
+  handleHistory(e) {
+    let index = e.currentTarget.dataset.index
+    let comment = this_global.data.list[this_global.data.list.length - 1]
+    console.log(comment);
+
+    wx.cloud.callFunction({
+      name: 'addHistory',
+      data: {
+        _openid: app.globalData.OPENID,
+        description: '',
+        id: comment.comment_id,
+        timestamp: Date.parse(new Date()) / 1000,
+        title: comment.content,
+        type: 'comment'
+      }
+    })
   }
 })

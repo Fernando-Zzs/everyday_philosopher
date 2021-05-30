@@ -1,8 +1,6 @@
-
 const app = getApp()
 Page({
-  onLoad() {
-    //********************小星球页面**********************
+  onLoad() { //********************小星球页面**********************
     let that = this
     let temp = []
     // 获取所有的问题
@@ -70,15 +68,15 @@ Page({
     })
 
   },
-  onShow(){
+  onShow() {
     if (typeof this.getTabBar === 'function' &&
-    this.getTabBar()) {
-    this.getTabBar().setData({
-      selected: 2
-    })
-  }
+      this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 2
+      })
+    }
   },
-  
+
   //**********************小星球页面**************************
   onShareAppMessage() {
     return {
@@ -226,15 +224,15 @@ Page({
     ],
     depth: [50, 100, 200, 300, 400],
     url: [
-      "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球1.png", "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球2.png", "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球3.png", "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球4.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球5.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球6.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球7.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球8.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球9.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球10.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球11.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球12.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球13.png","cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球14.png"
+      "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球1.png", "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球2.png", "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球3.png", "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球4.png", "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球5.png", "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球6.png", "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球7.png", "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球8.png", "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球9.png", "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球10.png", "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球11.png", "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球12.png", "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球13.png", "cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星球14.png"
     ]
   },
   getOffset(i) {
     var offX = this.data.position[i - 1].x - this.data.dWidth * i;
     var offY = this.data.position[i - 1].y;
     offX = 0;
-    
-    offY=this.data.position[i - 1].y*this.data.sysInfo.windowHeight/100
+
+    offY = this.data.position[i - 1].y * this.data.sysInfo.windowHeight / 100
     return {
       offX,
       offY
@@ -251,20 +249,37 @@ Page({
     let that = this
     console.log(e.currentTarget.dataset.question_id)
     let qid = e.currentTarget.dataset.question_id
-    // let openid_temp=app.globalData.OPENID
-    // wx.cloud.callFunction({
-    //   name:'addHistory',
-    //   data:{
-    //     _openid: openid_temp,
-    //     timestamp: Date.parse(new Date()) / 1000,
-    //     type: 'answer',
-    //     id: qid
-    //   },
-    // })
+
+
+
     that.setData({
       showNow: true,
       question_id: qid,
       currentIndex: e.currentTarget.dataset.no - 1
+    })
+
+    wx.cloud.callFunction({
+      name: 'getQuestion',
+      data: {
+        question_id: e.currentTarget.dataset.question_id + ''
+      },
+      success: function (res) {
+        let description = res.result.description
+        let title = res.result.title
+
+        wx.cloud.callFunction({
+          name: 'addHistory',
+          data: {
+            _openid: app.globalData.OPENID,
+            description: description,
+            id: qid + '',
+            timestamp: Date.parse(new Date()) / 1000,
+            type: 'question',
+            title: title
+          }
+        })
+
+      }
     })
   },
   scroll(e) {
