@@ -7,11 +7,12 @@
     "pages/personal/analyse/analyse",
     
     "pages/find/index/index",
+    "pages/find/story-detail/story-detail",
     "pages/find/QandA/index",
     "pages/find/SandC/index",
     "pages/find/answer/answer",
-    "pages/find/story-detail/story-detail",
     "pages/find/answer-detail/answer-detail",
+    "pages/find/comment-detail/comment-detail",
     "pages/find/search/search",
     "pages/find/search_button/index",
     "pages/find/write/write",
@@ -44,23 +45,23 @@
     "list": [
       {
         "pagePath": "pages/story/index/index",
-        "iconPath": "/images/recommend.png",
-        "selectedIconPath": "/images/recommend_selected.png"
+        "iconPath": "/images/1-1.png",
+        "selectedIconPath": "/images/1-2.png"
       },
       {
         "pagePath": "pages/find/index/index",
-        "iconPath": "/images/find.png",
-        "selectedIconPath": "/images/find_selected.png"
+        "iconPath": "/images/3-1.png",
+        "selectedIconPath": "/images/3-2.png"
       },
       {
         "pagePath": "pages/personal/index/index",
-        "iconPath": "/images/my.png",
-        "selectedIconPath": "/images/my_selected.png"
+        "iconPath": "/images/4-1.png",
+        "selectedIconPath": "/images/4-2.png"
       },
       {
         "pagePath": "pages/planet/index",
-        "iconPath": "/images/my.png",
-        "selectedIconPath": "/images/my_selected.png"
+        "iconPath": "/images/2-1.png",
+        "selectedIconPath": "/images/2-2.png"
       }
     ]
   },

@@ -147,7 +147,7 @@ Page({
     // 导航栏透明度
     let Alpha = e.scrollTop * 1 / 100;
     // 导航栏背景颜色
-    let navigationBackgroundColor = 'rgba(208, 166, 105,' + Alpha + ')';
+    let navigationBackgroundColor = 'rgba(0, 0, 0,' + Alpha + ')';
     this.setData({
       navigationBackgroundColor: navigationBackgroundColor,
     })

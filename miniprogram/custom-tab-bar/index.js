@@ -10,26 +10,26 @@ Component({
     list: [
       {
         "pagePath": "/pages/story/index/index",
-        "iconPath": "/images/recommend.png",
-        "selectedIconPath": "/images/recommend_selected.png",
+        "iconPath": "/images/1-1.png",
+        "selectedIconPath": "/images/1-2.png",
         "text":"阅读视界"
       },
       {
         "pagePath": "/pages/planet/index",
-        "iconPath": "/images/find.png",
-        "selectedIconPath": "/images/find_selected.png",
+        "iconPath": "/images/2-1.png",
+        "selectedIconPath": "/images/2-2.png",
         "text":"故事星球"
       },
       {
         "pagePath": "/pages/find/index/index",
-        "iconPath": "/images/find.png",
-        "selectedIconPath": "/images/find_selected.png",
+        "iconPath": "/images/3-1.png",
+        "selectedIconPath": "/images/3-2.png",
         "text":"探索星域"
       },
       {
         "pagePath": "/pages/personal/index/index",
-        "iconPath": "/images/my.png",
-        "selectedIconPath": "/images/my_selected.png",
+        "iconPath": "/images/4-1.png",
+        "selectedIconPath": "/images/4-2.png",
         "text":"我"
       }
     ]

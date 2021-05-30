@@ -60,7 +60,7 @@
   flex-shrink: 0;
   width: 70rpx;
   height: 70rpx;
-  margin: 0 5% 0 10%;
+  margin: 0 5% 0 7%;
   border-radius: 50%;
 }
 .bg{

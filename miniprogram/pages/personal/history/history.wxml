@@ -8,12 +8,16 @@
   <!--内容主体-->  
   <swiper class="swiper" current="{{currentTab}}" duration="200" bindchange="swiperChange">  
     <swiper-item class="zero">
-      <ec-canvas id="mychart-dom-line" canvas-id="mychart-dom-line" ec="{{ec}}"></ec-canvas>
+      <scroll-view>
+        <!-- <ec-canvas id="mychart-dom-line" canvas-id="mychart-dom-line" ec="{{ec}}"></ec-canvas> -->
       <history-item historyItemsArray="{{phi}}"/>
+      </scroll-view>
     </swiper-item>
     <swiper-item class="one">
-      <ec-canvas id="mychart-dom-line" canvas-id="mychart-dom-line" ec="{{ec}}"></ec-canvas>
+      <scroll-view>
+        <!-- <ec-canvas id="mychart-dom-line" canvas-id="mychart-dom-line" ec="{{ec}}"></ec-canvas> -->
       <question-item answerItemsArray="{{que}}"/>
+      </scroll-view>
     </swiper-item>
   </swiper>  
 </view>

@@ -1,5 +1,4 @@
 {
-  "enablePullDownRefresh": true,
   "navigationBarTextStyle": "white",
   "navigationBarTitleText": "历史记录",
   "usingComponents": {

@@ -56,7 +56,7 @@
   overflow: hidden;
   margin-left: 42rpx;
   width: 666rpx;
-  height: 70vh;
+  height: 80vh;
   position: absolute;
   top: -333rpx;
   border-radius: 10rpx;
@@ -79,7 +79,6 @@
   height:100rpx;
   width: 100rpx;
   margin: 0 0 0 40rpx;
-  border-radius: 50px;
   flex:none;
 }
 .nickname{
@@ -107,7 +106,7 @@
 }
 
 .like{
-  left: 48%;
+  left: 15%;
   bottom: 10%;
   position: absolute;
 }
@@ -115,18 +114,15 @@
   width: 50rpx;
   height: 50rpx;
 }
+.star{
+  position: absolute;
+  right:15%;
+  bottom: 10%;
+}
+.star image{
+  width: 50rpx;
+  height: 50rpx;
+}
 .num{
   margin-left: 15rpx;
-}
-
-.write-button{
-  position: fixed;
-  bottom:7vh;
-  width: 50vw;
-  left: 25vw;
-  height: 80rpx;
-  line-height: 80rpx;
-  text-align: center;
-  border: 8rpx solid #fff;
-  border-radius: 40rpx;
 }

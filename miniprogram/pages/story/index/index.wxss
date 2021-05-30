@@ -76,6 +76,30 @@ page {
   /* z-index: 10000000; */
   z-index: 1;
 }
+.smallBtn{
+  width: 60rpx;
+  height: 60rpx;
+}
+.zan{
+  position: absolute;
+  bottom: 10%;
+  left: 10%;
+}
+.shoucang{
+  position: absolute;
+  bottom: 10%;
+  left: 30%;
+}
+.pinglun{
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+}
+.fenxiang{
+  position: absolute;
+  bottom: 10%;
+  left: 70%;
+}
 .share_button{
   position: absolute;
   width: 85%;
