@@ -14,13 +14,16 @@
   width: 50%;
   text-align: center;
   font-size: 28rpx;
-  color: #333;
-  background-color: #D0A669;
+  color: #888;
+  background-color: #000000;
 }
 
 .swiper {
-  height: 5000rpx;
-  background: #dfdfdf;
+  height: 3000vh;
+  background: #000000;
+  background-image: url("https://ss3.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/9825bc315c6034a8b4563c91ca1349540923766e.jpg");
+  background-position:center;
+  /* background-repeat: no-repeat; */
 }
 
 .on {

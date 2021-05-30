@@ -12,10 +12,9 @@
 }
 .back{
   position: fixed;
+  margin-left: 30rpx;
   width: 40rpx;
   height: 40rpx;
-  margin-left: 30rpx;
-  margin-top: 110rpx;
 }
 .search-bar{
   backdrop-filter:blur(15px);
@@ -24,11 +23,19 @@
   width: 80vw;
   height: 80rpx;
   border: 4rpx black solid;
-  border-radius: 40rpx;
-  margin-top: 200rpx;
-  margin-bottom: 20rpx;
+  /* border-radius: 40rpx; */
+  border-top-left-radius: 40rpx;
+  border-top-right-radius: 40rpx;
+  margin-top: 10vh;
 }
-
+.sv{
+  height: 80vh;
+}
+.sv-container{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 .search-icon{
   flex-shrink: 0;
   position: absolute;
@@ -78,6 +85,7 @@
   display: inline-block;
   line-height: 50rpx;
   padding-left: 30rpx;
+  padding-right: 30rpx;
   padding-top: 20rpx;
   padding-bottom: 20rpx;
 }

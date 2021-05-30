@@ -36,17 +36,17 @@ Page({
     currentIndex: -1, // 当前最上层滑块
     ratio: 2, // 屏幕比例
     context: '', // 文本框内容
-    Qid: '', // 问题id
-    Aid: '', // 回答id
+    Sid: '', // 问题id
+    Cid: '', // 回答id
     like_num: '',
     collect_num: ''
   },
 
   onLoad: function (options) {
-    // 获取传来的question_id和要查看的第一张answer_id
+    // 获取传来的story_id和要查看的第一张comment_id
     this.setData({
-      Qid: options.question_id,
-      Aid: options.answer_id
+      Sid: options.story_id,
+      Cid: options.comment_id
     })
   },
   onReady: function () {
@@ -59,8 +59,8 @@ Page({
     }, 1000)
   },
   onShow: function () {
-    if (app.globalData.TIMESTAMP_ANSWER_START == 0) {
-      app.globalData.TIMESTAMP_ANSWER_START = Date.parse(new Date()) / 1000
+    if (app.globalData.TIMESTAMP_COMMENT_START == 0) {
+      app.globalData.TIMESTAMP_COMMENT_START = Date.parse(new Date()) / 1000
     }
     chance = 1;
     let that = this
@@ -84,7 +84,7 @@ Page({
     this.getList()
   },
   handleLike: function (e) {
-    // console.log(e.currentTarget.dataset.answerid)
+    // console.log(e.currentTarget.dataset.commentid)
     let index = e.currentTarget.dataset.index
     // console.log(index)
     let like_num = this.data.list[index].like_openid.length
@@ -99,8 +99,8 @@ Page({
         name: 'deleteLike',
         data: {
           _openid: app.globalData.OPENID,
-          type: 'answer',
-          id: e.currentTarget.dataset.answerid
+          type: 'comment',
+          id: e.currentTarget.dataset.commentid
         }
       })
     } else {
@@ -114,25 +114,25 @@ Page({
         data: {
           _openid: app.globalData.OPENID,
           description: '',
-          id: e.currentTarget.dataset.answerid,
+          id: e.currentTarget.dataset.commentid,
           timestamp: Date.parse(new Date()) / 1000,
           title: '',
-          type: 'answer'
+          type: 'comment'
         }
       })
     }
 
     wx.cloud.callFunction({
-      name: 'tapAnswerLike',
+      name: 'tapcommentLike',
       data: {
         liked: !this.data.list[index].liked,
         _openid: app.globalData.OPENID,
-        answer_id: e.currentTarget.dataset.answerid
+        comment_id: e.currentTarget.dataset.commentid
       }
     })
   },
   handleCollect: function (e) {
-    // console.log(e.currentTarget.dataset.answerid)
+    // console.log(e.currentTarget.dataset.commentid)
     let index = e.currentTarget.dataset.index
     console.log(index)
     // let collect_num = this.data.list[index].collect_openid.length
@@ -147,8 +147,8 @@ Page({
         name: 'deleteCollection',
         data: {
           _openid: app.globalData.OPENID,
-          type: 'answer',
-          id: e.currentTarget.dataset.answerid
+          type: 'comment',
+          id: e.currentTarget.dataset.commentid
         }
       })
     } else {
@@ -162,28 +162,28 @@ Page({
         data: {
           _openid: app.globalData.OPENID,
           description: '',
-          id: e.currentTarget.dataset.answerid,
+          id: e.currentTarget.dataset.commentid,
           timestamp: Date.parse(new Date()) / 1000,
           title: '',
-          type: 'answer'
+          type: 'comment'
         }
       })
     }
 
     wx.cloud.callFunction({
-      name: 'tapAnswerCollect',
+      name: 'tapcommentCollect',
       data: {
         collected: !this.data.list[index].collected,
         _openid: app.globalData.OPENID,
-        answer_id: e.currentTarget.dataset.answerid
+        comment_id: e.currentTarget.dataset.commentid
       }
     })
   },
 
   touchStart(e) {
-    // console.log(e.currentTarget.dataset.questionid)
+    // console.log(e.currentTarget.dataset.storyid)
     this.setData({
-      currentQid: e.currentTarget.dataset.questionid
+      currentSid: e.currentTarget.dataset.storyid
     })
     let index = e.currentTarget.dataset.index
     let touches = e.touches
@@ -333,12 +333,13 @@ Page({
     setTimeout(() => {
       // setTimeout(() => {
       wx.cloud.callFunction({
-        name: 'getAnswerFromBoth',
+        name: 'getCommentFromBoth',
         data: {
-          question_id: that.data.Qid,
-          answer_id: that.data.Aid
+          story_id: that.data.Sid,
+          comment_id: that.data.Cid
         },
         complete: res => {
+          console.log(res.result)
           this.data.arr = deepClone(res.result)
           console.log("arr",this.data.arr)
           this.setData({
@@ -380,9 +381,9 @@ Page({
       i.x = winWidth
       i.y = 0
       wx.cloud.callFunction({
-        name: 'isAnswerLiked',
+        name: 'iscommentLiked',
         data: {
-          answer_id: i.answer_id,
+          comment_id: i.comment_id,
           _openid: app.globalData.OPENID
         },
         success: function (res2) {
@@ -394,9 +395,9 @@ Page({
         }
       })
       wx.cloud.callFunction({
-        name: 'isAnswerCollected',
+        name: 'iscommentCollected',
         data: {
-          answer_id: i.answer_id,
+          comment_id: i.comment_id,
           _openid: app.globalData.OPENID
         },
         success: function (res2) {
@@ -429,17 +430,17 @@ Page({
       let nickname_temp = app.globalData.NICKNAME
       // 将答案添加到数据库
       wx.cloud.callFunction({
-        name: 'addAnswer',
+        name: 'addcomment',
         data: {
           content: value,
-          question_id: that.data.currentQid,
+          story_id: that.data.currentSid,
           avatarURL: avatarurl_temp,
           nickname: nickname_temp,
           _openid: app.globalData.OPENID
         },
         complete: res => {
           wx.navigateTo({
-            url: "../answer/answer?answer_id=" + res.result
+            url: "../comment/comment?comment_id=" + res.result
           })
         }
       })
@@ -456,16 +457,16 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    app.globalData.TIMESTAMP_ANSWER_END = Date.parse(new Date()) / 1000
+    app.globalData.TIMESTAMP_COMMENT_END = Date.parse(new Date()) / 1000
     wx.cloud.callFunction({
       name: 'addTime',
       data: {
         _openid: app.globalData.OPENID,
-        type: 'answer',
-        addedTime: app.globalData.TIMESTAMP_ANSWER_END - app.globalData.TIMESTAMP_ANSWER_START
+        type: 'comment',
+        addedTime: app.globalData.TIMESTAMP_COMMENT_END - app.globalData.TIMESTAMP_COMMENT_START
       }
     })
-    app.globalData.TIMESTAMP_ANSWER_START = 0
-    app.globalData.TIMESTAMP_ANSWER_END = 0
+    app.globalData.TIMESTAMP_COMMENT_START = 0
+    app.globalData.TIMESTAMP_COMMENT_END = 0
   }
 })

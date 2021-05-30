@@ -1,69 +1,86 @@
 <get-more-loading show="{{show}}" wx:if="{{show}}" logoURL="{{posterURL}}"></get-more-loading>
 <view class="page1">
-  <scroll-view id="scroller" scroll-y bindscroll="scroll" scroll-top="{{scroll_top}}" >
+  <scroll-view id="scroller" scroll-y bindscroll="scroll" scroll-top="{{scroll_top}}">
     <view class="contanier1" style="height:{{container_height}}px">
-    <!-- 生成组件 -->
-    <block wx:for="{{story_content}}" wx:key="index">
+      <!-- 生成组件 -->
+      <block wx:for="{{story_content}}" wx:key="index">
 
-      <image wx:if="{{item.component=='image'}}" mode="{{item.parament}}" src="{{item.src}}"
-      class="{{item.class}}" style="{{item.style}}"></image>
+        <image wx:if="{{item.component=='image'}}" mode="{{item.parament}}" src="{{item.src}}" class="{{item.class}}"
+          style="{{item.style}}"></image>
 
-      <view wx:elif="{{item.component=='text'}}"  class="{{item.class}}" style="{{item.style}}">
-        <text>{{item.content}}</text>
-      </view>
+        <view wx:elif="{{item.component=='text'}}" class="{{item.class}}" style="{{item.style}}">
+          <text>{{item.content}}</text>
+        </view>
 
-      <view wx:elif="{{item.component=='view'}}"  class="{{item.class}}" style="{{item.style}}">{{item.content}}
-      </view>
+        <view wx:elif="{{item.component=='view'}}" class="{{item.class}}" style="{{item.style}}">{{item.content}}
+        </view>
 
-      <view wx:if="{{item.component=='nest'}}"  class="{{item.class}}" style="{{item.style}}">
-        <block wx:for="{{item.son}}" wx:key="index" wx:for-item="i">
-          <image wx:if="{{i.component=='image'}}" mode="{{i.parament}}" src="{{i.src}}"
-          class="{{i.class}}" style="{{i.style}}"></image>
+        <view wx:if="{{item.component=='nest'}}" class="{{item.class}}" style="{{item.style}}">
+          <block wx:for="{{item.son}}" wx:key="index" wx:for-item="i">
+            <image wx:if="{{i.component=='image'}}" mode="{{i.parament}}" src="{{i.src}}" class="{{i.class}}"
+              style="{{i.style}}"></image>
 
-          <view wx:elif="{{i.component=='text'}}"  class="{{i.class}}" style="{{i.style}}">
-            <text>{{i.content}}</text>
-          </view>
+            <view wx:elif="{{i.component=='text'}}" class="{{i.class}}" style="{{i.style}}">
+              <text>{{i.content}}</text>
+            </view>
 
-          <view wx:elif="{{i.component=='view'}}"  class="{{i.class}}" style="{{i.style}}">{{i.content}}
-          </view>
-        </block>
-      </view>
+            <view wx:elif="{{i.component=='view'}}" class="{{i.class}}" style="{{i.style}}">{{i.content}}
+            </view>
+          </block>
+        </view>
 
-    </block>
-    <!-- 结尾时按钮 -->
-    <view class='end-button end-comment-button'  bindtap='comment_story'>评论</view>
-    <view class='end-button end-share-button' bindtap='share_story'>分享</view>
+      </block>
+      <!-- 结尾时按钮 -->
+      <view class='end-button end-comment-button' bindtap='comment_story'>评论</view>
+      <view class='end-button end-share-button' bindtap='share_story'>分享</view>
     </view>
   </scroll-view>
 </view>
 
 <!-- 侧边栏 -->
-<view  wx:if="{{!broad_state}}" class="broad-button" bindtap="broad" style="top:{{sysInfo.statusBarHeight+5}}px">💨</view>
-<page-container 
-  show="{{broad_state}}"
-  round="false"
-  overlay="true"
-  duration="400"
-  position="center"
-  close-on-slide-down="false"
-  bindenter="onEnter"
-  bind:beforeleave="beforeLeave"
-  custom-style="  backdrop-filter:blur(15px);height:100vh;width:65vw;background-color:rgba(255,255,255,0);z-index:100;"
-  overlay-style="background-color: rgba(0, 0, 0, 0.3)"
->
-<view class="broadside">
-
-<view class="broad-title"><text>{{title}}</text></view>
-
-<view class="broad-small-title broad-info">信息</view>
-<view wx:for="{{story_info}}" class='braod-item'>{{item}}</view>
-
-<view class="broad-small-title broad-series">系列</view>
-<view wx:for="{{story_series}}"  class='braod-item' bindtap="jump_series">{{item.title}}</view>
-
-<view class="broad-small-title broad-relative">相似推荐</view>
-<view wx:for="{{story_relative}}" class='braod-item' data-story_id="{{item.story_id}}" bindtap="jump">{{item.title}}</view>
-
-<view  class="share_button s-irregularShadowMove" bindtap='share_story'>分享故事海报</view>
+<view wx:if="{{!broad_state}}" class="broad-button" bindtap="broad" style="top:{{sysInfo.statusBarHeight+5}}px">💨
 </view>
+<page-container show="{{broad_state}}" round="false" overlay="true" duration="400" position="center"
+  close-on-slide-down="false" bindenter="onEnter" bind:beforeleave="beforeLeave"
+  custom-style="  backdrop-filter:blur(15px);height:100vh;width:65vw;background-color:rgba(255,255,255,0);z-index:100;"
+  overlay-style="background-color: rgba(0, 0, 0, 0.3)">
+  <view class="broadside">
+
+    <view class="broad-title"><text>{{title}}</text></view>
+
+    <view class="broad-small-title broad-info">信息</view>
+    <view wx:for="{{story_info}}" class='braod-item'>{{item}}</view>
+
+    <view class="broad-small-title broad-series">系列</view>
+    <view wx:for="{{story_series}}" class='braod-item' bindtap="jump_series">{{item.title}}</view>
+
+    <view class="broad-small-title broad-relative">相似推荐</view>
+    <view wx:for="{{story_relative}}" class='braod-item' data-story_id="{{item.story_id}}" bindtap="jump">{{item.title}}
+    </view>
+
+    <!-- <view class="share_button s-irregularShadowMove" bindtap='share_story'>分享故事海报</view> -->
+    <image wx:if="{{!liked}}" class="zan smallBtn"
+      src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/故事页面未点赞.png" bindtap="handleLike">
+    </image>
+    <image wx:if="{{liked}}" class="zan smallBtn"
+      src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/故事页面已点赞.png" bindtap="handleLike">
+    </image>
+
+    <image wx:if="{{!collected}}" class="shoucang smallBtn"
+      src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/故事页面未收藏.png"
+      bindtap="handleCollect">
+    </image>
+    <image wx:if="{{collected}}" class="shoucang smallBtn"
+      src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/故事页面已收藏.png"
+      bindtap="handleCollect">
+    </image>
+
+    <image class="pinglun smallBtn"
+      src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/评论.png" bindtap="pinglun">
+    </image>
+    <image class="fenxiang smallBtn"
+      src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/故事页面分享.png"
+      bindtap="fenxiang">
+    </image>
+  </view>
 </page-container>

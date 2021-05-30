@@ -48,7 +48,7 @@ Page({
     wx.cloud.callFunction({
       name: 'addComment',
       data: {
-        story_id: that.data.question_id,
+        story_id: that.data.story_id,
         content: that.data.content,
         avatarURL: that.data.user_avatar,
         nickname: that.data.user_nickname,
@@ -56,13 +56,21 @@ Page({
         _openid: app.globalData.OPENID
       },
       complete: res => {
-        wx.navigateTo({
-          url: '../../find/QandA/index?question_id=' + that.data.question_id + '&answer_id=' + res.result,
+        // wx.navigateTo({
+        //   url: '../../find/comment-detail/comment-detail?story_id=' + that.data.story_id + '&comment_id=' + res.result,
+        // })
+        wx.showToast({
+          title:'提交成功',
+          icon: 'success',
+          duration: 2000
         })
+        setTimeout(()=>{
+          wx.navigateBack({
+            delta: 2,
+          })
+        },2000)
       }
     })
-
-
   },
 
   inputChange(e) {
@@ -81,8 +89,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (app.globalData.TIMESTAMP_ANSWER_START == 0) {
-      app.globalData.TIMESTAMP_ANSWER_START = Date.parse(new Date()) / 1000
+    if (app.globalData.TIMESTAMP_COMMENT_START == 0) {
+      app.globalData.TIMESTAMP_COMMENT_START = Date.parse(new Date()) / 1000
     }
   },
 
@@ -90,16 +98,16 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    app.globalData.TIMESTAMP_ANSWER_END = Date.parse(new Date()) / 1000
+    app.globalData.TIMESTAMP_COMMENT_END = Date.parse(new Date()) / 1000
     wx.cloud.callFunction({
       name: 'addTime',
       data: {
         _openid: app.globalData.OPENID,
-        type: 'answer',
-        addedTime: app.globalData.TIMESTAMP_ANSWER_END - app.globalData.TIMESTAMP_ANSWER_START
+        type: 'comment',
+        addedTime: app.globalData.TIMESTAMP_COMMENT_END - app.globalData.TIMESTAMP_COMMENT_START
       }
     })
-    app.globalData.TIMESTAMP_ANSWER_START = 0
+    app.globalData.TIMESTAMP_COMMENT_START = 0
   },
 
   /**

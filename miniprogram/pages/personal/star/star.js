@@ -38,6 +38,7 @@ Page({
     },
     datas: [], // 第一模块收藏数据
     datas2: [], // 第二模块收藏数据
+    backgroundImage: ''
   },
 
   onPullDownRefresh: function () {},
@@ -59,36 +60,49 @@ Page({
   },
   onLoad: function (options) {
     let that = this
-    const db = wx.cloud.database()
-    db.collection('collection').where({
-      type: 'story'
-    })
-    .get({
-      success: function (res) {
+
+    wx.cloud.downloadFile({
+      fileID: 'cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星空11.jpg',
+      maxAge: 120*60*1000,
+      success:res=>{
         that.setData({
-          datas: res.data
+          backgroundImage: res.tempFilePath
         })
-        console.log();
-      },
-      fail: (err) => {
-        console.log(err);
       }
     })
+
+    const db = wx.cloud.database()
+    db.collection('collection').where({
+        _openid: app.globalData.OPENID,
+        type: 'story'
+      })
+      .get({
+        success: function (res) {
+          that.setData({
+            datas: res.data
+          })
+          console.log();
+        },
+        fail: (err) => {
+          console.log(err);
+        }
+      })
     let that2 = this
     const db2 = wx.cloud.database()
     db2.collection('collection').where({
-      type: 'answer'
-    })
-    .get({
-      success: function (res) {
-        that2.setData({
-          datas2: res.data
-        })
-      },
-      fail: (err) => {
-        console.log(err);
-      }
-    })
+        openid: app.globalData.OPENID,
+        type: 'answer'
+      })
+      .get({
+        success: function (res) {
+          that2.setData({
+            datas2: res.data
+          })
+        },
+        fail: (err) => {
+          console.log(err);
+        }
+      })
     // wx.cloud.callFunction({
     //   name: 'getCollectedAnswers',
     //   data: {

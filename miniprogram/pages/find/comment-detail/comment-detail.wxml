@@ -1,18 +1,14 @@
-<!--pages/index/index.wxml-->
 <get-more-loading show="{{show}}" wx:if="{{show}}"></get-more-loading>
 <view class='page-box box'>
   <view class="m-box">
     <movable-area class="m-area">
       <movable-view class='m-item' wx:for="{{list}}" wx:key="index" wx:index="index" x="{{item.x+index*0}}"
         y="{{item.y+index*0}}" damping="52" direction="all" bindchange="onChange" data-index="{{index}}"
-        data-questionid="{{item.question_id}}" bindtouchend="touchEnd" bindtouchstart="touchStart"
+        data-storyid="{{item.story_id}}" bindtouchend="touchEnd" bindtouchstart="touchStart"
         bindtouchmove="touchMove" out-of-bounds="true" data-index="{{index}}">
 
-        <view bindtouchstart="handleHistory" class='m-item-box item{{(index == 0 || index == list.length -1) ? 0 : 1}}'
-          data-index="{{index}}">
-          <image class=" bg" mode="aspectFill"
-            src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/answer_card.png">
-          </image>
+        <view class='m-item-box item{{(index == 0 || index == list.length -1) ? 0 : 1}} '>
+          <image class="bg" mode="aspectFill" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/comment_card.png"></image>
           <view class="header">
             <image src="{{item.avatarURL}}" mode="aspectFit" class="head-image"></image>
 
@@ -28,15 +24,21 @@
             <image wx:if="{{!item.liked}}"
               src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/未赞.png">
             </image>
-            <image wx:else src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/已赞.png">
-            </image>
+            <image wx:else
+              src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/已赞.png"></image>
             <view class="num">{{like_num}}</view>
+          </view>
+          <view class="star" bindtap="handleCollect" data-commentid="{{item.comment_id}}" data-index="{{item.index}}">
+            <image wx:if="{{!item.collected}}"
+              src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/未收藏.png">
+            </image>
+            <image wx:else src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/已收藏.png">
+            </image>
+            <view class="num">{{collect_num}}</view>
           </view>
         </view>
 
       </movable-view>
     </movable-area>
   </view>
-
-  <view class="button write-button irregularShadowMove" bindtap="write">写评论</view>
 </view>

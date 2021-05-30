@@ -5,6 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    capsuleTop:wx.getMenuButtonBoundingClientRect().top,
+    capsuleHeight:wx.getMenuButtonBoundingClientRect().height,
     show: true,
     keywords: '',
     fixed: false,
@@ -115,6 +117,7 @@ Page({
    */
   onLoad: function (options) {
     // console.log(options)
+    
 
   },
   onPageScroll(res){

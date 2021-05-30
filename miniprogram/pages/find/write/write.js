@@ -83,6 +83,7 @@ Page({
     if (app.globalData.TIMESTAMP_ANSWER_START == 0) {
       app.globalData.TIMESTAMP_ANSWER_START = Date.parse(new Date()) / 1000
     }
+    console.log(app.globalData.TIMESTAMP_ANSWER_START);
   },
 
   /**
@@ -90,12 +91,19 @@ Page({
    */
   onUnload: function () {
     app.globalData.TIMESTAMP_ANSWER_END = Date.parse(new Date()) / 1000
+    console.log(app.globalData.TIMESTAMP_ANSWER_END);
     wx.cloud.callFunction({
       name: 'addTime',
       data: {
         _openid: app.globalData.OPENID,
         type: 'answer',
         addedTime: app.globalData.TIMESTAMP_ANSWER_END - app.globalData.TIMESTAMP_ANSWER_START
+      },
+      success: function (res) {
+        console.log(1111111122222222222222222222);
+      },
+      fail: function (err) {
+        console.log(err);
       }
     })
     app.globalData.TIMESTAMP_ANSWER_START = 0

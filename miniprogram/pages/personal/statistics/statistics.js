@@ -13,8 +13,8 @@ function initChart1(canvas, width, height) {
   wx.cloud.callFunction({
     name: 'getUserDetail',
     data: {
-      // _openid: app.globalData.OPENID
-      _openid: 'oMvG85TcKyxuM3KXlkmNaXu6CKYM',
+      _openid: app.globalData.OPENID
+      // _openid: 'oMvG85TcKyxuM3KXlkmNaXu6CKYM',
     },
     success: function (res) {
       timestamp_obj = res.result.time_last_week
@@ -194,7 +194,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(app.globalData.OPENID);
   },
 
   back: function () {

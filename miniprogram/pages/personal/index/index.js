@@ -6,7 +6,7 @@ Page({
    */
   data: {
     show: true,
-    userInfo:{},
+    userInfo: {},
     hasUserInfo: false,
     canIUseGetUserProfile: false,
     avatar: '',
@@ -50,59 +50,61 @@ Page({
       })
     }
   },
-  onReady:function(){
-    this.timer = setInterval(()=>{
-      if(this.data.show){
+  onReady: function () {
+    this.timer = setInterval(() => {
+      if (this.data.show) {
         this.setData({
           show: !this.data.show
         })
       }
-    },1000)
+    }, 1000)
   },
-  onShow(){
+  onShow() {
     if (typeof this.getTabBar === 'function' &&
-    this.getTabBar()) {
-    this.getTabBar().setData({
-      selected: 3
-    })
-  }
+      this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 3
+      })
+    }
   },
-  onUnload:function(){
+  onUnload: function () {
     clearInterval(this.timer)
   },
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
     // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-    wx.getUserProfile({
-      desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-      success: (res) => {
-        var that = this
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-        wx.showToast({
-          title: '登录成功',
-          icon: 'success',
-          duration: 1000
-        })
-        const db = wx.cloud.database()
-        db.collection('user').add({
-          data:{
-            nickname: that.data.userInfo.nickName,
-            avatarUrl: that.data.userInfo.avatarUrl
-          }
-        })
-        wx.cloud.callFunction({
-          name:'getUserInfo',
-          complete:res=>{
-            app.globalData.OPENID = res.result.openid
-          }
-        })
-        app.globalData.NICKNAME = this.data.userInfo.nickName
-        app.globalData.AVATARURL = this.data.userInfo.avatarUrl
-      }
-    })
+    if(!this.data.hasUserInfo){
+      wx.getUserProfile({
+        desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+        success: (res) => {
+          var that = this
+          this.setData({
+            userInfo: res.userInfo,
+            hasUserInfo: true
+          })
+          wx.showToast({
+            title: '登录成功',
+            icon: 'success',
+            duration: 1000
+          })
+          const db = wx.cloud.database()
+          db.collection('user').add({
+            data:{
+              nickname: that.data.userInfo.nickName,
+              avatarUrl: that.data.userInfo.avatarUrl
+            }
+          })
+          wx.cloud.callFunction({
+            name:'getUserInfo',
+            complete:res=>{
+              app.globalData.OPENID = res.result.openid
+            }
+          })
+          app.globalData.NICKNAME = this.data.userInfo.nickName
+          app.globalData.AVATARURL = this.data.userInfo.avatarUrl
+        }
+      })
+    }
   },
   getUserInfo(e) {
     // 不推荐使用getUserInfo获取用户信息，预计自2021年4月13日起，getUserInfo将不再弹出弹窗，并直接返回匿名的用户个人信息
@@ -115,34 +117,35 @@ Page({
       icon: 'success',
       duration: 1000
     })
+
   },
 
   //切换导航
-  cutTitle:function(e){
+  cutTitle: function (e) {
     // console.log(e.currentTarget.dataset.index)
     let that = this;
     let index = e.currentTarget.dataset.index;
     var navigationArr = that.data.navigationArr;
     //清空全部样式
-    navigationArr.forEach((item)=>{
+    navigationArr.forEach((item) => {
       item.isSelected = false;
     })
     //点击的导航添加上样式
     navigationArr[index].isSelected = true;
     that.setData({
-      navigationArr:navigationArr
+      navigationArr: navigationArr
     })
   },
   onPageScroll: function (e) {
     // 导航栏透明度
     let Alpha = e.scrollTop * 1 / 100;
     // 导航栏背景颜色
-    let navigationBackgroundColor = 'rgba(208, 166, 105,' + Alpha + ')';
+    let navigationBackgroundColor = 'rgba(0, 0, 0,' + Alpha + ')';
     this.setData({
       navigationBackgroundColor: navigationBackgroundColor,
     })
   },
-   /* 进入历史记录列表 */
+  /* 进入历史记录列表 */
   openHistory: function () {
     wx.navigateTo({
       url: '../../personal/history/history'
