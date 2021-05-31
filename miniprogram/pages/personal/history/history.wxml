@@ -5,8 +5,11 @@
     <view class="tab-item {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav"><text>哲学科普</text></view>
     <view class="tab-item {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">热搜问答</view>
   </view>
+  <image class="bg" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/statisc_bg.jpg" mode="aspectFill"></image>
   <!--内容主体-->  
-  <swiper class="swiper" current="{{currentTab}}" duration="200" bindchange="swiperChange" style="background-image:url({{backgroundImage}})">  
+  <swiper class="swiper" current="{{currentTab}}" duration="200" bindchange="swiperChange" >  
+  <!-- style="background-image:url({{backgroundImage}})" -->
+
     <swiper-item class="zero">
       <scroll-view>
         <!-- <ec-canvas id="mychart-dom-line" canvas-id="mychart-dom-line" ec="{{ec}}"></ec-canvas> -->

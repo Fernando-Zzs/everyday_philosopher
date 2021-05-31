@@ -1,6 +1,6 @@
 <view class="container">
-  
-  <image class="back" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/返回.png"
+  <image class="bg" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/statisc_bg.jpg" mode="aspectFill"></image>
+  <image class="back" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/返回白.png"
     bindtap="back"></image>
   <swiper previous-margin="20px" next-margin="20px" bindtransition="swip">
     <swiper-item class="swiper-item">
