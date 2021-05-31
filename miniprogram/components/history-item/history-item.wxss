@@ -16,7 +16,7 @@
   font-style: bold;
   font-size: 35rpx;
   line-height: 100%;
-  padding-left: 70rpx;
+  padding-left: 90rpx;
   padding-top: 50rpx;
   padding-right: 70rpx;
   font-family: 'Microsoft YaHei';

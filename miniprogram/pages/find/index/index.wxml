@@ -12,8 +12,8 @@
 
           <scroll-view id="scroll-view_H" class="scroll-view_H" scroll-x="true" bindscroll="scroll">
             <image class="search-btn"
-              src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/搜索.png"
-              bindtap="search" mode="aspectFill" style="top:{{menuButton.top}}px;"></image>
+              src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/搜索白.png"
+              bindtap="search" mode="aspectFill" style="top:{{menuButton.top}}px;height:{{menuButton.height}}px;"></image>
             <!-- lower-threshold -->
             <block wx:for="{{items}}" wx:for-item="itemName" wx:key="id">
               <view class="scroll-view-item_H" id="{{itemName.id}}">
