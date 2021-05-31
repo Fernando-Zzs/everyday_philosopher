@@ -1,4 +1,5 @@
 // pages/analyse/analyse.js
+const app = getApp()
 let that = null
 Page({
 
@@ -9,8 +10,6 @@ Page({
     capsuleTop:wx.getMenuButtonBoundingClientRect().top,
     capsuleHeight:wx.getMenuButtonBoundingClientRect().height,
     show: true,
-    capsuleTop:wx.getMenuButtonBoundingClientRect().top,
-    capsuleHeight:wx.getMenuButtonBoundingClientRect().height,
     analysis: [],
     scale_arr: [{
       tag: '',
@@ -64,7 +63,7 @@ Page({
     wx.cloud.callFunction({
       name: 'getAnalysisTagsPlus',
       data: {
-        _openid: 'oMvG85TcKyxuM3KXlkmNaXu6CKYM'
+        _openid: app.globalData.OPENID
       },
       success: function (res) {
         let res_arr = res.result
