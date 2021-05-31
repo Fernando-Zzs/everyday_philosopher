@@ -17,7 +17,12 @@
   transform-origin: 50% 30%;
   font-size: 80rpx !important;
 }
-
+.back{
+  position: fixed;
+  margin-left: 30rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
 .text{
   position: absolute;
   z-index: 999;
@@ -116,9 +121,18 @@
 }
 
 .info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   width: 100%;
   text-align: center;
-  margin-top: 5vh;
   color: white;
+  margin-top: 12vh;
+}
+.icon{
+  width:30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+  /* display: inline; */
 }
