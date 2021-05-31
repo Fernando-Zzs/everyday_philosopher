@@ -11,7 +11,7 @@
     <image class="search-icon"
       src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/搜索白.png" ></image>
       <!-- cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/bai搜索.png -->
-    <input class='input' focus="true" placeholder='{{placeholder}}' bindconfirm='search_confirm' confirm-type="搜索">
+    <input class='input' focus="true" placeholder='{{placeholder}}' bindconfirm='search_confirm' confirm-type="search">
     {{keywords}}
     </input>
   </view>
