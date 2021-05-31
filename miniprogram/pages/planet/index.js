@@ -21,6 +21,7 @@ const oneWord_title="https://636c-cloud1-6gm7hn7636af92c5-1305725653.tcb.qcloud.
 
 Page({
   data: {
+    show: true,
     //存放故事
     items:[
       {
@@ -92,6 +93,15 @@ Page({
         const THREE = createScopedThreejs(canvas)
         this.renderModel1(canvas, THREE)
       })
+  },
+  onReady:function(){
+    this.timer = setInterval(() => {
+      if (this.data.show) {
+        this.setData({
+          show: !this.data.show
+        })
+      }
+    }, 3000)
   },
   onShow(){
     console.log(app.globalData.OPENID)
@@ -274,5 +284,8 @@ Page({
       
       
     }
+  },
+  onUnload:function(){
+    clearInterval(this.timer)
   }
 })

@@ -1,4 +1,5 @@
 <view class="page">
+  <get-more-loading show="{{show}}" wx:if="{{show}}"></get-more-loading>
 
   <!-- 小星球 -->
   <view class="container">

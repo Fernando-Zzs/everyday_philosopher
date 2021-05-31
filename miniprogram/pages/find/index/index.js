@@ -68,6 +68,15 @@ Page({
     })
 
   },
+  onReady:function(){
+    this.timer = setInterval(() => {
+      if (this.data.show) {
+        this.setData({
+          show: !this.data.show
+        })
+      }
+    }, 3000)
+  },
   onShow() {
     if (typeof this.getTabBar === 'function' &&
       this.getTabBar()) {
@@ -76,7 +85,9 @@ Page({
       })
     }
   },
-
+  onUnload:function(){
+    clearInterval(this.timer)
+  },
   //**********************小星球页面**************************
   onShareAppMessage() {
     return {
@@ -85,6 +96,7 @@ Page({
     }
   },
   data: {
+    show: true,
     currentScene: false,
     sysInfo: wx.getSystemInfoSync(),
     menuButton:wx.getMenuButtonBoundingClientRect(),
