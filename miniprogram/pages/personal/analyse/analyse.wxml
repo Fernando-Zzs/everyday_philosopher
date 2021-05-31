@@ -1,47 +1,57 @@
 <!--pages/analyse/analyse.wxml-->
 <get-more-loading show="{{show}}" wx:if="{{show}}"></get-more-loading>
 <!-- 搜索框 -->
-<image class="back" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/返回白.png" style="margin-top:{{capsuleTop+5+'px'}}"
-  bindtap="back"></image>
+
 <view class="container">
   <image class="bg" mode="aspectFill"
     src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星空6.jpg"></image>
+  
   <view class="container">
+    <image class="back" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/返回.png"
+    style="margin-top:{{capsuleTop+5+'px'}}" bindtap="back"></image>
     <view class="circle-item i1" style="scale: {{scale_arr[0].scale}}">
-      <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/分析星球1.png" class="image"></image>
+      <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/分析星球1.png"
+        class="image"></image>
       <view class="text">{{scale_arr[0].tag}}</view>
     </view>
     <view class="circle-item i2" style="scale: {{scale_arr[1].scale}}">
-      <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/分析星球2.png" class="image"></image>
+      <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/分析星球2.png"
+        class="image"></image>
       <view class="text">{{scale_arr[1].tag}}</view>
     </view>
     <view class="circle-item i3" style="scale: {{scale_arr[2].scale}}">
-      <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/分析星球3.png" class="image"></image>
+      <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/分析星球3.png"
+        class="image"></image>
       <view class="text">{{scale_arr[2].tag}}</view>
     </view>
     <view class="circle-item i4" style="scale: {{scale_arr[3].scale}}">
-      <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/分析星球4.png" class="image"></image>
+      <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/分析星球4.png"
+        class="image"></image>
       <view class="text">{{scale_arr[3].tag}}</view>
     </view>
     <view class="circle-item i5" style="scale: {{scale_arr[4].scale}}">
-      <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/分析星球5.png" class="image"></image>
+      <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/分析星球5.png"
+        class="image"></image>
       <view class="text">{{scale_arr[4].tag}}</view>
     </view>
     <view class="circle-item i6" style="scale: {{scale_arr[5].scale}}">
-      <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/分析星球6.png" class="image"></image>
+      <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/分析星球6.png"
+        class="image"></image>
       <view class="text">{{scale_arr[5].tag}}</view>
     </view>
     <view class="circle-item i7" style="scale: {{scale_arr[6].scale}}">
-      <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/分析星球7.png" class="image"></image>
+      <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/分析星球7.png"
+        class="image"></image>
       <view class="text">{{scale_arr[6].tag}}</view>
     </view>
     <view class="circle-item i8" style="scale: {{scale_arr[7].scale}}">
-      <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/分析星球8.png" class="image"></image>
+      <image src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/分析星球8.png"
+        class="image"></image>
       <view class="text">{{scale_arr[7].tag}}</view>
     </view>
   </view>
 
   <view class="info">
-  <image class="icon" src="./信息.png" mode="aspectFit"></image>泡泡越大，表示了解程度越高哦</view>
+  <image class="icon" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/信息.png" mode="aspectFit"></image>泡泡越大，表示了解程度越高哦</view>
 
 </view>

@@ -399,7 +399,7 @@ Page({
   },
 
   search: function (e) {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../search/search',
     })
   }

@@ -38,7 +38,7 @@
   line-height: 50rpx;
   font-size: 30rpx;
   font-weight: 670;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
 }
 .input-ans{
   flex:auto;
@@ -74,7 +74,7 @@
 .button{
   position: absolute;
   left: 42rpx;
-  bottom: 16%;
+  bottom: 12%;
   width: 666rpx;
   height: 80rpx;
   border: 2px solid rgb(255, 255, 255);

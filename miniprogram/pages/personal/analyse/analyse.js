@@ -1,4 +1,5 @@
 // pages/analyse/analyse.js
+const app = getApp()
 let that = null
 Page({
 
@@ -43,7 +44,11 @@ Page({
   onLoad: function (options) {
     that = this
   },
-
+  back: function () {
+    wx.switchTab({
+      url: '../index/index',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -58,7 +63,7 @@ Page({
     wx.cloud.callFunction({
       name: 'getAnalysisTagsPlus',
       data: {
-        _openid: 'oMvG85TcKyxuM3KXlkmNaXu6CKYM'
+        _openid: app.globalData.OPENID
       },
       success: function (res) {
         let res_arr = res.result

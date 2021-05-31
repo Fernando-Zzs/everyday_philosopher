@@ -2,7 +2,7 @@
 <view class="pageContainer">
   <view class='card'>
     <image class="bg" mode="aspectFill"
-      src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/1.jpg"></image>
+      src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/wrte_comment_bg.jpg"></image>
     <view class="header">
       <image src="{{user_avatar}}" class="image"></image>
       <view class="story">

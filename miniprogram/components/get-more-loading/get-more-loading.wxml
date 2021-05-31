@@ -1,16 +1,10 @@
-<l-loading
-      l-container-class="l-container"
-      bg-color="#f3f3f3"
-      z-index="999"
-      opacity="1"
-      show="{{show}}"
-      full-screen="{{true}}"
-      custom="{{true}}"
-    >
-    <view class="con">
-      
-        <image class="loading-img" class="logo" src="{{logoURL}}" mode="aspectFit">
-      </image>
-      <l-loading show="{{true}}" class="changing" type="change" color="#ffffff"></l-loading>
-    </view>
-  </l-loading>
+<l-loading l-container-class="l-container" bg-color="#f3f3f3" z-index="999" opacity="1" show="{{show}}"
+  full-screen="{{true}}" custom="{{true}}">
+  <view class="con">
+
+    <image class="loading-img" class="logo" src="{{logoURL}}" mode="aspectFit">
+    </image>
+    <l-loading show="{{true}}" class="changing" type="change" color="#ffffff" custom="true">
+    </l-loading>
+  </view>
+</l-loading>

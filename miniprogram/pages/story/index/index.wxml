@@ -1,4 +1,4 @@
-<get-more-loading show="{{show}}" wx:if="{{show}}" logoURL="{{posterURL}}"></get-more-loading>
+<get-more-loading show="{{show}}" wx:if="{{show}}"></get-more-loading>
 <view class="page1">
   <scroll-view id="scroller" scroll-y bindscroll="scroll" scroll-top="{{scroll_top}}">
     <view class="contanier1" style="height:{{container_height}}px">
