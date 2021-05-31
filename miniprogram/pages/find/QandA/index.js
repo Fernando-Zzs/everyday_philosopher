@@ -341,27 +341,44 @@ Page({
             initLength: this.data.arr.length
           })
           next = true
-          // 初次赋值
-          this.setData({
-            like_num: this.data.arr[0].like_openid.length,
-            collect_num: this.data.arr[0].collect_openid.length
-          })
+          if (that.data.initLength == 0) {
+            setTimeout(() => {
+              wx.showToast({
+                title: '暂无评论',
+                icon: 'error',
+                duration: 2000
+              })
+              setTimeout(() => {
+                wx.navigateBack({
+                  delta: 1,
+                })
+              }, 2000)
+            }, 3000)
+          } else {
+            // 初次赋值
+            var liketemp = this.data.arr[0].like_openid.length
+            var collecttemp = this.data.arr[0].collect_openid.length
 
-          if (chance == 1) {
-            this.moveList()
-            chance = 0;
-            next = false
-            var index = (this.data.list.length - 1)
-            if (index - 1 >= 0) {
-              this.data.list[index].x -= 7
-              this.data.list[index].y += 7
-            }
             this.setData({
-              list: this.data.list,
+              like_num: liketemp,
+              collect_num: collecttemp
             })
-          }
-          wx.hideLoading()
 
+            if (chance == 1) {
+              this.moveList()
+              chance = 0;
+              next = false
+              var index = (this.data.list.length - 1)
+              if (index - 1 >= 0) {
+                this.data.list[index].x -= 7
+                this.data.list[index].y += 7
+              }
+              this.setData({
+                list: this.data.list,
+              })
+            }
+            wx.hideLoading()
+          }
         }
       })
     }, 200)

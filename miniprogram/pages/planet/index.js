@@ -94,14 +94,14 @@ Page({
       })
   },
   onShow(){
-    // console.log(app.globalData.OPENID)
-    // wx.cloud.callFunction({
-    //   name: 'recommendStory',
-    //   data: {
-    //     _openid: app.globalData.OPENID,
-    //     num: 3
-    //   }
-    // }).then(console.log)
+    console.log(app.globalData.OPENID)
+    wx.cloud.callFunction({
+      name: 'recommendStory',
+      data: {
+        _openid: app.globalData.OPENID,
+        num: 5
+      }
+    }).then(console.log)
     if (typeof this.getTabBar === 'function' &&
     this.getTabBar()) {
     this.getTabBar().setData({
@@ -183,18 +183,6 @@ Page({
     this.controls.update();
   },
   initObject() {
-    // var texture = this.THREE.ImageUtils.loadTexture('1.jpg');
-  //   var texture = new this.THREE.TextureLoader().load("1.jpg");
-  // var material1 = new this.THREE.MeshBasicMaterial({//设置texture纹理
-  //     map: texture,
-  //     material: 0.5,//透明度 取值0-1；
-  //     transparent: true,//设置是否为透明
-  // });
-    // var material = new this.THREE.MeshBasicMaterial({
-    //   color: 0x3ca756,
-    //   side: this.THREE.DoubleSide
-    // });
-
     var geometry = new this.THREE.IcosahedronGeometry(5);
     for(var i =0;i< this.data.items.length;i++){
       var material = new this.THREE.MeshPhongMaterial({

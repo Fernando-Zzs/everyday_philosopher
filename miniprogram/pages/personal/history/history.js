@@ -15,14 +15,15 @@ function initChart(canvas, width, height) {
 
 Page({
   data: {
-    show: true, // 是否显示加载栏
-    openid: '',
-    currentTab: 0, // tab切换
-    ec: {
-      onInit: initChart
-    },
-    phi: [],
-    que: []
+      show: true, // 是否显示加载栏
+      openid:'',
+      currentTab: 0, // tab切换
+      ec:{
+        onInit:initChart
+      },
+      phi:[],
+      que:[],
+      backgroundImage:''
   },
 
   onPullDownRefresh: function () {},
@@ -55,6 +56,16 @@ Page({
     //   }
     // })
     // 调用云函数获取用户openid
+    
+    wx.cloud.downloadFile({
+      fileID: 'cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星空11.jpg',
+      maxAge: 120*60*1000,
+      success:res=>{
+        that.setData({
+          backgroundImage: res.tempFilePath
+        })
+      }
+    })
 
     let page = this;
     wx.cloud.callFunction({

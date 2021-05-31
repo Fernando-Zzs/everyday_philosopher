@@ -2,7 +2,7 @@
   <get-more-loading show="{{show}}" wx:if="{{show}}"></get-more-loading>
   <view class="header">
     <!-- 官方自定义导航栏抽取出来的模块 -->
-    <view class="navigation">
+    <!-- <view class="navigation">
       <view class="weui-navigation-bar {{extClass}}">
         <view class="weui-navigation-bar__placeholder {{ios ? 'ios' : 'android'}}"
           style="padding-top: {{statusBarHeight}}px;visibility: hidden;"></view>
@@ -15,22 +15,22 @@
           </view>
         </view>
       </view>
-    </view>
+    </view> -->
   </view>
   <view class="main">
     <view class="slideshow">
       <image mode="aspectFill"
         src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星空1.jpg' class="bg">
         <view class='user-info'>
-          <image class='user-image' src='{{userInfo.avatarUrl}}'></image>
-          <view class='user-name' wx:if="{{userInfo.nickName}}">{{userInfo.nickName}}</view>
+          <image class='user-image' src='{{userInfo.avatarUrl}}' bindtap="getUserProfile"></image>
+        </view>
+        <view class='user-name' wx:if="{{userInfo.nickName}}">{{userInfo.nickName}}</view>
           <view class='user-name' wx:else>
             <block wx:if="{{!hasUserInfo}}">
               <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile" hover-class="none"> 登录 </button>
               <button wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登录 </button>
             </block>
           </view>
-        </view>
         <view class="menu">
           <view class='content-container'>
             <view class='content-item' bindtap='openHistory'>
@@ -45,16 +45,17 @@
               <view class='word'>收藏列表</view>
             </view>
 
-            <view class='content-item' bindtap="openAnalysis">
-              <image src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/分析.png'
-                class='item-image'></image>
-              <view class='word'>我的分析</view>
-            </view>
 
             <view class='content-item' bindtap="openStatistics">
               <image src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/统计.png'
                 class='item-image'></image>
               <view class='word'>我的统计</view>
+            </view>
+
+            <view class='content-item' bindtap="openAnalysis">
+              <image src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/分析.png'
+                class='item-image'></image>
+              <view class='word'>我的分析</view>
             </view>
 
           </view>

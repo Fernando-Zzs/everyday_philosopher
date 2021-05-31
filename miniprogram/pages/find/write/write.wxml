@@ -1,7 +1,9 @@
 <!--write/write.wxml-->
 <view class="pageContainer">
+  <image class="bg" mode="aspectFill" src="./2.jpg"></image>
   <view class='card'>
-        <image class="bg" mode="aspectFill" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/1.jpg"></image>
+        <!-- <image class="bg" style="filter:blur(20px)" mode="aspectFill" src="./2.jpg"></image> -->
+        <!-- cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/1.jpg -->
           <view class="header">
             <image src="{{user_avatar}}" class="image"></image>
             <view class="question">

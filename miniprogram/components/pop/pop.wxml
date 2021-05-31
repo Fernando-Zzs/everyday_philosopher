@@ -6,7 +6,7 @@
   </image>
   <!-- cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/1.jpg -->
   <image bindtap="exit" class="close-icon"
-    src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/取消.png">
+    src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/取消白.png">
   </image>
   <view wx:if="{{type=='story'}}">
     <view class="tag">⊙故事</view>
