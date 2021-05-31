@@ -75,7 +75,7 @@ Page({
                 story_id: that.data.story_id,
                 _openid: app.globalData.OPENID
             },
-            success: function(res) {
+            success: function (res) {
                 console.log('liked: ' + res.result)
                 if (res.result) {
                     that.setData({
@@ -83,7 +83,7 @@ Page({
                     })
                 }
             },
-            fail: function(res) {
+            fail: function (res) {
                 console.log(res)
             }
         })
@@ -125,8 +125,8 @@ Page({
                 this.getTabBar().hidemTabBar()
                 can_tab_state = false;
                 setTimeout(() => {
-                        can_tab_state = true
-                    }, 400) //防抖节流
+                    can_tab_state = true
+                }, 400) //防抖节流
             }
             if (e.detail.deltaY > 3) {
                 this.getTabBar().showTabBar()
@@ -186,7 +186,7 @@ Page({
     },
     load() {
         console.log("start to add animation")
-            // 添加组件动画
+        // 添加组件动画
         for (var i = 0; i < this.data.story_content.length; i++) {
             var item = this.data.story_content[i]
             var selector = item.selector
@@ -194,7 +194,7 @@ Page({
             var offset = item.offset
             var startScrollOffset = item.startScrollOffset
             var endScrollOffset = item.endScrollOffset
-                // console.log(item)
+            // console.log(item)
             this.animate(selector,
                 keyframes,
                 2000, {
@@ -338,10 +338,10 @@ Page({
         app.story_id = id
 
     },
-    onUnload: function() {
+    onUnload: function () {
         clearInterval(this.timer)
     },
-    onHide: function() {
+    onHide: function () {
         timestamp_end = Date.parse(new Date()) / 1000
         console.log(timestamp_start, timestamp_end);
         wx.cloud.callFunction({
@@ -381,7 +381,7 @@ Page({
                     description: that.data.story_description,
                     id: that.data.story_id,
                     timestamp: Date.parse(new Date()) / 1000,
-                    title: that.data.story_title,
+                    title: that.data.title,
                     type: 'story'
                 }
             })
@@ -419,10 +419,10 @@ Page({
                 name: 'addCollection',
                 data: {
                     _openid: app.globalData.OPENID,
-                    description: that.data.story_description,
+                    description: '',
                     id: that.data.story_id,
                     timestamp: Date.parse(new Date()) / 1000,
-                    title: that.data.story_title,
+                    title: that.data.title,
                     type: 'story'
                 }
             })
@@ -436,13 +436,13 @@ Page({
             }
         })
     },
-    pinglun: function(e) {
+    pinglun: function (e) {
         console.log(e)
         wx.navigateTo({
             url: '../../find/SandC/index' + '?story_id=' + this.data.story_id,
         })
     },
-    fenxiang: function(e) {
+    fenxiang: function (e) {
         // console.log(this.data.posterTEMP)
         wx.showShareImageMenu({
             path: this.data.posterTEMP
