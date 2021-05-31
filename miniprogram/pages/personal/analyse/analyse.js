@@ -7,6 +7,8 @@ Page({
    */
   data: {
     show: true,
+    capsuleTop:wx.getMenuButtonBoundingClientRect().top,
+    capsuleHeight:wx.getMenuButtonBoundingClientRect().height,
     analysis: [],
     scale_arr: [{
       tag: '',
@@ -41,7 +43,11 @@ Page({
   onLoad: function (options) {
     that = this
   },
-
+  back: function () {
+    wx.switchTab({
+      url: '../index/index',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

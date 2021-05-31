@@ -43,7 +43,13 @@
   width: 100vw;
   z-index: -1;
 }
-
+.back{
+  z-index: 999;
+  position: absolute;
+  left: 30rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
 .image{
   position: absolute;
   left: 0;
