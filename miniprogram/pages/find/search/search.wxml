@@ -1,15 +1,16 @@
 <!--pages/search/search.wxml-->
 <get-more-loading show="{{show}}" wx:if="{{show}}"></get-more-loading>
 <!-- 搜索框 -->
-<image class="back" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/返回.png" style="margin-top:{{capsuleTop+5+'px'}}"
+<image class="back" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/返回白.png" style="margin-top:{{capsuleTop+5+'px'}}"
   bindtap="back"></image>
 <view class="container">
   <image class="bg" mode="aspectFill"
-    src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/1.jpg"></image>
-
+    src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/search_bg.jpg"></image>
+<!-- cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/1.jpg -->
   <view class="search-bar">
     <image class="search-icon"
-      src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/黑搜索.png"></image>
+      src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/搜索白.png" ></image>
+      <!-- cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/bai搜索.png -->
     <input class='input' focus="true" placeholder='{{placeholder}}' bindconfirm='search_confirm'>
     {{keywords}}
     </input>
@@ -21,6 +22,7 @@
     <view class="sv-container">
       <view class="serach-item" wx:for="{{search_items}}" wx:key='_id' data-questionid="{{item.question_id}}"
         bindtap="showQuestionDetail">
+        <!-- <image mode="aspectFill" class="card-bg" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/question_bg.jpg"></image> -->
         <view class="serach-item-head">
           <image class="serach-item-icon" src="{{item.image}}"></image>
           <view class="serach-item-title">{{item.title}}</view>

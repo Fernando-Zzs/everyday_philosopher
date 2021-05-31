@@ -6,6 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    capsuleTop:wx.getMenuButtonBoundingClientRect().top,
+    capsuleHeight:wx.getMenuButtonBoundingClientRect().height,
     show: true,
     capsuleTop:wx.getMenuButtonBoundingClientRect().top,
     capsuleHeight:wx.getMenuButtonBoundingClientRect().height,
@@ -86,6 +88,11 @@ Page({
           }])
       }
     }
+  },
+  back: function () {
+    wx.switchTab({
+      url: '../index/index',
+    })
   },
 
   /**

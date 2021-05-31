@@ -1,185 +1,192 @@
 {
-    "setting": {},
-    "condition": {
-        "plugin": {
-            "list": []
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "历史记录页面",
+          "pathName": "pages/personal/history/history",
+          "query": "",
+          "scene": null
         },
-        "game": {
-            "list": []
+        {
+          "name": "我的界面",
+          "pathName": "pages/personal/index/index",
+          "query": "",
+          "scene": null
         },
-        "gamePlugin": {
-            "list": []
+        {
+          "name": "统计记录",
+          "pathName": "pages/personal/statistics/statistics",
+          "query": "",
+          "scene": null
         },
-        "miniprogram": {
-            "list": [{
-                    "name": "历史记录页面",
-                    "pathName": "pages/personal/history/history",
-                    "query": "",
-                    "scene": null
-                },
-                {
-                    "name": "我的界面",
-                    "pathName": "pages/personal/index/index",
-                    "query": "",
-                    "scene": null
-                },
-                {
-                    "name": "统计记录",
-                    "pathName": "pages/personal/statistics/statistics",
-                    "query": "",
-                    "scene": null
-                },
-                {
-                    "name": "分析页面",
-                    "pathName": "pages/personal/analyse/analyse",
-                    "query": "",
-                    "scene": null
-                },
-                {
-                    "name": "收藏夹",
-                    "pathName": "pages/personal/star/star",
-                    "query": "",
-                    "scene": null
-                },
-                {
-                    "name": "探索页面",
-                    "pathName": "pages/find/index/index",
-                    "query": "",
-                    "scene": null
-                },
-                {
-                    "name": "答案详情页",
-                    "pathName": "pages/find/answer/answer",
-                    "query": "",
-                    "scene": null
-                },
-                {
-                    "name": "故事详情页",
-                    "pathName": "pages/find/story-detail/story-detail",
-                    "query": "",
-                    "scene": null
-                },
-                {
-                    "name": "苏格拉底",
-                    "pathName": "pages/story/socreate/index",
-                    "query": "",
-                    "scene": null
-                },
-                {
-                    "name": "孔子",
-                    "pathName": "pages/story/kongzi/index",
-                    "query": "",
-                    "scene": null
-                },
-                {
-                    "name": "test",
-                    "pathName": "pages/story/test/test",
-                    "query": "",
-                    "scene": null
-                },
-                {
-                    "name": "宇宙之卵",
-                    "pathName": "pages/story/egg_of_universe/index",
-                    "query": "",
-                    "scene": null
-                },
-                {
-                    "name": "序言",
-                    "pathName": "pages/story/pre_story/index",
-                    "query": "",
-                    "scene": null
-                },
-                {
-                    "name": "认识你自己",
-                    "pathName": "pages/story/know_yourself/index",
-                    "query": "",
-                    "scene": null
-                },
-                {
-                    "name": "苏格拉底详情页",
-                    "pathName": "pages/find/story-detail/story-detail",
-                    "query": "story_id=0",
-                    "scene": null
-                },
-                {
-                    "name": "小星球",
-                    "pathName": "pages/find/index/index",
-                    "query": "",
-                    "scene": null
-                },
-                {
-                    "name": "pages/personal/star/star",
-                    "pathName": "pages/personal/star/star",
-                    "query": "",
-                    "scene": null
-                },
-                {
-                    "name": "pages/find/index/index",
-                    "pathName": "pages/find/index/index",
-                    "query": "",
-                    "scene": null
-                },
-                {
-                    "name": "回答卡片",
-                    "pathName": "pages/find/QandA/index",
-                    "query": "",
-                    "scene": null
-                },
-                {
-                    "name": "第二页/",
-                    "pathName": "pages/planet/index",
-                    "query": "",
-                    "scene": null
-                },
-                {
-                    "name": "第一页/",
-                    "pathName": "pages/story/index/index",
-                    "query": "",
-                    "scene": null
-                },
-                {
-                    "name": "第三页/搜索",
-                    "pathName": "pages/find/search/search",
-                    "query": "",
-                    "scene": null
-                },
-                {
-                    "name": "第一页/评论",
-                    "pathName": "pages/find/SandC/index",
-                    "query": "story_id=0",
-                    "scene": null
-                },
-                {
-                    "name": "为你推荐",
-                    "pathName": "pages/story/index/index",
-                    "query": "",
-                    "scene": null
-                },
-                {
-                    "name": "pages/find/index/index",
-                    "pathName": "pages/find/index/index",
-                    "query": "",
-                    "scene": null
-                },
-                {
-                    "name": "pages/find/QandA/index",
-                    "pathName": "pages/find/QandA/index",
-                    "query": "question_id=60",
-                    "scene": null
-                },
-                {
-                    "name": "pages/find/SandC/index",
-                    "pathName": "pages/find/SandC/index",
-                    "query": "story_id=0",
-                    "scene": null
-                },
-                {
-                    "name": "pages/personal/index/index",
-                    "pathName": "pages/personal/index/index",
-                    "query": "",
-                    "scene": null
-                }
-            ]
+        {
+          "name": "分析页面",
+          "pathName": "pages/personal/analyse/analyse",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "收藏夹",
+          "pathName": "pages/personal/star/star",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "探索页面",
+          "pathName": "pages/find/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "答案详情页",
+          "pathName": "pages/find/answer/answer",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "故事详情页",
+          "pathName": "pages/find/story-detail/story-detail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "苏格拉底",
+          "pathName": "pages/story/socreate/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "孔子",
+          "pathName": "pages/story/kongzi/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "test",
+          "pathName": "pages/story/test/test",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "宇宙之卵",
+          "pathName": "pages/story/egg_of_universe/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "序言",
+          "pathName": "pages/story/pre_story/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "认识你自己",
+          "pathName": "pages/story/know_yourself/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "苏格拉底详情页",
+          "pathName": "pages/find/story-detail/story-detail",
+          "query": "story_id=0",
+          "scene": null
+        },
+        {
+          "name": "小星球",
+          "pathName": "pages/find/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/personal/star/star",
+          "pathName": "pages/personal/star/star",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/find/index/index",
+          "pathName": "pages/find/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "回答卡片",
+          "pathName": "pages/find/QandA/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "第二页/",
+          "pathName": "pages/planet/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "第一页/",
+          "pathName": "pages/story/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "第三页/搜索",
+          "pathName": "pages/find/search/search",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "第一页/评论",
+          "pathName": "pages/find/SandC/index",
+          "query": "story_id=0",
+          "scene": null
+        },
+        {
+          "name": "为你推荐",
+          "pathName": "pages/story/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/find/index/index",
+          "pathName": "pages/find/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/find/QandA/index",
+          "pathName": "pages/find/QandA/index",
+          "query": "question_id=60",
+          "scene": null
+        },
+        {
+          "name": "pages/find/SandC/index",
+          "pathName": "pages/find/SandC/index",
+          "query": "story_id=0",
+          "scene": null
+        },
+        {
+          "name": "pages/personal/index/index",
+          "pathName": "pages/personal/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/story/index/index",
+          "pathName": "pages/story/index/index",
+          "query": "",
+          "scene": null
         }
+      ]
     }
+  }
 }

@@ -64,7 +64,7 @@ page {
 .broad-button{
   position: fixed;
   border: 1px white solid;
-  width: 70rpx;
+  width: 170rpx;
   height: 70rpx;  
   border-radius: 70rpx;
   top: 0px;
@@ -75,12 +75,44 @@ page {
   color: aliceblue;
   /* z-index: 10000000; */
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon{
+  /* display: inline-block; */
+  justify-content: flex-start;
+  height: 55rpx;
+  width: 55rpx;
+  padding: 0 5rpx 0 5rpx;
+}
+.menu-text{
+  display: inline-block;
+  margin-left: 5rpx;
+}
+.button-c{
+  display: flex;
+  position: absolute;
+  bottom: 10%;
+  width: 100%;
+  align-items: center;
+  justify-content:space-around;
+}
+.sc{
+  width: 25%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 .smallBtn{
-  width: 60rpx;
-  height: 60rpx;
+  width: 70rpx;
+  height: 70rpx;
 }
-.zan{
+.button_tag{
+  padding-top:15rpx;
+  font-size: 28rpx;
+}
+/* .zan{
   position: absolute;
   bottom: 10%;
   left: 10%;
@@ -99,7 +131,7 @@ page {
   position: absolute;
   bottom: 10%;
   left: 70%;
-}
+} */
 .share_button{
   position: absolute;
   width: 85%;

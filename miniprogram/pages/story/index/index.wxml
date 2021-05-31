@@ -38,8 +38,9 @@
 </view>
 
 <!-- 侧边栏 -->
-<view wx:if="{{!broad_state}}" class="broad-button" bindtap="broad" style="top:{{sysInfo.statusBarHeight+5}}px">💨
-</view>
+<view wx:if="{{!broad_state}}" class="broad-button" bindtap="broad" style="top:{{menuButton.top}}px;height:{{menuButton.height}}px;">
+<image src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/菜单.png' class='icon' mode="aspectFill"></image><view class="menu-text">菜单</view></view>
+
 <page-container show="{{broad_state}}" round="false" overlay="true" duration="400" position="center"
   close-on-slide-down="false" bindenter="onEnter" bind:beforeleave="beforeLeave"
   custom-style="  backdrop-filter:blur(15px);height:100vh;width:65vw;background-color:rgba(255,255,255,0);z-index:100;"
@@ -58,14 +59,19 @@
     <view wx:for="{{story_relative}}" class='braod-item' data-story_id="{{item.story_id}}" bindtap="jump">{{item.title}}
     </view>
 
-    <!-- <view class="share_button s-irregularShadowMove" bindtap='share_story'>分享故事海报</view> -->
+<view class="button-c">
+<view class="sc">
     <image wx:if="{{!liked}}" class="zan smallBtn"
       src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/故事页面未点赞.png" bindtap="handleLike">
+
     </image>
     <image wx:if="{{liked}}" class="zan smallBtn"
       src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/故事页面已点赞.png" bindtap="handleLike">
-    </image>
 
+    </image>
+    <view class="button_tag">点赞</view>
+</view>
+<view class="sc">
     <image wx:if="{{!collected}}" class="shoucang smallBtn"
       src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/故事页面未收藏.png"
       bindtap="handleCollect">
@@ -74,13 +80,22 @@
       src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/故事页面已收藏.png"
       bindtap="handleCollect">
     </image>
-
+    <view class="button_tag">收藏</view>
+</view>
+<view class="sc">
     <image class="pinglun smallBtn"
       src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/评论.png" bindtap="pinglun">
     </image>
+    <view class="button_tag">评论</view>
+</view>
+<view class="sc">
     <image class="fenxiang smallBtn"
       src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/故事页面分享.png"
       bindtap="fenxiang">
     </image>
+    <view class="button_tag">分享</view>
+</view>
+
   </view>
+</view>
 </page-container>

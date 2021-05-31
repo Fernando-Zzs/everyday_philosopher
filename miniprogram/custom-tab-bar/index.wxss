@@ -4,7 +4,7 @@
   /* bottom: 0; */
   left: 0;
   right: 0;
-  height: 100rpx;
+  height: 110rpx;
   background:rgb(255, 255, 255);
   display: flex;
   backdrop-filter: blur(20px);
@@ -32,17 +32,17 @@
 }
 
 .tab-bar-item cover-image {
-  
+  margin-top: 5px;
   width: 27px;
   height: 27px;
 }
 
 .tab-bar-item cover-view {
-  font-size: 10px;
+  font-size: 23rpx;
 } 
 
 .tab-text{
   margin-top: 5px;
   color: rgb(0, 0, 0);
-  /* padding: 5px; */
+  /* padding: 5rpx; */
 }

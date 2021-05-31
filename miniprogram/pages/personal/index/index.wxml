@@ -2,7 +2,7 @@
   <get-more-loading show="{{show}}" wx:if="{{show}}"></get-more-loading>
   <view class="header">
     <!-- 官方自定义导航栏抽取出来的模块 -->
-    <view class="navigation">
+    <!-- <view class="navigation">
       <view class="weui-navigation-bar {{extClass}}">
         <view class="weui-navigation-bar__placeholder {{ios ? 'ios' : 'android'}}"
           style="padding-top: {{statusBarHeight}}px;visibility: hidden;"></view>
@@ -15,7 +15,7 @@
           </view>
         </view>
       </view>
-    </view>
+    </view> -->
   </view>
   <view class="main">
     <view class="slideshow">
@@ -45,16 +45,17 @@
               <view class='word'>收藏列表</view>
             </view>
 
-            <view class='content-item' bindtap="openAnalysis">
-              <image src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/分析.png'
-                class='item-image'></image>
-              <view class='word'>我的分析</view>
-            </view>
 
             <view class='content-item' bindtap="openStatistics">
               <image src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/统计.png'
                 class='item-image'></image>
               <view class='word'>我的统计</view>
+            </view>
+
+            <view class='content-item' bindtap="openAnalysis">
+              <image src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/分析.png'
+                class='item-image'></image>
+              <view class='word'>我的分析</view>
             </view>
 
           </view>
