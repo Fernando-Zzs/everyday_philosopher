@@ -10,7 +10,7 @@ Component({
     },
     logoURL:{
       type: String,
-      value: 'cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/苏格拉底图标.png'
+      value: './loading.gif'
     }
   },
 
