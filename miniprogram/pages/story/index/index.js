@@ -6,7 +6,7 @@ Page({
     data: {
         show: true,
         sysInfo: wx.getSystemInfoSync(),
-        menuButton:wx.getMenuButtonBoundingClientRect(),
+        menuButton: wx.getMenuButtonBoundingClientRect(),
         broad_state: false,
         scroll_top: 0,
         story: {},
@@ -80,6 +80,23 @@ Page({
                 if (res.result) {
                     that.setData({
                         liked: true
+                    })
+                }
+            },
+            fail: function (res) {
+                console.log(res)
+            }
+        })
+        wx.cloud.callFunction({
+            name: 'isStoryCollected',
+            data: {
+                story_id: that.data.story_id,
+                _openid: app.globalData.OPENID
+            },
+            success: function (res) {
+                if (res.result) {
+                    that.setData({
+                        collected: true
                     })
                 }
             },
