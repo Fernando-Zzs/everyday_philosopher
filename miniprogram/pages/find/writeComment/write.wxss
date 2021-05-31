@@ -45,7 +45,7 @@
   line-height: 50rpx;
   margin:5%;
   font-size: 32rpx;
-  color: black;
+  color: rgb(0, 0, 0);
   /* text-indent: 2rem; */
   position: relative;
   border: 2rpx solid whitesmoke;
@@ -75,12 +75,12 @@
   position: fixed;
   color: #fff;
   font-weight: 700;
-  bottom: 13vh;
+  bottom: 12%;
   width: 90vw;
   left: 5vw;
   height: 80rpx;
   line-height: 80rpx;
   text-align: center;
-  border: 8rpx solid #fff;
+  border: 2px solid #fff;
   border-radius: 40rpx;
 }

@@ -107,29 +107,33 @@
 }
 
 .like{
-  left: 48%;
+  width: 100%;
+  /* left: 48%; */
   bottom: 10%;
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .like image{
-  width: 50rpx;
-  height: 50rpx;
+  width: 70rpx;
+  height: 70rpx;
 }
 .num{
-  margin-left: 15rpx;
+  margin-top: 7px;
 }
 
 .write-button{
   position: fixed;
   color: #fff;
   font-weight: 700;
-  bottom: 13vh;
+  bottom: 12%;
   width: 90vw;
   left: 5vw;
   height: 80rpx;
   line-height: 80rpx;
   text-align: center;
-  border: 8rpx solid #fff;
+  border: 2px solid #fff;
   border-radius: 40rpx;
 }
 .s-irregularShadowMove {

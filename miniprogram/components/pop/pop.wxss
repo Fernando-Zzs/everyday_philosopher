@@ -50,6 +50,13 @@ page {
   right: 5%;
   top: 3%;
   mix-blend-mode: difference;
+  display: flex;
+  align-items: center;
+}
+.tag-icon{
+  height:40rpx;
+  width:40rpx;
+  margin-right: 10rpx;
 }
 .container{
   position: absolute;

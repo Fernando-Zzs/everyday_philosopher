@@ -24,7 +24,7 @@
         bindtap="showQuestionDetail">
         <!-- <image mode="aspectFill" class="card-bg" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/question_bg.jpg"></image> -->
         <view class="serach-item-head">
-          <image class="serach-item-icon" src="{{item.image}}"></image>
+          <image class="serach-item-icon" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/问题.png"></image>
           <view class="serach-item-title">{{item.title}}</view>
         </view>
         <view class="serach-item-content"><text>{{item.description==""?"如题":item.description}}</text></view>

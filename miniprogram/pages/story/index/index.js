@@ -42,22 +42,10 @@ Page({
                 story_id: '5'
             },
             complete: res => {
-                // console.log(res.result)
-                // wx.cloud.getTempFileURL({
-                //   fileList: [res.result.poster[1]],
-                //   success:res=>{
-                //     // console.log(res.fileList[0].tempFileURL)
-                //     that.setData({
-                //       posterHTTP: res.fileList[0].tempFileURL
-                //     })
-                //   },
-                //   fail: console.error
-                // })
                 wx.cloud.downloadFile({
                     fileID: res.result.poster[1],
                     maxAge: 120 * 60 * 1000,
                     success: res => {
-                        // console.log(res.tempFilePath)
                         that.setData({
                             posterTEMP: res.tempFilePath
                         })

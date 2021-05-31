@@ -4,5 +4,5 @@
     "l-button":"../../../miniprogram_npm/lin-ui/button/index",
     "get-more-loading":"../../../components/get-more-loading/get-more-loading"
   },
-  "navigationStyle": "custom"
+  "navigationBarTitleText":"查看评论"
 }

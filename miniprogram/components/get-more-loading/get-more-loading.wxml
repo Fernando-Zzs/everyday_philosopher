@@ -11,6 +11,7 @@
       
         <image class="loading-img" class="logo" src="{{logoURL}}" mode="aspectFit">
       </image>
-      <l-loading show="{{true}}" class="changing" type="change" color="#ffffff"></l-loading>
+      <l-loading show="{{true}}" class="changing" type="change" color="#ffffff" custom="true"
+      ><image style="width:30vw;height:30vw;position:fixed;margin-left:-15vw;" src="./loading.gif"></image></l-loading>
     </view>
   </l-loading>

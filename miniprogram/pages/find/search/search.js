@@ -17,7 +17,7 @@ Page({
     story_items: []
   },
   back: function () {
-    wx.switchTab({
+    wx.navigateBack({
       url: '../index/index',
     })
   },
