@@ -163,7 +163,7 @@ page{
   height: 90rpx;
   border: 6rpx solid #fff;
   border-radius: 50rpx;
-  margin-bottom: 20rpx;
+  margin-bottom: 30rpx;
 }
 
 .item-image {

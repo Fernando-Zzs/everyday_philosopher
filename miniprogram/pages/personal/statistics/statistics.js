@@ -17,6 +17,7 @@ function initChart1(canvas, width, height) {
       // _openid: 'oMvG85TcKyxuM3KXlkmNaXu6CKYM',
     },
     success: function (res) {
+      console.log(res)
       timestamp_obj = res.result.time_last_week
       var option = {
         backgroundColor: '#fff',
