@@ -6,7 +6,7 @@ Page({
     data: {
         show: true,
         sysInfo: wx.getSystemInfoSync(),
-        menuButton:wx.getMenuButtonBoundingClientRect(),
+        menuButton: wx.getMenuButtonBoundingClientRect(),
         broad_state: false,
         scroll_top: 0,
         story: {},
@@ -68,6 +68,23 @@ Page({
                 if (res.result) {
                     that.setData({
                         liked: true
+                    })
+                }
+            },
+            fail: function (res) {
+                console.log(res)
+            }
+        })
+        wx.cloud.callFunction({
+            name: 'isStoryCollected',
+            data: {
+                story_id: that.data.story_id,
+                _openid: app.globalData.OPENID
+            },
+            success: function (res) {
+                if (res.result) {
+                    that.setData({
+                        collected: true
                     })
                 }
             },
@@ -161,10 +178,14 @@ Page({
         })
     },
     share_story(e) {
-        console.log('share')
-        wx.showShareImageMenu({
-            path: this.data.poster
-        })
+        wx.cloud.downloadFile({
+                      fileID:this.data.posterURL,
+                      maxAge: 120*60*1000,
+                      success:res=>{
+                        console.log(res.tempFilePath)
+                        wx.showShareImageMenu({path:res.tempFilePath})
+                      }
+         })
     },
     comment_story(e) {
         //跳转至评论

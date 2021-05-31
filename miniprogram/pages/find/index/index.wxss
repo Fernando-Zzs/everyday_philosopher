@@ -23,7 +23,7 @@
   /* margin-top: 20rpx; */
   position:fixed;
   width: 80rpx;
-  height: 80rpx;
+  /* height: 80rpx; */
 }
 .scroll-view-item_H{
   display: inline-block;
@@ -44,7 +44,7 @@
   position: absolute;
   width:200%;
   height:100vh;
-  animation: sun 20s  infinite linear;
+  animation: sun 23s  infinite linear;
 }
 .tag{
   position: absolute;

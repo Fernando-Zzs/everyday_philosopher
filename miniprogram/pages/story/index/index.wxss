@@ -149,22 +149,22 @@ page {
 .end-button{
   position: fixed;
   width: 30vw;
-  height: 40px;
-  border-radius: 20px;
-  /* border: 1px solid rgb(255, 255, 255); */
+  border: 2px solid #fff;
+  border-radius: 40rpx;
   text-align:center;
-  line-height:40px;
+  height: 75rpx;
+  line-height: 75rpx;
   color: rgb(0, 0, 0);
   bottom: 150rpx;
-  backdrop-filter:blur(15px);
-  background: rgba(255, 255, 255, 0.548);
+  backdrop-filter:blur(5px);
+  background: rgba(255, 255, 255, 0.507);
   z-index: 1;
 }
 .end-comment-button{
-  left: 15vw;
+  left: 10vw;
 }
 .end-share-button{
-  right: 15vw;
+  right: 10vw;
 }
 .page1 {
   height: 100vh;

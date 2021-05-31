@@ -1,4 +1,4 @@
-<image class="bg" mode="aspectFill" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/planet/bg-star.png"></image>
+<image class="bg" mode="aspectFill" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/2bg.png"></image>
 <canvas
   type="webgl"
   id="webgl"

@@ -76,10 +76,10 @@ Page({
     // 获取list数组
     this.getList()
   },
-  write(e){
-    let story_id=this.data.Sid
+  write(e) {
+    let story_id = this.data.Sid
     wx.navigateTo({
-      url: "/pages/find/writeComment/write?story_id="+story_id,
+      url: "/pages/find/writeComment/write?story_id=" + story_id,
     })
   },
   handleLike: function (e) {
