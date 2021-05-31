@@ -73,7 +73,7 @@ Page({
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
     // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-    if(!this.data.hasUserInfo){
+    if (!this.data.hasUserInfo) {
       wx.getUserProfile({
         desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
         success: (res) => {
@@ -88,20 +88,24 @@ Page({
             duration: 1000
           })
           const db = wx.cloud.database()
-          db.collection('user').add({
-            data:{
-              nickname: that.data.userInfo.nickName,
-              avatarUrl: that.data.userInfo.avatarUrl
-            }
-          })
-          wx.cloud.callFunction({
-            name:'getUserInfo',
-            complete:res=>{
-              app.globalData.OPENID = res.result.openid
-            }
-          })
           app.globalData.NICKNAME = this.data.userInfo.nickName
           app.globalData.AVATARURL = this.data.userInfo.avatarUrl
+          wx.cloud.callFunction({
+            name: 'getUserInfo',
+            complete: res => {
+              app.globalData.OPENID = res.result.openid
+              wx.cloud.callFunction({
+                name: 'addUser',
+                data: {
+                  _openid: app.globalData.OPENID,
+                  nickname: this.data.userInfo.nickName,
+                  avatarUrl: this.data.userInfo.avatarUrl
+                }
+              })
+            }
+          })
+
+
         }
       })
     }
