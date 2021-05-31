@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "pop":"../../../components/pop/pop"
+    "pop":"../../../components/pop/pop",
+    "get-more-loading":"../../../components/get-more-loading/get-more-loading"
   },
   "disableScroll": true,
   "navigationStyle": "custom"
