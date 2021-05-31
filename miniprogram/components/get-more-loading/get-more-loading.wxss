@@ -12,8 +12,8 @@
   /* border: 10rpx red solid; */
   border-radius: 50rpx;
   top: 20%;
-  height: 898rpx;
-  width: 635rpx;
+  height: 50vh;
+  width: 50vw;
 }
 .changing{
   position: absolute;
