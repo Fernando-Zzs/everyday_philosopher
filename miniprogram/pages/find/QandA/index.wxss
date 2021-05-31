@@ -56,7 +56,7 @@
   overflow: hidden;
   margin-left: 42rpx;
   width: 666rpx;
-  height: 80vh;
+  height: 70vh;
   position: absolute;
   top: -333rpx;
   border-radius: 10rpx;
@@ -106,24 +106,29 @@
 }
 
 .like{
-  left: 15%;
+  left: 25%;
   bottom: 10%;
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .like image{
-  width: 50rpx;
-  height: 50rpx;
+  width: 70rpx;
+  height: 70rpx;
 }
 .star{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: absolute;
-  right:15%;
+  right:25%;
   bottom: 10%;
 }
 .star image{
-  width: 50rpx;
-  height: 50rpx;
+  width: 70rpx;
+  height: 70rpx;
 }
 .num{
-  margin-left: 15rpx;
+margin-top: 7px;
 }
-
