@@ -161,10 +161,14 @@ Page({
         })
     },
     share_story(e) {
-        console.log('share')
-        wx.showShareImageMenu({
-            path: this.data.poster
-        })
+        wx.cloud.downloadFile({
+                      fileID:this.data.posterURL,
+                      maxAge: 120*60*1000,
+                      success:res=>{
+                        console.log(res.tempFilePath)
+                        wx.showShareImageMenu({path:res.tempFilePath})
+                      }
+         })
     },
     comment_story(e) {
         //跳转至评论
