@@ -52,6 +52,6 @@
   </view>
 
   <view class="info">
-  <image class="icon" src="./信息.png" mode="aspectFit"></image>泡泡越大，表示了解程度越高哦</view>
+  <image class="icon" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/信息.png" mode="aspectFit"></image>泡泡越大，表示了解程度越高哦</view>
 
 </view>

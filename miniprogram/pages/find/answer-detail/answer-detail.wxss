@@ -72,7 +72,7 @@
   display: flex;
   padding-bottom: 50rpx;
   align-items: center;
-  border-bottom: 3rpx solid #ccc;
+  border-bottom: 2px dashed rgb(255, 255, 255);
 }
 
 .head-image{
@@ -106,23 +106,29 @@
 }
 
 .like{
-  left: 15%;
+  left: 25%;
   bottom: 10%;
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .like image{
-  width: 50rpx;
-  height: 50rpx;
+  width: 70rpx;
+  height: 70rpx;
 }
 .star{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: absolute;
-  right:15%;
+  right:25%;
   bottom: 10%;
 }
 .star image{
-  width: 50rpx;
-  height: 50rpx;
+  width: 70rpx;
+  height: 70rpx;
 }
 .num{
-  margin-left: 15rpx;
+margin-top: 7px;
 }

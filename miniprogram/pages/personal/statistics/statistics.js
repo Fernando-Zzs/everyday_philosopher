@@ -17,12 +17,19 @@ function initChart1(canvas, width, height) {
       // _openid: 'oMvG85TcKyxuM3KXlkmNaXu6CKYM',
     },
     success: function (res) {
+      console.log(res)
       timestamp_obj = res.result.time_last_week
       var option = {
         backgroundColor: '#fff',
         xAxis: {
           type: 'category',
-          data: ['故事', '评论', '问答']
+          data: ['故事', '评论', '问答'],
+          axisLabel: {
+            show: true,
+            textStyle: {
+              color: '#000000'
+            }
+          }
         },
         yAxis: {
           type: 'value'

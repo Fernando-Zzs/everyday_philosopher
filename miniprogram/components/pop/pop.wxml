@@ -9,7 +9,7 @@
     src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/取消白.png">
   </image>
   <view wx:if="{{type=='story'}}">
-    <view class="tag">⊙故事</view>
+    <view class="tag"><image class="tag-icon" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/故事.png" mode="aspectFit"></image>故事</view>
     <!-- <image class="bg poster" mode="aspectFill" src="{{posterURL}}"></image> -->
     
     <view class="button b3" bindtap="enterStory" data-story_id="{{story_id}}">进入故事</view>
@@ -17,7 +17,7 @@
 
   <view wx:elif="{{type=='question'}}">
 
-    <view class="tag">⊙问题</view>
+    <view class="tag"><image class="tag-icon" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/问题.png" mode="aspectFit"></image>问题</view>
     <view class="container">
       <view class="title">{{title}}</view>
       <view class="content">{{content}}</view>
@@ -27,7 +27,7 @@
   </view>
 
   <view wx:else>
-    <view class="tag">⊙一句</view>
+    <view class="tag"><image class="tag-icon" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/一句.png" mode="aspectFit"></image>一句</view>
 
    
     <view class="button b3" bindtap="sharePoster" data-word_id="{{word_id}}">分享海报</view>

@@ -32,27 +32,27 @@
             </block>
           </view>
         <view class="menu">
-          <view class='content-container'>
-            <view class='content-item' bindtap='openHistory'>
+          <view class='content-container '>
+            <view class='content-item s-irregularShadowMove' bindtap='openHistory'>
               <image src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/历史记录.png'
                 class='item-image'></image>
               <view class='word'>历史记录</view>
             </view>
 
-            <view class='content-item' bindtap="openPortfolio">
+            <view class='content-item s-irregularShadowMove' bindtap="openPortfolio">
               <image src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/收藏夹.png'
                 class='item-image'></image>
               <view class='word'>收藏列表</view>
             </view>
 
 
-            <view class='content-item' bindtap="openStatistics">
+            <view class='content-item s-irregularShadowMove' bindtap="openStatistics">
               <image src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/统计.png'
                 class='item-image'></image>
               <view class='word'>我的统计</view>
             </view>
 
-            <view class='content-item' bindtap="openAnalysis">
+            <view class='content-item s-irregularShadowMove' bindtap="openAnalysis">
               <image src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/分析.png'
                 class='item-image'></image>
               <view class='word'>我的分析</view>

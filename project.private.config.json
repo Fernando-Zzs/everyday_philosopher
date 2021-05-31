@@ -185,6 +185,12 @@
           "pathName": "pages/story/index/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/find/writeComment/write",
+          "pathName": "pages/find/writeComment/write",
+          "query": "",
+          "scene": null
         }
       ]
     }

@@ -78,6 +78,8 @@ page {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.425);
+  /* backdrop-filter: blur(10px); */
 }
 .icon{
   /* display: inline-block; */
@@ -261,10 +263,7 @@ transition: .5s outline-offset cubic-bezier(0.2, .8, 0.25, .8),.5s outline-color
 
 .s-irregularShadowMove {
   color: #fff;
-
   overflow: hidden;
-  
-
 }
 .s-irregularShadowMove:hover {
 text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
