@@ -61,15 +61,15 @@ Page({
   onLoad: function (options) {
     let that = this
 
-    wx.cloud.downloadFile({
-      fileID: 'cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星空11.jpg',
-      maxAge: 120*60*1000,
-      success:res=>{
-        that.setData({
-          backgroundImage: res.tempFilePath
-        })
-      }
-    })
+    // wx.cloud.downloadFile({
+    //   fileID: 'cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星空11.jpg',
+    //   maxAge: 120*60*1000,
+    //   success:res=>{
+    //     that.setData({
+    //       backgroundImage: res.tempFilePath
+    //     })
+    //   }
+    // })
 
     const db = wx.cloud.database()
     db.collection('collection').where({
@@ -88,21 +88,22 @@ Page({
         }
       })
     let that2 = this
-    const db2 = wx.cloud.database()
-    db2.collection('collection').where({
-        openid: app.globalData.OPENID,
-        type: 'answer'
-      })
-      .get({
-        success: function (res) {
-          that2.setData({
-            datas2: res.data
-          })
-        },
-        fail: (err) => {
-          console.log(err);
-        }
-      })
+    // const db2 = wx.cloud.database()
+    // db2.collection('collection').where({
+    //     openid: app.globalData.OPENID,
+    //     type: 'answer'
+    //   })
+    //   .get({
+    //     success: function (res) {
+    //       that2.setData({
+    //         datas2: res.data
+    //       })
+    //     },
+    //     fail: (err) => {
+    //       console.log(err);
+    //     }
+    //   })
+      this.setData({datas2:[{title:"当然是柏拉图"}]})
     // wx.cloud.callFunction({
     //   name: 'getCollectedAnswers',
     //   data: {
