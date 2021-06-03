@@ -32,9 +32,48 @@ exports.main = async (event, context) => {
   //     time_last_week: time_last_week
   //   }
   // })
-  db.collection('user').where({
-    _openid: event._openid
+
+  db.collection('answer').where({
+
+  }).update({
+    data: {
+      like_openid: [],
+      collect_openid: []
+    }
+  })
+  db.collection('collection').where({
+    timestamp: _.gt(0)
   }).remove()
+  db.collection('comment').where({
+
+  }).update({
+    data: {
+      like_openid: [],
+      collect_openid: []
+    }
+  })
+  db.collection('history').where({
+    timestamp: _.gt(0)
+  }).remove()
+  db.collection('like').where({
+    timestamp: _.gt(0)
+  }).remove()
+  db.collection('question').where({
+
+  }).update({
+    data: {
+      like_openid: [],
+      collect_openid: []
+    }
+  })
+  db.collection('story').where({
+
+  }).update({
+    data: {
+      like_openid: [],
+      collect_openid: []
+    }
+  })
 }
 
 // 每过一周把user表中的time属性值设为0

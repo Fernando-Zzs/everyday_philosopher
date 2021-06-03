@@ -13,20 +13,29 @@ exports.main = async (event, context) => {
     type: event.type
   }).get()
   judge_arr = judge_arr.data
-  if (judge_arr.length != 0) {
-    return
-  }
 
-  db.collection('history').add({
-    data: {
+  if (judge_arr.length != 0) {
+    db.collection('history').where({
       _openid: event._openid,
-      description: event.description,
       id: event.id,
-      timestamp: event.timestamp,
-      title: event.title,
       type: event.type
-    }
-  })
+    }).update({
+      data: {
+        timestamp: event.timestamp
+      }
+    })
+  } else {
+    db.collection('history').add({
+      data: {
+        _openid: event._openid,
+        description: event.description,
+        id: event.id,
+        timestamp: event.timestamp,
+        title: event.title,
+        type: event.type
+      }
+    })
+  }
 }
 
 // input: _openid type id timestamp
