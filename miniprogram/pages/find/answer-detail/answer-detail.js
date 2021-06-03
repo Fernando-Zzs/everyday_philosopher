@@ -86,13 +86,16 @@ Page({
   handleLike: function (e) {
     // console.log(e.currentTarget.dataset.answerid)
     let index = e.currentTarget.dataset.index
+    let a = index + this.data.initLength
     // console.log(index)
     let like_num = this.data.list[index].like_openid.length
     console.log(like_num)
     if (this.data.list[index].liked) {
       this.setData({
         ['list[' + index + '].liked']: false,
-        like_num: this.data.like_num - 1
+        ['list[' + index + '].like_num']: this.data.list[index].like_num - 1,
+        ['list[' + a + '].liked']: false,
+        ['list[' + a + '].like_num']: this.data.list[index].like_num - 1,
       })
 
       wx.cloud.callFunction({
@@ -106,7 +109,9 @@ Page({
     } else {
       this.setData({
         ['list[' + index + '].liked']: true,
-        like_num: this.data.like_num + 1
+        ['list[' + index + '].like_num']: this.data.list[index].like_num + 1,
+        ['list[' + a + '].liked']: true,
+        ['list[' + a + '].like_num']: this.data.list[index].like_num + 1,
       })
 
       wx.cloud.callFunction({
@@ -134,13 +139,16 @@ Page({
   handleCollect: function (e) {
     // console.log(e.currentTarget.dataset.answerid)
     let index = e.currentTarget.dataset.index
+    let a = index + this.data.initLength
     console.log(index)
     // let collect_num = this.data.list[index].collect_openid.length
     // console.log(collect_num)
     if (this.data.list[index].collected) {
       this.setData({
         ['list[' + index + '].collected']: false,
-        collect_num: this.data.collect_num - 1
+        ['list[' + index + '].collect_num']: this.data.list[index].collect_num - 1,
+        ['list[' + a + '].collected']: false,
+        ['list[' + a + '].collect_num']: this.data.list[index].collect_num - 1,
       })
 
       wx.cloud.callFunction({
@@ -154,7 +162,9 @@ Page({
     } else {
       this.setData({
         ['list[' + index + '].collected']: true,
-        collect_num: this.data.collect_num + 1
+        ['list[' + index + '].collect_num']: this.data.list[index].collect_num + 1,
+        ['list[' + a + '].collected']: true,
+        ['list[' + a + '].collect_num']: this.data.list[index].collect_num + 1,
       })
 
       wx.cloud.callFunction({
@@ -408,6 +418,8 @@ Page({
         }
       })
       i.index = count--
+      i.like_num = i.like_openid.length
+      i.collect_num = i.collect_openid.length
       list.unshift(i)
     }
     this.setData({

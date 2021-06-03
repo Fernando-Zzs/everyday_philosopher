@@ -30,7 +30,7 @@
             </image>
             <image wx:else src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/故事页面已点赞.png">
             </image>
-            <view class="num">点赞：{{like_num}}</view>
+            <view class="num">{{item.like_num}}</view>
           </view>
         </view>
 

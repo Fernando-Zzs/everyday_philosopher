@@ -85,13 +85,16 @@ Page({
   handleLike: function (e) {
     // console.log(e.currentTarget.dataset.commentid)
     let index = e.currentTarget.dataset.index
+    let a = this.data.initLength + index
     // console.log(index)
     let like_num = this.data.list[index].like_openid.length
     console.log(like_num)
     if (this.data.list[index].liked) {
       this.setData({
         ['list[' + index + '].liked']: false,
-        like_num: this.data.like_num - 1
+        ['list[' + index + '].like_num']: this.data.list[index].like_num - 1,
+        ['list[' + a + '].liked']: false,
+        ['list[' + a + '].like_num']: this.data.list[index].like_num - 1,
       })
 
       wx.cloud.callFunction({
@@ -103,9 +106,12 @@ Page({
         }
       })
     } else {
+      console.log(index)
       this.setData({
         ['list[' + index + '].liked']: true,
-        like_num: this.data.like_num + 1
+        ['list[' + index + '].like_num']: this.data.list[index].like_num + 1,
+        ['list[' + a + '].liked']: true,
+        ['list[' + a + '].like_num']: this.data.list[index].like_num + 1,
       })
 
       wx.cloud.callFunction({
@@ -343,6 +349,7 @@ Page({
         }
       })
       i.index = count--
+      i.like_num = i.like_openid.length
       list.unshift(i)
     }
     this.setData({
