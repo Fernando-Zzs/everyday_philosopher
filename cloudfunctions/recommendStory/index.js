@@ -60,10 +60,38 @@ function isExist(arr, str) {
   return false
 }
 exports.main = async (event, context) => {
-  let history_arr = await db.collection('history').where({
-    _openid: event._openid
-  }).get()
-  history_arr = history_arr.data
+  async function getCount_h() { //获取数据的总数，这里记得设置集合的权限
+    let count = await db.collection('history').where({
+      _openid: event._openid
+    }).count();
+    return count;
+  }
+  async function getList_h(skip) { //分段获取数据
+    let list = await db.collection('history').where({
+      _openid: event._openid
+    }).skip(skip).get();
+    return list.data;
+  }
+  async function getCount_su(table) { //获取数据的总数，这里记得设置集合的权限
+    let count = await db.collection(table).where({}).count();
+    return count;
+  }
+  async function getList_su(skip, table) { //分段获取数据
+    let list = await db.collection(table).skip(skip).get();
+    return list.data;
+  }
+
+  // let history_arr = await db.collection('history').where({
+  //   _openid: event._openid
+  // }).get()
+  // history_arr = history_arr.data
+
+  let count = await getCount_h();
+  count = count.total;
+  let history_arr = []
+  for (let i = 0; i < count; i += 100) { //自己设置每次获取数据的量
+    history_arr = history_arr.concat(await getList_h(i));
+  }
 
   if (!read_pre(history_arr)) {
     return ['0']
@@ -72,10 +100,24 @@ exports.main = async (event, context) => {
     return ['5']
   }
 
-  let story_arr = await db.collection('story').get()
-  story_arr = story_arr.data
-  let user_arr1 = await db.collection('user').get()
-  user_arr1 = user_arr1.data
+  // let story_arr = await db.collection('story').get()
+  // story_arr = story_arr.data
+  count = await getCount_su('story');
+  count = count.total;
+  let story_arr = []
+  for (let i = 0; i < count; i += 100) { //自己设置每次获取数据的量
+    story_arr = story_arr.concat(await getList_su(i, 'story'));
+  }
+
+  // let user_arr1 = await db.collection('user').get()
+  // user_arr1 = user_arr1.data
+  count = await getCount_su('user');
+  count = count.total;
+  let user_arr1 = []
+  for (let i = 0; i < count; i += 100) { //自己设置每次获取数据的量
+    user_arr1 = user_arr1.concat(await getList_su(i, 'user'));
+  }
+
 
   let ret_arr = []
   if (user_arr1.length < 100) {

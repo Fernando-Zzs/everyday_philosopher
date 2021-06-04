@@ -33,6 +33,29 @@ function compare(property) {
 
 // 云函数入口函数
 exports.main = async (event, context) => {
+  async function getCount_h(timestamp_start, timestamp_end) { //获取数据的总数，这里记得设置集合的权限
+    let count = await db.collection('history').where({
+      _openid: event._openid,
+      timestamp: _.lte(timestamp_end).and(_.gte(timestamp_start))
+    }).count();
+    return count;
+  }
+  async function getList_h(skip, timestamp_start, timestamp_end) { //分段获取数据
+    let list = await db.collection('history').where({
+      _openid: event._openid,
+      timestamp: _.lte(timestamp_end).and(_.gte(timestamp_start))
+    }).skip(skip).get();
+    return list.data;
+  }
+  async function getCount_s() { //获取数据的总数，这里记得设置集合的权限
+    let count = await db.collection('story').where({}).count();
+    return count;
+  }
+  async function getList_s(skip) { //分段获取数据
+    let list = await db.collection('story').skip(skip).get();
+    return list.data;
+  }
+
   let timestamp_end = Date.parse(new Date()) / 1000
   let day = new Date().getDay()
 
@@ -43,12 +66,19 @@ exports.main = async (event, context) => {
   today_0.setMilliseconds(0)
   let timestamp_start = Date.parse(today_0) / 1000 - 86400 * day
 
-  let history_arr = await db.collection('history').where({
-      _openid: event._openid,
-      timestamp: _.lte(timestamp_end).and(_.gte(timestamp_start))
-    })
-    .get()
-  history_arr = history_arr.data // 得到相应时间戳内的history数据
+  // let history_arr = await db.collection('history').where({
+  //     _openid: event._openid,
+  //     timestamp: _.lte(timestamp_end).and(_.gte(timestamp_start))
+  //   })
+  //   .get()
+  // history_arr = history_arr.data // 得到相应时间戳内的history数据
+
+  let count = await getCount_h(timestamp_start, timestamp_end);
+  count = count.total;
+  let history_arr = []
+  for (let i = 0; i < count; i += 100) { //自己设置每次获取数据的量
+    history_arr = history_arr.concat(await getList_h(i, timestamp_start, timestamp_end));
+  }
 
   let history_story_id_arr = []
   for (let i = 0, len = history_arr.length; i < len; i++) {
@@ -57,8 +87,16 @@ exports.main = async (event, context) => {
     }
   }
 
-  let story_arr = await db.collection('story').get()
-  story_arr = story_arr.data
+  // let story_arr = await db.collection('story').get()
+  // story_arr = story_arr.data
+
+  count = await getCount_s();
+  count = count.total;
+  let story_arr = []
+  for (let i = 0; i < count; i += 100) { //自己设置每次获取数据的量
+    story_arr = story_arr.concat(await getList_s(i));
+  }
+  return story_arr;
 
   let tags_and_count_arr = []
   for (let i = 0, len_i = story_arr.length; i < len_i; i++) {

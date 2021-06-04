@@ -16,8 +16,15 @@ function compare(property) {
 }
 
 exports.main = async (event, context) => {
-  let ret = await db.collection('question').get()
-  ret = ret.data
+  // let ret = await db.collection('question').get()
+  // ret = ret.data
+
+  let count = await getCount();
+  count = count.total;
+  let ret = []
+  for (let i = 0; i < count; i += 100) { //自己设置每次获取数据的量
+    ret = ret.concat(await getList(i));
+  }
 
   let arr_buffer = []
   let item_buffer = {}
@@ -37,4 +44,12 @@ exports.main = async (event, context) => {
   }
 
   return ret
+}
+async function getCount() { //获取数据的总数，这里记得设置集合的权限
+  let count = await db.collection('question').where({}).count();
+  return count;
+}
+async function getList(skip) { //分段获取数据
+  let list = await db.collection('question').skip(skip).get();
+  return list.data;
 }

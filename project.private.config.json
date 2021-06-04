@@ -197,6 +197,12 @@
           "pathName": "pages/find/QandA/index",
           "query": "question_id=0",
           "scene": null
+        },
+        {
+          "name": "pages/personal/statistics/statistics",
+          "pathName": "pages/personal/statistics/statistics",
+          "query": "",
+          "scene": null
         }
       ]
     }

@@ -8,8 +8,7 @@ function initChart1(canvas, width, height) {
     height: height
   });
   canvas.setChart(chart);
-
-  let timestamp_obj = {}
+  let ret_count = {}
   wx.cloud.callFunction({
     name: 'getUserDetail',
     data: {
@@ -18,33 +17,44 @@ function initChart1(canvas, width, height) {
     },
     success: function (res) {
       console.log(res)
-      timestamp_obj = res.result.time_last_week
-      var option = {
-        backgroundColor: '#fff',
-        xAxis: {
-          type: 'category',
-          data: ['故事', '评论', '问答'],
-          axisLabel: {
-            show: true,
-            textStyle: {
-              color: '#000000'
-            }
-          }
+      var option = {}
+      wx.cloud.callFunction({
+        name: 'getAnsAndComCount',
+        data: {
+          _openid: app.globalData.OPENID
         },
-        yAxis: {
-          type: 'value'
-        },
-        series: [{
-          data: [timestamp_obj.story, timestamp_obj.comment, timestamp_obj.answer],
-          type: 'bar',
-          showBackground: true,
-          backgroundStyle: {
-            color: 'rgba(180, 180, 180, 0.2)'
-          }
-        }]
-      };
-      chart.setOption(option);
-      return chart;
+        success: function (res) {
+          ret_count = res.result
+          console.log(ret_count);
+
+          option = {
+            backgroundColor: '#fff',
+            xAxis: {
+              type: 'category',
+              data: ['回答', '评论'],
+              axisLabel: {
+                show: true,
+                textStyle: {
+                  color: '#000000'
+                }
+              }
+            },
+            yAxis: {
+              type: 'value'
+            },
+            series: [{
+              data: [ret_count.answer, ret_count.comment],
+              type: 'bar',
+              showBackground: true,
+              backgroundStyle: {
+                color: 'rgba(180, 180, 180, 0.2)'
+              }
+            }]
+          };
+          chart.setOption(option);
+          return chart;
+        }
+      })
     }
   })
 }

@@ -41,10 +41,32 @@ function randomNum(minNum, maxNum) {
 }
 
 exports.main = async (event, context) => {
-  let question_arr = await db.collection('question').get()
-  question_arr = question_arr.data
-  let user_arr = await db.collection('user').get()
-  user_arr = user_arr.data
+  async function getCount(table) { //获取数据的总数，这里记得设置集合的权限
+    let count = await db.collection(table).where({}).count();
+    return count;
+  }
+  async function getList(skip, table) { //分段获取数据
+    let list = await db.collection(table).skip(skip).get();
+    return list.data;
+  }
+
+  // let question_arr = await db.collection('question').get()
+  // question_arr = question_arr.data
+  let count = await getCount('question');
+  count = count.total;
+  let question_arr = []
+  for (let i = 0; i < count; i += 100) { //自己设置每次获取数据的量
+    question_arr = question_arr.concat(await getList(i, 'question'));
+  }
+
+  // let user_arr = await db.collection('user').get()
+  // user_arr = user_arr.data
+  count = await getCount('user');
+  count = count.total;
+  let user_arr = []
+  for (let i = 0; i < count; i += 100) { //自己设置每次获取数据的量
+    user_arr = user_arr.concat(await getList(i, 'user'));
+  }
 
   let ret_arr = []
   if (user_arr.length < 100) {
