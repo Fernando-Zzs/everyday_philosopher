@@ -1,7 +1,7 @@
 {
   "usingComponents": {
-    "get-more-loading":"../../../components/get-more-loading/get-more-loading"
-  },
-  "navigationStyle": "custom",
-  "navigationBarTextStyle": "white"
+    "get-more-loading":"../../../components/get-more-loading/get-more-loading",
+    "history-item":"../../../components/history-item/history-item",
+    "question-item":"../../../components/question-item/question-item"
+  }
 }

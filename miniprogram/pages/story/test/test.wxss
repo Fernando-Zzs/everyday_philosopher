@@ -1,181 +1,50 @@
-page{
-  height: 100vh;
-}
-
-.navigation {
-  --height: 48px;
-  --right: 190rpx
-}
-
-.weui-navigation-bar {
-  overflow: hidden
-}
-
-.weui-navigation-bar .android {
-  --height: 48px;
-  --right: 222rpx
-}
-
-.weui-navigation-bar__inner {
+.bg{
+  width: 100%;
+  height: 100%;
   position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 5001;
-  height: var(--height);
+  z-index: -1;
+}
+ 
+.item:last-child {
+  margin-bottom: 50rpx;
+}
+ 
+.tab {
   display: flex;
-  align-items: center;
-  padding-right: var(--right);
-  width: calc(100% - var(--right));
-  background-color: rgba(255, 255, 255, 0.4)
-}
-
-.weui-navigation-bar__inner .weui-navigation-bar__left {
-  position: relative;
-  width: var(--right);
-  padding-left: 16px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  align-items: center;
-  -webkit-box-pack: center
-}
-
-.weui-navigation-bar__inner .weui-navigation-bar__left .weui-navigation-bar__btn {
-  display: inline-block;
-  vertical-align: middle;
-  background-repeat: no-repeat
-}
-
-.weui-navigation-bar__inner .weui-navigation-bar__center {
-  font-size: 17px;
-  text-align: center;
-  position: relative;
-  flex: 1;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center
-}
-.weui-navigation-bar__placeholder {
-  height: var(--height);
-  background: #F8F8F8;
-  position: relative;
-  z-index: 50
-}
-
-/* 上面的是WeUI的代码 */
-
-.header{
-  position: absolute;
-}
-
-.navigation-title {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-between;
   width: 100%;
-  height: 60rpx;
-  line-height: 60rpx;
-  color: white;
+  height: 100rpx;
+  line-height: 100rpx;
+  box-sizing: border-box;
+  color: aliceblue;
 }
-
-.navigation-title text{
-  font-size: 35rpx;
-  font-style: bold;
-}
-
-.slideshow .bg{
-  position: relative;
-  width: 100%;
-  height: 1500rpx;
-}
-
-/* 以下是我自己的 */
-.user-info{
-  position: absolute;
-  left: 290rpx;
-  top: 250rpx;
-  width: 220rpx;
-  height: 300rpx;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-
-.user-info .user-image {
-  width: 150rpx;
-  height: 150rpx;
-  margin-left: 20rpx;
-
-  background: rgba(0,0,0,0.4);
-  border: 8rpx solid #fff;
-  border-radius: 80rpx;
-}
-
-.user-info .user-name{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  text-align: center;
-
-  width: 200rpx;
-  height: 70rpx;
-  border: 5rpx solid #fff;
-  border-radius: 20rpx;
-  background: rgba(0,0,0,0.4);
-
-  font-size: 40rpx;
-  font-family: "Microsoft Yahei";
-  color:#fff;
-}
-
-.user-info .user-name button{
-  color:#fff;
-  font-size: 28rpx;
-}
-
-.menu{
-  position: absolute;
-  top: 40rpx;
-  left: 200rpx;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-
-.content-container {
-  display: flex;
-  flex-direction: column;
-  /* background:white */
-}
-
-.content-item {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+ 
+.tab-active {
   color: #fff;
-  width: 50%;
-  height: 90rpx;
-  border: 6rpx solid #fff;
-  border-radius: 30rpx;
-  margin-bottom: 20rpx;
+  border-bottom: 7rpx solid #fff;
 }
-
-.item-image {
-  width: 45rpx;
-  height: 45rpx;
-  margin-top: 12rpx;
-  margin-left: 35rpx;
+ 
+.tab > view {
+  flex: 1;
+  text-align: center;
 }
-
-.word {
-  font-size: 28rpx;
-  font-weight: 700;
-  margin-left: 30rpx;
+ 
+swiper {
+  position: fixed;
+  top: 100rpx;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+ 
+.backTop {
+  position: fixed;
+  right: 30rpx;
+  bottom: 50rpx;
+  width: 60rpx;
+  height: 60rpx;
+  padding: 10rpx;
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 30;
+  border-radius: 50%;
 }
