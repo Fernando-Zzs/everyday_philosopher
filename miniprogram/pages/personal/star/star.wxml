@@ -21,6 +21,7 @@
         scroll-with-animation
         scroll-top="{{scrollTop0}}px"
       >
+        <view wx:if="{{!phi.length}}" class="info">收藏夹还空空如也呢~</view>
         <history-item historyItemsArray="{{phi}}" class="item"/>
       </scroll-view>
     </swiper-item>
@@ -34,6 +35,7 @@
         scroll-with-animation
         scroll-top="{{scrollTop1}}px"
       >
+        <view wx:if="{{!que.length}}" class="info">收藏夹还空空如也呢~</view>
         <question-item answerItemsArray="{{que}}" class="item"/>
       </scroll-view>
     </swiper-item>
