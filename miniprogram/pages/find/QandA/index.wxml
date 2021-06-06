@@ -22,21 +22,26 @@
             </view>
           </view>
           <view class="answer a">
-            {{item.content || '--'}}
+            <scroll-view
+              style="height: 100%;"
+              scroll-y
+            >
+              {{item.content || '--'}}
+            </scroll-view>
           </view>
           <view class="like" bindtap="handleLike" data-answerid="{{item.answer_id}}" data-index="{{item.index}}">
             <image wx:if="{{!item.liked}}"
-              src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/故事页面未点赞.png">
+              src="../../../images/故事页面未点赞.png">
             </image>
-            <image wx:else src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/故事页面已点赞.png">
+            <image wx:else src="../../../images/故事页面已点赞.png">
             </image>
             <view class="num">{{item.like_num}}</view>
           </view>
           <view class="star" bindtap="handleCollect" data-answerid="{{item.answer_id}}" data-index="{{item.index}}">
             <image wx:if="{{!item.collected}}"
-              src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/故事页面未收藏.png">
+              src="../../../images/故事页面未收藏.png">
             </image>
-            <image wx:else src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/故事页面已收藏.png">
+            <image wx:else src="../../../images/故事页面已收藏.png">
             </image>
             <view class="num">{{item.collect_num}}</view>
           </view>

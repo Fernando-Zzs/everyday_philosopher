@@ -95,6 +95,7 @@
   /* margin-left: 2.5%; */
   /* margin-top: 15rpx; */
   width: 86%;
+  height: 40%;
   padding: 7%;
   /* height:300rpx; */
 }

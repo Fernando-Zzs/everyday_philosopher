@@ -1,7 +1,8 @@
 {
   "usingComponents": {
-    "get-more-loading":"../../../components/get-more-loading/get-more-loading",
-    "history-item":"../../../components/history-item/history-item",
-    "question-item":"../../../components/question-item/question-item"
-  }
+    "l-textarea":"../../../miniprogram_npm/lin-ui/textarea/index",
+    "l-button":"../../../miniprogram_npm/lin-ui/button/index",
+    "get-more-loading":"../../../components/get-more-loading/get-more-loading"
+  },
+  "navigationBarTitleText":"查看回答"
 }

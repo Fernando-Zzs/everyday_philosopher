@@ -78,9 +78,25 @@ Page({
   },
   write(e) {
     let story_id = this.data.Sid
-    wx.navigateTo({
-      url: "/pages/find/writeComment/write?story_id=" + story_id,
-    })
+    if(app.globalData.OPENID!=""){
+      wx.navigateTo({
+        url: "/pages/find/writeComment/write?story_id=" + story_id,
+      })
+    }else{
+      wx.showModal({
+        title: '提示',
+        content: '先登录才能评论哦',
+        success(res){
+          if(res.confirm){
+            wx.switchTab({
+              url: '../../personal/index/index',
+            })
+          }else if(res.cancel){
+            console.log('取消')
+          } 
+        }
+      })
+    }
   },
   handleLike: function (e) {
     // console.log(e.currentTarget.dataset.commentid)
