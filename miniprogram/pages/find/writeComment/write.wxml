@@ -1,5 +1,6 @@
 <!--write/write.wxml-->
 <view class="pageContainer">
+  <image class="bgi" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/2bg.png"></image>
   <view class='card'>
     <image class="bg" mode="aspectFill"
       src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/wrte_comment_bg.jpg"></image>
