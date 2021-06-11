@@ -76,17 +76,20 @@ Component({
     showDetail:function(event){
       // console.log(event.currentTarget.dataset.storyid)
       let that = this;
-      wx.cloud.callFunction({
-        name:"getStory",
-        data:{
-          story_id: event.currentTarget.dataset.storyid
-        },
-        complete: res=>{
-          var ret = res.result.story_id
-          wx.navigateTo({
-            url: '/pages/find/story-detail/story-detail?story_id='+ret,
-          })
-        }
+      // wx.cloud.callFunction({
+      //   name:"getStory",
+      //   data:{
+      //     story_id: event.currentTarget.dataset.storyid
+      //   },
+      //   complete: res=>{
+      //     var ret = res.result.story_id
+      //     console.log(ret)
+         
+      //   }
+      // })
+      getApp().story_id=event.currentTarget.dataset.storyid;
+      wx.switchTab({
+        url: '/pages/story/index/index',
       })
     }
   }

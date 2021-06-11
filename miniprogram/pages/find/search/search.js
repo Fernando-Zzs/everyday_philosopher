@@ -101,15 +101,18 @@ Page({
     })
   },
   showQuestionDetail: function (e) {
-    console.log(e.currentTarget.dataset.questionid)
-    wx.navigateTo({
-      url: '../question-detail/question-detail?question_id=' + e.currentTarget.dataset.questionid,
+    console.log("search_quesyibid",e.currentTarget.dataset.questionid)
+    getApp().showPop=true;
+    getApp().question_id=e.currentTarget.dataset.questionid
+    wx.switchTab({
+      url: '/pages/find/index/index',
     })
   },
   showStoryDetail: function (e) {
     console.log(e.currentTarget.dataset.storyid)
-    wx.navigateTo({
-      url: '../story-detail/story-detail?story_id=' + e.currentTarget.dataset.storyid,
+    getApp().story_id=e.currentTarget.dataset.storyid;
+    wx.switchTab({
+      url: '/pages/story/index/index',
     })
   },
   /**

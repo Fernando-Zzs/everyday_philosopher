@@ -73,25 +73,30 @@ Component({
     },
 
     showDetail:function(event){
-      // console.log(event.currentTarget.dataset.questionid)
+      // console.log("questino-item",event.currentTarget.dataset.questionid)
       console.log(event);
-      wx.cloud.callFunction({
-        name:"getAnswer",
-        data:{
-          answer_id: event.currentTarget.dataset.answerid
-        },
-        complete: res=>{
-          var ret_ques = res.result.question_id
-          var ret_answ = res.result.answer_id
-          var ret_content = res.result.content
-          var ret_like_num = res.result.like_num
-          var ret_collect_num = res.result.collect_num
+      // wx.cloud.callFunction({
+      //   name:"getAnswer",
+      //   data:{
+      //     answer_id: event.currentTarget.dataset.answerid
+      //   },
+      //   complete: res=>{
+      //     var ret_ques = res.result.question_id
+      //     var ret_answ = res.result.answer_id
+      //     var ret_content = res.result.content
+      //     var ret_like_num = res.result.like_num
+      //     var ret_collect_num = res.result.collect_num
           
-          wx.navigateTo({
-            url: '/pages/find/answer-detail/answer-detail?question_id='+ret_ques+'&answer_id='+ret_answ,
-          })
-        }
-      })
+      //     wx.navigateTo({
+      //       url: '/pages/find/answer-detail/answer-detail?question_id='+ret_ques+'&answer_id='+ret_answ,
+      //     })
+      //   }
+      // })
+      // getApp().showPop=true;
+      // getApp().question_id=event.currentTarget.dataset.questionid
+      // wx.switchTab({
+      //   url: '/pages/find/index/index',
+      // })
     }
   }
 })

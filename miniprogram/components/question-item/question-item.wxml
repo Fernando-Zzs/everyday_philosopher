@@ -1,10 +1,10 @@
 <view class="container" wx:for="{{answerItemsArray}}" wx:key="index">
-  <view class="question-card">
+  <view class="question-card" bindtap="showDetail" data-answerid="{{item.id}}">
     <image class="quote" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/quote.png"></image>
     <image class="corner" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/corner 1.png" id="{{item._id}}"></image>
-    <image class="bin"  bindtap="delete" data-answerid="{{item.id}}" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/bin.png"></image>
+    <image class="bin"  catchtap="delete" data-answerid="{{item.id}}" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/bin.png"></image>
     <view class="title">{{item.title}}</view>
-    <view class="content" bindtap="showDetail" data-answerid="{{item.id}}">
+    <view class="content" >
       {{item.description}}
     </view>
   </view>
