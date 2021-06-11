@@ -15,6 +15,9 @@ Page({
         db.collection('question').count().then(res => {
           console.log(res.total)
           for (var s = 1; s < 21; s++) {
+            if(this.data.items.length==20){
+              break;
+            }
             var seed = Math.floor(Math.random() * res.total)
 
             this.data.items.push({ // 问题
@@ -83,6 +86,43 @@ Page({
       this.getTabBar().setData({
         selected: 2
       })
+    }
+
+    if(app.showPop){
+      console.log("app",app.question_id)
+        wx.cloud.callFunction({
+        name:"getQuestion",
+        data:{
+          question_id: app.question_id
+        },
+        complete: res=>{
+          console.log("res",res)
+          if(this.data.items.length==0){
+            this.data.items.push({ // 问题
+              id: "item" + 1,
+              no: 1,
+              url: this.data.url[Math.floor(Math.random() * 14)],
+              question_id: app.question_id,
+              title: res.result.title,
+              content: res.result.description
+            })
+          }
+          else{
+            this.data.items[0].question_id=app.question_id;
+          this.data.items[0].title=res.result.title,
+          this.data.items[0].content= res.result.description
+          }
+          
+          this.setData({
+            showNow: true,
+            question_id: app.question_id,
+            currentIndex:0,
+            items:this.data.items
+          })
+        }
+      })
+      
+      app.showPop=false;
     }
   },
   onUnload:function(){
@@ -258,9 +298,9 @@ Page({
     console.log(e)
   },
   enter(e) {
-    console.log(e.currentTarget.dataset.no)
+    // console.log(e.currentTarget.dataset.no)
     let that = this
-    console.log(e.currentTarget.dataset.question_id)
+    // console.log(e.currentTarget.dataset.question_id)
     let qid = e.currentTarget.dataset.question_id
 
 
