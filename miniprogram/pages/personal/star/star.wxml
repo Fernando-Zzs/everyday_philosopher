@@ -1,19 +1,45 @@
-<view class="page">  
-  <!--顶部导航栏-->  
-  <view class="swiper-tab">  
-    <view class="tab-item {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav"><text>哲学科普</text></view>
-    <view class="tab-item {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">热搜问答</view>
+<get-more-loading show="{{show}}" wx:if="{{show}}"></get-more-loading>
+
+<view>
+  <view class="tab">
+    <view class="{{tab_index == 0 ? 'tab-active':''}}" data-index="0" catchtap="selectTab">哲学故事</view>
+    <view class="{{tab_index == 1 ? 'tab-active':''}}" data-index="1" catchtap="selectTab">精彩问答</view>
   </view>
-  <image class="bg" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/statisc_bg.jpg" mode="aspectFill"></image>
-  <!--内容主体-->  
-  <swiper class="swiper" current="{{currentTab}}" duration="200" bindchange="swiperChange" >  
-    <swiper-item class="zero">
-      <ec-canvas id="mychart-dom-line" canvas-id="mychart-dom-line" ec="{{ec}}"></ec-canvas>
-      <history-item historyItemsArray="{{datas}}"/>
+  <image class="bg" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/statisc_bg.jpg"
+    mode="aspectFill"></image>
+  <swiper 
+    style="height: {{windowHeight - 30}}px"
+    bindchange="tabChange"
+    current="{{tab_index}}"
+  >
+    <swiper-item>
+      <scroll-view
+        style="height: 100%;"
+        scroll-y
+        bindscroll="scroll"
+        bindscrolltolower="reactBottom"
+        scroll-with-animation
+        scroll-top="{{scrollTop0}}px"
+      >
+        <view wx:if="{{!phi.length}}" class="info">收藏夹还空空如也呢~</view>
+        <history-item historyItemsArray="{{phi}}" class="item"/>
+      </scroll-view>
     </swiper-item>
-    <swiper-item class="one">
-      <ec-canvas id="mychart-dom-line" canvas-id="mychart-dom-line" ec="{{ec}}"></ec-canvas>
-      <question-item answerItemsArray="{{datas2}}"/>
+ 
+    <swiper-item>
+      <scroll-view
+        style="height: 100%;"
+        scroll-y
+        bindscroll="scroll"
+        bindscrolltolower="reactBottom"
+        scroll-with-animation
+        scroll-top="{{scrollTop1}}px"
+      >
+        <view wx:if="{{!que.length}}" class="info">收藏夹还空空如也呢~</view>
+        <question-item answerItemsArray="{{que}}" class="item"/>
+      </scroll-view>
     </swiper-item>
   </swiper>
+  
+  <image class="backTop" catchtap="backTop" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/返回顶部 .png"></image>
 </view>

@@ -1,164 +1,512 @@
-const app = getApp();
-Page({
+// pages/index/index.js
+const app = getApp()
+let value_global = ''
+let that = this
+let this_global = null
+let winWidth = 416;
+let winHeight = 736;
 
-  /**
-   * 页面的初始数据
-   */
+let chance = 1;
+let next = false;
+
+function deepClone(obj) {
+  if (typeof obj !== 'object' || obj === null) {
+    return obj
+  }
+  let newObj = obj instanceof Array ? [] : {}
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      newObj[key] = typeof obj[key] === 'object' ? deepClone(obj[key]) : obj[key]
+    }
+  }
+  return newObj
+}
+Page({
   data: {
     show: true,
-    userInfo:{},
-    hasUserInfo: false,
-    canIUseGetUserProfile: false,
-    avatar: '',
-    nickname: '',
-    newLetterNumber: 0,
-    serviceId: '',
-    param: app.globalData.param
+    x: winWidth,
+    y: winHeight,
+    animationA: {},
+    list: [],
+    arr: [],
+    initLength: '',
+    distance: "",
+    startX: '', // 初始点X位置
+    startY: '', // 初始点Y位置
+    currentIndex: -1, // 当前最上层滑块
+    ratio: 2, // 屏幕比例
+    context: '', // 文本框内容
+    Qid: '', // 问题id
+    like_num: '',
+    collect_num: ''
   },
 
-  //自定义导航上内边距自适应
-  attached: function attached() {
-    var _this = this;
-    var isSupport = !!wx.getMenuButtonBoundingClientRect;
-    var rect = wx.getMenuButtonBoundingClientRect ? wx.getMenuButtonBoundingClientRect() : null;
-    wx.getSystemInfo({
-      success: function success(res) {
-        var ios = !!(res.system.toLowerCase().search('ios') + 1);
-        _this.setData({
-          ios: ios,
-          statusBarHeight: res.statusBarHeight,
-          innerWidth: isSupport ? 'width:' + rect.left + 'px' : '',
-          innerPaddingRight: isSupport ? 'padding-right:' + (res.windowWidth - rect.left) + 'px' : '',
-          leftWidth: isSupport ? 'width:' + (res.windowWidth - rect.left) + 'px' : '',
-          innerPaddingLeft: isSupport ? 'padding-left:' + (res.windowWidth - rect.left) + 'px' : ''
-        });
-      }
-    });
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-    //初始化页面自定义导航栏
-    var _this = this;
-    _this.attached();
-    //获取登录信息
-    if (wx.getUserProfile) {
-      this.setData({
-        canIUseGetUserProfile: true
-      })
-    }
+    this_global = this
+    // 获取传来的question_id
+    this.setData({
+      Qid: options.question_id
+      // Qid: '0'
+    })
+
   },
-  onReady:function(){
-    this.timer = setInterval(()=>{
-      if(this.data.show){
+  onReady: function () {
+    this.timer = setInterval(() => {
+      if (this.data.show) {
         this.setData({
           show: !this.data.show
         })
       }
-    },1000)
+    }, 3000)
   },
-  onUnload:function(){
-    clearInterval(this.timer)
+  onShow: function () {
+    if (app.globalData.TIMESTAMP_ANSWER_START == 0) {
+      app.globalData.TIMESTAMP_ANSWER_START = Date.parse(new Date()) / 1000
+    }
+    chance = 1;
+    let that = this
+    var res = wx.getSystemInfoSync();
+    winWidth = res.windowWidth;
+    winHeight = res.windowHeight;
+    console.log(res)
+    let ratio = res.pixelRatio
+    this.setData({
+      ratio
+    })
+
+
+    // 获取list数组
+    this.getList()
   },
-  getUserProfile(e) {
-    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
-    // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-    wx.getUserProfile({
-      desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-      success: (res) => {
-        var that = this
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-        wx.showToast({
-          title: '登录成功',
-          icon: 'success',
-          duration: 1000
-        })
-        const db = wx.cloud.database()
-        db.collection('user').add({
-          data:{
-            nickname: that.data.userInfo.nickName,
-            avatarUrl: that.data.userInfo.avatarUrl
-          }
-        })
-        wx.cloud.callFunction({
-          name:'getUserInfo',
-          complete:res=>{
-            app.globalData.OPENID = res.result.openid
-          }
-        })
-        app.globalData.NICKNAME = this.data.userInfo.nickName
-        app.globalData.AVATARURL = this.data.userInfo.avatarUrl
+  handleLike: function (e) {
+    // console.log(e.currentTarget.dataset.answerid)
+    let index = e.currentTarget.dataset.index
+    let a = index + this.data.initLength
+    // console.log(index)
+    let like_num = this.data.list[index].like_openid.length
+    console.log(like_num)
+    if (this.data.list[index].liked) {
+      this.setData({
+        ['list[' + index + '].liked']: false,
+        ['list[' + index + '].like_num']: this.data.list[index].like_num - 1,
+        ['list[' + a + '].liked']: false,
+        ['list[' + a + '].like_num']: this.data.list[index].like_num - 1,
+      })
+
+      wx.cloud.callFunction({
+        name: 'deleteLike',
+        data: {
+          _openid: app.globalData.OPENID,
+          type: 'answer',
+          id: e.currentTarget.dataset.answerid
+        }
+      })
+    } else {
+      this.setData({
+        ['list[' + index + '].liked']: true,
+        ['list[' + index + '].like_num']: this.data.list[index].like_num + 1,
+        ['list[' + a + '].liked']: true,
+        ['list[' + a + '].like_num']: this.data.list[index].like_num + 1,
+      })
+
+      wx.cloud.callFunction({
+        name: 'addLike',
+        data: {
+          _openid: app.globalData.OPENID,
+          description: '',
+          id: e.currentTarget.dataset.answerid,
+          timestamp: Date.parse(new Date()) / 1000,
+          title: '',
+          type: 'answer'
+        }
+      })
+    }
+
+    wx.cloud.callFunction({
+      name: 'tapAnswerLike',
+      data: {
+        liked: !this.data.list[index].liked,
+        _openid: app.globalData.OPENID,
+        answer_id: e.currentTarget.dataset.answerid
       }
     })
   },
-  getUserInfo(e) {
-    // 不推荐使用getUserInfo获取用户信息，预计自2021年4月13日起，getUserInfo将不再弹出弹窗，并直接返回匿名的用户个人信息
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-    wx.showToast({
-      title: '以游客方式登录成功',
-      icon: 'success',
-      duration: 1000
+  handleCollect: function (e) {
+    // console.log(e.currentTarget.dataset.answerid)
+    let index = e.currentTarget.dataset.index
+    let a = index + this.data.initLength
+    console.log(index)
+    // let collect_num = this.data.list[index].collect_openid.length
+    // console.log(collect_num)
+    if (this.data.list[index].collected) {
+      this.setData({
+        ['list[' + index + '].collected']: false,
+        ['list[' + index + '].collect_num']: this.data.list[index].collect_num - 1,
+        ['list[' + a + '].collected']: false,
+        ['list[' + a + '].collect_num']: this.data.list[index].collect_num - 1,
+      })
+
+      wx.cloud.callFunction({
+        name: 'deleteCollection',
+        data: {
+          _openid: app.globalData.OPENID,
+          type: 'answer',
+          id: e.currentTarget.dataset.answerid
+        }
+      })
+    } else {
+      this.setData({
+        ['list[' + index + '].collected']: true,
+        ['list[' + index + '].collect_num']: this.data.list[index].collect_num + 1,
+        ['list[' + a + '].collected']: true,
+        ['list[' + a + '].collect_num']: this.data.list[index].collect_num + 1,
+      })
+
+      wx.cloud.callFunction({
+        name: 'addCollection',
+        data: {
+          _openid: app.globalData.OPENID,
+          description: '',
+          id: e.currentTarget.dataset.answerid,
+          timestamp: Date.parse(new Date()) / 1000,
+          title: '',
+          type: 'answer'
+        }
+      })
+    }
+
+    wx.cloud.callFunction({
+      name: 'tapAnswerCollect',
+      data: {
+        collected: !this.data.list[index].collected,
+        _openid: app.globalData.OPENID,
+        answer_id: e.currentTarget.dataset.answerid
+      }
     })
   },
 
-  //切换导航
-  cutTitle:function(e){
-    // console.log(e.currentTarget.dataset.index)
-    let that = this;
-    let index = e.currentTarget.dataset.index;
-    var navigationArr = that.data.navigationArr;
-    //清空全部样式
-    navigationArr.forEach((item)=>{
-      item.isSelected = false;
+  touchStart(e) {
+    // console.log(e.currentTarget.dataset.questionid)
+    this.setData({
+      currentQid: e.currentTarget.dataset.questionid
     })
-    //点击的导航添加上样式
-    navigationArr[index].isSelected = true;
+    let index = e.currentTarget.dataset.index
+    let touches = e.touches
+    let list = this.data.list || []
+    // 多点触摸让图片回到原位
+    if (touches.length > 1) {
+      list[index].x = winWidth
+      list[index].y = 0
+      that.setData({
+        list
+      })
+    } else if (index === (list.length - 1)) {
+      // if (touches.length > 1) {
+      //   list[index].x = winWidth
+      //   list[index].y = 0
+      //   that.setData({
+      //     list
+      //   })
+      // } else 
+      if (index === (list.length - 1)) {
+        let startX = e.touches[0].clientX;
+        let startY = e.touches[0].clientY;
+        this.setData({
+          startX,
+          startY
+        })
+      }
+    }
+  },
+  // 拖动结束
+  touchEnd(e) {
+    let that = this
+    let index = e.currentTarget.dataset.index
+    let list = this.data.list || []
+    // console.log(index)
+    if (index === (list.length - 1)) {
+      let that = this;
+      let startX = this.data.startX;
+      let startY = this.data.startY;
+      let endX = e.changedTouches[0].clientX;
+      let endY = e.changedTouches[0].clientY;
+      var distance = that.data.distance;
+      // 与结束点与图片初始位置距离
+      let disX = Math.abs(distance - winWidth)
+      // 当前操作，初始点与结束点距离
+      let disClientX = Math.abs(endX - startX)
+      let disClientY = Math.abs(endY - startY)
+      // 当滑动大于 滑块宽度的1/3翻页
+      let ratio = this.data.ratio
+      let moveDis = 666 / (ratio * 3);
+      // console.log(disX, moveDis)
+      if (disX > moveDis && disClientX > moveDis) {
+        // console.log(disX, moveDis)disX > moveDis && 
+        if (list.length > 1) {
+
+          if (index % this.data.initLength == 0) {
+            // console.log(this.data.initLength-1)
+            that.setData({
+              like_num: that.data.list[that.data.initLength - 1].like_openid.length,
+              collect_num: that.data.list[that.data.initLength - 1].collect_openid.length
+            })
+          } else {
+            // console.log(index%this.data.initLength - 1)
+            that.setData({
+              like_num: that.data.list[index % this.data.initLength - 1].like_openid.length,
+              collect_num: that.data.list[index % this.data.initLength - 1].collect_openid.length
+            })
+          }
+          list[index].x = (endX - startX) > 0 ? winWidth * 2 : -winWidth
+          // 移除时距离竖向距离
+          // list[index].y = disClientY
+          list[index].y = disClientY
+          if (index - 1 >= 0) {
+            list[index - 1].x -= 7
+            // 移除时距离竖向距离
+            list[index - 1].y += 7
+          }
+          that.setData({
+            list: list,
+            // animationA: null
+            // animationA: null
+          });
+          // 移出动画结束后 从list内移除
+          setTimeout(() => {
+
+            list.splice((list.length - 1), 1);
+
+            this.setData({
+              list
+            })
+            // 列表长度小于4的时候请求服务端
+
+            if (next) {
+              next = false;
+              this.moveList()
+
+            }
+            if (list.length < 4) {
+              that.getList()
+
+            }
+
+          }, 300)
+          that.setData({
+            context: ''
+          })
+        } else {
+          list[index].x = winWidth - 7
+          list[index].y = 0 + 7
+          that.setData({
+            list
+          })
+        }
+      } else {
+        list[index].x = winWidth - 7
+        list[index].y = 0 + 7
+        this.setData({
+          list
+        })
+        // console.log(1)
+      }
+    } else {
+      list[index].x = winWidth
+      list[index].y = 0
+      this.setData({
+        list
+      })
+    }
+
+  },
+  onUnload: function () {
+    clearInterval(this.timer)
+  },
+  touchMove(e) {
+    // 左滑右滑手势可优化
+  },
+  onChange: function (e) {
+    var that = this;
     that.setData({
-      navigationArr:navigationArr
+      distance: e.detail.x
     })
   },
-  onPageScroll: function (e) {
-    // 导航栏透明度
-    let Alpha = e.scrollTop * 1 / 100;
-    // 导航栏背景颜色
-    let navigationBackgroundColor = 'rgba(208, 166, 105,' + Alpha + ')';
+  // 模拟获取列表数据
+
+  getList() {
+    let that = this
+    setTimeout(() => {
+      // setTimeout(() => {
+      wx.cloud.callFunction({
+        name: 'getAnswerByQuestionId',
+        data: {
+          question_id: '0'
+        },
+        complete: res => {
+          this.data.arr = deepClone(res.result)
+          // console.log("arr",this.data.arr)
+          this.setData({
+            arr: this.data.arr,
+            initLength: this.data.arr.length
+          })
+          next = true
+          if (that.data.initLength == 0) {
+            setTimeout(() => {
+              wx.showToast({
+                title: '暂无评论',
+                icon: 'error',
+                duration: 2000
+              })
+              setTimeout(() => {
+                wx.navigateBack({
+                  delta: 1,
+                })
+              }, 2000)
+            }, 3000)
+          } else {
+            // 初次赋值
+            var liketemp = this.data.arr[0].like_openid.length
+            var collecttemp = this.data.arr[0].collect_openid.length
+
+            this.setData({
+              like_num: liketemp,
+              collect_num: collecttemp
+            })
+
+            if (chance == 1) {
+              this.moveList()
+              chance = 0;
+              next = false
+              var index = (this.data.list.length - 1)
+              if (index - 1 >= 0) {
+                this.data.list[index].x -= 7
+                this.data.list[index].y += 7
+              }
+              this.setData({
+                list: this.data.list,
+              })
+            }
+            wx.hideLoading()
+          }
+        }
+      })
+    }, 200)
+
+  },
+  moveList() {
+    let list = this.data.list || [];
+    // console.log(this.data.arr)
+    var count = this.data.initLength - 1
+    for (let i of this.data.arr) {
+      i.x = winWidth
+      i.y = 0
+      wx.cloud.callFunction({
+        name: 'isAnswerLiked',
+        data: {
+          answer_id: i.answer_id,
+          _openid: app.globalData.OPENID
+        },
+        success: function (res2) {
+          if (res2.result) {
+            i.liked = true
+          } else {
+            i.liked = false
+          }
+        }
+      })
+      wx.cloud.callFunction({
+        name: 'isAnswerCollected',
+        data: {
+          answer_id: i.answer_id,
+          _openid: app.globalData.OPENID
+        },
+        success: function (res2) {
+          if (res2.result) {
+            i.collected = true
+          } else {
+            i.collected = false
+          }
+        }
+      })
+      i.like_num = i.like_openid.length
+      i.collect_num = i.collect_openid.length
+      i.index = count--
+
+      list.unshift(i)
+    }
     this.setData({
-      navigationBackgroundColor: navigationBackgroundColor,
+      list
+    })
+    console.log(list)
+  },
+  true: function (e) {
+    let v = e.detail.value;
+    this.setData({
+      context: v
     })
   },
-   /* 进入历史记录列表 */
-  openHistory: function () {
-    wx.navigateTo({
-      url: '../../personal/history/history'
-    })
+  submit: function (e) {
+    let that = this
+    var value = this.data.context;
+    if (value !== '') {
+      let avatarurl_temp = app.globalData.AVATARURL
+      let nickname_temp = app.globalData.NICKNAME
+      // 将答案添加到数据库
+      wx.cloud.callFunction({
+        name: 'addAnswer',
+        data: {
+          content: value,
+          question_id: that.data.currentQid,
+          avatarURL: avatarurl_temp,
+          nickname: nickname_temp,
+          _openid: app.globalData.OPENID
+        },
+        complete: res => {
+          wx.navigateTo({
+            url: "../answer/answer?answer_id=" + res.result
+          })
+        }
+      })
+    } else {
+      wx.showToast({
+        title: '请输入答案',
+        duration: 2000,
+        icon: 'error',
+      })
+    }
   },
 
-  /* 进入收藏夹列表 */
-  openPortfolio: function () {
-    wx.navigateTo({
-      url: '../../personal/star/star'
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+    app.globalData.TIMESTAMP_ANSWER_END = Date.parse(new Date()) / 1000
+    wx.cloud.callFunction({
+      name: 'addTime',
+      data: {
+        _openid: app.globalData.OPENID,
+        type: 'answer',
+        addedTime: app.globalData.TIMESTAMP_ANSWER_END - app.globalData.TIMESTAMP_ANSWER_START
+      }
     })
+    app.globalData.TIMESTAMP_ANSWER_START = 0
+    app.globalData.TIMESTAMP_ANSWER_END = 0
   },
+  handleHistory(e) {
+    let index = e.currentTarget.dataset.index
+    let answer = this_global.data.list[this_global.data.list.length - 1]
+    console.log(answer);
 
-  /* 进入分析列表 */
-  openAnalysis: function () {
-    wx.navigateTo({
-      url: '../../personal/analyse/analyse'
-    })
-  },
-
-  /* 进入统计列表 */
-  openStatistics: function () {
-    wx.navigateTo({
-      url: '../../personal/statistics/statistics'
+    wx.cloud.callFunction({
+      name: 'addHistory',
+      data: {
+        _openid: app.globalData.OPENID,
+        description: '',
+        id: answer.answer_id,
+        timestamp: Date.parse(new Date()) / 1000,
+        title: answer.content,
+        type: 'answer'
+      }
     })
   }
 })

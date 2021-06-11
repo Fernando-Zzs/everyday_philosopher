@@ -1,7 +1,8 @@
 {
   "usingComponents": {
+    "l-textarea":"../../../miniprogram_npm/lin-ui/textarea/index",
+    "l-button":"../../../miniprogram_npm/lin-ui/button/index",
     "get-more-loading":"../../../components/get-more-loading/get-more-loading"
   },
-  "navigationStyle": "custom",
-  "navigationBarTextStyle": "white"
+  "navigationBarTitleText":"查看回答"
 }

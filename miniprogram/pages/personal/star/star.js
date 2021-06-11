@@ -1,146 +1,107 @@
-import * as echarts from '../../../ec-canvas/echarts';
-
-const app = getApp();
-
-function initChart(canvas, width, height) {
-  const chart = echarts.init(canvas, null, {
-    width: width,
-    height: height
-  });
-  canvas.setChart(chart);
-  var option = {
-    xAxis: {
-      type: 'category',
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    },
-    yAxis: {
-      type: 'value'
-    },
-    series: [{
-      data: [120, 200, 150, 80, 70, 110, 130],
-      type: 'bar',
-      showBackground: true,
-      backgroundStyle: {
-        color: 'rgba(180, 180, 180, 0.2)'
-      }
-    }]
-  };
-  chart.setOption(option);
-  return chart;
-}
-
+// pages/swiper2/swiper2.js
+const app = getApp()
 Page({
+ 
+  /**
+   * 页面的初始数据
+   */
   data: {
-    // tab切换    
-    currentTab: 0,
-    ec: {
-      onInit: initChart
-    },
-    datas: [], // 第一模块收藏数据
-    datas2: [], // 第二模块收藏数据
-    backgroundImage: ''
+    show: true,
+    tab_index: 0,
+    phi:[],
+    que:[],
   },
+ 
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.systemType()
+    wx.cloud.callFunction({
+      name: 'getCollection',
+      data: {
+        _openid: app.globalData.OPENID,
+        type: "story"
+      },
+      complete: res => {
+        var ret = res.result
+        this.setData({
+          phi: ret
+        })
+      }
+    })
 
-  onPullDownRefresh: function () {},
-
-  swichNav: function (e) {
-    var that = this;
-    if (this.data.currentTab === e.target.dataset.current) {
-      return false;
-    } else {
-      that.setData({
-        currentTab: e.target.dataset.current,
-      })
-    }
-  },
-  swiperChange: function (e) {
-    this.setData({
-      currentTab: e.detail.current,
+    wx.cloud.callFunction({
+      name: 'getCollection',
+      data: {
+        _openid: app.globalData.OPENID,
+        type: "answer"
+      },
+      complete: res => {
+        var ret = res.result
+        this.setData({
+          que: ret
+        })
+      }
     })
   },
-  onLoad: function (options) {
-    let that = this
+  
+  onReady:function(){
+    this.timer = setInterval(() => {
+      if (this.data.show) {
+        this.setData({
+          show: !this.data.show
+        })
+      }
+    }, 1000)
+  },
 
-    // wx.cloud.downloadFile({
-    //   fileID: 'cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星空11.jpg',
-    //   maxAge: 120*60*1000,
-    //   success:res=>{
-    //     that.setData({
-    //       backgroundImage: res.tempFilePath
-    //     })
-    //   }
-    // })
+  scroll (event) {
+    console.log(event)
+  },
+ 
+  reactBottom () {
+    console.log('触底-加载更多')
+  },
+ 
+  // 获取设备屏幕高度
+  systemType () {
+    wx.getSystemInfo({
+      success: (res) => {
+        let windowHeight = res.windowHeight
+ 
+        this.setData({
+          windowHeight: windowHeight
+        })
+ 
+        console.log(res)
+      }
+    })
+  },
+ 
+  tabChange (event) {
+    this.setData({
+      tab_index: event.detail.current
+    })
+  },
+ 
+  // tab栏选择
+  selectTab (event) {
+    this.setData({
+      tab_index: event.currentTarget.dataset.index
+    })
+  },
+ 
+  // 返回顶部
+  backTop () {
+    let tab_index = this.data.tab_index
+ 
+    this.setData({
+      ['scrollTop' + tab_index]: 0
+    })
+  },
 
-    const db = wx.cloud.database()
-    db.collection('collection').where({
-        _openid: app.globalData.OPENID,
-        type: 'story'
-      })
-      .get({
-        success: function (res) {
-          that.setData({
-            datas: res.data
-          })
-          console.log();
-        },
-        fail: (err) => {
-          console.log(err);
-        }
-      })
-    let that2 = this
-    // const db2 = wx.cloud.database()
-    // db2.collection('collection').where({
-    //     openid: app.globalData.OPENID,
-    //     type: 'answer'
-    //   })
-    //   .get({
-    //     success: function (res) {
-    //       that2.setData({
-    //         datas2: res.data
-    //       })
-    //     },
-    //     fail: (err) => {
-    //       console.log(err);
-    //     }
-    //   })
-      this.setData({datas2:[{title:"当然是柏拉图"}]})
-    // wx.cloud.callFunction({
-    //   name: 'getCollectedAnswers',
-    //   data: {
-    //     _openid: app.globalData.OPENID
-    //   },
-    //   success: function (res) {
-    //     that.setData({
-    //       datas2: res.result
-    //     })
-    //     console.log(res.result);
-    //   }
-    // })
-  },
-  onReady: function () {
-    // 生命周期函数--监听页面初次渲染完成  
-  },
-  onShow: function () {
-    // 生命周期函数--监听页面显示  
-  },
-  onHide: function () {
-    // 生命周期函数--监听页面隐藏  
-  },
   onUnload: function () {
-    // 生命周期函数--监听页面卸载  
-  },
-  onPullDownRefresh: function () {
-    // 页面相关事件处理函数--监听用户下拉动作  
-  },
-  onReachBottom: function () {
-    // 页面上拉触底事件的处理函数  
-  },
-  onShareAppMessage: function () {
-    // 用户点击右上角分享  
-    return {
-      title: 'title', // 分享标题  
-      desc: 'desc', // 分享描述  
-      path: 'path' // 分享路径  
-    }
+    clearInterval(this.timer)
   }
 })

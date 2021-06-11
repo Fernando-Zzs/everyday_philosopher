@@ -45,32 +45,39 @@ Page({
   submit: function () {
     let that = this
     // console.log(this.data.content)
-    wx.cloud.callFunction({
-      name: 'addComment',
-      data: {
-        story_id: that.data.story_id,
-        content: that.data.content,
-        avatarURL: that.data.user_avatar,
-        nickname: that.data.user_nickname,
-        timestamp: Date.parse(new Date()) / 1000,
-        _openid: app.globalData.OPENID
-      },
-      complete: res => {
-        // wx.navigateTo({
-        //   url: '../../find/comment-detail/comment-detail?story_id=' + that.data.story_id + '&comment_id=' + res.result,
-        // })
-        wx.showToast({
-          title:'提交成功',
-          icon: 'success',
-          duration: 2000
-        })
-        setTimeout(()=>{
-          wx.navigateBack({
-            delta: 2,
+    if(this.data.content!=""){
+      wx.cloud.callFunction({
+        name: 'addComment',
+        data: {
+          story_id: that.data.story_id,
+          content: that.data.content,
+          avatarURL: that.data.user_avatar,
+          nickname: that.data.user_nickname,
+          timestamp: Date.parse(new Date()) / 1000,
+          _openid: app.globalData.OPENID
+        },
+        complete: res => {
+          // wx.navigateTo({
+          //   url: '../../find/comment-detail/comment-detail?story_id=' + that.data.story_id + '&comment_id=' + res.result,
+          // })
+          wx.showToast({
+            title:'提交成功',
+            icon: 'success',
+            duration: 2000
           })
-        },2000)
-      }
-    })
+          setTimeout(()=>{
+            wx.navigateBack({
+              delta: 2,
+            })
+          },2000)
+        }
+      })
+    }else{
+      wx.showToast({
+        title: '内容不能为空',
+        icon: 'error'
+      })
+    }
   },
 
   inputChange(e) {

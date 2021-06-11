@@ -1,65 +1,57 @@
-<view class="body">
-  <get-more-loading show="{{show}}" wx:if="{{show}}"></get-more-loading>
-  <view class="header">
-    <!-- 官方自定义导航栏抽取出来的模块 -->
-    <view class="navigation">
-      <view class="weui-navigation-bar {{extClass}}">
-        <view class="weui-navigation-bar__placeholder {{ios ? 'ios' : 'android'}}"
-          style="padding-top: {{statusBarHeight}}px;visibility: hidden;"></view>
-        <view class="weui-navigation-bar__inner {{ios ? 'ios' : 'android'}}"
-          style="padding-top: {{statusBarHeight}}px; color: {{color}};background: {{background}};{{displayStyle}};{{innerPaddingRight}};{{innerWidth}};background-color: {{navigationBackgroundColor}}">
-          <view class='weui-navigation-bar__center' style="{{innerPaddingLeft}}">
-            <view class="navigation-title">
-              <text>每日哲学家</text>
+<!--pages/index/index.wxml-->
+<get-more-loading show="{{show}}" wx:if="{{show}}"></get-more-loading>
+<view class='page-box box'>
+  <image class="bgi" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/2bg.png"></image>
+  <view class="m-box">
+    <movable-area class="m-area">
+      <movable-view class='m-item' wx:for="{{list}}" wx:key="index" wx:index="index" x="{{item.x+index*0}}"
+        y="{{item.y+index*0}}" damping="52" direction="all" bindchange="onChange" data-index="{{index}}"
+        data-questionid="{{item.question_id}}" bindtouchend="touchEnd" bindtouchstart="touchStart"
+        bindtouchmove="touchMove" out-of-bounds="true" data-index="{{index}}">
+
+        <view class='m-item-box item{{(index == 0 || index == list.length -1) ? 0 : 1}} ' bindtouchstart="handleHistory"
+          data-index="{{index}}">
+          <image class="bg" mode="aspectFill"
+            src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/answer_card.png">
+          </image>
+          <view class="header">
+            <image src="{{item.avatarURL}}" mode="aspectFit" class="head-image"></image>
+
+            <view class='nickname'>
+              {{item.nickname || '匿名用户'}}
+
             </view>
           </view>
-        </view>
-      </view>
-    </view>
-  </view>
-  <view class="main">
-    <view class="slideshow">
-      <image mode="aspectFill"
-        src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/星空1.jpg' class="bg">
-        <view class='user-info'>
-          <image class='user-image' src='{{userInfo.avatarUrl}}'></image>
-          <view class='user-name' wx:if="{{userInfo.nickName}}">{{userInfo.nickName}}</view>
-          <view class='user-name' wx:else>
-            <block wx:if="{{!hasUserInfo}}">
-              <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile" hover-class="none"> 登录 </button>
-              <button wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登录 </button>
-            </block>
+          <view class="answer a">
+            <scroll-view
+              style="height: 100%;"
+              scroll-y
+            >
+              {{item.content || '--'}}
+            </scroll-view>
+          </view>
+          <view class="like" bindtap="handleLike" data-answerid="{{item.answer_id}}" data-index="{{item.index}}">
+            <image wx:if="{{!item.liked}}"
+              src="../../../images/故事页面未点赞.png">
+            </image>
+            <image wx:else src="../../../images/故事页面已点赞.png">
+            </image>
+            <view class="num">{{item.like_num}}</view>
+          </view>
+          <view class="star" bindtap="handleCollect" data-answerid="{{item.answer_id}}" data-index="{{item.index}}">
+            <image wx:if="{{!item.collected}}"
+              src="../../../images/故事页面未收藏.png">
+            </image>
+            <image wx:else src="../../../images/故事页面已收藏.png">
+            </image>
+            <view class="num">{{item.collect_num}}</view>
           </view>
         </view>
-        <view class="menu">
-          <view class='content-container'>
-            <view class='content-item' bindtap='openHistory'>
-              <image src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/history.png'
-                class='item-image'></image>
-              <view class='word'>历史记录</view>
-            </view>
 
-            <view class='content-item' bindtap="openPortfolio">
-              <image src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/star.png'
-                class='item-image'></image>
-              <view class='word'>收藏夹</view>
-            </view>
-
-            <view class='content-item' bindtap="openAnalysis">
-              <image src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/analysis.png'
-                class='item-image'></image>
-              <view class='word'>我的分析</view>
-            </view>
-
-            <view class='content-item' bindtap="openStatistics">
-              <image src='cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/statistics.png'
-                class='item-image'></image>
-              <view class='word'>我的统计</view>
-            </view>
-
-          </view>
-        </view>
-      </image>
-    </view>
+      </movable-view>
+    </movable-area>
+    <!-- <l-button type="default" plain="true" size="long" shape="circle" bindtap="submit">提交</l-button> -->
+    <!-- <view class="button">点赞</view>
+    <view class="button">收藏</view> -->
   </view>
 </view>

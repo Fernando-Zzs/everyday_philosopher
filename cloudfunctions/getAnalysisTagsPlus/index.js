@@ -281,21 +281,70 @@ exports.main = async (event, context) => {
   // }
   // timestamp_start = timestamp_end - 86400 * 7
 
-  let story_arr = await db.collection('story').get()
-  story_arr = story_arr.data
-
-  let question_arr = await db.collection('question').get()
-  question_arr = question_arr.data
-
-  let answer_arr = await db.collection('answer').get()
-  answer_arr = answer_arr.data
-
-  let history_arr = await db.collection('history').where({
+  async function getCount_sqa(table) { //获取数据的总数，这里记得设置集合的权限
+    let count = await db.collection(table).where({}).count();
+    return count;
+  }
+  async function getList_sqa(skip, table) { //分段获取数据
+    let list = await db.collection(table).skip(skip).get();
+    return list.data;
+  }
+  async function getCount_hclc(table) { //获取数据的总数，这里记得设置集合的权限
+    let count = await db.collection(table).where({
       _openid: event._openid
-      // timestamp: _.lte(timestamp_end).and(_.gte(timestamp_start))
-    })
-    .get()
-  history_arr = history_arr.data // 得到相应时间戳内的history数据
+    }).count();
+    return count;
+  }
+  async function getList_hclc(skip, table) { //分段获取数据
+    let list = await db.collection(table).where({
+      _openid: event._openid
+    }).skip(skip).get();
+    return list.data;
+  }
+
+  // let story_arr = await db.collection('story').get()
+  // story_arr = story_arr.data
+
+  let count = await getCount_sqa('story');
+  count = count.total;
+  let story_arr = []
+  for (let i = 0; i < count; i += 100) { //自己设置每次获取数据的量
+    story_arr = story_arr.concat(await getList_sqa(i, 'story'));
+  }
+
+  // let question_arr = await db.collection('question').get()
+  // question_arr = question_arr.data
+
+
+  count = await getCount_sqa('question');
+  count = count.total;
+  let question_arr = []
+  for (let i = 0; i < count; i += 100) { //自己设置每次获取数据的量
+    question_arr = question_arr.concat(await getList_sqa(i, 'question'));
+  }
+
+  // let answer_arr = await db.collection('answer').get()
+  // answer_arr = answer_arr.data
+
+  count = await getCount_sqa('answer');
+  count = count.total;
+  let answer_arr = []
+  for (let i = 0; i < count; i += 100) { //自己设置每次获取数据的量
+    answer_arr = answer_arr.concat(await getList_sqa(i, 'answer'));
+  }
+
+  // let history_arr = await db.collection('history').where({
+  //     _openid: event._openid
+  //   })
+  //   .get()
+  // history_arr = history_arr.data // 得到相应时间戳内的history数据
+
+  count = await getCount_hclc('history');
+  count = count.total;
+  let history_arr = []
+  for (let i = 0; i < count; i += 100) { //自己设置每次获取数据的量
+    history_arr = history_arr.concat(await getList_hclc(i, 'history'));
+  }
 
   let history_story_id_arr = []
   for (let i = 0, len = history_arr.length; i < len; i++) {
@@ -321,26 +370,44 @@ exports.main = async (event, context) => {
   }
   // 已经得到tags_and_count_history_arr
 
-  let collection_arr = await db.collection('collection').where({
-      _openid: event._openid,
-      // timestamp: _.lte(timestamp_end).and(_.gte(timestamp_start))
-    })
-    .get()
-  collection_arr = collection_arr.data // 得到相应时间戳内的collection数据
+  // let collection_arr = await db.collection('collection').where({
+  //     _openid: event._openid,
+  //   })
+  //   .get()
+  // collection_arr = collection_arr.data // 得到相应时间戳内的collection数据
 
-  let like_arr = await db.collection('like').where({
-      _openid: event._openid,
-      // timestamp: _.lte(timestamp_end).and(_.gte(timestamp_start))
-    })
-    .get()
-  like_arr = like_arr.data
+  count = await getCount_hclc('collection');
+  count = count.total;
+  let collection_arr = []
+  for (let i = 0; i < count; i += 100) { //自己设置每次获取数据的量
+    collection_arr = collection_arr.concat(await getList_hclc(i, 'collection'));
+  }
 
-  let comment_arr = await db.collection('comment').where({
-      _openid: event._openid,
-      // timestamp: _.lte(timestamp_end).and(_.gte(timestamp_start))
-    })
-    .get()
-  comment_arr = comment_arr.data
+  // let like_arr = await db.collection('like').where({
+  //     _openid: event._openid,
+  //   })
+  //   .get()
+  // like_arr = like_arr.data
+
+  count = await getCount_hclc('like');
+  count = count.total;
+  let like_arr = []
+  for (let i = 0; i < count; i += 100) { //自己设置每次获取数据的量
+    like_arr = like_arr.concat(await getList_hclc(i, 'like'));
+  }
+
+  // let comment_arr = await db.collection('comment').where({
+  //     _openid: event._openid,
+  //   })
+  //   .get()
+  // comment_arr = comment_arr.data
+
+  count = await getCount_hclc('comment');
+  count = count.total;
+  let comment_arr = []
+  for (let i = 0; i < count; i += 100) { //自己设置每次获取数据的量
+    comment_arr = comment_arr.concat(await getList_hclc(i, 'comment'));
+  }
 
   let tag_mapping_obj = await db.collection('tag_mapping').get()
   tag_mapping_obj = tag_mapping_obj.data[0]

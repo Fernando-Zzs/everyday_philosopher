@@ -7,24 +7,29 @@ cloud.init({
 const db = cloud.database()
 exports.main = async (event, context) => {
   async function getCount() { //获取数据的总数，这里记得设置集合的权限
-    let count = await db.collection('answer').where({
-      question_id: event.question_id
+    let count = await db.collection('collection').where({
+      _openid: event._openid,
+      type: event.type
     }).count();
     return count;
   }
   async function getList(skip) { //分段获取数据
-    let list = await db.collection('answer').where({
-      question_id: event.question_id
-    }).skip(skip).get();
+    let list = await db.collection('collection').where({
+      _openid: event._openid,
+      type: event.type
+    }).skip(skip).orderBy('timestamp', 'desc').get();
     return list.data;
   }
 
 
-  // let ret = await db.collection('answer').where({
-  //     question_id: event.question_id
+  // let ret = await db.collection('collect').where({
+  //     _openid: event._openid,
+  //     type: event.type
   //   })
+  //   .orderBy('timestamp', 'desc')
   //   .get()
   // return ret.data
+
   let count = await getCount();
   count = count.total;
   let ret = []
@@ -32,5 +37,7 @@ exports.main = async (event, context) => {
     ret = ret.concat(await getList(i));
   }
   return ret;
-
 }
+
+// input: _openid type
+// output: collection的数组

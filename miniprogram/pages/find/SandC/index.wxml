@@ -1,6 +1,7 @@
 <!--pages/index/index.wxml-->
 <get-more-loading show="{{show}}" wx:if="{{show}}"></get-more-loading>
 <view class='page-box box'>
+  <image class="bgi" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/2bg.png"></image>
   <view class="m-box">
     <movable-area class="m-area">
       <movable-view class='m-item' wx:for="{{list}}" wx:key="index" wx:index="index" x="{{item.x+index*0}}"
@@ -22,15 +23,21 @@
             </view>
           </view>
           <view class="comment a">
-            {{item.content || '--'}}
+            <scroll-view
+              style="height:100%;"
+              scroll-y
+            >
+              {{item.content || '--'}}
+            </scroll-view>
           </view>
           <view class="like" bindtap="handleLike" data-commentid="{{item.comment_id}}" data-index="{{item.index}}">
-            <image wx:if="{{!item.liked}}"
-              src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/故事页面未点赞.png">
+            <image wx:if="{{!liked}}"
+              src="../../../images/故事页面未点赞.png">
             </image>
-            <image wx:else src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/故事页面已点赞.png">
+            <image wx:else
+              src="../../../images/故事页面已点赞.png">
             </image>
-            <view class="num">点赞：{{like_num}}</view>
+            <view class="num">{{item.like_num}}</view>
           </view>
         </view>
 

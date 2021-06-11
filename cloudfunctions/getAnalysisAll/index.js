@@ -11,6 +11,19 @@ cloud.init()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
+  async function getCount(table) { //获取数据的总数，这里记得设置集合的权限
+    let count = await db.collection(table).where({
+      _openid: event._openid
+    }).count();
+    return count;
+  }
+  async function getList(table, skip) { //分段获取数据
+    let list = await db.collection(table).where({
+      _openid: event._openid
+    }).skip(skip).get();
+    return list.data;
+  }
+
   let timestamp_end = Date.parse(new Date()) / 1000
   let day = new Date().getDay()
 
@@ -34,11 +47,18 @@ exports.main = async (event, context) => {
   let res_comment_like = 0
   let res_comment_collect = 0
 
-  let user_history_arr = await db.collection('history').where({
-      _openid: event._openid
-    })
-    .get()
-  user_history_arr = user_history_arr.data
+  // let user_history_arr = await db.collection('history').where({
+  //     _openid: event._openid
+  //   })
+  //   .get()
+  // user_history_arr = user_history_arr.data
+
+  let count = await getCount('history');
+  count = count.total;
+  let user_history_arr = []
+  for (let i = 0; i < count; i += 100) { //自己设置每次获取数据的量
+    user_history_arr = user_history_arr.concat(await getList('history', i));
+  }
 
   let user_history_story_arr = []
   let user_history_question_arr = []
@@ -88,17 +108,31 @@ exports.main = async (event, context) => {
 
   // read 统计完成，开始like和collect统计
 
-  let user_like_arr = await db.collection('like').where({
-      _openid: event._openid,
-    })
-    .get()
-  user_like_arr = user_like_arr.data
+  // let user_like_arr = await db.collection('like').where({
+  //     _openid: event._openid,
+  //   })
+  //   .get()
+  // user_like_arr = user_like_arr.data
 
-  let user_collect_arr = await db.collection('collection').where({
-      _openid: event._openid,
-    })
-    .get()
-  user_collect_arr = user_collect_arr.data
+  count = await getCount('like');
+  count = count.total;
+  let user_like_arr = []
+  for (let i = 0; i < count; i += 100) { //自己设置每次获取数据的量
+    user_like_arr = user_like_arr.concat(await getList('like', i));
+  }
+
+  // let user_collect_arr = await db.collection('collection').where({
+  //     _openid: event._openid,
+  //   })
+  //   .get()
+  // user_collect_arr = user_collect_arr.data
+
+  count = await getCount('collection');
+  count = count.total;
+  let user_collect_arr = []
+  for (let i = 0; i < count; i += 100) { //自己设置每次获取数据的量
+    user_collect_arr = user_collect_arr.concat(await getList('collection', i));
+  }
 
   let res_story_like_arr = []
   let res_story_collect_arr = []
@@ -203,6 +237,7 @@ exports.main = async (event, context) => {
   }
 
   return res_all_info
+
 }
 
 // 分析（次数）

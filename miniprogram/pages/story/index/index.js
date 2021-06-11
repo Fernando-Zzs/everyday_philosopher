@@ -179,13 +179,15 @@ Page({
     },
     share_story(e) {
         wx.cloud.downloadFile({
-                      fileID:this.data.posterURL,
-                      maxAge: 120*60*1000,
-                      success:res=>{
-                        console.log(res.tempFilePath)
-                        wx.showShareImageMenu({path:res.tempFilePath})
-                      }
-         })
+            fileID: this.data.posterURL,
+            maxAge: 120 * 60 * 1000,
+            success: res => {
+                console.log(res.tempFilePath)
+                wx.showShareImageMenu({
+                    path: res.tempFilePath
+                })
+            }
+        })
     },
     comment_story(e) {
         //跳转至评论
@@ -351,6 +353,7 @@ Page({
         clearInterval(this.timer)
     },
     onHide: function () {
+        console.log('进入onhide');
         timestamp_end = Date.parse(new Date()) / 1000
         console.log(timestamp_start, timestamp_end);
         wx.cloud.callFunction({
@@ -387,7 +390,7 @@ Page({
                 name: 'addLike',
                 data: {
                     _openid: app.globalData.OPENID,
-                    description: that.data.story_description,
+                    description: '',
                     id: that.data.story_id,
                     timestamp: Date.parse(new Date()) / 1000,
                     title: that.data.title,

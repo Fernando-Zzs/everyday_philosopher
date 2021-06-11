@@ -18,6 +18,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if(app.globalData.OPENID==""){
+      wx.showModal({
+        title: '提示',
+        content: '先登录才能评论哦',
+        success(res){
+          if(res.confirm){
+            wx.switchTab({
+              url: '../../personal/index/index',
+            })
+          }else if(res.cancel){
+            wx.navigateBack({
+              delta: 1,
+            })
+          } 
+        }
+      })
+    }
     let that = this
     console.log(options.question_id)
     this.setData({
@@ -44,24 +61,28 @@ Page({
 
   submit: function () {
     let that = this
-
-    // console.log(this.data.content)
-    wx.cloud.callFunction({
-      name: 'addAnswer',
-      data: {
-        question_id: that.data.question_id,
-        content: that.data.content,
-        avatarURL: that.data.user_avatar,
-        nickname: that.data.user_nickname
-      },
-      complete: res => {
-        wx.navigateTo({
-          url: '../../find/answer-detail/answer-detail?question_id=' + that.data.question_id + '&answer_id=' + res.result,
-        })
-      }
-    })
-
-
+    if (that.data.content != "") {
+      // console.log(this.data.content)
+      wx.cloud.callFunction({
+        name: 'addAnswer',
+        data: {
+          question_id: that.data.question_id,
+          content: that.data.content,
+          avatarURL: that.data.user_avatar,
+          nickname: that.data.user_nickname
+        },
+        complete: res => {
+          wx.navigateTo({
+            url: '../../find/answer-detail/answer-detail?question_id=' + that.data.question_id + '&answer_id=' + res.result,
+          })
+        }
+      })
+    }else{
+      wx.showToast({
+        title: '内容不能为空',
+        icon: 'error'
+      })
+    }
   },
 
   inputChange(e) {
