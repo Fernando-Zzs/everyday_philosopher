@@ -74,7 +74,7 @@ Component({
       })
     },
     showDetail:function(event){
-      // console.log(event.currentTarget.dataset.storyid)
+      console.log(event.currentTarget.dataset.storyid)
       let that = this;
       wx.cloud.callFunction({
         name:"getStory",

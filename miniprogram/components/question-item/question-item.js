@@ -73,8 +73,7 @@ Component({
     },
 
     showDetail:function(event){
-      // console.log(event.currentTarget.dataset.questionid)
-      console.log(event);
+      console.log(event.currentTarget.dataset.answerid)
       wx.cloud.callFunction({
         name:"getAnswer",
         data:{

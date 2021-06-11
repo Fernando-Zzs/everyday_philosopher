@@ -65,21 +65,21 @@
     <view class="button-c">
       <view class="sc">
         <image wx:if="{{!liked}}" class="zan smallBtn"
-          src="../../../images/故事页面未点赞.png"
+          src="../../../images/wdz.png"
           bindtap="handleLike">
 
         </image>
-        <image wx:if="{{liked}}" class="zan smallBtn" src="../../../images/故事页面已点赞.png" bindtap="handleLike">
+        <image wx:if="{{liked}}" class="zan smallBtn" src="../../../images/ydz.png" bindtap="handleLike">
 
         </image>
         <view class="button_tag">点赞</view>
       </view>
       <view class="sc">
         <image wx:if="{{!collected}}" class="shoucang smallBtn"
-          src="../../../images/故事页面未收藏.png"
+          src="../../../images/wsc.png"
           bindtap="handleCollect">
         </image>
-        <image wx:if="{{collected}}" class="shoucang smallBtn" src="../../../images/故事页面已收藏.png"
+        <image wx:if="{{collected}}" class="shoucang smallBtn" src="../../../images/ysc.png"
           bindtap="handleCollect">
         </image>
         <view class="button_tag">收藏</view>

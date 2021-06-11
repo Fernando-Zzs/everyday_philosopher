@@ -32,10 +32,10 @@
           </view>
           <view class="like" bindtap="handleLike" data-commentid="{{item.comment_id}}" data-index="{{item.index}}">
             <image wx:if="{{!liked}}"
-              src="../../../images/故事页面未点赞.png">
+              src="../../../images/wdz.png">
             </image>
             <image wx:else
-              src="../../../images/故事页面已点赞.png">
+              src="../../../images/ydz.png">
             </image>
             <view class="num">{{item.like_num}}</view>
           </view>

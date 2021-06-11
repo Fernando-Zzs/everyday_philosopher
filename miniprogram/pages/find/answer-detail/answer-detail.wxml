@@ -1,5 +1,7 @@
+<!--pages/index/index.wxml-->
 <get-more-loading show="{{show}}" wx:if="{{show}}"></get-more-loading>
 <view class='page-box box'>
+  <image class="bgi" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/2bg.png"></image>
   <view class="m-box">
     <movable-area class="m-area">
       <movable-view class='m-item' wx:for="{{list}}" wx:key="index" wx:index="index" x="{{item.x+index*0}}"
@@ -7,8 +9,11 @@
         data-questionid="{{item.question_id}}" bindtouchend="touchEnd" bindtouchstart="touchStart"
         bindtouchmove="touchMove" out-of-bounds="true" data-index="{{index}}">
 
-        <view class='m-item-box item{{(index == 0 || index == list.length -1) ? 0 : 1}} '>
-          <image class="bg" mode="aspectFill" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/answer_card.png"></image>
+        <view class='m-item-box item{{(index == 0 || index == list.length -1) ? 0 : 1}} ' bindtouchstart="handleHistory"
+          data-index="{{index}}">
+          <image class="bg" mode="aspectFill"
+            src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/answer_card.png">
+          </image>
           <view class="header">
             <image src="{{item.avatarURL}}" mode="aspectFit" class="head-image"></image>
 
@@ -18,21 +23,26 @@
             </view>
           </view>
           <view class="answer a">
-            {{item.content || '--'}}
+            <scroll-view
+              style="height: 100%;"
+              scroll-y
+            >
+              {{item.content || '--'}}
+            </scroll-view>
           </view>
           <view class="like" bindtap="handleLike" data-answerid="{{item.answer_id}}" data-index="{{item.index}}">
             <image wx:if="{{!item.liked}}"
-              src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/故事页面未点赞.png">
+              src="../../../images/wdz.png">
             </image>
-            <image wx:else
-              src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/故事页面已点赞.png"></image>
+            <image wx:else src="../../../images/ydz.png">
+            </image>
             <view class="num">{{item.like_num}}</view>
           </view>
           <view class="star" bindtap="handleCollect" data-answerid="{{item.answer_id}}" data-index="{{item.index}}">
             <image wx:if="{{!item.collected}}"
-              src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/故事页面未收藏.png">
+              src="../../../images/wsc.png">
             </image>
-            <image wx:else src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/故事页面已收藏.png">
+            <image wx:else src="../../../images/ysc.png">
             </image>
             <view class="num">{{item.collect_num}}</view>
           </view>
@@ -40,5 +50,8 @@
 
       </movable-view>
     </movable-area>
+    <!-- <l-button type="default" plain="true" size="long" shape="circle" bindtap="submit">提交</l-button> -->
+    <!-- <view class="button">点赞</view>
+    <view class="button">收藏</view> -->
   </view>
 </view>
