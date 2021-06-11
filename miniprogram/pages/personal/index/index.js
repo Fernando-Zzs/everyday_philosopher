@@ -49,6 +49,17 @@ Page({
         canIUseGetUserProfile: true
       })
     }
+    wx.cloud.callFunction({
+      name: 'recommendStory',
+      data: {
+          _openid:app.globalData.OPENID,
+          num:2
+      },
+      complete: res => {
+          console.log("recomands1",res)
+          app.recommand_story=res.result
+      }
+    })
   },
   onReady: function () {
     this.timer = setInterval(() => {
@@ -107,6 +118,17 @@ Page({
         }
       })
     }
+    wx.cloud.callFunction({
+      name: 'recommendStory',
+      data: {
+          _openid:app.globalData.OPENID,
+          num:2
+      },
+      complete: res => {
+          console.log("recomands2",res)
+          app.recommand_story=res.result
+      }
+    })
   },
   getUserInfo(e) {
     // 不推荐使用getUserInfo获取用户信息，预计自2021年4月13日起，getUserInfo将不再弹出弹窗，并直接返回匿名的用户个人信息

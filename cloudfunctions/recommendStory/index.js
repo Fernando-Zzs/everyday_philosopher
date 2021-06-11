@@ -223,6 +223,7 @@ exports.main = async (event, context) => {
     ret_story_id_arr.push(recommend_stories_arr[i].story_id)
   }
   return ret_story_id_arr
+  // return ["5",""]
 }
 
 // input: _openid num(推荐故事数目)

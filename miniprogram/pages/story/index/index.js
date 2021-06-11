@@ -34,8 +34,8 @@ Page({
     },
     onLoad(options) {
         //每日推荐
-        // 获取故事id对应海报
-        let that = this
+       this.setData({story_id:app.recommand_story[0]})
+                 // 获取故事id对应海报
         wx.cloud.callFunction({
             name: 'getStory',
             data: {
@@ -46,7 +46,7 @@ Page({
                     fileID: res.result.poster[1],
                     maxAge: 120 * 60 * 1000,
                     success: res => {
-                        that.setData({
+                        this.setData({
                             posterTEMP: res.tempFilePath
                         })
                     }
@@ -60,13 +60,13 @@ Page({
         wx.cloud.callFunction({
             name: 'isStoryLiked',
             data: {
-                story_id: that.data.story_id,
+                story_id: this.data.story_id,
                 _openid: app.globalData.OPENID
             },
             success: function (res) {
                 console.log('liked: ' + res.result)
                 if (res.result) {
-                    that.setData({
+                    this.setData({
                         liked: true
                     })
                 }
@@ -78,12 +78,12 @@ Page({
         wx.cloud.callFunction({
             name: 'isStoryCollected',
             data: {
-                story_id: that.data.story_id,
+                story_id: this.data.story_id,
                 _openid: app.globalData.OPENID
             },
             success: function (res) {
                 if (res.result) {
-                    that.setData({
+                    this.setData({
                         collected: true
                     })
                 }
@@ -91,7 +91,9 @@ Page({
             fail: function (res) {
                 console.log(res)
             }
+       
         })
+       
     },
     onShow() {
         timestamp_start = Date.parse(new Date()) / 1000
@@ -368,9 +370,8 @@ Page({
     },
 
     handleLike() {
-        let that = this
-        if (that.data.liked) {
-            that.setData({
+        if (this.data.liked) {
+            this.setData({
                 liked: false,
             })
 
@@ -379,11 +380,11 @@ Page({
                 data: {
                     _openid: app.globalData.OPENID,
                     type: 'story',
-                    id: that.data.story_id
+                    id: this.data.story_id
                 }
             })
         } else {
-            that.setData({
+            this.setData({
                 liked: true
             })
 
@@ -392,9 +393,9 @@ Page({
                 data: {
                     _openid: app.globalData.OPENID,
                     description: '',
-                    id: that.data.story_id,
+                    id: this.data.story_id,
                     timestamp: Date.parse(new Date()) / 1000,
-                    title: that.data.title,
+                    title: this.data.title,
                     type: 'story'
                 }
             })
@@ -402,16 +403,16 @@ Page({
         wx.cloud.callFunction({
             name: 'tapStoryLike',
             data: {
-                liked: !that.data.liked,
+                liked: !this.data.liked,
                 _openid: app.globalData.OPENID,
-                story_id: that.data.story_id
+                story_id: this.data.story_id
             }
         })
     },
     handleCollect() {
-        let that = this
-        if (that.data.collected) {
-            that.setData({
+
+        if (this.data.collected) {
+            this.setData({
                 collected: false
             })
 
@@ -420,11 +421,11 @@ Page({
                 data: {
                     _openid: app.globalData.OPENID,
                     type: 'story',
-                    id: that.data.story_id
+                    id: this.data.story_id
                 }
             })
         } else {
-            that.setData({
+            this.setData({
                 collected: true
             })
 
@@ -433,9 +434,9 @@ Page({
                 data: {
                     _openid: app.globalData.OPENID,
                     description: '',
-                    id: that.data.story_id,
+                    id: this.data.story_id,
                     timestamp: Date.parse(new Date()) / 1000,
-                    title: that.data.title,
+                    title: this.data.title,
                     type: 'story'
                 }
             })
@@ -443,9 +444,9 @@ Page({
         wx.cloud.callFunction({
             name: 'tapStoryCollect',
             data: {
-                collected: !that.data.collected,
+                collected: !this.data.collected,
                 _openid: app.globalData.OPENID,
-                story_id: that.data.story_id
+                story_id: this.data.story_id
             }
         })
     },
