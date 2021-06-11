@@ -67,13 +67,34 @@ Page({
       .exec((res) => {
         //获取故事和一句
        for(var i=0;i<5;i++){
-         if(i==0)
-         this.data.items[i]={
-          id:"5",
-          type:'story',
-          title_url:"https://636c-cloud1-6gm7hn7636af92c5-1305725653.tcb.qcloud.la/title/title1.png?sign=e799504b42a69b9c7914dc59080f0f8a&t=1622363137",
-          posterURL:"cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/poster/宇宙之卵poster1.png"
-        }
+       
+         if(i==0){
+         var id=app.recommand_story[app.recommand_story.length-1]
+        //  this.data.items[i]={
+        //   id:"5",
+        //   type:'story',
+        //   title_url:"https://636c-cloud1-6gm7hn7636af92c5-1305725653.tcb.qcloud.la/title/title1.png?sign=e799504b42a69b9c7914dc59080f0f8a&t=1622363137",
+        //   posterURL:"cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/poster/宇宙之卵poster1.png"
+        // }
+        wx.cloud.callFunction({
+          name: 'getStory',
+          data: {
+              story_id: '5'
+          },
+          complete: res => {
+          
+              console.log("story",res)
+              this.data.items[0]={
+                id:'5',
+                type:'story',
+                title_url:res.result.titleURL,
+                posterURL:res.result.posterURL
+              }
+              this.setData({items:this.data.items})
+                 this.renderModel1(canvas, THREE)
+          }
+      })
+      }
         else{
           this.data.items[i]={
             id:i,
@@ -84,15 +105,14 @@ Page({
           }
         }
        }
-       this.setData({items:this.data.items})
-
-
-        const canvas = res[0].node
-        console.log("canvas",canvas)
-        this.canvas = canvas
-        const THREE = createScopedThreejs(canvas)
-        this.renderModel1(canvas, THREE)
+       this.setData({items:this.data.items})   
+       const canvas = res[0].node
+      console.log("canvas",canvas)
+      this.canvas = canvas
+      const THREE = createScopedThreejs(canvas)
+      this.renderModel1(canvas, THREE)
       })
+      
   },
   onReady:function(){
     this.timer = setInterval(() => {
@@ -105,13 +125,7 @@ Page({
   },
   onShow(){
     console.log(app.globalData.OPENID)
-    wx.cloud.callFunction({
-      name: 'recommendStory',
-      data: {
-        _openid: app.globalData.OPENID,
-        num: 5
-      }
-    }).then(console.log)
+
     if (typeof this.getTabBar === 'function' &&
     this.getTabBar()) {
     this.getTabBar().setData({
