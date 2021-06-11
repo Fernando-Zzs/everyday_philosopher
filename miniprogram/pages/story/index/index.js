@@ -111,11 +111,11 @@ Page({
         console.log("now story:",app.story_id);
         if (app.story_id != this.data.story_id) {
             this.setData({
-                story_id: app.story_id
+                story_id: this.data.story_id
             })
+            
             this.getStory(this.data.story_id)
         }
-
     },
     onReady() {
         this.timer = setInterval(() => {

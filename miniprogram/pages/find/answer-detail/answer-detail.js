@@ -1,7 +1,7 @@
 const app = getApp()
 let value_global = ''
 let that = this
-
+let this_global = null
 let winWidth = 416;
 let winHeight = 736;
 
@@ -20,7 +20,6 @@ function deepClone(obj) {
   }
   return newObj
 }
-
 Page({
   data: {
     show: true,
