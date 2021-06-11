@@ -3,8 +3,8 @@
     <image class="quote" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/quote.png"></image>
     <image class="corner" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/corner 1.png" id="{{item._id}}"></image>
     <image class="bin" bindtap="delete" data-storyid="{{item.id}}" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/images/bin.png"></image>
-    <view class="title" bindtap="showDetail" data-storyid="{{item.id}}">{{item.title}}</view>
-    <view class="content" bindtap="showDetail" data-storyid="{{item.id}}">
+    <view class="title" data-storyid="{{item.id}}">{{item.title}}</view>
+    <view class="content" data-storyid="{{item.id}}">
       {{item.description}}
     </view>
   </view>
