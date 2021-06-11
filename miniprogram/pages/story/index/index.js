@@ -116,6 +116,7 @@ Page({
             
             this.getStory(this.data.story_id)
         }
+        this.setData({scroll_top:0})
     },
     onReady() {
         this.timer = setInterval(() => {
