@@ -16,7 +16,7 @@ Page({
           console.log(res.total)
           for (var s = 1; s < 21; s++) {
             if(this.data.items.length==20){
-              breakl
+              break;
             }
             var seed = Math.floor(Math.random() * res.total)
 
