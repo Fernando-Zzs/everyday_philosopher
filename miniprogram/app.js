@@ -1,6 +1,6 @@
 //app.js
 App({
-  story_id:'0',
+  story_id:'7',
   question_id:"0",
   showPop:false,
   recommand_story:[],

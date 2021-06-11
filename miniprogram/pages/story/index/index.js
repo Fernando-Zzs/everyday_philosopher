@@ -10,7 +10,7 @@ Page({
         broad_state: false,
         scroll_top: 0,
         story: {},
-        story_id: '0',
+        story_id: '7',
         liked: false,
         collected: false,
         title: "序言",
