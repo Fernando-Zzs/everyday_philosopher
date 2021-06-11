@@ -110,7 +110,7 @@ Page({
       console.log("canvas",canvas)
       this.canvas = canvas
       const THREE = createScopedThreejs(canvas)
-      this.renderModel1(canvas, THREE)
+      // this.renderModel1(canvas, THREE)
       })
       
   },
@@ -224,6 +224,7 @@ Page({
       this.scene.add(mesh);
       this.data.objects.push(mesh);
 
+      console.log("url",item.title_url)
       var spriteMap = new this.THREE.TextureLoader().load(item.title_url);
       var spriteMaterial = new this.THREE.SpriteMaterial({
         map: spriteMap,
