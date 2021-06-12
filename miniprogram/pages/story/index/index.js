@@ -10,7 +10,7 @@ Page({
         broad_state: false,
         scroll_top: 0,
         story: {},
-        story_id: '7',
+        story_id: "0",
         liked: false,
         collected: false,
         title: "序言",
@@ -56,7 +56,7 @@ Page({
                 })
             }
         })
-        this.getStory(this.data.story_id)
+        
         wx.cloud.callFunction({
             name: 'isStoryLiked',
             data: {

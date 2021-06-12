@@ -1,6 +1,7 @@
 <get-more-loading show="{{show}}" wx:if="{{show}}"></get-more-loading>
 <view class="page1">
   <scroll-view id="scroller" scroll-y bindscroll="scroll" scroll-top="{{scroll_top}}">
+    <image class="bgi" style="position:fixed;z-index:-1;height:100vh;width:100vw;" src="cloud://cloud1-6gm7hn7636af92c5.636c-cloud1-6gm7hn7636af92c5-1305725653/3bg.png"></image>
     <view class="contanier1" style="height:{{container_height}}px">
       <!-- 生成组件 -->
       <block wx:for="{{story_content}}" wx:key="index">
